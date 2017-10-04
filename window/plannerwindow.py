@@ -16,6 +16,11 @@ class PlannerWindow(OpaqueWindow):
     self.labMap = labMap
     self.analyzer = LabAnalyzer()
     self.plan = [0]
+    self.Global.plannerWindowOpenChanged.connect(self.onWindowOpenChanged)
+
+  def onWindowOpenChanged(self):
+    isOpen = self.Global.property('plannerWindowOpen')
+    self.setVisible(isOpen)
 
   def showEvent(self, event):
     self.roomModel = [{'x': 0, 'y': 0, 'invalid': True} for i in range(len(self.labMap.rooms))]

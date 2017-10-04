@@ -17,15 +17,14 @@ font.setPointSize(10)
 QApplication.setFont(font)
 
 engine = QQmlApplicationEngine()
-dummy = TransparentWindow(engine, 'qml/Dummy.qml')
-dummy.show()
-
 qmlRegisterSingletonType(QUrl.fromLocalFile('qml/Global.qml'), 'com.labcompass', 1, 0, 'Global')
 engine.load(QUrl.fromLocalFile('qml/GlobalAccessor.qml'))
 Global = engine.rootObjects()[0].property('o')
 
+dummy = TransparentWindow(engine, 'qml/Dummy.qml')
+dummy.show()
+
 labMap = LabMap()
-Global.editWindowOpenChanged.connect(lambda: labMap.setEditMode(Global.property('editWindowOpen')))
 
 logWatcher = LogWatcher()
 QTimer.singleShot(0, logWatcher.start)
@@ -50,9 +49,6 @@ toolbar = ToolbarWindow(engine, parent=header, offset=(0, 168))
 toolbar.show()
 
 editWindow = EditWindow(engine, labMap, parent=header, offset=(0, 220))
-Global.editWindowOpenChanged.connect(lambda: editWindow.setVisible(Global.property('editWindowOpen')))
-
-plannerWindow = PlannerWindow(engine, labMap, parent=header, offset=(-1020, 0))
-Global.plannerWindowOpenChanged.connect(lambda: plannerWindow.setVisible(Global.property('plannerWindowOpen')))
+plannerWindow = PlannerWindow(engine, labMap, parent=header, offset=(-1050, 0))
 
 app.exec()

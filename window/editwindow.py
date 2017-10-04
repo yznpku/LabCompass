@@ -10,3 +10,9 @@ class EditWindow(OpaqueWindow):
     self.rootObject().clearMap.connect(labMap.createNewLab)
     self.rootObject().iterateNext.connect(labMap.iterateNext)
     self.rootObject().save.connect(labMap.saveToFile)
+    self.Global.editWindowOpenChanged.connect(self.onWindowOpenChanged)
+
+  def onWindowOpenChanged(self):
+    isOpen = self.Global.property('editWindowOpen')
+    self.labMap.setEditMode(isOpen)
+    self.setVisible(isOpen)

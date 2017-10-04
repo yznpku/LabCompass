@@ -25,10 +25,11 @@ class Window(QQuickWidget):
     else:
       self.move(300, 100)
 
+    self.Global = engine.rootObjects()[0].property('o')
+
   @pyqtSlot()
   def repositionToParent(self):
     self.move(self.parentWindow.quickWindow().x() + self.offset[0], self.parentWindow.quickWindow().y() + self.offset[1])
-
 
 class TransparentWindow(Window):
   def __init__(self, engine, qmlPath, **kwargs):
