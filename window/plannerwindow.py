@@ -45,7 +45,7 @@ class PlannerWindow(OpaqueWindow):
       preset = self.analyzer.findPreset(i, section)
       if preset:
         for i, coords in enumerate(preset):
-          self.roomModel[section[0] + i + 1] = {'x': coords[0], 'y': coords[1]}
+          self.roomModel[section[i + 1]] = {'x': coords[0], 'y': coords[1]}
 
     for i in range(3):
       self.roomModel[self.sections[i][-1]] = self.trials[i]
