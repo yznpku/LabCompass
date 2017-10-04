@@ -7,7 +7,7 @@ from PyQt5.QtQml import qmlRegisterSingletonType, QQmlApplicationEngine
 from PyQt5.QtQuick import QQuickView
 from PyQt5.QtQuickWidgets import QQuickWidget
 
-from window.template import Window
+from window.template import TransparentWindow
 from window.headerwindow import HeaderWindow
 from window.compasswindow import CompassWindow
 from window.toolbarwindow import ToolbarWindow
@@ -23,6 +23,8 @@ QApplication.setFont(font)
 
 
 engine = QQmlApplicationEngine()
+dummy = TransparentWindow(engine, 'qml/Dummy.qml')
+dummy.show()
 
 qmlRegisterSingletonType(QUrl.fromLocalFile('qml/Global.qml'), 'com.labcompass', 1, 0, 'Global')
 engine.load(QUrl.fromLocalFile('qml/GlobalAccessor.qml'))
