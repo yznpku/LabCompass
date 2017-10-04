@@ -55,4 +55,3 @@ class LabAnalyzer:
         if [[m2[x][y] for y in order] for x in order] == m1:
           return order
       return None
-
