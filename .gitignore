@@ -1,8 +1,9 @@
-
 __pycache__/
-
 *.qmlc
-
 *.jsc
 
 lab-notes\.json
+
+build/*
+dist/*
+main.spec
