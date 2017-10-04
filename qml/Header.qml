@@ -30,5 +30,6 @@ Row {
 
   ToolbarButton {
     source: '../images/close.png'
+    onClicked: exit()
   }
 }
