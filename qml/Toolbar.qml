@@ -8,7 +8,14 @@ Row {
   ToolbarButton {
     source: '../images/navigation.png'
     active: Global && Global.plannerWindowOpen
-    onClicked: if (Global) Global.plannerWindowOpen = !Global.plannerWindowOpen
+    onClicked: {
+      if (Global) {
+        var open = Global.plannerWindowOpen;
+        closeAllWindows();
+        if (!open)
+          Global.plannerWindowOpen = true;
+      }
+    }
   }
 
   ToolbarButton {
@@ -18,10 +25,22 @@ Row {
   ToolbarButton {
     source: '../images/pencil.png'
     active: Global && Global.editWindowOpen
-    onClicked: if (Global) Global.editWindowOpen = !Global.editWindowOpen
+    onClicked: {
+      if (Global) {
+        var open = Global.editWindowOpen;
+        closeAllWindows();
+        if (!open)
+          Global.editWindowOpen = true;
+      }
+    }
   }
 
   ToolbarButton {
     source: '../images/settings.png'
+  }
+
+  function closeAllWindows() {
+    Global.plannerWindowOpen = false;
+    Global.editWindowOpen = false;
   }
 }
