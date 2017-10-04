@@ -14,9 +14,9 @@ class LabAnalyzer:
   def divideIntoSections(self):
     dividers = [i for i, room in enumerate(self.rooms) if room['name'] == 'Aspirant\'s Trial' or room['name'] == 'Aspirant\'s Plaza']
 
+    visited = set([0])
     def findSection(start):
       result = []
-      visited = set([start])
       q = collections.deque([start])
       while q:
         x = q.popleft()
@@ -27,9 +27,9 @@ class LabAnalyzer:
             visited.add(room)
       return result
 
-    firstSection = sorted([*findSection(dividers[0]), dividers[1]])
-    thirdSection = sorted([*findSection(dividers[3]), dividers[2]])
-    secondSection = sorted([*(set(range(len(self.rooms))) - set(firstSection) - set(thirdSection)), dividers[1], dividers[2]])
+    firstSection = [*findSection(dividers[0]), dividers[1]]
+    secondSection = [*findSection(dividers[1]), dividers[2]]
+    thirdSection = [*findSection(dividers[2]), dividers[3]]
     return (firstSection, secondSection, thirdSection)
 
   def sectionMatrix(self, section):

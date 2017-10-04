@@ -18,7 +18,7 @@ class PlannerWindow(OpaqueWindow):
     self.plan = [0]
 
   def showEvent(self, event):
-    self.roomModel = [{'x': 0, 'y': 0, 'invalid': True}] * len(self.labMap.rooms)
+    self.roomModel = [{'x': 0, 'y': 0, 'invalid': True} for i in range(len(self.labMap.rooms))]
     self.analyzeMap()
     for i, room in enumerate(self.labMap.rooms):
       self.roomModel[i]['contents'] = room['contents']
