@@ -45,8 +45,7 @@ class LabAnalyzer:
     for preset in self.presets[part]:
       order = self.sectionIsomorphism(matrix, preset['matrix'])
       if order:
-        return [preset['coords'][i - 1] for i in order[1:-1]]
-
+        return [[[37, 129], [312, 129], [587, 129]][part]] + [preset['coords'][i - 2] for i in order[2:-1]]
   def sectionIsomorphism(self, m1, m2):
     if len(m1) != len(m2):
       return None
