@@ -74,7 +74,6 @@ Image {
       triggeredOnStart: true
       onTriggered: {
         var elapsed = Date.now() - timer.startTime;
-        console.log(Date.now(), startTime)
         timerViewText.text = ('00'+Math.floor(elapsed/60000)).slice(-2) + ':' + ('00'+Math.floor(elapsed%60000/1000)).slice(-2);
       }
     }
@@ -82,7 +81,6 @@ Image {
 
   function restartTimer() {
     timer.startTime = Date.now();
-    console.log(timer.startTime)
     timer.restart();
     timerView.visible = true;
   }
