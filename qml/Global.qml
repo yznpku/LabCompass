@@ -4,4 +4,6 @@ import QtQuick 2.8
 QtObject {
   property bool editWindowOpen: false
   property bool plannerWindowOpen: false
+
+  property bool inLab: false
 }

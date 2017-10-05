@@ -74,7 +74,7 @@ Rectangle {
           MouseArea {
             anchors.fill: parent
             cursorShape: Qt.PointingHandCursor
-            onClicked: move(index)
+            onClicked: if (!Global.inLab) move(index);
           }
 
           RectangularGlow {
@@ -244,6 +244,7 @@ Rectangle {
 
     Row {
       spacing: 9
+      visible: !Global.inLab
       Rectangle {
         width: 34
         height: 28

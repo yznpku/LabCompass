@@ -34,6 +34,9 @@ logWatcher.sectionComplete.connect(labMap.sectionComplete)
 logWatcher.zoneChange.connect(labMap.enterZone)
 logWatcher.labExit.connect(labMap.labExit)
 
+logWatcher.labStart.connect(lambda: Global.setProperty('inLab', True))
+logWatcher.labExit.connect(lambda: Global.setProperty('inLab', False))
+
 header = HeaderWindow(engine)
 header.show()
 
