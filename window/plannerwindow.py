@@ -72,6 +72,7 @@ class PlannerWindow(OpaqueWindow):
 
   def updatePlan(self, plan):
     self.labMap.plan = plan
+    self.labMap.currentPlanIndex = 0
     self.rootObject().setProperty('plan', plan[1:])
 
     planSet = set(plan[1:])
