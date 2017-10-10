@@ -23,10 +23,7 @@ class PlannerWindow(OpaqueWindow):
     self.setVisible(isOpen)
 
   def showEvent(self, event):
-    self.roomModel = [{'x': 0, 'y': 0, 'invalid': True} for i in range(len(self.labMap.rooms))]
-    self.analyzeMap()
-    for i, room in enumerate(self.labMap.rooms):
-      self.roomModel[i]['contents'] = room['contents']
+    self.roomModel = self.labMap.rooms
     self.rootObject().setProperty('roomModel', self.roomModel)
 
     self.linkModel = []
@@ -41,19 +38,6 @@ class PlannerWindow(OpaqueWindow):
             'secret': room['exits'][to] == 'C'
           })
     self.rootObject().setProperty('linkModel', self.linkModel)
-
-  def analyzeMap(self):
-    self.analyzer.loadRooms(self.labMap.rooms)
-    self.sections = self.analyzer.divideIntoSections()
-
-    for i, section in enumerate(self.sections):
-      preset = self.analyzer.findPreset(i, section)
-      if preset:
-        for i, coords in enumerate(preset):
-          self.roomModel[section[i + 1]] = {'x': coords[0], 'y': coords[1]}
-
-    for i in range(3):
-      self.roomModel[self.sections[i][-1]] = self.trials[i]
 
   def planBack(self):
     plan = self.labMap.plan

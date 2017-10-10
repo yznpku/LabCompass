@@ -36,9 +36,22 @@ class LabMap(QObject):
     except Exception:
       pass
     if 'rooms' in o:
+      plaza = {'name': 'Aspirant\'s Plaza',
+              'contents': [],
+              'content_directions': [],
+              'x': -100,
+              'y': 128,
+              'exits': {1: 'NW'}}
+      mapping = {room['id']: i + 1 for i, room in enumerate(o['rooms'])}
       for room in o['rooms']:
-        room['exits'] = {int(k):room['exits'][k] for k in room['exits']}
-      self.rooms = o['rooms']
+        room['exits'] = {mapping[k]:room['exits'][k] for k in room['exits']}
+
+      self.rooms = [plaza, *o['rooms']]
+
+      for i, room in enumerate(self.rooms):
+        for exit in room['exits']:
+          if not i in self.rooms[exit]['exits']:
+            self.rooms[exit]['exits'][i] = 'unknown'
 
   def labStart(self):
     self.currentPlanIndex = 0
