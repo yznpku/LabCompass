@@ -48,7 +48,7 @@ Image {
     Repeater {
       id: contentView
       Image {
-        source: '../images/lab-content/' + Global.contentIconMapping[modelData] + '.png'
+        source: modelData in Global.contentIconMapping ? '../images/lab-content/' + Global.contentIconMapping[modelData] + '.png' : ''
       }
     }
   }

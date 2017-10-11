@@ -60,5 +60,4 @@ connect({
   plannerWindow.rootObject().updateLabNotes: [labNoteUpdater.fetchLabNotes]
 })
 
-
 app.exec()

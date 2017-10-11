@@ -1,16 +1,17 @@
 import QtQuick 2.8
 import QtGraphicalEffects 1.0
-import QtQuick.Controls 2.0
-import QtQuick.Controls.Material 2.0
+import QtQuick.Controls 2.2
+import QtQuick.Controls.Material 2.2
 import com.labcompass 1.0
 
 Rectangle {
   id: root
-  property alias roomModel: roomView.model
   property string labDifficulty: 'Uber'
   property string labNoteTitle: ''
   property bool updatingLabNotes: false
+  property var roomModel: []
   property var linkModel: []
+  property var goldenDoorModel: []
   property var plan: []
   property int planRooms: 0
   property int planLength: 0
@@ -168,7 +169,7 @@ Rectangle {
         width: 830
         height: 260
         color: Global.primaryColor
-        clip: true
+        z: 1
 
         Canvas {
           id: linkView
@@ -196,6 +197,7 @@ Rectangle {
 
         Repeater {
           id: roomView
+          model: roomModel
 
           Item {
             x: modelData.x - 24
@@ -206,7 +208,6 @@ Rectangle {
 
             MouseArea {
               anchors.fill: parent
-              cursorShape: Qt.PointingHandCursor
               onClicked: if (!Global.inLab) move(index);
             }
 
@@ -232,7 +233,7 @@ Rectangle {
               anchors.fill: parent
               visible: false
               radius: 24
-              color: modelData.name === 'Aspirant\'s Trial' ? '#101010' : '#BDBDBD'
+              color: modelData.name === 'Aspirant\'s Trial' ? '#101010' : '#A1887F'
               Image {
                 anchors.centerIn: parent
                 source: modelData.name === 'Aspirant\'s Trial' ? '../images/lab-content/izaro.png' : ''
@@ -258,7 +259,7 @@ Rectangle {
               Repeater {
                 model: modelData['contents']
                 Image {
-                  source: '../images/lab-content/' + Global.contentIconMapping[modelData] + '.png'
+                  source: modelData in Global.contentIconMapping ? '../images/lab-content/' + Global.contentIconMapping[modelData] + '.png' : ''
                 }
               }
             }
@@ -290,24 +291,104 @@ Rectangle {
           }
         }
 
-        Image {
-          property int markerPos: plan && plan.length > 0 ? plan[plan.length - 1] : 0
-          x: (markerPos == 0 ? -20 : roomModel[markerPos].x) - 18
-          y: (markerPos == 0 ? 129 : roomModel[markerPos].y) - 32
-          source: '../images/map-marker.png'
+        Repeater {
+          id: goldenDoorView
+          model: goldenDoorModel
 
-          Behavior on x {
-            NumberAnimation {
-              easing.type: Easing.Bezier
-              easing.bezierCurve: [0.4, 0.0, 0.2, 1.0, 1.0, 1.0]
-              duration: 150
+          Item {
+            x: (roomModel[modelData[0]].x + roomModel[modelData[1]].x) / 2
+            y: (roomModel[modelData[0]].y + roomModel[modelData[1]].y) / 2
+
+            Image {
+              id: goldenDoorIcon
+              anchors.centerIn: parent
+              source: '../images/lab-content/golden-door.png'
+              visible: false
+            }
+            DropShadow {
+              anchors.fill: goldenDoorIcon
+              source: goldenDoorIcon
+              verticalOffset: 2
+              radius: 4.0
+              samples: 8
+              color: '#80000000'
             }
           }
-          Behavior on y {
-            NumberAnimation {
-              easing.type: Easing.Bezier
-              easing.bezierCurve: [0.4, 0.0, 0.2, 1.0, 1.0, 1.0]
-              duration: 150
+        }
+
+        Repeater {
+          id: roomTooltipView
+          model: roomModel
+
+          Item {
+            x: modelData.x - 24
+            y: modelData.y - 24
+            width: 48
+            height: 48
+            visible: !modelData.invalid
+
+            TooltipHoverArea {
+              id: roomHoverArea
+              anchors.fill: parent
+              cursorShape: Qt.PointingHandCursor
+            }
+
+            RoomLabel {
+              roomName: modelData['name']
+              roomContents: getRoomContents(modelData)
+              opacity: roomHoverArea.shouldDisplayTooltip ? 1 : 0
+
+              function getRoomContents(modelData) {
+                var roomContents = [];
+                if ('contents' in modelData)
+                  for (var i = 0; i < modelData['contents'].length; i++)
+                    roomContents.push(modelData['contents'][i]);
+                if ('weapon' in modelData)
+                  roomContents.push(modelData['weapon']);
+                if ('mechanics' in modelData)
+                  for (var i = 0; i < modelData['mechanics'].length; i++)
+                    roomContents.push(modelData['mechanics'][i]);
+                if ('secret_passage' in modelData) {
+                  var name = modelData['secret_passage'] in Global.nameMapping ? Global.nameMapping[modelData['secret_passage']] : modelData['secret_passage']
+                  roomContents.push('Secret Passage (' + name + ')')
+                }
+                return roomContents;
+              }
+
+              Behavior on opacity {
+                NumberAnimation {
+                  easing.type: Easing.Bezier
+                  easing.bezierCurve: [0.4, 0.0, 0.2, 1.0, 1.0, 1.0]
+                  duration: 100
+                }
+              }
+            }
+          }
+        }
+
+
+        Item {
+          anchors.fill: parent
+          clip: true
+          Image {
+            property int markerPos: plan && plan.length > 0 ? plan[plan.length - 1] : 0
+            x: (markerPos == 0 ? -20 : roomModel[markerPos].x) - 18
+            y: (markerPos == 0 ? 129 : roomModel[markerPos].y) - 32
+            source: '../images/map-marker.png'
+
+            Behavior on x {
+              NumberAnimation {
+                easing.type: Easing.Bezier
+                easing.bezierCurve: [0.4, 0.0, 0.2, 1.0, 1.0, 1.0]
+                duration: 150
+              }
+            }
+            Behavior on y {
+              NumberAnimation {
+                easing.type: Easing.Bezier
+                easing.bezierCurve: [0.4, 0.0, 0.2, 1.0, 1.0, 1.0]
+                duration: 150
+              }
             }
           }
         }
@@ -334,7 +415,7 @@ Rectangle {
             columns: 2
             verticalItemAlignment: Grid.AlignVCenter
             Text { color: 'white'; text: 'Rooms' }
-            Text { color: 'white'; text: planRooms }
+            Text { color: 'white'; text: planRooms; width: 25 }
             Text { color: 'white'; text: 'Length' }
             Text { color: 'white'; text: planLength }
             Row {
