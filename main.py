@@ -9,9 +9,14 @@ from PyQt5.QtQuickWidgets import QQuickWidget
 
 from window import TransparentWindow, CompassWindow, EditWindow, HeaderWindow, PlannerWindow, ToolbarWindow
 from logwatcher import LogWatcher
+from labnoteupdater import LabNoteUpdater
 from labmap import LabMap
+from connect import connect
 
-app = QApplication(sys.argv)
+sys_argv = sys.argv
+sys_argv += ['--style', 'material']
+app = QApplication(sys_argv)
+
 font = QFont('consolas')
 font.setPointSize(10)
 QApplication.setFont(font)
@@ -29,29 +34,33 @@ labMap = LabMap()
 logWatcher = LogWatcher()
 QTimer.singleShot(0, logWatcher.start)
 
-logWatcher.labStart.connect(labMap.labStart)
-logWatcher.sectionComplete.connect(labMap.sectionComplete)
-logWatcher.zoneChange.connect(labMap.enterZone)
-logWatcher.labExit.connect(labMap.labExit)
+labNoteUpdater = LabNoteUpdater()
 
-logWatcher.labStart.connect(lambda: Global.setProperty('inLab', True))
-logWatcher.labExit.connect(lambda: Global.setProperty('inLab', False))
-
-header = HeaderWindow(engine)
+header = HeaderWindow(engine, initialPos=(500, 200))
 header.show()
 
 compass = CompassWindow(engine, parent=header, offset=(-10, 32))
 compass.show()
-labMap.roomChanged.connect(compass.updateRoom)
-labMap.markPlan.connect(compass.markPlan)
-logWatcher.labStart.connect(compass.restartTimer)
-logWatcher.labFinish.connect(compass.stopTimer)
-logWatcher.labExit.connect(compass.closeTimer)
 
 toolbar = ToolbarWindow(engine, parent=header, offset=(0, 168))
 toolbar.show()
 
 editWindow = EditWindow(engine, labMap, parent=header, offset=(0, 220))
-plannerWindow = PlannerWindow(engine, labMap, parent=header, offset=(-1050, 0))
+plannerWindow = PlannerWindow(engine, labMap)
+
+connect({
+  logWatcher.labStart: [labMap.labStart, compass.restartTimer, (lambda: Global.setProperty('inLab', True))],
+  logWatcher.sectionComplete: [labMap.sectionComplete],
+  logWatcher.zoneChange: [labMap.enterZone],
+  logWatcher.labFinish: [compass.stopTimer],
+  logWatcher.labExit: [labMap.labExit, compass.closeTimer, (lambda: Global.setProperty('inLab', False))],
+  labMap.layoutChanged: [plannerWindow.refreshLayout],
+  labMap.roomChanged: [compass.updateRoom],
+  labMap.markPlan: [compass.markPlan],
+  labNoteUpdater.runningChanged: [(lambda running: Global.setProperty('labNoteUpdaterRunning', running))],
+  labNoteUpdater.success: [labMap.loadFromFile],
+  plannerWindow.rootObject().updateLabNotes: [labNoteUpdater.fetchLabNotes]
+})
+
 
 app.exec()

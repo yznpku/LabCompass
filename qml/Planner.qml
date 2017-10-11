@@ -1,10 +1,15 @@
 import QtQuick 2.8
 import QtGraphicalEffects 1.0
+import QtQuick.Controls 2.0
+import QtQuick.Controls.Material 2.0
 import com.labcompass 1.0
 
 Rectangle {
   id: root
   property alias roomModel: roomView.model
+  property string labDifficulty: 'Uber'
+  property string labNoteTitle: 'Lab note not loaded'
+  property bool updatingLabNotes: false
   property var linkModel: []
   property var plan: []
   property int planRooms: 0
@@ -12,276 +17,418 @@ Rectangle {
   property int planGPs: 0
   property int planArgus: 0
   property int planDarkshrines: 0
-  property int planSilverKeys: 0
-  property int planSilverDoors: 0
+  property int planExpectedTreasureKeys: 3
+  property int planExpectedEnchantments: 1
 
   signal back
   signal reset
   signal move(int moveTo)
-
-  width: 1000
-  height: 338
-  color: '#DDCCFF00'
+  signal switchToDifficulty(string difficulty)
+  signal updateLabNotes(string difficulty)
 
   onLinkModelChanged: linkView.requestPaint()
 
+  width: grid.width
+  height: grid.height
+  color: Global.backgroundColor
+
   Grid {
-    columns: 2
-    padding: 20
-    spacing: 10
+    id: grid
+    columns: 1
+    spacing: 20
+    topPadding: 10
+    bottomPadding: 20
 
-    Rectangle {
-      id: labMap
-      width: 830
-      height: 260
-      color: '#DD223300'
-      clip: true
+    Item {
+      height: 60
+      width: root.width
 
-      Canvas {
-        id: linkView
-        anchors.fill: parent
-        onPaint: {
-          var ctx = linkView.getContext('2d');
+      Item { RotationAnimation on rotation { loops: Animation.Infinite; from: 0; to: 360 }}
 
-          for (var i = 0; i < linkModel.length; i++) {
-            var link = linkModel[i];
-            if (link.secret) {
-              ctx.lineWidth = 2;
-              ctx.strokeStyle = '#44F0FFF0';
-            }
-            else {
-              ctx.lineWidth = 4;
-              ctx.strokeStyle = '#BBF0FFF0';
-            }
-            ctx.beginPath();
-            ctx.moveTo(link.x1, link.y1);
-            ctx.lineTo(link.x2, link.y2);
-            ctx.stroke();
+      Rectangle {
+        id: activeLabDifficultyHighlight
+        property var activeViewItem
+        parent: labDifficultyView
+        width: 90
+        height: 30
+        x: activeViewItem ? parent.mapFromItem(activeViewItem, 0, 0).x : 0
+        color: Global.primaryColor
+        Component.onCompleted: activeViewItem = Qt.binding(function() { return labDifficultyView.itemAt(labDifficultyView.model.indexOf(labDifficulty)) })
+        Behavior on x {
+          NumberAnimation {
+            easing.type: Easing.Bezier
+            easing.bezierCurve: [0.4, 0.0, 0.2, 1.0, 1.0, 1.0]
+            duration: 150
+          }
+        }
+        Rectangle {
+          color: Global.lightPrimaryColor
+          height: 2
+          anchors {
+            left: parent.left
+            right: parent.right
+            top: parent.bottom
           }
         }
       }
 
-      Repeater {
-        id: roomView
+      Grid {
+        columns: 2
+        leftPadding: 40
+        spacing: 40
+        verticalItemAlignment: Grid.AlignVCenter
 
-        Item {
-          x: modelData.x - 24
-          y: modelData.y - 24
-          width: 48
-          height: 48
-          visible: !modelData.invalid
+        Text {
+          text: 'Labyrinth Planner'
+          color: Global.primaryTextColor
+          font.pointSize: 24
+        }
 
-          MouseArea {
-            anchors.fill: parent
-            cursorShape: Qt.PointingHandCursor
-            onClicked: if (!Global.inLab) move(index);
-          }
-
-          RectangularGlow {
-            opacity: plan.indexOf(index) >= 0 ? 1 : 0
-            anchors.fill: rect
-            glowRadius: 4
-            spread: 0.6
-            color: "white"
-            cornerRadius: 24
-          }
-
-          Rectangle {
-            id: rect
-            anchors.fill: parent
-            visible: false
-            radius: 24
-            color: modelData.trial ? 'khaki' : 'yellowgreen'
-          }
-
-          DropShadow {
-            anchors.fill: rect
-            source: rect
-            verticalOffset: 2
-            radius: 4.0
-            samples: 8
-            color: '#80000000'
-          }
-
-          Row {
-            id: contents
-            visible: false
-            anchors.centerIn: parent
+        Grid {
+          columns: 1
+          spacing: 10
+          Grid {
+            columns: 4
             spacing: 2
             Repeater {
-              model: modelData['contents']
-              Image {
-                source: '../images/lab-content/' + modelData + '.png'
+              id: labDifficultyView
+              model: ['Normal', 'Cruel', 'Merciless', 'Uber']
+              Item {
+                width: 90
+                height: 30
+                z: 1
+                Text {
+                  color: Global.primaryTextColor
+                  text: modelData
+                  anchors.centerIn: parent
+                }
+                MaterialInk {
+                  anchors.fill: parent
+                  onClicked: labDifficulty = modelData
+                }
               }
             }
           }
-
-          DropShadow {
-            anchors.fill: contents
-            source: contents
-            verticalOffset: 1
-            radius: 2.0
-            samples: 8
-            color: '#80000000'
-          }
-
-          Rectangle {
-            anchors.right: parent.right
-            anchors.bottom: parent.bottom
-            width: 16
-            height: 16
-            radius: 8
-            color: '#80000000'
-
-            Text {
-              anchors.centerIn: parent
-              text: index
-              color: 'white'
-              font.family: 'consolas'
+          Item {
+            width: labDifficultyView.parent.width
+            height: 30
+            Item {
+              anchors {
+                left: parent.left
+                top: parent.top
+                right: updateButton.left
+                bottom: parent.bottom
+              }
+              Text {
+                anchors.centerIn: parent
+                text: labNoteTitle
+                color: Global.primaryTextColor
+              }
             }
-          }
-        }
-      }
-
-      Image {
-        property int markerPos: plan && plan.length > 0 ? plan[plan.length - 1] : 0
-        x: (markerPos == 0 ? -20 : roomModel[markerPos].x) - 18
-        y: (markerPos == 0 ? 129 : roomModel[markerPos].y) - 32
-        source: '../images/map-marker.png'
-
-        Behavior on x {
-          NumberAnimation {
-            duration: 100
-            easing.type: Easing.OutCubic
-          }
-        }
-        Behavior on y {
-          NumberAnimation {
-            duration: 100
-            easing.type: Easing.OutCubic
+            MaterialInk {
+              id: updateButton
+              width: 32
+              height: 32
+              anchors.right: parent.right
+              anchors.verticalCenter: parent.verticalCenter
+              onClicked: updateLabNotes(labDifficulty)
+              enabled: !Global.labNoteUpdaterRunning
+              Image {
+                id: updateButtonImage
+                source: '../images/update.png'
+                anchors.fill: parent
+                visible: parent.enabled
+              }
+              BusyIndicator {
+                anchors.fill: parent
+                running: !parent.enabled
+                Material.accent: Global.primaryTextColor
+              }
+            }
           }
         }
       }
     }
 
     Rectangle {
-      width: 120
-      height: 260
-      color: '#DD223300'
-      Grid {
-        anchors.horizontalCenter: parent.horizontalCenter
-        horizontalItemAlignment: Grid.AlignHCenter
-        padding: 10
-        spacing: 10
-        columns: 1
-        Text {
-          text: 'SUMMARY'
-          font.pointSize: 16
-          color: 'white'
-        }
-        Grid {
-          spacing: 10
-          columns: 3
-          horizontalItemAlignment: Grid.AlignHCenter
-          verticalItemAlignment: Grid.AlignVCenter
-          Text { color: 'white'; text: 'Rooms' }
-          Item { width: 1; height: 1 }
-          Text { color: 'white'; text: planRooms }
-          Text { color: 'white'; text: 'Length' }
-          Item { width: 1; height: 1 }
-          Text { color: 'white'; text: planLength }
-          Image { source: '../images/lab-content/argus.png' }
-          Text { color: 'white'; text: '✕' }
-          Text { color: 'white'; text: planArgus }
-          Row {
-            Image { source: '../images/lab-content/gauntlet.png' }
-            Image { source: '../images/lab-content/puzzle.png' }
-          }
-          Text { color: 'white'; text: '✕' }
-          Text { color: 'white'; text: planGPs }
-          Image { source: '../images/lab-content/darkshrine.png' }
-          Text { color: 'white'; text: '✕' }
-          Text { color: 'white'; text: planDarkshrines }
-          Image { source: '../images/lab-content/silver-key.png' }
-          Text { color: 'white'; text: '✕' }
-          Text { color: 'white'; text: planSilverKeys }
-          Image { source: '../images/lab-content/silver-door.png' }
-          Text { color: 'white'; text: '✕' }
-          Text { color: 'white'; text: planSilverDoors }
-        }
-      }
+      width: root.width
+      height: 1
+      color: Qt.lighter(Global.primaryColor)
     }
 
-    Row {
-      spacing: 4
+    Grid {
+      columns: 2
+      spacing: 20
+
+      leftPadding: 40
+      rightPadding: 40
+
       Rectangle {
-        width: 80
-        height: 28
-        color: '#DD223300'
-        Text {
-          anchors.centerIn: parent
-          text: 'Plan:'
-          color: 'white'
-          font.pointSize: 16
+        id: labMap
+        width: 830
+        height: 260
+        color: Global.primaryColor
+        clip: true
+
+        Canvas {
+          id: linkView
+          anchors.fill: parent
+          onPaint: {
+            var ctx = linkView.getContext('2d');
+
+            for (var i = 0; i < linkModel.length; i++) {
+              var link = linkModel[i];
+              if (link.secret) {
+                ctx.lineWidth = 2;
+                ctx.strokeStyle = '#44F0FFF0';
+              }
+              else {
+                ctx.lineWidth = 4;
+                ctx.strokeStyle = '#BBF0FFF0';
+              }
+              ctx.beginPath();
+              ctx.moveTo(link.x1, link.y1);
+              ctx.lineTo(link.x2, link.y2);
+              ctx.stroke();
+            }
+          }
+        }
+
+        Repeater {
+          id: roomView
+
+          Item {
+            x: modelData.x - 24
+            y: modelData.y - 24
+            width: 48
+            height: 48
+            visible: !modelData.invalid
+
+            MouseArea {
+              anchors.fill: parent
+              cursorShape: Qt.PointingHandCursor
+              onClicked: if (!Global.inLab) move(index);
+            }
+
+            RectangularGlow {
+              opacity: plan.indexOf(index) >= 0 ? 1 : 0
+              anchors.fill: rect
+              glowRadius: 4
+              spread: 0.6
+              color: "white"
+              cornerRadius: 24
+
+              Behavior on opacity {
+                NumberAnimation {
+                  easing.type: Easing.Bezier
+                  easing.bezierCurve: [0.4, 0.0, 0.2, 1.0, 1.0, 1.0]
+                  duration: 150
+                }
+              }
+            }
+
+            Rectangle {
+              id: rect
+              anchors.fill: parent
+              visible: false
+              radius: 24
+              color: modelData.name === 'Aspirant\'s Trial' ? '#101010' : '#BDBDBD'
+              Image {
+                anchors.centerIn: parent
+                source: modelData.name === 'Aspirant\'s Trial' ? '../images/lab-content/izaro.png' : ''
+                scale: 0.75
+              }
+            }
+
+            DropShadow {
+              anchors.fill: rect
+              source: rect
+              verticalOffset: 2
+              radius: 4.0
+              samples: 8
+              color: '#80000000'
+            }
+
+            Row {
+              id: contents
+              visible: false
+              anchors.centerIn: parent
+              spacing: 2
+
+              property var iconMapping: {
+                'Switch puzzle': 'gauntlet-puzzle',
+                'Floor puzzle': 'gauntlet-puzzle',
+                'Escort gauntlet': 'gauntlet-puzzle',
+                'Trap gauntlet': 'gauntlet-puzzle',
+                'darkshrine': 'darkshrine',
+                'argus': 'argus'
+              }
+
+              Repeater {
+                model: modelData['contents']
+                Image {
+                  source: '../images/lab-content/' + contents.iconMapping[modelData] + '.png'
+                }
+              }
+            }
+
+            DropShadow {
+              anchors.fill: contents
+              source: contents
+              verticalOffset: 1
+              radius: 2.0
+              samples: 8
+              color: '#80000000'
+            }
+
+            Rectangle {
+              anchors.right: parent.right
+              anchors.bottom: parent.bottom
+              width: 16
+              height: 16
+              radius: 8
+              color: '#80000000'
+
+              Text {
+                anchors.centerIn: parent
+                text: index
+                color: 'white'
+                font.family: 'consolas'
+              }
+            }
+          }
+        }
+
+        Image {
+          property int markerPos: plan && plan.length > 0 ? plan[plan.length - 1] : 0
+          x: (markerPos == 0 ? -20 : roomModel[markerPos].x) - 18
+          y: (markerPos == 0 ? 129 : roomModel[markerPos].y) - 32
+          source: '../images/map-marker.png'
+
+          Behavior on x {
+            NumberAnimation {
+              easing.type: Easing.Bezier
+              easing.bezierCurve: [0.4, 0.0, 0.2, 1.0, 1.0, 1.0]
+              duration: 150
+            }
+          }
+          Behavior on y {
+            NumberAnimation {
+              easing.type: Easing.Bezier
+              easing.bezierCurve: [0.4, 0.0, 0.2, 1.0, 1.0, 1.0]
+              duration: 150
+            }
+          }
         }
       }
-      Repeater {
-        id: planView
-        model: plan
-        Rectangle {
-          width: 28
+
+      Rectangle {
+        width: 280
+        height: 260
+        color: Global.primaryColor
+        Grid {
+          anchors.horizontalCenter: parent.horizontalCenter
+          horizontalItemAlignment: Grid.AlignHCenter
+          padding: 10
+          spacing: 20
+          columns: 1
+          Text {
+            text: 'SUMMARY'
+            font.pointSize: 16
+            color: 'white'
+          }
+          Grid {
+            rowSpacing: 12
+            columnSpacing: 30
+            columns: 2
+            verticalItemAlignment: Grid.AlignVCenter
+            Text { color: 'white'; text: 'Rooms' }
+            Text { color: 'white'; text: planRooms }
+            Text { color: 'white'; text: 'Length' }
+            Text { color: 'white'; text: planLength }
+            Row {
+              spacing: 4
+              Image { source: '../images/lab-content/argus.png' }
+              Text { color: 'white'; text: 'Argus' }
+            }
+            Text { color: 'white'; text: planArgus }
+            Row {
+              spacing: 4
+              Image { source: '../images/lab-content/gauntlet-puzzle.png' }
+              Text { color: 'white'; text: 'Gauntlet/Puzzle' }
+            }
+            Text { color: 'white'; text: planGPs }
+            Row {
+              spacing: 4
+              Image { source: '../images/lab-content/darkshrine.png' }
+              Text { color: 'white'; text: 'Darkshrine' }
+            }
+            Text { color: 'white'; text: planDarkshrines }
+            Text { color: 'white'; text: 'Expected Treasure Keys' }
+            Text { color: 'white'; text: planExpectedTreasureKeys }
+            Text { color: 'white'; text: 'Expected Enchantments' }
+            Text { color: 'white'; text: planExpectedEnchantments }
+          }
+        }
+      }
+
+      Row {
+        spacing: 4
+        Item {
+          width: 80
           height: 28
-          color: '#DD223300'
           Text {
             anchors.centerIn: parent
-            text: modelData
-            color: 'white'
-            font.pointSize: 12
+            text: 'Plan:'
+            color: Global.primaryTextColor
+            font.pointSize: 16
+          }
+        }
+        Repeater {
+          id: planView
+          model: plan
+          Rectangle {
+            width: 28
+            height: 28
+            color: Global.primaryColor
+            Text {
+              anchors.centerIn: parent
+              text: modelData
+              color: Global.primaryTextColor
+              font.pointSize: 12
+            }
           }
         }
       }
-    }
 
-    Row {
-      spacing: 9
-      visible: !Global.inLab
-      Rectangle {
-        width: 34
-        height: 28
-        color: '#DD223300'
-        Image {
-          anchors.centerIn: parent
-          source: '../images/backspace.png'
+      Row {
+        spacing: 10
+        visible: !Global.inLab
+        Rectangle {
+          width: 55
+          height: 28
+          color: Global.primaryColor
+          Image {
+            anchors.centerIn: parent
+            source: '../images/backspace.png'
+          }
+          MaterialInk {
+            anchors.fill: parent
+            onClicked: back()
+          }
         }
-        MaterialInk {
-          anchors.fill: parent
-          onClicked: back()
-        }
-      }
-      Rectangle {
-        width: 34
-        height: 28
-        color: '#DD223300'
-        Image {
-          anchors.centerIn: parent
-          source: '../images/refresh.png'
-        }
-        MaterialInk {
-          anchors.fill: parent
-          onClicked: reset()
-        }
-      }
-      Rectangle {
-        width: 34
-        height: 28
-        color: '#DD223300'
-        Image {
-          anchors.centerIn: parent
-          source: '../images/check.png'
-        }
-        MaterialInk {
-          anchors.fill: parent
-          onClicked: Global.plannerWindowOpen = false
+        Rectangle {
+          width: 55
+          height: 28
+          color: Global.primaryColor
+          Image {
+            anchors.centerIn: parent
+            source: '../images/refresh.png'
+          }
+          MaterialInk {
+            anchors.fill: parent
+            onClicked: reset()
+          }
         }
       }
     }

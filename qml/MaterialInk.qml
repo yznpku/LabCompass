@@ -4,6 +4,7 @@ import 'point.js' as Point
 MouseArea {
   id: root
 
+  property color color: 'white'
   clip: true
   cursorShape: Qt.PointingHandCursor
   property point focusPoint
@@ -19,12 +20,12 @@ MouseArea {
   Rectangle {
     id: layer1
     anchors.fill: parent
-    color: 'black'
+    color: root.color
     opacity: 0.0
   }
   Rectangle {
     id: layer2
-    color: 'black'
+    color: root.color
     x: focusPoint.x - radius
     y: focusPoint.y - radius
     width: radius * 2

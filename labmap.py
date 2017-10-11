@@ -1,11 +1,12 @@
 import json
 import pprint
+import string
 from PyQt5.QtCore import Qt, QObject, pyqtSignal
 
 class LabMap(QObject):
   markPlan = pyqtSignal(str)
+  layoutChanged = pyqtSignal()
   roomChanged = pyqtSignal(int, list, list, list)
-  labNoteFile = 'lab-notes.json'
 
   def __init__(self):
     super().__init__()
@@ -13,9 +14,9 @@ class LabMap(QObject):
     self.sectionCompleted = False
     self.editMode = False
     self.createNewLab()
-    self.loadFromFile()
 
   def createNewLab(self):
+    self.data = {}
     self.rooms = []
     self.plan = [0]
     self.currentPlanIndex = 0
@@ -25,33 +26,41 @@ class LabMap(QObject):
     plaza = {'name': 'Aspirant\'s Plaza',
              'contents': [],
              'content_directions': [],
-             'exits': {}}
+             'x': -100,
+             'y': 128,
+             'exits': []}
     self.rooms.append(plaza)
+    self.layoutChanged.emit()
 
-  def loadFromFile(self):
+  def loadFromFile(self, difficulty):
+    self.createNewLab()
     o = {}
     try:
-      with open(self.labNoteFile) as file:
+      with open('lab-notes-%s.json' % difficulty.lower()) as file:
         o = json.loads(file.read())
     except Exception:
       pass
+    self.data = {**o}
     if 'rooms' in o:
       plaza = {'name': 'Aspirant\'s Plaza',
-              'contents': [],
-              'content_directions': [],
-              'x': -100,
-              'y': 128,
-              'exits': {1: 'NW'}}
+               'contents': [],
+               'content_directions': [],
+               'x': -100,
+               'y': 128,
+               'exits': [(1, 'NW')]}
       mapping = {room['id']: i + 1 for i, room in enumerate(o['rooms'])}
       for room in o['rooms']:
-        room['exits'] = {mapping[k]:room['exits'][k] for k in room['exits']}
+        room['exits'] = [(mapping[room['exits'][k]], k) for k in room['exits']]
+        room['name'] = string.capwords(room['name'])
 
       self.rooms = [plaza, *o['rooms']]
 
       for i, room in enumerate(self.rooms):
-        for exit in room['exits']:
-          if not i in self.rooms[exit]['exits']:
-            self.rooms[exit]['exits'][i] = 'unknown'
+        for to, direction in room['exits']:
+          if not any(exit[0] == i for exit in self.rooms[to]['exits']):
+            self.rooms[to]['exits'].append((i, 'unknown'))
+
+    self.layoutChanged.emit()
 
   def labStart(self):
     self.currentPlanIndex = 0

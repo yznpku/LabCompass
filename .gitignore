@@ -2,7 +2,7 @@ __pycache__/
 *.qmlc
 *.jsc
 
-lab-notes\.json
+lab-notes*\.json
 
 build/*
 dist/*

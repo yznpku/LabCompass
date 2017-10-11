@@ -22,8 +22,8 @@ class Window(QQuickWidget):
       self.parentWindow.quickWindow().xChanged.connect(self.repositionToParent)
       self.parentWindow.quickWindow().yChanged.connect(self.repositionToParent)
       self.quickWindow().visibleChanged.connect(self.repositionToParent)
-    else:
-      self.move(300, 100)
+    elif 'initialPos' in kwargs:
+      self.move(*kwargs['initialPos'])
 
     self.Global = engine.rootObjects()[0].property('o')
 

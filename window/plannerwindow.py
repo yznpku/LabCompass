@@ -1,5 +1,4 @@
 from window.template import OpaqueWindow
-from labanalyzer import LabAnalyzer
 
 class PlannerWindow(OpaqueWindow):
   trials = [
@@ -14,7 +13,6 @@ class PlannerWindow(OpaqueWindow):
     self.rootObject().back.connect(self.planBack)
     self.rootObject().reset.connect(self.planReset)
     self.labMap = labMap
-    self.analyzer = LabAnalyzer()
     self.plan = [0]
     self.Global.plannerWindowOpenChanged.connect(self.onWindowOpenChanged)
 
@@ -22,20 +20,22 @@ class PlannerWindow(OpaqueWindow):
     isOpen = self.Global.property('plannerWindowOpen')
     self.setVisible(isOpen)
 
-  def showEvent(self, event):
+  def refreshLayout(self):
+    self.planReset()
+
     self.roomModel = self.labMap.rooms
     self.rootObject().setProperty('roomModel', self.roomModel)
 
     self.linkModel = []
     for frm, room in enumerate(self.labMap.rooms):
-      for to in room['exits']:
+      for to, direction in room['exits']:
         if frm < to and 'invalid' not in self.roomModel[frm] and 'invalid' not in self.roomModel[to]:
           self.linkModel.append({
             'x1': self.roomModel[frm]['x'],
             'y1': self.roomModel[frm]['y'],
             'x2': self.roomModel[to]['x'],
             'y2': self.roomModel[to]['y'],
-            'secret': room['exits'][to] == 'C'
+            'secret': direction == 'C'
           })
     self.rootObject().setProperty('linkModel', self.linkModel)
 
@@ -47,7 +47,7 @@ class PlannerWindow(OpaqueWindow):
   def planMove(self, moveTo):
     plan = self.labMap.plan
     current = plan[-1]
-    if moveTo in self.labMap.rooms[current]['exits']:
+    if any(exit[0] == moveTo for exit in self.labMap.rooms[current]['exits']):
       plan.append(moveTo)
       self.updatePlan(plan)
 
@@ -63,15 +63,11 @@ class PlannerWindow(OpaqueWindow):
     rooms = len(planSet) - sum(self.labMap.rooms[i]['name'] == 'Aspirant\'s Trial' for i in planSet)
     length = len(plan) - 1
     argus = sum('argus' in self.labMap.rooms[i]['contents'] for i in planSet)
-    gps = sum('gauntlet' in self.labMap.rooms[i]['contents'] for i in planSet) + sum('puzzle' in self.labMap.rooms[i]['contents'] for i in planSet)
+    gps = sum(sum(gp in self.labMap.rooms[i]['contents'] for gp in ['Switch puzzle', 'Floor puzzle', 'Escort gauntlet', 'Trap gauntlet']) for i in planSet)
     darkshrines = sum('darkshrine' in self.labMap.rooms[i]['contents'] for i in planSet)
-    silverKeys = sum('silver-key' in self.labMap.rooms[i]['contents'] for i in planSet)
-    silverDoors = sum('silver-door' in self.labMap.rooms[i]['contents'] for i in planSet)
 
     self.rootObject().setProperty('planRooms', rooms)
     self.rootObject().setProperty('planLength', length)
     self.rootObject().setProperty('planArgus', argus)
     self.rootObject().setProperty('planGPs', gps)
     self.rootObject().setProperty('planDarkshrines', darkshrines)
-    self.rootObject().setProperty('planSilverKeys', silverKeys)
-    self.rootObject().setProperty('planSilverDoors', silverDoors)
