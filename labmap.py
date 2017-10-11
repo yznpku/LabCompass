@@ -8,9 +8,12 @@ class LabMap(QObject):
   layoutChanged = pyqtSignal()
   roomChanged = pyqtSignal(int, list, list, list)
 
-  def __init__(self):
+  def __init__(self, **kwargs):
     super().__init__()
-    self.createNewLab()
+    if 'difficulty' in kwargs:
+      self.loadFromFile(kwargs['difficulty'])
+    else:
+      self.createNewLab()
 
   def createNewLab(self):
     self.data = {}

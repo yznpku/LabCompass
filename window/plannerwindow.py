@@ -15,6 +15,7 @@ class PlannerWindow(OpaqueWindow):
     self.labMap = labMap
     self.plan = [0]
     self.Global.plannerWindowOpenChanged.connect(self.onWindowOpenChanged)
+    self.refreshLayout()
 
   def onWindowOpenChanged(self):
     isOpen = self.Global.property('plannerWindowOpen')

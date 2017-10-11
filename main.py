@@ -33,7 +33,7 @@ Global = engine.rootObjects()[0].property('o')
 dummy = TransparentWindow(engine, 'qml/Dummy.qml')
 dummy.show()
 
-labMap = LabMap()
+labMap = LabMap(difficulty=options['difficulty'])
 
 logWatcher = LogWatcher()
 QTimer.singleShot(0, logWatcher.start)
