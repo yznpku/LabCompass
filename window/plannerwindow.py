@@ -38,6 +38,7 @@ class PlannerWindow(OpaqueWindow):
             'secret': direction == 'C'
           })
     self.rootObject().setProperty('linkModel', self.linkModel)
+    self.rootObject().setProperty('labNoteTitle', self.labMap.data['date'] if 'date' in self.labMap.data else '')
 
   def planBack(self):
     plan = self.labMap.plan

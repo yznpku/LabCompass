@@ -8,7 +8,7 @@ Rectangle {
   id: root
   property alias roomModel: roomView.model
   property string labDifficulty: 'Uber'
-  property string labNoteTitle: 'Lab note not loaded'
+  property string labNoteTitle: ''
   property bool updatingLabNotes: false
   property var linkModel: []
   property var plan: []
@@ -121,7 +121,7 @@ Rectangle {
               }
               Text {
                 anchors.centerIn: parent
-                text: labNoteTitle
+                text: labNoteTitle ? labNoteTitle : 'No lab notes loaded'
                 color: Global.primaryTextColor
               }
             }
