@@ -12,10 +12,14 @@ from logwatcher import LogWatcher
 from labnoteupdater import LabNoteUpdater
 from labmap import LabMap
 from connect import connect
+from options import Options
 
 sys_argv = sys.argv
 sys_argv += ['--style', 'material']
 app = QApplication(sys_argv)
+
+options = Options()
+print(options)
 
 font = QFont('consolas')
 font.setPointSize(10)
@@ -36,7 +40,7 @@ QTimer.singleShot(0, logWatcher.start)
 
 labNoteUpdater = LabNoteUpdater()
 
-header = HeaderWindow(engine, initialPos=(500, 200))
+header = HeaderWindow(engine, initialPos=options['mainWindowPosition'])
 header.show()
 
 compass = CompassWindow(engine, parent=header, offset=(-10, 32))
@@ -57,7 +61,9 @@ connect({
   labMap.markPlan: [compass.markPlan],
   labNoteUpdater.runningChanged: [(lambda running: Global.setProperty('labNoteUpdaterRunning', running))],
   labNoteUpdater.success: [labMap.loadFromFile],
-  plannerWindow.rootObject().updateLabNotes: [labNoteUpdater.fetchLabNotes]
+  plannerWindow.rootObject().updateLabNotes: [labNoteUpdater.fetchLabNotes],
+  header.onMoved: [(lambda x, y: options.update({'mainWindowPosition': [x, y]}))]
 })
 
 app.exec()
+options.saveToFile()

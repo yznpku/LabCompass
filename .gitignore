@@ -7,3 +7,5 @@ lab-notes*\.json
 build/*
 dist/*
 main.spec
+
+options\.json
