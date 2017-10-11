@@ -71,9 +71,9 @@ class LabMap(QObject):
       self.currentPlanIndex += 1
       self.currentRoom = self.plan[self.currentPlanIndex]
     else:
-      for i in self.rooms[self.previousRoom]['exits']:
-        if self.rooms[i]['name'] == zoneName:
-          self.currentRoom = i
+      for to, direction in self.rooms[self.previousRoom]['exits']:
+        if self.rooms[to]['name'] == zoneName:
+          self.currentRoom = to
           break
 
     self.sendUpdateSignal()
@@ -88,19 +88,21 @@ class LabMap(QObject):
   def print(self):
     print('current: %d' % self.currentRoom)
     print('previous: %d' % self.previousRoom)
-    print('section: %d' % self.sectionStart)
     pprint.pprint(self.rooms)
 
   def sendUpdateSignal(self):
     if self.currentRoom in range(len(self.rooms)):
       self.roomChanged.emit(self.currentRoom,
-                            list(self.rooms[self.currentRoom]['exits'].values()),
+                            [exit[1] for exit in self.rooms[self.currentRoom]['exits'] if exit[1] != 'unknown'],
                             self.rooms[self.currentRoom]['content_directions'],
                             self.rooms[self.currentRoom]['contents'])
     else:
       self.roomChanged.emit(self.currentRoom, [], [], [])
 
     if self.currentRoom == self.plan[self.currentPlanIndex] and self.currentPlanIndex < len(self.plan) - 1:
-      self.markPlan.emit(self.rooms[self.currentRoom]['exits'][self.plan[self.currentPlanIndex + 1]])
+      for to, direction in self.rooms[self.currentRoom]['exits']:
+        if to == self.plan[self.currentPlanIndex + 1]:
+          self.markPlan.emit(direction)
+          break
     else:
       self.markPlan.emit('')
