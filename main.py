@@ -7,7 +7,7 @@ from PyQt5.QtQml import qmlRegisterSingletonType, QQmlApplicationEngine
 from PyQt5.QtQuick import QQuickView
 from PyQt5.QtQuickWidgets import QQuickWidget
 
-from window import TransparentWindow, CompassWindow, EditWindow, HeaderWindow, PlannerWindow, ToolbarWindow
+from window import TransparentWindow, CompassWindow, HeaderWindow, PlannerWindow, ToolbarWindow
 from logwatcher import LogWatcher
 from labnoteupdater import LabNoteUpdater
 from labmap import LabMap
@@ -45,12 +45,10 @@ compass.show()
 toolbar = ToolbarWindow(engine, parent=header, offset=(0, 168))
 toolbar.show()
 
-editWindow = EditWindow(engine, labMap, parent=header, offset=(0, 220))
 plannerWindow = PlannerWindow(engine, labMap)
 
 connect({
   logWatcher.labStart: [labMap.labStart, compass.restartTimer, (lambda: Global.setProperty('inLab', True))],
-  logWatcher.sectionComplete: [labMap.sectionComplete],
   logWatcher.zoneChange: [labMap.enterZone],
   logWatcher.labFinish: [compass.stopTimer],
   logWatcher.labExit: [labMap.labExit, compass.closeTimer, (lambda: Global.setProperty('inLab', False))],

@@ -24,15 +24,6 @@ Row {
 
   ToolbarButton {
     source: '../images/pencil.png'
-    active: Global && Global.editWindowOpen
-    onClicked: {
-      if (Global) {
-        var open = Global.editWindowOpen;
-        closeAllWindows();
-        if (!open)
-          Global.editWindowOpen = true;
-      }
-    }
   }
 
   ToolbarButton {
@@ -41,6 +32,5 @@ Row {
 
   function closeAllWindows() {
     Global.plannerWindowOpen = false;
-    Global.editWindowOpen = false;
   }
 }
