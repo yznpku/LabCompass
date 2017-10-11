@@ -1,4 +1,5 @@
 import QtQuick 2.8
+import com.labcompass 1.0
 
 Image {
   property var direction: {'N': [0, -1], 'NE': [0.71, -0.71], 'E': [1, 0], 'SE': [0.71, 0.71], 'S': [0, 1], 'SW': [-0.71, 0.71], 'W': [-1, 0], 'NW': [-0.71, -0.71]}
@@ -8,8 +9,6 @@ Image {
   property string planDirection
 
   source: '../images/hud.png'
-
-
 
   Repeater {
     id: exitDirectionView
@@ -49,7 +48,7 @@ Image {
     Repeater {
       id: contentView
       Image {
-        source: '../images/lab-content/' + modelData + '.png'
+        source: '../images/lab-content/' + Global.contentIconMapping[modelData] + '.png'
       }
     }
   }

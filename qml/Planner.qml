@@ -255,19 +255,10 @@ Rectangle {
               anchors.centerIn: parent
               spacing: 2
 
-              property var iconMapping: {
-                'Switch puzzle': 'gauntlet-puzzle',
-                'Floor puzzle': 'gauntlet-puzzle',
-                'Escort gauntlet': 'gauntlet-puzzle',
-                'Trap gauntlet': 'gauntlet-puzzle',
-                'darkshrine': 'darkshrine',
-                'argus': 'argus'
-              }
-
               Repeater {
                 model: modelData['contents']
                 Image {
-                  source: '../images/lab-content/' + contents.iconMapping[modelData] + '.png'
+                  source: '../images/lab-content/' + Global.contentIconMapping[modelData] + '.png'
                 }
               }
             }

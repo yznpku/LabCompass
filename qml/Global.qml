@@ -13,4 +13,13 @@ QtObject {
   property color lightPrimaryColor: '#F5F5F5'
   property color primaryTextColor: '#FAFAFA'
   property color secondaryTextColor: '#EEEEEE'
+
+  property var contentIconMapping: {
+    'Switch puzzle': 'gauntlet-puzzle',
+    'Floor puzzle': 'gauntlet-puzzle',
+    'Escort gauntlet': 'gauntlet-puzzle',
+    'Trap gauntlet': 'gauntlet-puzzle',
+    'darkshrine': 'darkshrine',
+    'argus': 'argus'
+  }
 }
