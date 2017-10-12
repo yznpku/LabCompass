@@ -6,7 +6,7 @@ MouseArea {
 
   property color color: 'white'
   clip: true
-  cursorShape: Qt.PointingHandCursor
+  cursorShape: enabled ? Qt.PointingHandCursor : Qt.ArrowCursor
   property point focusPoint
   property bool pressed: false
   onPressed: {

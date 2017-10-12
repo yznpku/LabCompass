@@ -105,6 +105,7 @@ Rectangle {
                 }
                 MaterialInk {
                   anchors.fill: parent
+                  enabled: !Global.labNoteUpdaterRunning && !Global.inLab
                   onClicked: {
                     labDifficulty = modelData;
                     switchToDifficulty(labDifficulty);
@@ -136,7 +137,7 @@ Rectangle {
               anchors.right: parent.right
               anchors.verticalCenter: parent.verticalCenter
               onClicked: updateLabNotes(labDifficulty)
-              enabled: !Global.labNoteUpdaterRunning
+              enabled: !Global.labNoteUpdaterRunning && !Global.inLab
               Image {
                 id: updateButtonImage
                 source: '../images/update.png'
@@ -145,7 +146,7 @@ Rectangle {
               }
               BusyIndicator {
                 anchors.fill: parent
-                running: !parent.enabled
+                running: !parent.enabled && !Global.inLab
                 Material.accent: Global.primaryTextColor
               }
             }
