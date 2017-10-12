@@ -1,8 +1,8 @@
 import sys
 
-from PyQt5.QtCore import Qt, QUrl, QTimer
+from PyQt5.QtCore import Qt, QDir, QUrl, QTimer
 from PyQt5.QtWidgets import QApplication, QMessageBox
-from PyQt5.QtGui import QFont
+from PyQt5.QtGui import QFont, QFontDatabase
 from PyQt5.QtQml import qmlRegisterSingletonType, QQmlApplicationEngine
 from PyQt5.QtQuick import QQuickView
 from PyQt5.QtQuickWidgets import QQuickWidget
@@ -23,8 +23,9 @@ options = Options()
 if not clientutils.verifyClientPath(options['poeClientPath']):
   options['poeClientPath'] = clientutils.getClientPath()
 
-font = QFont('consolas')
-font.setPointSize(10)
+QFontDatabase.addApplicationFont('Fontin-SmallCaps.ttf')
+font = QFont('Fontin SmallCaps')
+font.setPointSize(12)
 QApplication.setFont(font)
 
 engine = QQmlApplicationEngine()

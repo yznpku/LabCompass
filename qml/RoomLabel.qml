@@ -13,7 +13,7 @@ Rectangle {
   Grid {
     id: grid
     padding: 10
-    spacing: 12
+    spacing: 16
     columns: 1
     horizontalItemAlignment: Grid.AlignHCenter
     Text {
@@ -34,6 +34,7 @@ Rectangle {
           Text {
             text: modelData in Global.nameMapping ? Global.nameMapping[modelData] : modelData
             color: Global.primaryTextColor
+            font.pointSize: 10
           }
         }
       }
@@ -41,7 +42,7 @@ Rectangle {
   }
   Rectangle {
     x: 10
-    y: 30
+    y: 36
     width: grid.width - 20
     height: 1
     color: Qt.lighter(Global.primaryColor)
