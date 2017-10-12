@@ -465,30 +465,30 @@ Rectangle {
         }
       }
 
-      Row {
-        spacing: 4
-        Item {
-          width: 80
-          height: 28
+      Item {
+        width: 830
+        height: 28
+        clip: true
+        Row {
+          spacing: 4
           Text {
-            anchors.centerIn: parent
-            text: 'Plan:'
+            text: plan.length ? 'Plan:' : 'To make a plan, click on rooms in the order you travel through them.'
             color: Global.primaryTextColor
-            font.pointSize: 16
+            font.pointSize: plan.length ? 16 : 12
           }
-        }
-        Repeater {
-          id: planView
-          model: plan
-          Rectangle {
-            width: 28
-            height: 28
-            color: Global.primaryColor
-            Text {
-              anchors.centerIn: parent
-              text: modelData
-              color: Global.primaryTextColor
-              font.pointSize: 12
+          Repeater {
+            id: planView
+            model: plan
+            Rectangle {
+              width: 28
+              height: 28
+              color: Global.primaryColor
+              Text {
+                anchors.centerIn: parent
+                text: modelData
+                color: Global.primaryTextColor
+                font.pointSize: 12
+              }
             }
           }
         }
