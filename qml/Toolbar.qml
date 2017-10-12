@@ -22,6 +22,15 @@ Column {
   ToolbarButton {
     height: 40
     source: '../images/puzzle.png'
+    active: Global && Global.puzzleWindowOpen
+    onClicked: {
+      if (Global) {
+        var open = Global.puzzleWindowOpen;
+        closeAllWindows();
+        if (!open)
+          Global.puzzleWindowOpen = true;
+      }
+    }
   }
 
   ToolbarButton {
@@ -31,5 +40,6 @@ Column {
 
   function closeAllWindows() {
     Global.plannerWindowOpen = false;
+    Global.puzzleWindowOpen = false;
   }
 }

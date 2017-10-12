@@ -3,6 +3,7 @@ import QtQuick 2.8
 
 QtObject {
   property bool plannerWindowOpen: false
+  property bool puzzleWindowOpen: false
   property var lastActiveTooltipHoverArea
 
   property bool inLab: false
