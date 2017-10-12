@@ -30,16 +30,15 @@ class LogWatcher(QObject):
   @pyqtSlot()
   def start(self):
     with codecs.open(self.clientPath + '/logs/Client.txt', 'r', encoding='utf-8') as log:
-      while log.readline():
-        pass
+      print('log watcher started')
+      log.seek(0, 2)
       print('log watcher ready')
       while True:
-        where = log.tell()
         line = log.readline()
         if not line:
           time.sleep(1)
-          log.seek(where)
         else:
+          print(line)
           m = re.match(LOG_REGEX, line)
           if m:
             log_content = m.group(1).strip()
