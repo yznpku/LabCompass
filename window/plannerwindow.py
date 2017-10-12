@@ -68,9 +68,13 @@ class PlannerWindow(OpaqueWindow):
     argus = sum('argus' in self.labMap.rooms[i]['contents'] for i in planSet)
     gps = sum(sum(gp in self.labMap.rooms[i]['contents'] for gp in ['Switch puzzle', 'Floor puzzle', 'Escort gauntlet', 'Trap gauntlet']) for i in planSet)
     darkshrines = sum('darkshrine' in self.labMap.rooms[i]['contents'] for i in planSet)
+    keys = 3 + argus + gps * 0.5 + [0, 1/8, 7/25, 9/20, 22/35][darkshrines]
+    enchants = 1 + [0, 1/8, 7/25, 9/20, 22/35][darkshrines]
 
     self.rootObject().setProperty('planRooms', rooms)
     self.rootObject().setProperty('planLength', length)
     self.rootObject().setProperty('planArgus', argus)
     self.rootObject().setProperty('planGPs', gps)
     self.rootObject().setProperty('planDarkshrines', darkshrines)
+    self.rootObject().setProperty('planExpectedTreasureKeys', keys)
+    self.rootObject().setProperty('planExpectedEnchantments', enchants)

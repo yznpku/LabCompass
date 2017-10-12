@@ -18,8 +18,8 @@ Rectangle {
   property int planGPs: 0
   property int planArgus: 0
   property int planDarkshrines: 0
-  property int planExpectedTreasureKeys: 3
-  property int planExpectedEnchantments: 1
+  property real planExpectedTreasureKeys: 3
+  property real planExpectedEnchantments: 1
 
   signal back
   signal reset
@@ -237,7 +237,7 @@ Rectangle {
               anchors.fill: parent
               visible: false
               radius: 24
-              color: modelData.name === 'Aspirant\'s Trial' ? '#101010' : '#A1887F'
+              color: modelData.name === 'Aspirant\'s Trial' ? '#101010' : '#E0E0E0'
               Image {
                 anchors.centerIn: parent
                 source: modelData.name === 'Aspirant\'s Trial' ? '../images/lab-content/izaro.png' : ''
@@ -418,7 +418,7 @@ Rectangle {
             columns: 2
             verticalItemAlignment: Grid.AlignVCenter
             Text { color: 'white'; text: 'Rooms' }
-            Text { color: 'white'; text: planRooms; width: 25 }
+            Text { color: 'white'; text: planRooms; width: 30 }
             Text { color: 'white'; text: 'Length' }
             Text { color: 'white'; text: planLength }
             Row {
@@ -440,9 +440,11 @@ Rectangle {
             }
             Text { color: 'white'; text: planDarkshrines }
             Text { color: 'white'; text: 'Expected Treasure Keys' }
-            Text { color: 'white'; text: planExpectedTreasureKeys }
+            Text { color: 'white'; text: parent.round(planExpectedTreasureKeys, 2) }
             Text { color: 'white'; text: 'Expected Enchantments' }
-            Text { color: 'white'; text: planExpectedEnchantments }
+            Text { color: 'white'; text: parent.round(planExpectedEnchantments, 2) }
+
+            function round(value, decimals) { return Number(Math.round(value+'e'+decimals)+'e-'+decimals); }
           }
         }
       }
