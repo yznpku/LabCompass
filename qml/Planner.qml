@@ -438,8 +438,10 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
             Text {
               anchors.verticalCenter: parent.verticalCenter
-              text: plan.length ? 'Plan: ' : 'To make a plan, click rooms in the order you\'ll travel through them.'
-              color: Global.primaryTextColor
+              text: plan.length  ? 'Plan: ' :
+                    Global.inLab ? 'You cannot create or modify plans while inside the labyrinth.' :
+                                   'To make a plan, click rooms in the order you\'ll travel through them.'
+              color: !plan.length && Global.inLab ? '#e57373' : Global.primaryTextColor
               font.pointSize: plan.length ? 16 : 12
             }
             Repeater {
