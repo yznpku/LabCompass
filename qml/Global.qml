@@ -11,7 +11,7 @@ QtObject {
 
   property color backgroundColor: '#181818'
   property color primaryColor: '#212121'
-  property color lightPrimaryColor: '#F5F5F5'
+  property color lightPrimaryColor: '#616161'
   property color primaryTextColor: '#FAFAFA'
   property color secondaryTextColor: '#EEEEEE'
 

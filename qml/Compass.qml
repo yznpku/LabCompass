@@ -13,8 +13,8 @@ Image {
   Repeater {
     id: exitDirectionView
     Rectangle {
-      x: 56 + direction[modelData][0] * 48
-      y: 56 + direction[modelData][1] * 48
+      x: 77 + direction[modelData][0] * 48
+      y: 77 + direction[modelData][1] * 48
       width: 16
       height: 16
       radius: 8
@@ -29,8 +29,8 @@ Image {
   Repeater {
     id: contentDirectionView
     Rectangle {
-      x: 59 + direction[modelData][0] * 32
-      y: 59 + direction[modelData][1] * 32
+      x: 80 + direction[modelData][0] * 32
+      y: 80 + direction[modelData][1] * 32
       width: 10
       height: 10
       radius: 5
@@ -56,6 +56,8 @@ Image {
   Rectangle {
     id: timerView
     color: '#88000000'
+    x: 110
+    y: 10
     width: 50
     height: 20
     visible: false

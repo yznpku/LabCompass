@@ -1,4 +1,5 @@
 import QtQuick 2.8
+import com.labcompass 1.0
 
 Rectangle {
   id: root
@@ -8,13 +9,12 @@ Rectangle {
 
   height: 24
   width: 24
-  color: active ? '#DDFFFFFF' : '#DDCCFF00'
+  color: active ? Global.lightPrimaryColor : Global.backgroundColor
   Image {
     source: root.source
     anchors.centerIn: parent
     width: 16
     height: 16
-    opacity: 0.8
   }
   MaterialInk {
     anchors.fill: parent

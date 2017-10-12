@@ -45,10 +45,10 @@ labNoteUpdater = LabNoteUpdater()
 header = HeaderWindow(engine, initialPos=options['mainWindowPosition'])
 header.show()
 
-compass = CompassWindow(engine, parent=header, offset=(-10, 32))
+compass = CompassWindow(engine, parent=header, offset=(-48, 26))
 compass.show()
 
-toolbar = ToolbarWindow(engine, parent=header, offset=(0, 168))
+toolbar = ToolbarWindow(engine, parent=header, offset=(124, 28))
 toolbar.show()
 
 plannerWindow = PlannerWindow(engine, labMap)
