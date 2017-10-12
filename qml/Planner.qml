@@ -320,6 +320,32 @@ Rectangle {
           }
         }
 
+        Item {
+          anchors.fill: parent
+          clip: true
+          Image {
+            property int markerPos: plan && plan.length > 0 ? plan[plan.length - 1] : 0
+            x: (markerPos == 0 ? -20 : roomModel[markerPos].x) - 18
+            y: (markerPos == 0 ? 129 : roomModel[markerPos].y) - 32
+            source: '../images/map-marker.png'
+
+            Behavior on x {
+              NumberAnimation {
+                easing.type: Easing.Bezier
+                easing.bezierCurve: [0.4, 0.0, 0.2, 1.0, 1.0, 1.0]
+                duration: 150
+              }
+            }
+            Behavior on y {
+              NumberAnimation {
+                easing.type: Easing.Bezier
+                easing.bezierCurve: [0.4, 0.0, 0.2, 1.0, 1.0, 1.0]
+                duration: 150
+              }
+            }
+          }
+        }
+
         Repeater {
           id: roomTooltipView
           model: roomModel
@@ -365,33 +391,6 @@ Rectangle {
                   easing.bezierCurve: [0.4, 0.0, 0.2, 1.0, 1.0, 1.0]
                   duration: 100
                 }
-              }
-            }
-          }
-        }
-
-
-        Item {
-          anchors.fill: parent
-          clip: true
-          Image {
-            property int markerPos: plan && plan.length > 0 ? plan[plan.length - 1] : 0
-            x: (markerPos == 0 ? -20 : roomModel[markerPos].x) - 18
-            y: (markerPos == 0 ? 129 : roomModel[markerPos].y) - 32
-            source: '../images/map-marker.png'
-
-            Behavior on x {
-              NumberAnimation {
-                easing.type: Easing.Bezier
-                easing.bezierCurve: [0.4, 0.0, 0.2, 1.0, 1.0, 1.0]
-                duration: 150
-              }
-            }
-            Behavior on y {
-              NumberAnimation {
-                easing.type: Easing.Bezier
-                easing.bezierCurve: [0.4, 0.0, 0.2, 1.0, 1.0, 1.0]
-                duration: 150
               }
             }
           }
