@@ -105,7 +105,10 @@ Rectangle {
                 }
                 MaterialInk {
                   anchors.fill: parent
-                  onClicked: labDifficulty = modelData
+                  onClicked: {
+                    labDifficulty = modelData;
+                    switchToDifficulty(labDifficulty);
+                  }
                 }
               }
             }
