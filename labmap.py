@@ -1,5 +1,4 @@
 import json
-import pprint
 import string
 from PyQt5.QtCore import Qt, QObject, pyqtSignal
 
@@ -96,7 +95,6 @@ class LabMap(QObject):
     self.currentRoom = 0
     self.previousRoom = -1
     self.sendUpdateSignal()
-    self.print()
 
   def enterZone(self, zoneName):
     self.previousRoom = self.currentRoom
@@ -110,18 +108,11 @@ class LabMap(QObject):
           break
 
     self.sendUpdateSignal()
-    self.print()
 
   def labExit(self):
     self.currentRoom = -1
     self.previousRoom = -1
     self.sendUpdateSignal()
-    self.print()
-
-  def print(self):
-    print('current: %d' % self.currentRoom)
-    print('previous: %d' % self.previousRoom)
-    pprint.pprint(self.rooms)
 
   def sendUpdateSignal(self):
     if self.currentRoom in range(len(self.rooms)):

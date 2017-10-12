@@ -19,7 +19,6 @@ sys_argv += ['--style', 'material']
 app = QApplication(sys_argv)
 
 options = Options()
-print(options)
 
 font = QFont('consolas')
 font.setPointSize(10)
