@@ -153,6 +153,21 @@ Rectangle {
           }
         }
       }
+
+      MaterialInk {
+        id: closeButton
+        width: 40
+        height: 40
+        anchors.right: parent.right
+        anchors.rightMargin: 20
+        anchors.top: parent.top
+        anchors.topMargin: 10
+        onClicked: Global.plannerWindowOpen = false;
+        Image {
+          anchors.centerIn: parent
+          source: '../images/close.png'
+        }
+      }
     }
 
     Rectangle {
