@@ -5,7 +5,9 @@ from PyQt5.QtCore import Qt, QObject, pyqtSignal
 class LabMap(QObject):
   markPlan = pyqtSignal(str)
   layoutChanged = pyqtSignal()
-  roomChanged = pyqtSignal(int, list, list, list)
+  currentRoomChanged = pyqtSignal(int)
+  currentPlanIndexChanged = pyqtSignal(int)
+  roomMapUpdated = pyqtSignal(int, list, list, list)
 
   def __init__(self, **kwargs):
     super().__init__()
@@ -116,12 +118,12 @@ class LabMap(QObject):
 
   def sendUpdateSignal(self):
     if self.currentRoom in range(len(self.rooms)):
-      self.roomChanged.emit(self.currentRoom,
-                            [exit[1] for exit in self.rooms[self.currentRoom]['exits'] if exit[1] != 'unknown'],
-                            self.rooms[self.currentRoom]['content_directions'],
-                            self.rooms[self.currentRoom]['contents'])
+      self.roomMapUpdated.emit(self.currentRoom,
+                               [exit[1] for exit in self.rooms[self.currentRoom]['exits'] if exit[1] != 'unknown'],
+                               self.rooms[self.currentRoom]['content_directions'],
+                               self.rooms[self.currentRoom]['contents'])
     else:
-      self.roomChanged.emit(self.currentRoom, [], [], [])
+      self.roomMapUpdated.emit(self.currentRoom, [], [], [])
 
     if self.currentRoom == self.plan[self.currentPlanIndex] and self.currentPlanIndex < len(self.plan) - 1:
       for to, direction in self.rooms[self.currentRoom]['exits']:
@@ -130,3 +132,6 @@ class LabMap(QObject):
           break
     else:
       self.markPlan.emit('')
+
+    self.currentRoomChanged.emit(self.currentRoom)
+    self.currentPlanIndexChanged.emit(self.currentPlanIndex)

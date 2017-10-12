@@ -346,7 +346,7 @@ Rectangle {
             clip: true
             Image {
               id: mapMarker
-              property int markerPos: plan && plan.length > 0 ? plan[plan.length - 1] : 0
+              property int markerPos: Global.inLab ? Global.currentRoom : plan && plan.length > 0 ? plan[plan.length - 1] : 0
               x: (markerPos == 0 ? -20 : roomModel[markerPos].x) - 18
               y: (markerPos == 0 ? 129 : roomModel[markerPos].y) - 44
               source: '../images/map-marker.png'
@@ -448,7 +448,7 @@ Rectangle {
               Rectangle {
                 width: 28
                 height: 28
-                color: Global.primaryColor
+                color: Global.inLab && index + 1 == Global.currentPlanIndex ? Global.lightPrimaryColor : Global.primaryColor
                 Text {
                   anchors.centerIn: parent
                   text: modelData

@@ -7,6 +7,8 @@ QtObject {
 
   property bool inLab: false
   property bool labNoteUpdaterRunning: false
+  property int currentRoom: 0
+  property int currentPlanIndex: 0
 
 
   property color backgroundColor: '#181818'
