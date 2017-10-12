@@ -20,15 +20,16 @@ class LogWatcher(QObject):
   sectionComplete = pyqtSignal()
   zoneChange = pyqtSignal(str)
 
-  def __init__(self):
+  def __init__(self, clientPath):
     super().__init__()
+    self.clientPath = clientPath
     self.thread = QThread()
     self.moveToThread(self.thread)
     self.thread.start()
 
   @pyqtSlot()
   def start(self):
-    with codecs.open('C:/Program Files (x86)/Steam/steamapps/common/Path of Exile/logs/Client.txt', 'r', encoding='utf-8') as log:
+    with codecs.open(self.clientPath + '/logs/Client.txt', 'r', encoding='utf-8') as log:
       while log.readline():
         pass
       print('log watcher ready')

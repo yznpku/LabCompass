@@ -13,12 +13,15 @@ from labnoteupdater import LabNoteUpdater
 from labmap import LabMap
 from connect import connect
 from options import Options
+import clientutils
 
 sys_argv = sys.argv
 sys_argv += ['--style', 'material']
 app = QApplication(sys_argv)
 
 options = Options()
+if not clientutils.verifyClientPath(options['poeClientPath']):
+  options['poeClientPath'] = clientutils.getClientPath()
 
 font = QFont('consolas')
 font.setPointSize(10)
@@ -34,7 +37,7 @@ dummy.show()
 
 labMap = LabMap(difficulty=options['difficulty'])
 
-logWatcher = LogWatcher()
+logWatcher = LogWatcher(options['poeClientPath'])
 QTimer.singleShot(0, logWatcher.start)
 
 labNoteUpdater = LabNoteUpdater()
