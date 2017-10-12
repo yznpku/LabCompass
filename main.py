@@ -65,7 +65,7 @@ connect({
   labNoteUpdater.runningChanged: [(lambda running: Global.setProperty('labNoteUpdaterRunning', running))],
   labNoteUpdater.success: [labMap.loadFromFile],
   plannerWindow.rootObject().updateLabNotes: [labNoteUpdater.fetchLabNotes],
-  plannerWindow.rootObject().switchToDifficulty: [labMap.loadFromFile],
+  plannerWindow.rootObject().switchToDifficulty: [labMap.loadFromFile, (lambda x: options.update({'difficulty': x}))],
   header.onMoved: [(lambda x, y: options.update({'mainWindowPosition': [x, y]}))]
 })
 
