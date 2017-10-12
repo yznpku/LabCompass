@@ -33,58 +33,61 @@ class LabMap(QObject):
 
   def loadFromFile(self, difficulty):
     self.createNewLab()
-    o = {}
+
     try:
+      o = {}
       with open('lab-notes-%s.json' % difficulty.lower()) as file:
         o = json.loads(file.read())
-    except Exception:
-      pass
-    self.data = {**o}
-    del self.data['rooms']
-    if 'rooms' in o:
-      plaza = {'name': 'Aspirant\'s Plaza',
-               'contents': [],
-               'content_directions': [],
-               'x': -100,
-               'y': 128,
-               'exits': [(1, 'NW')]}
-      mapping = {room['id']: i + 1 for i, room in enumerate(o['rooms'])}
-      for room in o['rooms']:
-        if 'secret_passage' in room and mapping[room['exits']['C']] < mapping[room['id']]:
-          room['secret_passage'] = 'From Room %d' % mapping[room['exits']['C']]
-        room['exits'] = [(mapping[room['exits'][k]], k) for k in room['exits']]
-        room['name'] = string.capwords(room['name'])
-        room['x'] = int(room['x'])
-        room['y'] = int(room['y'])
 
-      self.rooms = [plaza, *o['rooms']]
+      self.data = {**o}
+      del self.data['rooms']
+      if 'rooms' in o:
+        plaza = {'name': 'Aspirant\'s Plaza',
+                 'contents': [],
+                 'content_directions': [],
+                 'x': -100,
+                 'y': 128,
+                 'exits': [(1, 'NW')]}
+        mapping = {room['id']: i + 1 for i, room in enumerate(o['rooms'])}
+        for room in o['rooms']:
+          if 'secret_passage' in room and mapping[room['exits']['C']] < mapping[room['id']]:
+            room['secret_passage'] = 'From Room %d' % mapping[room['exits']['C']]
+          room['exits'] = [(mapping[room['exits'][k]], k) for k in room['exits']]
+          room['name'] = string.capwords(room['name'])
+          room['x'] = int(room['x'])
+          room['y'] = int(room['y'])
 
-      for i, room in enumerate(self.rooms):
-        for to, direction in room['exits']:
-          if not any(exit[0] == i for exit in self.rooms[to]['exits']):
-            self.rooms[to]['exits'].append((i, 'unknown'))
+        self.rooms = [plaza, *o['rooms']]
 
-      trials = [room for room in self.rooms if room['name'] == 'Aspirant\'s Trial']
-      if len(trials) == 3:
-        for trial in trials:
-          trial['mechanics'] = []
-          if 'weapon' in o:
-            trial['weapon'] = o['weapon']
-        if 'phase1' in o:
-          trials[0]['mechanics'].append(o['phase1'])
-        if 'phase2' in o:
-          trials[1]['mechanics'].append(o['phase2'])
-        if 'trap1' in o and o['trap1'] != 'NoTrap':
-          trials[2]['mechanics'].append(o['trap1'])
-        if 'trap2' in o and o['trap2'] != 'NoTrap':
-          trials[2]['mechanics'].append(o['trap2'])
-
-      self.data['golden-door'] = []
-      for i, room in enumerate(self.rooms):
-        if 'golden-door' in room['contents']:
+        for i, room in enumerate(self.rooms):
           for to, direction in room['exits']:
-            if direction != 'C' and to > i and 'golden-key' not in self.rooms[to]['contents']:
-              self.data['golden-door'].append([i, to])
+            if not any(exit[0] == i for exit in self.rooms[to]['exits']):
+              self.rooms[to]['exits'].append((i, 'unknown'))
+
+        trials = [room for room in self.rooms if room['name'] == 'Aspirant\'s Trial']
+        if len(trials) == 3:
+          for trial in trials:
+            trial['mechanics'] = []
+            if 'weapon' in o:
+              trial['weapon'] = o['weapon']
+          if 'phase1' in o:
+            trials[0]['mechanics'].append(o['phase1'])
+          if 'phase2' in o:
+            trials[1]['mechanics'].append(o['phase2'])
+          if 'trap1' in o and o['trap1'] != 'NoTrap':
+            trials[2]['mechanics'].append(o['trap1'])
+          if 'trap2' in o and o['trap2'] != 'NoTrap':
+            trials[2]['mechanics'].append(o['trap2'])
+
+        self.data['golden-door'] = []
+        for i, room in enumerate(self.rooms):
+          if 'golden-door' in room['contents']:
+            for to, direction in room['exits']:
+              if direction != 'C' and to > i and 'golden-key' not in self.rooms[to]['contents']:
+                self.data['golden-door'].append([i, to])
+    except Exception:
+      self.createNewLab()
+      return
 
     self.layoutChanged.emit()
 
