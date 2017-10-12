@@ -14,6 +14,7 @@ ZONE_REGEX = re.compile(r'^: You have entered (.*?)\.$')
 LOG_REGEX = re.compile(r'^\d+/\d+/\d+ \d+:\d+:\d+.*?\[.*?\] (.*)$')
 
 class LogWatcher(QObject):
+  fail = pyqtSignal()
   labStart = pyqtSignal()
   labFinish = pyqtSignal()
   labExit = pyqtSignal()
@@ -29,30 +30,30 @@ class LogWatcher(QObject):
 
   @pyqtSlot()
   def start(self):
-    with codecs.open(self.clientPath + '/logs/Client.txt', 'r', encoding='utf-8') as log:
-      print('log watcher started')
-      log.seek(0, 2)
-      print('log watcher ready')
-      while True:
-        line = log.readline()
-        if not line:
-          time.sleep(1)
-        else:
-          print(line)
-          m = re.match(LOG_REGEX, line)
-          if m:
-            log_content = m.group(1).strip()
-            m1 = re.match(ZONE_REGEX, log_content)
-            if m1:
-              zone = m1.group(1)
-              affixes = zone.split(' ')
-              if (affixes[0] in ZONE_PREFIX and affixes[1] in ZONE_SUFFIX) or zone == 'Aspirant\'s Trial':
-                self.zoneChange.emit(m1.group(1))
-              else:
-                self.labExit.emit()
-            elif log_content in START_LINES:
-              self.labStart.emit()
-            elif log_content in FINISH_LINES:
-              self.labFinish.emit()
-            elif log_content in SECTION_COMPLETE_LINES:
-              self.sectionComplete.emit()
+    try:
+      with codecs.open(self.clientPath + '/logs/Client.txt', 'r', encoding='utf-8') as log:
+        log.seek(0, 2)
+        while True:
+          line = log.readline()
+          if not line:
+            time.sleep(1)
+          else:
+            m = re.match(LOG_REGEX, line)
+            if m:
+              log_content = m.group(1).strip()
+              m1 = re.match(ZONE_REGEX, log_content)
+              if m1:
+                zone = m1.group(1)
+                affixes = zone.split(' ')
+                if (affixes[0] in ZONE_PREFIX and affixes[1] in ZONE_SUFFIX) or zone == 'Aspirant\'s Trial':
+                  self.zoneChange.emit(m1.group(1))
+                else:
+                  self.labExit.emit()
+              elif log_content in START_LINES:
+                self.labStart.emit()
+              elif log_content in FINISH_LINES:
+                self.labFinish.emit()
+              elif log_content in SECTION_COMPLETE_LINES:
+                self.sectionComplete.emit()
+    except Exception:
+      self.fail.emit()

@@ -1,7 +1,7 @@
 import sys
 
 from PyQt5.QtCore import Qt, QUrl, QTimer
-from PyQt5.QtWidgets import QApplication
+from PyQt5.QtWidgets import QApplication, QMessageBox
 from PyQt5.QtGui import QFont
 from PyQt5.QtQml import qmlRegisterSingletonType, QQmlApplicationEngine
 from PyQt5.QtQuick import QQuickView
@@ -38,7 +38,7 @@ dummy.show()
 labMap = LabMap(difficulty=options['difficulty'])
 
 logWatcher = LogWatcher(options['poeClientPath'])
-QTimer.singleShot(0, logWatcher.start)
+QTimer.singleShot(1, logWatcher.start)
 
 labNoteUpdater = LabNoteUpdater()
 
@@ -58,6 +58,7 @@ connect({
   logWatcher.zoneChange: [labMap.enterZone],
   logWatcher.labFinish: [compass.stopTimer],
   logWatcher.labExit: [labMap.labExit, compass.closeTimer, (lambda: Global.setProperty('inLab', False))],
+  logWatcher.fail: [(lambda: QMessageBox.information(None, 'LabCompass', 'Cannot locate POE client. Please make sure the client is running, and restart LabCompass.'))],
   labMap.layoutChanged: [plannerWindow.refreshLayout],
   labMap.roomChanged: [compass.updateRoom],
   labMap.markPlan: [compass.markPlan],
