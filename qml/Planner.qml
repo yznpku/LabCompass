@@ -176,6 +176,7 @@ Rectangle {
           anchors.fill: parent
           onPaint: {
             var ctx = linkView.getContext('2d');
+            ctx.clearRect(0, 0, width, height);
 
             for (var i = 0; i < linkModel.length; i++) {
               var link = linkModel[i];
