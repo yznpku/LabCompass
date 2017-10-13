@@ -17,6 +17,7 @@ WindowWithShadow {
   property int planGPs: 0
   property int planArgus: 0
   property int planDarkshrines: 0
+  property int planSilverCaches: 0
   property real planExpectedTreasureKeys: 3
   property real planExpectedEnchantments: 1
 
@@ -503,7 +504,7 @@ WindowWithShadow {
             anchors.horizontalCenter: parent.horizontalCenter
             horizontalItemAlignment: Grid.AlignHCenter
             padding: 10
-            spacing: 24
+            spacing: 16
             columns: 1
             Text {
               text: 'Plan Summary'
@@ -511,7 +512,7 @@ WindowWithShadow {
               color: Global.primaryTextColor
             }
             Grid {
-              rowSpacing: 14
+              rowSpacing: 12
               columnSpacing: 30
               columns: 2
               verticalItemAlignment: Grid.AlignVCenter
@@ -536,7 +537,13 @@ WindowWithShadow {
                 Image { source: '../images/lab-content/darkshrine.png' }
                 Text { color: Global.primaryTextColor; text: 'Darkshrine' }
               }
-              Text { color: Global.primaryTextColor; width: 30; horizontalAlignment: Text.AlignHCenter; text: planDarkshrines }
+              Text { color: 'white'; width: 30; horizontalAlignment: Text.AlignHCenter; text: planGPs }
+              Row {
+                spacing: 4
+                Image { source: '../images/lab-content/silver-door.png' }
+                Text { color: Global.primaryTextColor; text: 'Silver Cache' }
+              }
+              Text { color: Global.primaryTextColor; width: 30; horizontalAlignment: Text.AlignHCenter; text: planSilverCaches }
               Text { color: Global.primaryTextColor; text: 'Expected Treasure Keys' }
               Text { color: Global.primaryTextColor; width: 30; horizontalAlignment: Text.AlignHCenter; text: parent.round(planExpectedTreasureKeys, 2) }
               Text { color: Global.primaryTextColor; text: 'Expected Enchantments' }

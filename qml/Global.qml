@@ -25,7 +25,9 @@ QtObject {
     'Trap gauntlet': 'gauntlet-puzzle',
     'darkshrine': 'darkshrine',
     'argus': 'argus',
-    'golden-key': 'golden-key'
+    'golden-key': 'golden-key',
+    'silver-key': 'silver-key',
+    'silver-door': 'silver-door'
   }
 
   property var nameMapping: {
@@ -37,6 +39,8 @@ QtObject {
     'argus': 'Argus',
     'golden-key': 'Golden Key',
     'golden-door': 'Golden Door',
+    'silver-key': 'Silver Key',
+    'silver-door': 'Silver Cache',
     'NoPhase': 'Unknown',
     'ChargeDisruptors': 'Charge Disruptors',
     'Conduits': 'Conduits',
@@ -44,7 +48,7 @@ QtObject {
     'Fonts': 'Fonts',
     'Gargoyles': 'Gargoyles',
     'Idols': 'Idols',
-    'Lieutenants': 'Lieutenants',
+    'Lieutenants': 'LiHeutenants',
     'Portals': 'Portals',
     'NoTrap': 'Unknown',
     'BladeSentries': 'Blade Sentries',
