@@ -119,7 +119,7 @@ class LabMap(QObject):
   def sendUpdateSignal(self):
     if self.currentRoom in range(len(self.rooms)):
       self.roomMapUpdated.emit(self.currentRoom,
-                               [exit[1] for exit in self.rooms[self.currentRoom]['exits'] if exit[1] != 'unknown'],
+                               [exit[1] for exit in self.rooms[self.currentRoom]['exits'] if exit[1] != 'unknown' and exit[1] != 'C'],
                                self.rooms[self.currentRoom]['content_directions'],
                                self.rooms[self.currentRoom]['contents'])
     else:
