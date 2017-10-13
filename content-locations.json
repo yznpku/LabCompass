@@ -1,0 +1,62 @@
+{
+  "Basilica": {
+    "Annex": ["NW", "SW"],
+    "Atrium": [],
+    "Crossing": [],
+    "Enclosure": [],
+    "Halls": ["NE", "S"],
+    "Passage": ["NW", "E"],
+    "Path": [],
+    "Walkways": []
+  },
+  "Domain": {
+    "Annex": [],
+    "Atrium": [],
+    "Crossing": [],
+    "Enclosure": ["W", "S"],
+    "Halls": [],
+    "Passage": [],
+    "Path": ["NW", "NE"],
+    "Walkways": ["E", "NW"]
+  },
+  "Estate": {
+    "Annex": [],
+    "Atrium": [],
+    "Crossing": ["N", "S"],
+    "Enclosure": ["NW", "E"],
+    "Halls": [],
+    "Passage": [],
+    "Path": ["NW", "N"],
+    "Walkways": ["W", "E"]
+  },
+  "Mansion": {
+    "Annex": ["NW", "SW"],
+    "Atrium": ["NW", "E"],
+    "Crossing": [],
+    "Enclosure": [],
+    "Halls": ["NE", "S"],
+    "Passage": ["W", "NE"],
+    "Path": [],
+    "Walkways": []
+  },
+  "Sanitorium": {
+    "Annex": ["NW", "SW"],
+    "Atrium": [],
+    "Crossing": [],
+    "Enclosure": [],
+    "Halls": ["NW", "S"],
+    "Passage": ["NW", "S"],
+    "Path": [],
+    "Walkways": []
+  },
+  "Sepulchre": {
+    "Annex": ["NW", "SW"],
+    "Atrium": ["E", "S"],
+    "Crossing": [],
+    "Enclosure": [],
+    "Halls": ["E", "S"],
+    "Passage": ["W", "E"],
+    "Path": [],
+    "Walkways": []
+  }
+}

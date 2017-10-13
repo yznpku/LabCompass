@@ -11,10 +11,19 @@ class LabMap(QObject):
 
   def __init__(self, **kwargs):
     super().__init__()
+    self.loadContentLocations()
     if 'difficulty' in kwargs:
       self.loadFromFile(kwargs['difficulty'])
     else:
       self.createNewLab()
+
+  def loadContentLocations(self):
+    self.contentLocations = {}
+    try:
+      with open(self.contentLocationsFile) as file:
+        self.contentLocations = json.loads(file.read())
+    except Exception:
+      pass
 
   def createNewLab(self):
     self.data = {}
