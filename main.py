@@ -53,7 +53,7 @@ toolbar = ToolbarWindow(engine, parent=header, offset=(124, 28))
 toolbar.show()
 
 plannerWindow = PlannerWindow(engine, labMap)
-puzzleWindow = PuzzleWindow(engine, parent=header, offset=(-112, 220))
+puzzleWindow = PuzzleWindow(engine, parent=header, offset=(-122, 220))
 
 connect({
   logWatcher.labStart: [labMap.labStart, compass.restartTimer, (lambda: Global.setProperty('inLab', True))],
