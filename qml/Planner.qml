@@ -537,7 +537,7 @@ WindowWithShadow {
                 Image { source: '../images/lab-content/darkshrine.png' }
                 Text { color: Global.primaryTextColor; text: 'Darkshrine' }
               }
-              Text { color: 'white'; width: 30; horizontalAlignment: Text.AlignHCenter; text: planGPs }
+              Text { color: 'white'; width: 30; horizontalAlignment: Text.AlignHCenter; text: planDarkshrines }
               Row {
                 spacing: 4
                 Image { source: '../images/lab-content/silver-door.png' }
