@@ -104,5 +104,19 @@ WindowWithShadow {
         }
       }
     }
+    MaterialInk {
+      id: closeButton
+      width: 40
+      height: 40
+      anchors.right: parent.right
+      anchors.rightMargin: 10
+      anchors.top: parent.top
+      anchors.topMargin: 10
+      onClicked: Global.puzzleWindowOpen = false;
+      Image {
+        anchors.centerIn: parent
+        source: '../images/close.png'
+      }
+    }
   }
 }
