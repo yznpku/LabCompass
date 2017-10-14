@@ -19,7 +19,7 @@ WindowWithShadow {
         anchors.verticalCenter: parent.verticalCenter
         text: 'LabCompass'
         color: Global.primaryTextColor
-        font.pointSize: 24
+        font.pixelSize: 32
       }
       Column {
         anchors.verticalCenter: parent.verticalCenter

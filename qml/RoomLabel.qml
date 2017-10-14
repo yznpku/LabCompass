@@ -34,7 +34,7 @@ Rectangle {
           Text {
             text: modelData in Global.nameMapping ? Global.nameMapping[modelData] : modelData
             color: Global.primaryTextColor
-            font.pointSize: 10
+            font.pixelSize: 14
           }
         }
       }

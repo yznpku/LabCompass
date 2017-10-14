@@ -25,7 +25,7 @@ if not clientutils.verifyClientPath(options['poeClientPath']):
 
 QFontDatabase.addApplicationFont('Fontin-SmallCaps.ttf')
 font = QFont('Fontin SmallCaps')
-font.setPointSize(12)
+font.setPixelSize(16)
 QApplication.setFont(font)
 
 engine = QQmlApplicationEngine()

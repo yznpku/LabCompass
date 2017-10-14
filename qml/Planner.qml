@@ -84,7 +84,7 @@ WindowWithShadow {
           Text {
             text: 'Labyrinth Planner'
             color: Global.primaryTextColor
-            font.pointSize: 24
+            font.pixelSize: 32
           }
 
           Grid {
@@ -312,7 +312,7 @@ WindowWithShadow {
                     anchors.centerIn: parent
                     text: index
                     color: 'white'
-                    font.pointSize: 10
+                    font.pixelSize: 13
                   }
                 }
               }
@@ -444,7 +444,7 @@ WindowWithShadow {
                       Global.inLab ? 'You cannot create or modify plans while inside the labyrinth.' :
                                      'To make a plan, click rooms in the order you\'ll travel through them.'
                 color: !plan.length && Global.inLab ? '#e57373' : Global.primaryTextColor
-                font.pointSize: plan.length ? 16 : 12
+                font.pixelSize: plan.length ? 20 : 16
               }
               Repeater {
                 id: planView
@@ -457,7 +457,7 @@ WindowWithShadow {
                     anchors.centerIn: parent
                     text: modelData
                     color: Global.primaryTextColor
-                    font.pointSize: 12
+                    font.pixelSize: 16
                   }
                 }
               }
@@ -508,7 +508,7 @@ WindowWithShadow {
             columns: 1
             Text {
               text: 'Plan Summary'
-              font.pointSize: 20
+              font.pixelSize: 26
               color: Global.primaryTextColor
             }
             Grid {
