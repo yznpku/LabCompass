@@ -32,7 +32,7 @@ WindowWithShadow {
   Rectangle {
     id: root
     width: grid.width
-    height: grid.height
+    height: 429
     color: Global.backgroundColor
 
     Grid {
