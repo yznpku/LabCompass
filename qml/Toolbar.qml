@@ -36,10 +36,20 @@ Column {
   ToolbarButton {
     height: 40
     source: '../images/settings.png'
+    active: Global && Global.optionsWindowOpen
+    onClicked: {
+      if (Global) {
+        var open = Global.optionsWindowOpen;
+        closeAllWindows();
+        if (!open)
+          Global.optionsWindowOpen = true;
+      }
+    }
   }
 
   function closeAllWindows() {
     Global.plannerWindowOpen = false;
     Global.puzzleWindowOpen = false;
+    Global.optionsWindowOpen = false;
   }
 }
