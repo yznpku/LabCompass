@@ -2,10 +2,13 @@ __pycache__/
 *.qmlc
 *.jsc
 
-lab-notes*\.json
-
 build/*
 dist/*
+Lib/*
+Scripts/*
 main.spec
+pyvenv\.cfg
+pip-selfcheck\.json
 
 options\.json
+lab-notes*\.json

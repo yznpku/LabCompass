@@ -1,0 +1,5 @@
+lxml==3.7.3
+psutil==5.4.0
+pypiwin32==220
+PyQt5==5.9
+sip==4.19.3
