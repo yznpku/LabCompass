@@ -35,7 +35,12 @@ This repository has the following dependencies:
 * [Python 3](https://www.python.org/)
 * [PyQt 5](https://riverbankcomputing.com/software/pyqt/)
 * [lxml](http://lxml.de/)
+* [pypiwin32](https://pypi.python.org/pypi/pypiwin32)
 * [psutil](https://github.com/giampaolo/psutil)
+
+Install them with
+
+    pip install -r requirement.txt
 
 Once you have installed all the dependencies, start LabCompass with
 
