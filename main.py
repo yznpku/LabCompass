@@ -9,7 +9,6 @@ from PyQt5.QtQuickWidgets import QQuickWidget
 
 from window import TransparentWindow, CompassWindow, HeaderWindow, PlannerWindow, ToolbarWindow, PuzzleWindow, OptionsWindow
 from logwatcher import LogWatcher
-from labnoteupdater import LabNoteUpdater
 from labmap import LabMap
 from connect import connect
 from options import Options
@@ -36,12 +35,10 @@ Global = engine.rootObjects()[0].property('o')
 dummy = TransparentWindow(engine, 'qml/Dummy.qml')
 dummy.show()
 
-labMap = LabMap(difficulty=options['difficulty'])
+labMap = LabMap()
 
 logWatcher = LogWatcher(options['poeClientPath'])
 QTimer.singleShot(1, logWatcher.start)
-
-labNoteUpdater = LabNoteUpdater()
 
 header = HeaderWindow(engine, initialPos=options['mainWindowPosition'])
 header.show()
@@ -67,10 +64,7 @@ connect({
   labMap.markPlan: [compass.markPlan],
   labMap.currentRoomChanged: [(lambda x: Global.setProperty('currentRoom', x))],
   labMap.currentPlanIndexChanged: [(lambda x: Global.setProperty('currentPlanIndex', x))],
-  labNoteUpdater.runningChanged: [(lambda running: Global.setProperty('labNoteUpdaterRunning', running))],
-  labNoteUpdater.success: [labMap.loadFromFile],
-  plannerWindow.rootObject().updateLabNotes: [labNoteUpdater.fetchLabNotes],
-  plannerWindow.rootObject().switchToDifficulty: [labMap.loadFromFile, (lambda x: options.update({'difficulty': x}))],
+  plannerWindow.rootObject().importLabNotes: [labMap.importLabNotes],
   header.onMoved: [(lambda x, y: options.update({'mainWindowPosition': [x, y]}))]
 })
 

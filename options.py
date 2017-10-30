@@ -3,7 +3,6 @@ import json
 class Options(dict):
   def __init__(self):
     super().__init__({
-      'difficulty': 'Uber',
       'mainWindowPosition': [100, 100],
       'poeClientPath': ''
     })

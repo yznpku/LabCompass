@@ -1,4 +1,6 @@
 from window.template import OpaqueWindow
+from PyQt5.QtCore import QUrl
+from PyQt5.QtGui import QDesktopServices
 
 class PlannerWindow(OpaqueWindow):
   trials = [
@@ -12,6 +14,7 @@ class PlannerWindow(OpaqueWindow):
     self.rootObject().move.connect(self.planMove)
     self.rootObject().back.connect(self.planBack)
     self.rootObject().reset.connect(self.planReset)
+    self.rootObject().openLabNotesHost.connect(self.openLabNotesHost)
     self.labMap = labMap
     self.plan = [0]
     self.Global.plannerWindowOpenChanged.connect(self.onWindowOpenChanged)
@@ -82,3 +85,7 @@ class PlannerWindow(OpaqueWindow):
     self.rootObject().setProperty('planSilverCaches', silvers)
     self.rootObject().setProperty('planExpectedTreasureKeys', keys)
     self.rootObject().setProperty('planExpectedEnchantments', enchants)
+
+  def openLabNotesHost(self):
+    self.Global.setProperty('plannerWindowOpen', False)
+    QDesktopServices.openUrl(QUrl('http://www.poelab.com'))

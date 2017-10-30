@@ -24,8 +24,8 @@ WindowWithShadow {
   signal back
   signal reset
   signal move(int moveTo)
-  signal switchToDifficulty(string difficulty)
-  signal updateLabNotes(string difficulty)
+  signal importLabNotes
+  signal openLabNotesHost
 
   onLinkModelChanged: linkView.requestPaint()
 
@@ -48,37 +48,11 @@ WindowWithShadow {
 
         Item { RotationAnimation on rotation { loops: Animation.Infinite; from: 0; to: 360 }}
 
-        Rectangle {
-          id: activeLabDifficultyHighlight
-          property var activeViewItem
-          parent: labDifficultyView
-          width: 120
-          height: 30
-          x: activeViewItem ? parent.mapFromItem(activeViewItem, 0, 0).x : 0
-          color: Global.primaryColor
-          Component.onCompleted: activeViewItem = Qt.binding(function() { return labDifficultyView.itemAt(labDifficultyView.model.indexOf(labDifficulty)) })
-          Behavior on x {
-            NumberAnimation {
-              easing.type: Easing.Bezier
-              easing.bezierCurve: [0.4, 0.0, 0.2, 1.0, 1.0, 1.0]
-              duration: 150
-            }
-          }
-          Rectangle {
-            color: Global.lightPrimaryColor
-            height: 2
-            anchors {
-              left: parent.left
-              right: parent.right
-              top: parent.bottom
-            }
-          }
-        }
-
         Grid {
-          columns: 2
+          columns: 5
           leftPadding: 40
-          spacing: 160
+          spacing: 20
+          anchors.verticalCenter: parent.verticalCenter
           verticalItemAlignment: Grid.AlignVCenter
 
           Text {
@@ -87,72 +61,41 @@ WindowWithShadow {
             font.pixelSize: 32
           }
 
-          Grid {
-            columns: 1
-            spacing: 10
-            Grid {
-              columns: 4
-              spacing: 2
-              Repeater {
-                id: labDifficultyView
-                model: ['Normal', 'Cruel', 'Merciless', 'Uber']
-                Item {
-                  width: 120
-                  height: 30
-                  z: 1
-                  Text {
-                    color: Global.primaryTextColor
-                    text: modelData
-                    anchors.centerIn: parent
-                  }
-                  MaterialInk {
-                    anchors.fill: parent
-                    enabled: !Global.labNoteUpdaterRunning && !Global.inLab
-                    onClicked: {
-                      labDifficulty = modelData;
-                      switchToDifficulty(labDifficulty);
-                    }
-                  }
-                }
+          Item {
+            width: 400
+            height: 30
+            Text {
+              anchors.centerIn: parent
+              text: labNoteTitle ? 'Layout: ' + labNoteTitle : 'No lab notes loaded'
+              color: Global.primaryTextColor
+            }
+          }
+
+          MaterialInk {
+            width: 150
+            height: 30
+            onClicked: importLabNotes()
+            Rectangle {
+              anchors.fill: parent
+              color: '#2196F3'
+              radius: 2
+              z: -1
+              Text {
+                anchors.centerIn: parent
+                text: 'Import Lab notes'
+                color: Global.primaryTextColor
               }
             }
-            Item {
-              width: labDifficultyView.parent.width
-              height: 30
-              Item {
-                anchors {
-                  left: parent.left
-                  top: parent.top
-                  right: updateButton.left
-                  bottom: parent.bottom
-                }
-                Text {
-                  anchors.centerIn: parent
-                  text: labNoteTitle ? 'Layout: ' + labNoteTitle : 'No lab notes loaded'
-                  color: Global.primaryTextColor
-                }
-              }
-              MaterialInk {
-                id: updateButton
-                width: 32
-                height: 32
-                anchors.right: parent.right
-                anchors.rightMargin: 40
-                anchors.verticalCenter: parent.verticalCenter
-                onClicked: updateLabNotes(labDifficulty)
-                enabled: !Global.labNoteUpdaterRunning && !Global.inLab
-                Image {
-                  id: updateButtonImage
-                  source: '../images/update.png'
-                  anchors.fill: parent
-                  visible: parent.enabled
-                }
-                BusyIndicator {
-                  anchors.fill: parent
-                  running: !parent.enabled && !Global.inLab
-                  Material.accent: Global.primaryTextColor
-                }
-              }
+          }
+
+          MaterialInk {
+            width: 150
+            height: 30
+            onClicked: openLabNotesHost()
+            Text {
+              anchors.centerIn: parent
+              text: 'Get Lab notes'
+              color: Global.primaryTextColor
             }
           }
         }

@@ -1,6 +1,8 @@
 import json
+import shutil
 import string
-from PyQt5.QtCore import Qt, QObject, pyqtSignal
+from PyQt5.QtCore import Qt, QObject, QStandardPaths, pyqtSignal
+from PyQt5.QtWidgets import QFileDialog
 
 class LabMap(QObject):
   markPlan = pyqtSignal(str)
@@ -12,10 +14,7 @@ class LabMap(QObject):
   def __init__(self, **kwargs):
     super().__init__()
     self.loadContentLocations()
-    if 'difficulty' in kwargs:
-      self.loadFromFile(kwargs['difficulty'])
-    else:
-      self.createNewLab()
+    self.loadFromFile()
 
   def loadContentLocations(self):
     self.contentLocations = {}
@@ -41,12 +40,19 @@ class LabMap(QObject):
     self.rooms.append(plaza)
     self.layoutChanged.emit()
 
-  def loadFromFile(self, difficulty):
+  def importLabNotes(self):
+    downloadDirectory = QStandardPaths.standardLocations(QStandardPaths.DownloadLocation)[0] if len(QStandardPaths.standardLocations(QStandardPaths.DownloadLocation)) else ''
+    file, _ = QFileDialog.getOpenFileName(None, 'Import Lab Notes', downloadDirectory, 'Lab Notes (*.json)')
+    if file:
+      shutil.copyfile(file, './lab-notes.json')
+      self.loadFromFile()
+
+  def loadFromFile(self):
     self.createNewLab()
 
     try:
       o = {}
-      with open('lab-notes-%s.json' % difficulty.lower()) as file:
+      with open('lab-notes.json') as file:
         o = json.loads(file.read())
 
       self.data = {**o}
