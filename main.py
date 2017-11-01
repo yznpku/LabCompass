@@ -1,3 +1,4 @@
+import os
 import sys
 
 from PyQt5.QtCore import Qt, QDir, QUrl, QTimer
@@ -15,6 +16,7 @@ from options import Options
 from versionchecker import VersionChecker
 import clientutils
 
+os.environ['QML_DISABLE_DISK_CACHE'] = '1'
 sys_argv = sys.argv
 sys_argv += ['--style', 'material']
 app = QApplication(sys_argv)
