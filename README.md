@@ -30,15 +30,7 @@ A: The lab layouts are provided by POELab team. It may not be immediately availa
 Run from Source Code
 ---
 
-This repository has the following dependencies:
-
-* [Python 3](https://www.python.org/)
-* [PyQt 5](https://riverbankcomputing.com/software/pyqt/)
-* [lxml](http://lxml.de/)
-* [pypiwin32](https://pypi.python.org/pypi/pypiwin32)
-* [psutil](https://github.com/giampaolo/psutil)
-
-Install them with
+Install all dependencies with
 
     pip install -r requirement.txt
 
