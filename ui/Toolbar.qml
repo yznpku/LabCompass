@@ -17,6 +17,9 @@ Column {
           Global.plannerWindowOpen = true;
       }
     }
+    NotificationIndicator {
+      visible: Global.labNotesOutDated
+    }
   }
 
   ToolbarButton {

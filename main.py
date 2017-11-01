@@ -12,6 +12,7 @@ from logwatcher import LogWatcher
 from labmap import LabMap
 from connect import connect
 from options import Options
+from versionchecker import VersionChecker
 import clientutils
 
 sys_argv = sys.argv
@@ -40,6 +41,9 @@ labMap = LabMap()
 logWatcher = LogWatcher(options['poeClientPath'])
 QTimer.singleShot(1, logWatcher.start)
 
+versionChecker = VersionChecker(Global)
+versionChecker.labNotesDate = labMap.getLabNotesDate()
+
 header = HeaderWindow(engine, initialPos=options['mainWindowPosition'])
 header.show()
 
@@ -59,6 +63,7 @@ connect({
   logWatcher.labFinish: [compass.stopTimer],
   logWatcher.labExit: [labMap.labExit, compass.closeTimer, (lambda: Global.setProperty('inLab', False))],
   logWatcher.fail: [(lambda: QMessageBox.information(None, 'LabCompass', 'Cannot locate POE client. Please make sure the client is running, and restart LabCompass.'))],
+  labMap.dateChanged: [versionChecker.setLabNotesDate],
   labMap.layoutChanged: [plannerWindow.refreshLayout],
   labMap.roomMapUpdated: [compass.updateRoom],
   labMap.markPlan: [compass.markPlan],

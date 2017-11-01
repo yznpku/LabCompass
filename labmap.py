@@ -6,6 +6,7 @@ from PyQt5.QtWidgets import QFileDialog
 
 class LabMap(QObject):
   markPlan = pyqtSignal(str)
+  dateChanged = pyqtSignal(tuple)
   layoutChanged = pyqtSignal()
   currentRoomChanged = pyqtSignal(int)
   currentPlanIndexChanged = pyqtSignal(int)
@@ -105,7 +106,15 @@ class LabMap(QObject):
       self.createNewLab()
       return
 
+    self.dateChanged.emit(self.getLabNotesDate())
     self.layoutChanged.emit()
+
+  def getLabNotesDate(self):
+    if 'date' in self.data:
+      date = self.data['date'].split('-')
+      if len(date) == 3:
+        return tuple(map(int, date))
+    return (0, 0, 0)
 
   def labStart(self):
     self.currentPlanIndex = 0

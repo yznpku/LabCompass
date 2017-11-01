@@ -5,7 +5,6 @@ import QtQuick.Controls.Material 2.2
 import com.labcompass 1.0
 
 WindowWithShadow {
-  property string labDifficulty: 'Uber'
   property string labNoteTitle: ''
   property bool updatingLabNotes: false
   property var roomModel: []
@@ -39,11 +38,11 @@ WindowWithShadow {
       id: grid
       columns: 1
       spacing: 20
-      topPadding: 10
+      topPadding: 20
       bottomPadding: 20
 
       Item {
-        height: 60
+        height: 50
         width: root.width
 
         Item { RotationAnimation on rotation { loops: Animation.Infinite; from: 0; to: 360 }}
@@ -74,6 +73,20 @@ WindowWithShadow {
           MaterialInk {
             width: 150
             height: 30
+            onClicked: openLabNotesHost()
+            Text {
+              anchors.centerIn: parent
+              text: 'Get Lab notes'
+              color: Global.primaryTextColor
+            }
+            NotificationIndicator {
+              visible: Global.labNotesOutDated
+            }
+          }
+
+          MaterialInk {
+            width: 150
+            height: 30
             onClicked: importLabNotes()
             Rectangle {
               anchors.fill: parent
@@ -85,17 +98,6 @@ WindowWithShadow {
                 text: 'Import Lab notes'
                 color: Global.primaryTextColor
               }
-            }
-          }
-
-          MaterialInk {
-            width: 150
-            height: 30
-            onClicked: openLabNotesHost()
-            Text {
-              anchors.centerIn: parent
-              text: 'Get Lab notes'
-              color: Global.primaryTextColor
             }
           }
         }

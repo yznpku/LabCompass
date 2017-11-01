@@ -12,6 +12,9 @@ QtObject {
   property int currentRoom: 0
   property int currentPlanIndex: 0
 
+  property bool labNotesOutDated: false
+  property bool newVersionAvailable: false
+
 
   property color backgroundColor: '#181818'
   property color primaryColor: '#212121'
