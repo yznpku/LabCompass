@@ -35,6 +35,9 @@ qmlRegisterSingletonType(QUrl.fromLocalFile('ui/Global.qml'), 'com.labcompass', 
 engine.load(QUrl.fromLocalFile('ui/GlobalAccessor.qml'))
 Global = engine.rootObjects()[0].property('o')
 
+if options['latestVersion']:
+  Global.setProperty('latestVersion', options['latestVersion'])
+
 dummy = TransparentWindow(engine, 'ui/Dummy.qml')
 dummy.show()
 
@@ -43,7 +46,7 @@ labMap = LabMap()
 logWatcher = LogWatcher(options['poeClientPath'])
 QTimer.singleShot(1, logWatcher.start)
 
-versionChecker = VersionChecker(Global)
+versionChecker = VersionChecker(Global, options)
 versionChecker.labNotesDate = labMap.getLabNotesDate()
 
 header = HeaderWindow(engine, initialPos=options['mainWindowPosition'])

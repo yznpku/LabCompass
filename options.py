@@ -4,7 +4,10 @@ class Options(dict):
   def __init__(self):
     super().__init__({
       'mainWindowPosition': [100, 100],
-      'poeClientPath': ''
+      'poeClientPath': '',
+      'latestVersion': '',
+      'lastVersionCheckAttempt': 0,
+      'lastVersionCheckSuccess': 0
     })
     try:
       with open('options.json') as file:

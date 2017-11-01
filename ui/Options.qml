@@ -6,7 +6,7 @@ WindowWithShadow {
 
   Rectangle {
     id: root
-    width: 400
+    width: 600
     height: 100
     color: Global.backgroundColor
 
@@ -25,7 +25,7 @@ WindowWithShadow {
         anchors.verticalCenter: parent.verticalCenter
         Text {
           color: Global.primaryTextColor
-          text: 'dev-version'
+          text: Global.version
         }
         Row {
           MaterialInk {
@@ -39,6 +39,28 @@ WindowWithShadow {
           }
         }
       }
+    }
+
+    MaterialInk {
+      anchors.verticalCenter: parent.verticalCenter
+      anchors.right: parent.right
+      anchors.rightMargin: 80
+      width: 150
+      height: 30
+      visible: Global.newVersionAvailable
+      onClicked: openUrl('https://github.com/yznpku/LabCompass/releases/tag/' + Global.latestVersion)
+      Rectangle {
+        anchors.fill: parent
+        color: '#2196F3'
+        radius: 2
+        z: -1
+        Text {
+          anchors.centerIn: parent
+          text: 'Update Available'
+          color: Global.primaryTextColor
+        }
+      }
+      NotificationIndicator {}
     }
 
     MaterialInk {

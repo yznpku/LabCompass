@@ -2,6 +2,9 @@ pragma Singleton
 import QtQuick 2.8
 
 QtObject {
+  property string version: 'dev-version'
+  property string latestVersion: version
+
   property bool plannerWindowOpen: false
   property bool puzzleWindowOpen: false
   property bool optionsWindowOpen: false
@@ -13,7 +16,7 @@ QtObject {
   property int currentPlanIndex: 0
 
   property bool labNotesOutDated: false
-  property bool newVersionAvailable: false
+  property bool newVersionAvailable: version !== latestVersion
 
 
   property color backgroundColor: '#181818'

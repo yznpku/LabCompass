@@ -48,6 +48,9 @@ Column {
           Global.optionsWindowOpen = true;
       }
     }
+    NotificationIndicator {
+      visible: Global.newVersionAvailable
+    }
   }
 
   function closeAllWindows() {
