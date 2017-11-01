@@ -10,7 +10,7 @@ class PlannerWindow(OpaqueWindow):
   ]
 
   def __init__(self, engine, labMap, **kwargs):
-    super().__init__(engine, 'qml/Planner.qml', **kwargs)
+    super().__init__(engine, 'ui/Planner.qml', **kwargs)
     self.rootObject().move.connect(self.planMove)
     self.rootObject().back.connect(self.planBack)
     self.rootObject().reset.connect(self.planReset)

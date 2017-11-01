@@ -6,7 +6,6 @@ build/*
 dist/*
 Lib/*
 Scripts/*
-main.spec
 pyvenv\.cfg
 pip-selfcheck\.json
 

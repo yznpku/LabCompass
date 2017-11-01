@@ -5,7 +5,7 @@ from window.template import OpaqueWindow
 
 class OptionsWindow(OpaqueWindow):
   def __init__(self, engine, **kwargs):
-    super().__init__(engine, 'qml/Options.qml', **kwargs)
+    super().__init__(engine, 'ui/Options.qml', **kwargs)
     self.Global.optionsWindowOpenChanged.connect(self.onWindowOpenChanged)
     self.rootObject().openUrl.connect(self.openUrl)
 

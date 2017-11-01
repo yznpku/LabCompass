@@ -5,7 +5,7 @@ class HeaderWindow(OpaqueWindow):
   onMoved = pyqtSignal(int, int)
 
   def __init__(self, engine, **kwargs):
-    super().__init__(engine, 'qml/Header.qml', **kwargs)
+    super().__init__(engine, 'ui/Header.qml', **kwargs)
     self.rootObject().drag.connect(self.drag)
     self.rootObject().exit.connect(lambda: QCoreApplication.instance().exit())
 

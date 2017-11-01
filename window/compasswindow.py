@@ -4,7 +4,7 @@ from window.template import TransparentWindow
 
 class CompassWindow(TransparentWindow):
   def __init__(self, engine, **kwargs):
-    super().__init__(engine, 'qml/Compass.qml', **kwargs)
+    super().__init__(engine, 'ui/Compass.qml', **kwargs)
 
   @pyqtSlot(int, list, list, list)
   def updateRoom(self, roomId, exitDirections, contentDirections, contents):

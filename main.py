@@ -28,11 +28,11 @@ font.setPixelSize(16)
 QApplication.setFont(font)
 
 engine = QQmlApplicationEngine()
-qmlRegisterSingletonType(QUrl.fromLocalFile('qml/Global.qml'), 'com.labcompass', 1, 0, 'Global')
-engine.load(QUrl.fromLocalFile('qml/GlobalAccessor.qml'))
+qmlRegisterSingletonType(QUrl.fromLocalFile('ui/Global.qml'), 'com.labcompass', 1, 0, 'Global')
+engine.load(QUrl.fromLocalFile('ui/GlobalAccessor.qml'))
 Global = engine.rootObjects()[0].property('o')
 
-dummy = TransparentWindow(engine, 'qml/Dummy.qml')
+dummy = TransparentWindow(engine, 'ui/Dummy.qml')
 dummy.show()
 
 labMap = LabMap()
