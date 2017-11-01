@@ -38,7 +38,7 @@ class Window(QQuickWidget):
   def showEvent(self, event):
     super().showEvent(event)
     hwnd = int(self.winId())
-    ctypes.windll.user32.SetWindowLongW(hwnd, win32con.GWL_EXSTYLE, ctypes.windll.user32.GetWindowLongW(hwnd, win32con.GWL_EXSTYLE) | win32con.WS_EX_NOACTIVATE | win32con.WS_EX_APPWINDOW)
+    ctypes.windll.user32.SetWindowLongW(hwnd, win32con.GWL_EXSTYLE, ctypes.windll.user32.GetWindowLongW(hwnd, win32con.GWL_EXSTYLE) | win32con.WS_EX_NOACTIVATE)
 
 class TransparentWindow(Window):
   def __init__(self, engine, qmlPath, **kwargs):
