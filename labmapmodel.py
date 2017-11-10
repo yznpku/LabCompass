@@ -74,7 +74,7 @@ class LabMapModel:
             for to, direction in room['exits']:
               if direction != 'C' \
                   and to > i \
-                  and 'golden-key' not in model.rooms[to]['contents']:
+                  and not model.isSideRoom(to):
                 model.data['golden-door'].append([i, to])
       return model
     except Exception:
@@ -86,3 +86,7 @@ class LabMapModel:
       if len(date) == 3:
         return tuple(map(int, date))
     return (0, 0, 0)
+
+  def isSideRoom(self, index):
+    exits = sum(direction != 'C' for to, direction in self.rooms[index]['exits'])
+    return exits == 1
