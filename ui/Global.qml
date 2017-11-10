@@ -2,7 +2,7 @@ pragma Singleton
 import QtQuick 2.8
 
 QtObject {
-  property string version: '1.0.0'
+  property string version: '1.0.1'
   property string latestVersion: version
 
   property bool plannerWindowOpen: false
