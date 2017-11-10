@@ -27,11 +27,11 @@ class PlannerWindow(OpaqueWindow):
   def refreshLayout(self):
     self.planReset()
 
-    self.roomModel = self.labMap.rooms
+    self.roomModel = self.labMap.model.rooms
     self.rootObject().setProperty('roomModel', self.roomModel)
 
     self.linkModel = []
-    for frm, room in enumerate(self.labMap.rooms):
+    for frm, room in enumerate(self.labMap.model.rooms):
       for to, direction in room['exits']:
         if frm < to and 'invalid' not in self.roomModel[frm] and 'invalid' not in self.roomModel[to]:
           self.linkModel.append({
@@ -42,18 +42,18 @@ class PlannerWindow(OpaqueWindow):
             'secret': direction == 'C'
           })
     self.rootObject().setProperty('linkModel', self.linkModel)
-    self.rootObject().setProperty('goldenDoorModel', self.labMap.data['golden-door'] if 'golden-door' in self.labMap.data else [])
-    self.rootObject().setProperty('labNoteTitle', '%s %s' % (self.labMap.data['date'], self.labMap.data['difficulty'].capitalize()) if 'date' in self.labMap.data and 'difficulty' in self.labMap.data else '')
+    self.rootObject().setProperty('goldenDoorModel', self.labMap.model.data['golden-door'] if 'golden-door' in self.labMap.model.data else [])
+    self.rootObject().setProperty('labNoteTitle', '%s %s' % (self.labMap.model.data['date'], self.labMap.model.data['difficulty'].capitalize()) if 'date' in self.labMap.model.data and 'difficulty' in self.labMap.model.data else '')
 
   def planBack(self):
-    plan = self.labMap.plan
+    plan = self.labMap.model.plan
     if len(plan) > 1:
       self.updatePlan(plan[:-1])
 
   def planMove(self, moveTo):
-    plan = self.labMap.plan
+    plan = self.labMap.model.plan
     current = plan[-1]
-    if any(exit[0] == moveTo for exit in self.labMap.rooms[current]['exits']):
+    if any(exit[0] == moveTo for exit in self.labMap.model.rooms[current]['exits']):
       plan.append(moveTo)
       self.updatePlan(plan)
 
@@ -61,17 +61,17 @@ class PlannerWindow(OpaqueWindow):
     self.updatePlan([0])
 
   def updatePlan(self, plan):
-    self.labMap.plan = plan
-    self.labMap.currentPlanIndex = 0
+    self.labMap.model.plan = plan
+    self.labMap.model.currentPlanIndex = 0
     self.rootObject().setProperty('plan', plan[1:])
 
     planSet = set(plan[1:])
-    rooms = len(planSet) - sum(self.labMap.rooms[i]['name'] == 'Aspirant\'s Trial' for i in planSet)
+    rooms = len(planSet) - sum(self.labMap.model.rooms[i]['name'] == 'Aspirant\'s Trial' for i in planSet)
     length = len(plan) - 1
-    argus = sum('argus' in self.labMap.rooms[i]['contents'] for i in planSet)
-    gps = sum(sum(gp in self.labMap.rooms[i]['contents'] for gp in ['Switch puzzle', 'Floor puzzle', 'Escort gauntlet', 'Trap gauntlet']) for i in planSet)
-    darkshrines = sum('darkshrine' in self.labMap.rooms[i]['contents'] for i in planSet)
-    silvers = min(sum('silver-key' in self.labMap.rooms[i]['contents'] for i in planSet), sum('silver-door' in self.labMap.rooms[i]['contents'] for i in planSet))
+    argus = sum('argus' in self.labMap.model.rooms[i]['contents'] for i in planSet)
+    gps = sum(sum(gp in self.labMap.model.rooms[i]['contents'] for gp in ['Switch puzzle', 'Floor puzzle', 'Escort gauntlet', 'Trap gauntlet']) for i in planSet)
+    darkshrines = sum('darkshrine' in self.labMap.model.rooms[i]['contents'] for i in planSet)
+    silvers = min(sum('silver-key' in self.labMap.model.rooms[i]['contents'] for i in planSet), sum('silver-door' in self.labMap.model.rooms[i]['contents'] for i in planSet))
     keys = 3 + argus + gps * 0.5 + [0, 1/8, 7/25, 9/20, 22/35][darkshrines]
     enchants = 1 + [0, 1/8, 7/25, 9/20, 22/35][darkshrines]
 

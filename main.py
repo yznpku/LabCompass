@@ -47,7 +47,7 @@ logWatcher = LogWatcher(options['poeClientPath'])
 QTimer.singleShot(1, logWatcher.start)
 
 versionChecker = VersionChecker(Global, options)
-versionChecker.labNotesDate = labMap.getLabNotesDate()
+versionChecker.labNotesDate = labMap.model.date()
 
 header = HeaderWindow(engine, initialPos=options['mainWindowPosition'])
 header.show()
