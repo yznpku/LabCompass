@@ -43,7 +43,7 @@ Run from Source Code
 
 Install all dependencies with
 
-    pip install -r requirement.txt
+    pip install -r requirements.txt
 
 Once you have installed all the dependencies, start LabCompass with
 
