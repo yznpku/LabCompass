@@ -55,7 +55,7 @@ QtObject {
     'Fonts': 'Fonts',
     'Gargoyles': 'Gargoyles',
     'Idols': 'Idols',
-    'Lieutenants': 'LiHeutenants',
+    'Lieutenants': 'Lieutenants',
     'Portals': 'Portals',
     'NoTrap': 'Unknown',
     'BladeSentries': 'Blade Sentries',
