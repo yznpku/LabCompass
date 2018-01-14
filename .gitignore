@@ -1,13 +1,10 @@
-__pycache__/
-*.qmlc
-*.jsc
 
-build/*
-dist/*
-Lib/*
-Scripts/*
-pyvenv\.cfg
-pip-selfcheck\.json
+*.autosave
 
-options\.json
-lab-notes*\.json
+LabCompass\.pro\.user*
+
+*.qm
+
+\.DS_Store
+
+*.tmp
