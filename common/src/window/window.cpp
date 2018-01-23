@@ -10,7 +10,7 @@ Window::Window(QQmlEngine* engine, bool transparent, QWidget* parent) : QQuickWi
   setAttribute(Qt::WA_NoSystemBackground);
   setAttribute(Qt::WA_TranslucentBackground);
   setAttribute(Qt::WA_TransparentForMouseEvents, transparent);
-  setWindowFlags(Qt::Tool | Qt::WindowStaysOnTopHint | Qt::FramelessWindowHint);
+  setWindowFlags(Qt::Tool | Qt::WindowStaysOnTopHint | Qt::FramelessWindowHint | Qt::NoDropShadowWindowHint);
 }
 
 void Window::setParentWindow(Window* parent, const QPoint& offset)
