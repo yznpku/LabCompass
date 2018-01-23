@@ -16,7 +16,8 @@ Features
 System Requirements
 ---
 
-LabCompass requires OpenGL 2.0. Update your graphics card drivers if you experience display issues.
+- Windows 7/8/10.
+- OpenGL 2.1 or higher. Update your graphics card drivers if you experience display issues.
 
 Downloads
 ---
@@ -38,13 +39,10 @@ A: [It's legal.](https://i.imgur.com/Es321K1.png)
 
 A: They are provided by [poelab.com](http://www.poelab.com). The download links are right below the corresponding images. Make sure you grab the latest version every day!
 
-Run from Source Code
+Build
 ---
 
-Install all dependencies with
+After installing the latest version of Qt, run the following command to build:
 
-    pip install -r requirements.txt
-
-Once you have installed all the dependencies, start LabCompass with
-
-    python main.py
+    qmake LabCompass.pro
+    make
