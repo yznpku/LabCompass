@@ -1,0 +1,30 @@
+{
+  "before_script": [],
+  "stages": [
+    "build"
+  ],
+  "build_on_linux_qt5.2_clang": {
+    "stage": "build",
+    "script": [
+      "bash ~/smart-build.sh --build-system=qbs --toolchain=clang64 --qt=5.2 --clean"
+    ],
+    "tags": [
+      "linux",
+      "clang",
+      "qt5.2",
+      "smart-build"
+    ]
+  },
+  "build_on_linux_qt5.9_clang": {
+    "stage": "build",
+    "script": [
+        "bash ~/smart-build.sh --build-system=qbs --toolchain=clang64 --qt=5.9 --clean"
+    ],
+    "tags": [
+      "linux",
+      "clang",
+      "qt5.9",
+      "smart-build"
+    ]
+  }
+}
