@@ -22,7 +22,7 @@ Image {
         width: 16
         height: 16
         radius: 8
-        color: modelData === instructionModel.nextRoomDirection ? Global.activePathColor : Global.primaryColor
+        color: modelData === instructionModel.nextRoomDirection ? Global.activePathColor : '#909090'
         border {
           width: 1
           color: 'black'
