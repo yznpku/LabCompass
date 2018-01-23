@@ -1,6 +1,6 @@
 #include "optionswindow.h"
 
-OptionsWindow::OptionsWindow(QQmlEngine* engine, Settings* settings) : Window(engine, false)
+OptionsWindow::OptionsWindow(QQmlEngine* engine, Settings* settings) : Window(engine, false, true)
 {
   this->settings = settings;
 
