@@ -1,6 +1,5 @@
 #include "versionchecker.h"
-
-static const QString VERSION = "dev-version";
+#include "version.h"
 
 VersionChecker::VersionChecker(ApplicationModel* model, QObject* parent) : QObject(parent)
 {

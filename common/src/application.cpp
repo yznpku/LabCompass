@@ -1,4 +1,5 @@
 #include "application.h"
+#include "version.h"
 
 Application::Application(int argc, char** argv) : QApplication(argc, argv)
 {
@@ -26,6 +27,7 @@ void Application::initResources()
 
   auto global = engine.rootObjects()[0]->property("o").value<QObject*>();
   global->setProperty("model", QVariant::fromValue<QObject*>(&model));
+  global->setProperty("version", VERSION);
 #ifdef QT_DEBUG
   global->setProperty("debug", true);
 #endif
@@ -49,6 +51,13 @@ void Application::initSettings()
   for (auto i = defaultSettings.constBegin(); i != defaultSettings.constEnd(); i++)
     if (!model.get_settings()->contains(i.key()))
       model.get_settings()->setValue(i.key(), i.value());
+
+  if (model.get_settings()->value("version").toString() != VERSION) {
+    model.get_settings()->setValue("version", VERSION);
+    model.get_settings()->setValue("latestVersion", "");
+    model.get_settings()->setValue("lastVersionCheckAttempt", 0LL);
+    model.get_settings()->setValue("lastVersionCheckSuccess", 0LL);
+  }
 }
 
 void Application::initWindows()

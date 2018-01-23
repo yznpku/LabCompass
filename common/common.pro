@@ -40,7 +40,8 @@ HEADERS += \
     src/window/puzzlewindow.h \
     src/window/optionswindow.h \
     src/model/plansummarymodel.h \
-    src/worker/versionchecker.h
+    src/worker/versionchecker.h \
+    src/version.h
 
 SOURCES += \
     src/application.cpp \

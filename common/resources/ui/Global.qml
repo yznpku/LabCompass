@@ -2,7 +2,7 @@ pragma Singleton
 import QtQuick 2.8
 
 QtObject {
-  property string version: 'dev-version'
+  property string version
   property bool debug: false
 
   property bool plannerWindowOpen: false
