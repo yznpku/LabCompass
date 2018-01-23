@@ -4,13 +4,15 @@
 #include <windows.h>
 #endif
 
-Window::Window(QQmlEngine* engine, bool transparent, QWidget* parent) : QQuickWidget(engine, parent)
+Window::Window(QQmlEngine* engine, bool transparent, bool takeFocus, QWidget* parent) : QQuickWidget(engine, parent)
 {
+  this->takeFocus = takeFocus;
+
   setClearColor(Qt::transparent);
   setAttribute(Qt::WA_NoSystemBackground);
   setAttribute(Qt::WA_TranslucentBackground);
   setAttribute(Qt::WA_TransparentForMouseEvents, transparent);
-  setWindowFlags(Qt::Tool | Qt::WindowStaysOnTopHint | Qt::FramelessWindowHint);
+  setWindowFlags(Qt::Tool | Qt::WindowStaysOnTopHint | Qt::FramelessWindowHint | Qt::NoDropShadowWindowHint);
 }
 
 void Window::setParentWindow(Window* parent, const QPoint& offset)
@@ -35,9 +37,11 @@ void Window::showEvent(QShowEvent* e)
   QQuickWidget::showEvent(e);
 
 #ifdef Q_OS_WIN
-  HWND hwnd = (HWND)winId();
-  auto style = GetWindowLongW(hwnd, GWL_EXSTYLE) | WS_EX_NOACTIVATE;
-  SetWindowLongW(hwnd, GWL_EXSTYLE, style);
+  if (!takeFocus) {
+    HWND hwnd = (HWND)winId();
+    auto style = GetWindowLongW(hwnd, GWL_EXSTYLE) | WS_EX_NOACTIVATE;
+    SetWindowLongW(hwnd, GWL_EXSTYLE, style);
+  }
 #endif
 }
 
