@@ -3,6 +3,6 @@
 
 #include "stdafx.h"
 
-static const QString VERSION = "dev-version";
+static const QString VERSION = "1.1.0";
 
 #endif // VERSION_H
