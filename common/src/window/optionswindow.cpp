@@ -30,7 +30,7 @@ void OptionsWindow::onWindowOpenChanged()
 
 void OptionsWindow::onBrowseClientPath()
 {
-  auto file = QFileDialog::getOpenFileName(this, "Find Game Client", "", "Path of Exile Client (Client.exe)");
+  auto file = QFileDialog::getOpenFileName(this, "Find Game Client", "", "Path of Exile Client (Client.exe;PathOfExileSteam.exe)");
   if (!file.isEmpty())
      clientPathInput->setProperty("text", QFileInfo(file).dir().absolutePath());
 }
