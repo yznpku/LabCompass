@@ -4,20 +4,20 @@ ApplicationModel::ApplicationModel(QObject* parent) : QObject(parent)
 {
   update_settings(new Settings("FutureCode", "LabCompass"));
 
-  update_labyrinthModel(new LabyrinthModel);
-  update_roomModel(new RoomModel);
-  update_connectionModel(new ConnectionModel);
-  update_plannedRouteModel(new PlannedRouteModel);
-  update_goldenDoorModel(new GoldenDoorModel);
-  update_instructionModel(new InstructionModel);
-  update_planSummaryModel(new PlanSummaryModel);
+  m_labyrinthModel.reset(new LabyrinthModel);
+  m_roomModel.reset(new RoomModel);
+  m_connectionModel.reset(new ConnectionModel);
+  m_plannedRouteModel.reset(new PlannedRouteModel);
+  m_goldenDoorModel.reset(new GoldenDoorModel);
+  m_instructionModel.reset(new InstructionModel);
+  m_planSummaryModel.reset(new PlanSummaryModel);
 
-  update_newVersionAvailable(false);
-  update_labMapOutdated(true);
-  update_logFileOpen(true);
-  update_inLab(false);
-  update_currentRoomDetermined(true);
-  update_isValid(false);
+  m_newVersionAvailable = false;
+  m_labMapOutdated = true;
+  m_logFileOpen = true;
+  m_inLab = false;
+  m_currentRoomDetermined = true;
+  m_isValid =   false;
 }
 
 bool ApplicationModel::loadFromFile(const QString& file)
