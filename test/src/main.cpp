@@ -1,7 +1,7 @@
 #include <QtTest>
 #include <memory>
-#include "testdataavailabletest.h"
-#include "labyrinthdata/labyrinthdataloadtest.h"
+#include "tests/testdataavailabletest.h"
+#include "tests/labyrinthdata/labyrinthdataloadtest.h"
 
 int main()
 {
