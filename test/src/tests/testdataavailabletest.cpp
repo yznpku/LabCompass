@@ -5,7 +5,7 @@ TestDataAvailableTest::TestDataAvailableTest(QObject *parent) : QObject(parent)
 
 }
 
-void TestDataAvailableTest::testTestDataAvailable_data()
+void TestDataAvailableTest::test_data()
 {
   QTest::addColumn<QString>("fileName");
 
@@ -19,7 +19,7 @@ void TestDataAvailableTest::testTestDataAvailable_data()
   QTest::newRow("2018-01-10_uber.json") << "2018-01-10_uber.json";
 }
 
-void TestDataAvailableTest::testTestDataAvailable()
+void TestDataAvailableTest::test()
 {
   QFETCH(QString, fileName);
   QVERIFY2(QDir("data").exists(fileName), "Test data not found. Run \"make install\" before running this test.");

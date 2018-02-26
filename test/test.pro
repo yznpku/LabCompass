@@ -24,10 +24,13 @@ INSTALLS += testdata
 
 SOURCES += \
     src/main.cpp \
+    src/tests/testdataavailabletest.cpp \
     src/tests/labyrinthdata/labyrinthdataloadtest.cpp \
-    src/tests/testdataavailabletest.cpp
+    src/navigation/navigationcontrollerwrapper.cpp \
+    src/tests/labyrinthmodel/labyrinthmodelpropertiestest.cpp
 
 HEADERS += \
     src/tests/testdataavailabletest.h \
     src/tests/labyrinthdata/labyrinthdataloadtest.h \
-    src/tests/testdataavailabletest.h
+    src/navigation/navigationcontrollerwrapper.h \
+    src/tests/labyrinthmodel/labyrinthmodelpropertiestest.h

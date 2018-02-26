@@ -2,6 +2,7 @@
 #include <memory>
 #include "tests/testdataavailabletest.h"
 #include "tests/labyrinthdata/labyrinthdataloadtest.h"
+#include "tests/labyrinthmodel/labyrinthmodelpropertiestest.h"
 
 int main()
 {
@@ -9,5 +10,6 @@ int main()
     return r;
 
   QTest::qExec(std::make_unique<LabyrinthDataLoadTest>().get());
+  QTest::qExec(std::make_unique<LabyrinthModelPropertiesTest>().get());
   return 0;
 }
