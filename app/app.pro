@@ -22,5 +22,28 @@ win32 {
     INSTALLS += dlls
 }
 
+HEADERS += \
+    src/application.h \
+    src/window/window.h \
+    src/window/headerwindow.h \
+    src/window/toolbarwindow.h \
+    src/window/compasswindow.h \
+    src/window/instructionlistwindow.h \
+    src/window/plannerwindow.h \
+    src/window/puzzlewindow.h \
+    src/window/optionswindow.h
+
 SOURCES += \
-    src/main.cpp
+    src/main.cpp \
+    src/application.cpp \
+    src/window/window.cpp \
+    src/window/headerwindow.cpp \
+    src/window/toolbarwindow.cpp \
+    src/window/compasswindow.cpp \
+    src/window/instructionlistwindow.cpp \
+    src/window/plannerwindow.cpp \
+    src/window/puzzlewindow.cpp \
+    src/window/optionswindow.cpp
+
+RESOURCES += \
+    resources/labcompass.qrc

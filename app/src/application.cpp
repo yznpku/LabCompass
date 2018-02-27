@@ -19,7 +19,6 @@ void Application::initApplication()
 
 void Application::initResources()
 {
-  Q_INIT_RESOURCE(labcompass);
   QQuickStyle::setStyle("Material");
 
   qmlRegisterSingletonType(QUrl("qrc:/ui/Global.qml"), "com.labcompass", 1, 0, "Global");
