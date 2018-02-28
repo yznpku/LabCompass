@@ -13,7 +13,7 @@ struct NavigationData
     int goldenKeysInInventory {0};
     QList<std::pair<QString, QString>> lockedDoors;
 
-    int silverKeysInInventory {0};
+    QStringList portalLocations;
   };
 
   const LabyrinthData* lab {nullptr};

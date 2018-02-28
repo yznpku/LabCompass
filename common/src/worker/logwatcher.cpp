@@ -5,19 +5,28 @@
 #include "psapi.h"
 #endif
 
-static const QStringList START_LINES {"Izaro: Ascend with precision.",
-                                      "Izaro: The Goddess is watching.",
-                                      "Izaro: Justice will prevail."};
-static const QStringList FINISH_LINES {"Izaro: I die for the Empire!",
-                                       "Izaro: Delight in your gilded dungeon, ascendant.",
-                                       "Izaro: Your destination is more dangerous than the journey, ascendant.",
-                                       "Izaro: Triumphant at last!",
-                                       "Izaro: You are free!",
-                                       "Izaro: The trap of tyranny is inescapable."};
-static const QStringList SECTION_FINISH_LINES {"Izaro: By the Goddess! What ambition!",
-                                               "Izaro: Such resilience!",
-                                               "Izaro: You are inexhaustible!",
-                                               "Izaro: You were born for this!"};
+static const QStringList START_LINES {
+  "Izaro: Ascend with precision.",
+  "Izaro: The Goddess is watching.",
+  "Izaro: Justice will prevail.",
+};
+static const QStringList FINISH_LINES {
+  "Izaro: I die for the Empire!",
+  "Izaro: Delight in your gilded dungeon, ascendant.",
+  "Izaro: Your destination is more dangerous than the journey, ascendant.",
+  "Izaro: Triumphant at last!",
+  "Izaro: You are free!",
+  "Izaro: The trap of tyranny is inescapable.",
+};
+static const QStringList SECTION_FINISH_LINES {
+  "Izaro: By the Goddess! What ambition!",
+  "Izaro: Such resilience!",
+  "Izaro: You are inexhaustible!",
+  "Izaro: You were born for this!",
+};
+static const QStringList PORTAL_SPAWN_LINES {
+  ": A portal to Izaro appears."
+};
 static const QStringList LAB_ROOM_PREFIX {"Estate", "Domain", "Basilica", "Mansion", "Sepulchre", "Sanitorium"};
 static const QStringList LAB_ROOM_SUFFIX {"Walkways", "Path", "Crossing", "Annex", "Halls", "Passage", "Enclosure", "Atrium"};
 static const QRegularExpression LOG_REGEX {"^\\d+/\\d+/\\d+ \\d+:\\d+:\\d+.*?\\[.*?\\] (.*)$"};
@@ -95,6 +104,8 @@ void LogWatcher::parseLine(const QString line)
       emit labFinished();
     } else if (SECTION_FINISH_LINES.contains(logContent)) {
       emit sectionFinished();
+    } else if (PORTAL_SPAWN_LINES.contains(logContent)) {
+      emit portalSpawned();
     }
   }
 }

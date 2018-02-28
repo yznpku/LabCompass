@@ -18,6 +18,7 @@ public slots:
   void onSectionFinished();
   void onLabExit();
   void onRoomChanged(const QString& name);
+  void onPortalSpawned();
   void onRoomIsTargetSet(const QString& id, bool isTarget);
   void onRoomIdSet(const QString& id);
 };

@@ -19,6 +19,7 @@ signals:
   void sectionFinished();
   void labExit();
   void roomChanged(QString name);
+  void portalSpawned();
 
 public:
   LogWatcher(ApplicationModel* model);

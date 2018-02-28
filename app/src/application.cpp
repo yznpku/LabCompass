@@ -120,6 +120,9 @@ void Application::initControllers()
           navigationController.get(), &NavigationController::onLabExit);
   connect(logWatcher.get(), &LogWatcher::roomChanged,
           navigationController.get(), &NavigationController::onRoomChanged);
+  connect(logWatcher.get(), &LogWatcher::portalSpawned,
+          navigationController.get(), &NavigationController::onPortalSpawned);
+
   connect(plannerWindow.get(), &PlannerWindow::setRoomIsTarget,
           navigationController.get(), &NavigationController::onRoomIsTargetSet);
   connect(plannerWindow.get(), &PlannerWindow::setCurrentRoom,
