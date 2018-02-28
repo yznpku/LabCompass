@@ -61,8 +61,10 @@ void NavigationController::onRoomChanged(const QString& name)
     data.possibleCurrentRooms = {data.lab->sections[currentSection].trialRoom};
 
     // remove all targets in the current section
-    foreach (const auto& room, data.lab->sections[currentSection].roomIds)
-      data.targetRooms.removeAll(room);
+    if (model->get_settings()->value("portalSkipsSection").toBool()) {
+      foreach (const auto& room, data.lab->sections[currentSection].roomIds)
+        data.targetRooms.removeAll(room);
+    }
 
   } else {
     QSet<QString> connectedRooms;

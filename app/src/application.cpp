@@ -45,7 +45,9 @@ void Application::initSettings()
     {"poeClientPath", ""},
     {"latestVersion", ""},
     {"lastVersionCheckAttempt", 0LL},
-    {"lastVersionCheckSuccess", 0LL}
+    {"lastVersionCheckSuccess", 0LL},
+    {"portalSkipsSection", true},
+    {"multiclientSupport", false},
   };
   for (auto i = defaultSettings.constBegin(); i != defaultSettings.constEnd(); i++)
     if (!model.get_settings()->contains(i.key()))
