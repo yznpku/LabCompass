@@ -27,10 +27,12 @@ SOURCES += \
     src/tests/testdataavailabletest.cpp \
     src/tests/labyrinthdata/labyrinthdataloadtest.cpp \
     src/navigation/navigationcontrollerwrapper.cpp \
-    src/tests/labyrinthmodel/labyrinthmodelpropertiestest.cpp
+    src/tests/labyrinthmodel/labyrinthmodelpropertiestest.cpp \
+    src/tests/labyrinthdata/labyrinthdataroomistrialtest.cpp
 
 HEADERS += \
     src/tests/testdataavailabletest.h \
     src/tests/labyrinthdata/labyrinthdataloadtest.h \
     src/navigation/navigationcontrollerwrapper.h \
-    src/tests/labyrinthmodel/labyrinthmodelpropertiestest.h
+    src/tests/labyrinthmodel/labyrinthmodelpropertiestest.h \
+    src/tests/labyrinthdata/labyrinthdataroomistrialtest.h

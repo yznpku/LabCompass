@@ -8,7 +8,7 @@ class LabyrinthDataLoadTest : public QObject
   Q_OBJECT
 
 public:
-  explicit LabyrinthDataLoadTest(QObject *parent = nullptr);
+  LabyrinthDataLoadTest(QObject *parent = nullptr);
 
 private slots:
   void test_data();
