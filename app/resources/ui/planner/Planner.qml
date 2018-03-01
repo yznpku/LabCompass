@@ -112,37 +112,26 @@ WindowWithShadow {
 
     Grid {
       columns: 2
-      spacing: 20
+      columnSpacing: 20
+      rowSpacing: 10
 
       leftPadding: 40
       rightPadding: 40
 
-      Column {
-        spacing: 10
-        z: 1
-
-        LabyrinthMapDisplay {
-          id: labyrinthMapDisplay
-          objectName: 'labyrinthMapDisplay'
-          width: 830
-          height: 260
-          roomModel: Global.model.roomModel
-          connectionModel: Global.model.connectionModel
-          goldenDoorModel: Global.model.goldenDoorModel
-        }
-
-        PlannedRouteDisplay {
-          id: plannedRouteDisplay
-          width: 830
-          height: 28
-          plannedRouteModel: Global.model.plannedRouteModel
-        }
+      LabyrinthMapDisplay {
+        id: labyrinthMapDisplay
+        objectName: 'labyrinthMapDisplay'
+        width: 830
+        height: 260
+        roomModel: Global.model.roomModel
+        connectionModel: Global.model.connectionModel
+        goldenDoorModel: Global.model.goldenDoorModel
       }
 
       Rectangle {
         id: planSummary
         width: 280
-        height: 298
+        height: 260
         color: Global.primaryColor
         Grid {
           anchors.horizontalCenter: parent.horizontalCenter
@@ -188,6 +177,48 @@ WindowWithShadow {
               Text { color: Global.primaryTextColor; text: 'Silver Cache' }
             }
             Text { color: Global.primaryTextColor; width: 30; horizontalAlignment: Text.AlignHCenter; text: planSummaryModel.silverCaches }
+          }
+        }
+      }
+
+      PlannedRouteDisplay {
+        id: plannedRouteDisplay
+        width: 830
+        height: 28
+        plannedRouteModel: Global.model.plannedRouteModel
+      }
+
+      Item {
+        width: 280
+        height: 28
+
+        Row {
+          spacing: 4
+          anchors.verticalCenter: parent.verticalCenter
+          anchors.right: parent.right
+
+          Text {
+            text: 'Donate: '
+            color: Global.primaryTextColor
+            font.pixelSize: 20
+          }
+          MaterialInk {
+            width: 24
+            height: 24
+            onClicked: openUrl('https://www.paypal.me/futurecode')
+            SvgImage {
+              source: 'qrc:/images/paypal.svg'
+              anchors.fill: parent
+            }
+          }
+          MaterialInk {
+            width: 24
+            height: 24
+            onClicked: openUrl('https://www.patreon.com/futurecode')
+            SvgImage {
+              source: 'qrc:/images/patreon.svg'
+              anchors.fill: parent
+            }
           }
         }
       }

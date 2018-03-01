@@ -19,7 +19,6 @@ void Application::initApplication()
 
 void Application::initResources()
 {
-  Q_INIT_RESOURCE(labcompass);
   QQuickStyle::setStyle("Material");
 
   qmlRegisterSingletonType(QUrl("qrc:/ui/Global.qml"), "com.labcompass", 1, 0, "Global");
@@ -46,7 +45,9 @@ void Application::initSettings()
     {"poeClientPath", ""},
     {"latestVersion", ""},
     {"lastVersionCheckAttempt", 0LL},
-    {"lastVersionCheckSuccess", 0LL}
+    {"lastVersionCheckSuccess", 0LL},
+    {"portalSkipsSection", true},
+    {"multiclientSupport", false},
   };
   for (auto i = defaultSettings.constBegin(); i != defaultSettings.constEnd(); i++)
     if (!model.get_settings()->contains(i.key()))
@@ -121,6 +122,9 @@ void Application::initControllers()
           navigationController.get(), &NavigationController::onLabExit);
   connect(logWatcher.get(), &LogWatcher::roomChanged,
           navigationController.get(), &NavigationController::onRoomChanged);
+  connect(logWatcher.get(), &LogWatcher::portalSpawned,
+          navigationController.get(), &NavigationController::onPortalSpawned);
+
   connect(plannerWindow.get(), &PlannerWindow::setRoomIsTarget,
           navigationController.get(), &NavigationController::onRoomIsTargetSet);
   connect(plannerWindow.get(), &PlannerWindow::setCurrentRoom,

@@ -48,10 +48,23 @@ void NavigationController::onRoomChanged(const QString& name)
   if (data.currentRoomDetermined)
     data.previousRoom = data.currentRoom;
 
-  // assume the user follow the planned route
+  // the user follows the planned route
   if (data.currentRoomDetermined && data.plannedRoute.size() >= 2 &&
       model->labyrinthData.getRoomFromId(data.plannedRoute[1]).name == name) {
     data.possibleCurrentRooms = {data.plannedRoute[1]};
+
+  // the user takes a portal to the next trial room
+  } else if (data.currentRoomDetermined &&
+             data.contentState.portalLocations.contains(data.currentRoom) &&
+             name == "Aspirant\'s Trial") {
+    int currentSection = data.lab->getRoomFromId(data.currentRoom).section;
+    data.possibleCurrentRooms = {data.lab->sections[currentSection].trialRoom};
+
+    // remove all targets in the current section
+    if (model->get_settings()->value("portalSkipsSection").toBool()) {
+      foreach (const auto& room, data.lab->sections[currentSection].roomIds)
+        data.targetRooms.removeAll(room);
+    }
 
   } else {
     QSet<QString> connectedRooms;
@@ -95,6 +108,18 @@ void NavigationController::onRoomChanged(const QString& name)
   }
 
   data.updatePlannedRouteAndInstructions();
+  model->updateNavigationData(data);
+}
+
+void NavigationController::onPortalSpawned()
+{
+  if (!model->get_isValid())
+    return;
+
+  NavigationData data = model->navigationData;
+  if (data.currentRoomDetermined)
+    data.contentState.portalLocations.append(data.currentRoom);
+
   model->updateNavigationData(data);
 }
 

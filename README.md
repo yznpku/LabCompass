@@ -1,6 +1,7 @@
 LabCompass
 [![Github All Releases](https://img.shields.io/github/downloads/yznpku/LabCompass/total.svg)](https://github.com/yznpku/LabCompass/releases)
 [![Donate by PayPal](https://img.shields.io/badge/donate-%F0%9F%92%B0-1A1A1A.svg)](https://www.paypal.me/futurecode)
+[![Become a Patreon](https://img.shields.io/badge/patreon-%F0%9F%8E%AF-orange.svg)](https://www.patreon.com/futurecode)
 ===
 
 An overlay aiming to improve the quality of life when running labyrinths in [Path of Exile](https://www.pathofexile.com/).

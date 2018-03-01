@@ -72,5 +72,7 @@
         <file>images/focus.svg</file>
         <file>images/github.svg</file>
         <file>images/instruction/direction_unknown.svg</file>
+        <file>images/patreon.svg</file>
+        <file>images/paypal.svg</file>
     </qresource>
 </RCC>

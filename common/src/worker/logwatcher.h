@@ -11,6 +11,7 @@ class LogWatcher : public QObject
   ApplicationModel* model;
   QTimer timer;
   QString clientPath;
+  QString activeClientId;
   std::unique_ptr<QFile> file;
 
 signals:
@@ -19,6 +20,7 @@ signals:
   void sectionFinished();
   void labExit();
   void roomChanged(QString name);
+  void portalSpawned();
 
 public:
   LogWatcher(ApplicationModel* model);

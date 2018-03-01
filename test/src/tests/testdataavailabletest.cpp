@@ -1,12 +1,11 @@
-#include "labyrinthdataloadtest.h"
-#include "model/labyrinthdata.h"
+#include "testdataavailabletest.h"
 
-LabyrinthDataLoadTest::LabyrinthDataLoadTest(QObject *parent) : QObject(parent)
+TestDataAvailableTest::TestDataAvailableTest(QObject *parent) : QObject(parent)
 {
 
 }
 
-void LabyrinthDataLoadTest::testLoad_data()
+void TestDataAvailableTest::test_data()
 {
   QTest::addColumn<QString>("fileName");
 
@@ -20,9 +19,8 @@ void LabyrinthDataLoadTest::testLoad_data()
   QTest::newRow("2018-01-10_uber.json") << "2018-01-10_uber.json";
 }
 
-void LabyrinthDataLoadTest::testLoad()
+void TestDataAvailableTest::test()
 {
   QFETCH(QString, fileName);
-  LabyrinthData data;
-  QVERIFY(data.loadFromFile(QDir("data").filePath(fileName)));
+  QVERIFY2(QDir("data").exists(fileName), "Test data not found. Run \"make install\" before running this test.");
 }

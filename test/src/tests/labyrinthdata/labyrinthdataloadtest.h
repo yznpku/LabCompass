@@ -6,11 +6,13 @@
 class LabyrinthDataLoadTest : public QObject
 {
   Q_OBJECT
+
 public:
-  explicit LabyrinthDataLoadTest(QObject *parent = nullptr);
+  LabyrinthDataLoadTest(QObject *parent = nullptr);
+
 private slots:
-  void testLoad_data();
-  void testLoad();
+  void test_data();
+  void test();
 };
 
 #endif // LABYRINTHMODELLOADTEST_H

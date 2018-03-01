@@ -10,8 +10,11 @@ class OptionsWindow : public Window
   Q_OBJECT
 
   Settings* settings;
-
-  QObject* clientPathInput {nullptr};
+  QStringList settingNames {
+    "poeClientPath",
+    "portalSkipsSection",
+    "multiclientSupport",
+  };
 
 public:
   OptionsWindow(QQmlEngine* engine, Settings* settings);

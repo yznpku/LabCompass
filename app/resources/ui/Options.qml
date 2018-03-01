@@ -12,6 +12,10 @@ WindowWithShadow {
   property int contentWidth: 600
   Material.theme: Material.Dark
 
+  property alias poeClientPath: clientPathInput.text
+  property alias portalSkipsSection: portalSkipsSectionInput.checked
+  property alias multiclientSupport: multiclientSupportInput.checked
+
   Column {
     id: column
     width: contentWidth
@@ -78,7 +82,7 @@ WindowWithShadow {
       x: 40
       color: Global.primaryTextColor
       text: 'Options'
-      font.pixelSize: 20
+      font.pixelSize: 24
     }
 
     GridLayout {
@@ -93,12 +97,12 @@ WindowWithShadow {
 
       Text {
         Layout.columnSpan: 2
-        color: Global.primaryTextColor;
+        color: Global.primaryTextColor
         text: 'Game Client Path'
       }
 
       TextField {
-        objectName: 'clientPathInput'
+        id: clientPathInput
         Layout.fillWidth: true
         font.family: 'Open Sans'
       }
@@ -114,6 +118,30 @@ WindowWithShadow {
           source: 'qrc:/images/browse.svg'
           sourceSize: Qt.size(96, 96)
         }
+      }
+
+      Text {
+        color: Global.primaryTextColor
+        text: 'Taking Portals Skips Current Section'
+        font.pixelSize: 20
+      }
+
+      CheckBox {
+        id: portalSkipsSectionInput
+        width: 24
+        height: 24
+      }
+
+      Text {
+        color: Global.primaryTextColor
+        text: 'Multi-client Support (Experimental)'
+        font.pixelSize: 20
+      }
+
+      CheckBox {
+        id: multiclientSupportInput
+        width: 24
+        height: 24
       }
     }
 
