@@ -30,7 +30,7 @@ void OptionsWindow::onBrowseClientPath()
 {
   auto file = QFileDialog::getOpenFileName(this, "Find Game Client", "", "Path of Exile Client (*.exe)");
   if (!file.isEmpty())
-     rootObject()->setProperty("clientPath", QFileInfo(file).dir().absolutePath());
+    rootObject()->setProperty("poeClientPath", QFileInfo(file).dir().absolutePath());
 }
 
 void OptionsWindow::onOpenUrl(const QString& url)
