@@ -29,7 +29,7 @@ static const QStringList PORTAL_SPAWN_LINES {
 };
 static const QStringList LAB_ROOM_PREFIX {"Estate", "Domain", "Basilica", "Mansion", "Sepulchre", "Sanitorium"};
 static const QStringList LAB_ROOM_SUFFIX {"Walkways", "Path", "Crossing", "Annex", "Halls", "Passage", "Enclosure", "Atrium"};
-static const QRegularExpression LOG_REGEX {"^\\d+/\\d+/\\d+ \\d+:\\d+:\\d+.*?\\[.*?\\] (.*)$"};
+static const QRegularExpression LOG_REGEX {"^\\d+/\\d+/\\d+ \\d+:\\d+:\\d+.*?\\[.*?(\\d+)\\] (.*)$"};
 static const QRegularExpression ROOM_CHANGE_REGEX {"^: You have entered (.*?)\\.$"};
 
 LogWatcher::LogWatcher(ApplicationModel* model)
@@ -87,25 +87,32 @@ void LogWatcher::parseLine(const QString line)
 {
   auto logMatch = LOG_REGEX.match(line);
   if (logMatch.hasMatch()) {
-    auto logContent = logMatch.captured(1).trimmed();
+    auto clientId = logMatch.captured(1);
+
+    auto logContent = logMatch.captured(2).trimmed();
     auto roomChangeMatch = ROOM_CHANGE_REGEX.match(logContent);
-    if (roomChangeMatch.hasMatch()) {
-      auto roomName = roomChangeMatch.captured(1);
-      auto affixes = roomName.split(' ');
-      if (roomName == "Aspirant\'s Trial" ||
-          (affixes.size() == 2 && LAB_ROOM_PREFIX.contains(affixes[0]) && LAB_ROOM_SUFFIX.contains(affixes[1])))
-        emit roomChanged(roomName);
-      else
-        emit labExit();
-    } else if (START_LINES.contains(logContent)) {
+
+    if (START_LINES.contains(logContent)) {
+      activeClientId = clientId;
       emit labStarted();
-    } else if (FINISH_LINES.contains(logContent)) {
-      emit sectionFinished();
-      emit labFinished();
-    } else if (SECTION_FINISH_LINES.contains(logContent)) {
-      emit sectionFinished();
-    } else if (PORTAL_SPAWN_LINES.contains(logContent)) {
-      emit portalSpawned();
+
+    } else if (!model->get_settings()->value("multiclientSupport").toBool() || clientId == activeClientId) {
+      if (roomChangeMatch.hasMatch()) {
+        auto roomName = roomChangeMatch.captured(1);
+        auto affixes = roomName.split(' ');
+        if (roomName == "Aspirant\'s Trial" ||
+            (affixes.size() == 2 && LAB_ROOM_PREFIX.contains(affixes[0]) && LAB_ROOM_SUFFIX.contains(affixes[1])))
+          emit roomChanged(roomName);
+        else
+          emit labExit();
+      } else if (FINISH_LINES.contains(logContent)) {
+        emit sectionFinished();
+        emit labFinished();
+      } else if (SECTION_FINISH_LINES.contains(logContent)) {
+        emit sectionFinished();
+      } else if (PORTAL_SPAWN_LINES.contains(logContent)) {
+        emit portalSpawned();
+      }
     }
   }
 }

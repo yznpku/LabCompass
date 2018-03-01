@@ -11,6 +11,7 @@ class LogWatcher : public QObject
   ApplicationModel* model;
   QTimer timer;
   QString clientPath;
+  QString activeClientId;
   std::unique_ptr<QFile> file;
 
 signals:
