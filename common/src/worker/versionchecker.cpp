@@ -5,11 +5,20 @@ VersionChecker::VersionChecker(ApplicationModel* model, QObject* parent) : QObje
 {
   this->model = model;
 
+  moveToThread(&networkThread);
+  networkThread.start();
+
   timer.setInterval(1000);
   timer.setSingleShot(false);
   timer.start();
   connect(&timer, &QTimer::timeout,
           this, &VersionChecker::work);
+}
+
+VersionChecker::~VersionChecker()
+{
+  networkThread.terminate();
+  networkThread.wait();
 }
 
 void VersionChecker::work()
@@ -22,7 +31,9 @@ void VersionChecker::work()
       now - model->get_settings()->value("lastVersionCheckSuccess").toLongLong() > 86400) {
     model->get_settings()->setValue("lastVersionCheckAttempt", now);
 
-    auto reply = nam.get(QNetworkRequest(QUrl("https://api.github.com/repos/yznpku/LabCompass/releases/latest")));
+    if (!nam.get())
+      nam.reset(new QNetworkAccessManager());
+    auto reply = nam->get(QNetworkRequest(QUrl("https://api.github.com/repos/yznpku/LabCompass/releases/latest")));
 
     connect(reply, &QNetworkReply::finished,
             this, &VersionChecker::onReplyFinished);

@@ -22,6 +22,9 @@ class Application : public QApplication
   ApplicationModel model;
   QQmlApplicationEngine engine;
 
+  std::unique_ptr<QSystemTrayIcon> trayIcon;
+  std::unique_ptr<QMenu> trayIconMenu;
+
   std::unique_ptr<Window> dummyWindow;
   std::unique_ptr<HeaderWindow> headerWindow;
   std::unique_ptr<CompassWindow> compassWindow;
@@ -44,6 +47,7 @@ private:
   void initApplication();
   void initResources();
   void initSettings();
+  void initSystemTrayIcon();
   void initWindows();
   void initWorkers();
   void initControllers();

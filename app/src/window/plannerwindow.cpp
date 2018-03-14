@@ -1,4 +1,5 @@
 #include "plannerwindow.h"
+#include "settings.h"
 
 PlannerWindow::PlannerWindow(QQmlEngine* engine) : Window(engine, false)
 {
@@ -27,12 +28,23 @@ void PlannerWindow::onWindowOpenChanged()
 
 void PlannerWindow::onImportLabNotesFileClicked()
 {
-  auto downloadLocations = QStandardPaths::standardLocations(QStandardPaths::DownloadLocation);
+  Settings* settings = global()->property("model").value<QObject*>()->property("settings").value<Settings*>();
+  auto importDirectory = settings->value("importDirectory").toString();
+  if (importDirectory.isEmpty()) {
+    auto downloadLocations = QStandardPaths::standardLocations(QStandardPaths::DownloadLocation);
+    if (!downloadLocations.isEmpty())
+      importDirectory = downloadLocations[0];
+  }
+
   auto fileName = QFileDialog::getOpenFileName(nullptr, "Import Lab Notes",
-                                               downloadLocations.isEmpty() ? "" : downloadLocations[0],
+                                               importDirectory,
                                                "Lab Notes (*.json)");
-  if (!fileName.isEmpty())
+  if (!fileName.isEmpty()) {
+    auto directory = QFileInfo(fileName).absoluteDir().absolutePath();
+    settings->setValue("importDirectory", directory);
+
     emit importFile(fileName);
+  }
 }
 
 void PlannerWindow::onOpenUrl(const QString& url)

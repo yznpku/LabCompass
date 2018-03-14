@@ -1,11 +1,13 @@
 #include "application.h"
 #include "version.h"
+#include "tray/trayiconmenu.h"
 
 Application::Application(int argc, char** argv) : QApplication(argc, argv)
 {
   initApplication();
   initResources();
   initSettings();
+  initSystemTrayIcon();
   initWindows();
   initWorkers();
   initControllers();
@@ -41,13 +43,14 @@ void Application::initResources()
 void Application::initSettings()
 {
   QVariantMap defaultSettings {
-    {"mainWindowPosition", QPoint(100, 100)},
+    {"mainWindowPosition", QPoint(-1, -1)},
     {"poeClientPath", ""},
     {"latestVersion", ""},
     {"lastVersionCheckAttempt", 0LL},
     {"lastVersionCheckSuccess", 0LL},
     {"portalSkipsSection", true},
     {"multiclientSupport", false},
+    {"scaleFactor", "1"},
   };
   for (auto i = defaultSettings.constBegin(); i != defaultSettings.constEnd(); i++)
     if (!model.get_settings()->contains(i.key()))
@@ -61,6 +64,15 @@ void Application::initSettings()
   }
 }
 
+void Application::initSystemTrayIcon()
+{
+  trayIcon.reset(new QSystemTrayIcon(QIcon(":/LabCompass.ico")));
+  trayIconMenu.reset(new TrayIconMenu());
+  trayIcon->setContextMenu(trayIconMenu.get());
+  trayIcon->setToolTip("LabCompass");
+  trayIcon->show();
+}
+
 void Application::initWindows()
 {
   dummyWindow.reset(new Window(&engine, true));
@@ -68,9 +80,14 @@ void Application::initWindows()
   dummyWindow->show();
 
   headerWindow.reset(new HeaderWindow(&engine));
-  headerWindow->move(model.get_settings()->value("mainWindowPosition").toPoint());
   connect(headerWindow.get(), &HeaderWindow::moved,
           [this](int x, int y) { model.get_settings()->setValue("mainWindowPosition", QPoint(x, y)); });
+
+  auto mainWindowPosition = model.get_settings()->value("mainWindowPosition").toPoint();
+  auto screenGeometry = headerWindow->quickWindow()->screen()->geometry();
+  if (!screenGeometry.contains(mainWindowPosition))
+    mainWindowPosition = screenGeometry.center();
+  headerWindow->move(mainWindowPosition);
 
   compassWindow.reset(new CompassWindow(&engine));
   compassWindow->setParentWindow(headerWindow.get(), QPoint(-48, 26));
