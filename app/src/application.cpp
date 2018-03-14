@@ -69,6 +69,7 @@ void Application::initSystemTrayIcon()
   trayIcon.reset(new QSystemTrayIcon(QIcon(":/LabCompass.ico")));
   trayIconMenu.reset(new TrayIconMenu());
   trayIcon->setContextMenu(trayIconMenu.get());
+  trayIcon->setToolTip("LabCompass");
   trayIcon->show();
 }
 
