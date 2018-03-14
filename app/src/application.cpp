@@ -41,7 +41,7 @@ void Application::initResources()
 void Application::initSettings()
 {
   QVariantMap defaultSettings {
-    {"mainWindowPosition", QPoint(100, 100)},
+    {"mainWindowPosition", QPoint(-1, -1)},
     {"poeClientPath", ""},
     {"latestVersion", ""},
     {"lastVersionCheckAttempt", 0LL},
@@ -69,9 +69,14 @@ void Application::initWindows()
   dummyWindow->show();
 
   headerWindow.reset(new HeaderWindow(&engine));
-  headerWindow->move(model.get_settings()->value("mainWindowPosition").toPoint());
   connect(headerWindow.get(), &HeaderWindow::moved,
           [this](int x, int y) { model.get_settings()->setValue("mainWindowPosition", QPoint(x, y)); });
+
+  auto mainWindowPosition = model.get_settings()->value("mainWindowPosition").toPoint();
+  auto screenGeometry = headerWindow->quickWindow()->screen()->geometry();
+  if (!screenGeometry.contains(mainWindowPosition))
+    mainWindowPosition = screenGeometry.center();
+  headerWindow->move(mainWindowPosition);
 
   compassWindow.reset(new CompassWindow(&engine));
   compassWindow->setParentWindow(headerWindow.get(), QPoint(-48, 26));
