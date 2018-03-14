@@ -15,6 +15,7 @@ WindowWithShadow {
   property alias poeClientPath: clientPathInput.text
   property alias portalSkipsSection: portalSkipsSectionInput.checked
   property alias multiclientSupport: multiclientSupportInput.checked
+  property alias uiScaleFactorIndex: uiScaleFactorInput.currentIndex
 
   Column {
     id: column
@@ -44,7 +45,9 @@ WindowWithShadow {
             width: 32
             height: 32
             onClicked: openUrl('https://github.com/yznpku/LabCompass')
-            Image {
+            SvgImage {
+              width: 24
+              height: 24
               anchors.centerIn: parent
               source: 'qrc:/images/github.svg'
             }
@@ -74,7 +77,7 @@ WindowWithShadow {
 
     Rectangle {
       width: contentWidth
-      height: 1
+      height: 2
       color: Qt.lighter(Global.primaryColor)
     }
 
@@ -143,28 +146,24 @@ WindowWithShadow {
         width: 24
         height: 24
       }
+
+      Text {
+        color: Global.primaryTextColor
+        text: 'UI Scale Factor <sup>*</sup>'
+        font.pixelSize: 20
+      }
+
+      ComboBox {
+        id: uiScaleFactorInput
+        objectName: 'uiScaleFactorInput'
+      }
     }
 
-    MaterialInk {
-      anchors.right: parent.right
-      anchors.rightMargin: 30
-      width: 80
-      height: 30
-      onClicked: {
-        save();
-        Global.optionsWindowOpen = false;
-      }
-      Rectangle {
-        anchors.fill: parent
-        color: '#2196F3'
-        radius: 2
-        z: -1
-        Text {
-          anchors.centerIn: parent
-          text: 'OK'
-          color: Global.primaryTextColor
-        }
-      }
+    Text {
+      x: 40
+      color: Global.secondaryTextColor
+      text: '<sup>*</sup> Restart LabCompass to Apply Changes'
+      font.pixelSize: 16
     }
   }
 
@@ -180,6 +179,31 @@ WindowWithShadow {
     SvgImage {
       anchors.centerIn: parent
       source: 'qrc:/images/close.svg'
+    }
+  }
+
+  MaterialInk {
+    id: saveButton
+    anchors.right: column.right
+    anchors.rightMargin: 30
+    anchors.bottom: column.bottom
+    anchors.bottomMargin: 15
+    width: 80
+    height: 30
+    onClicked: {
+      save();
+      Global.optionsWindowOpen = false;
+    }
+    Rectangle {
+      anchors.fill: parent
+      color: '#2196F3'
+      radius: 2
+      z: -1
+      Text {
+        anchors.centerIn: parent
+        text: 'OK'
+        color: Global.primaryTextColor
+      }
     }
   }
 }

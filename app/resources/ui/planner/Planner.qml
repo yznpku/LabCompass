@@ -106,7 +106,7 @@ WindowWithShadow {
 
     Rectangle {
       width: grid.width
-      height: 1
+      height: 2
       color: Qt.lighter(Global.primaryColor)
     }
 
