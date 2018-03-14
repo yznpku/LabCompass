@@ -1,11 +1,13 @@
 #include "application.h"
 #include "version.h"
+#include "tray/trayiconmenu.h"
 
 Application::Application(int argc, char** argv) : QApplication(argc, argv)
 {
   initApplication();
   initResources();
   initSettings();
+  initSystemTrayIcon();
   initWindows();
   initWorkers();
   initControllers();
@@ -60,6 +62,14 @@ void Application::initSettings()
     model.get_settings()->setValue("lastVersionCheckAttempt", 0LL);
     model.get_settings()->setValue("lastVersionCheckSuccess", 0LL);
   }
+}
+
+void Application::initSystemTrayIcon()
+{
+  trayIcon.reset(new QSystemTrayIcon(QIcon(":/LabCompass.ico")));
+  trayIconMenu.reset(new TrayIconMenu());
+  trayIcon->setContextMenu(trayIconMenu.get());
+  trayIcon->show();
 }
 
 void Application::initWindows()

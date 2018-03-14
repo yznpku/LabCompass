@@ -31,7 +31,8 @@ HEADERS += \
     src/window/instructionlistwindow.h \
     src/window/plannerwindow.h \
     src/window/puzzlewindow.h \
-    src/window/optionswindow.h
+    src/window/optionswindow.h \
+    src/tray/trayiconmenu.h
 
 SOURCES += \
     src/main.cpp \
@@ -43,7 +44,8 @@ SOURCES += \
     src/window/instructionlistwindow.cpp \
     src/window/plannerwindow.cpp \
     src/window/puzzlewindow.cpp \
-    src/window/optionswindow.cpp
+    src/window/optionswindow.cpp \
+    src/tray/trayiconmenu.cpp
 
 RESOURCES += \
     resources/labcompass.qrc

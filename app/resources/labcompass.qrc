@@ -74,5 +74,6 @@
         <file>images/instruction/direction_unknown.svg</file>
         <file>images/patreon.svg</file>
         <file>images/paypal.svg</file>
+        <file>LabCompass.ico</file>
     </qresource>
 </RCC>
