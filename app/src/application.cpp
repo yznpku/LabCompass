@@ -48,6 +48,7 @@ void Application::initSettings()
     {"lastVersionCheckSuccess", 0LL},
     {"portalSkipsSection", true},
     {"multiclientSupport", false},
+    {"scaleFactor", "1"},
   };
   for (auto i = defaultSettings.constBegin(); i != defaultSettings.constEnd(); i++)
     if (!model.get_settings()->contains(i.key()))
