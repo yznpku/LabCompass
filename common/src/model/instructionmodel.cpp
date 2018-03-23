@@ -1,6 +1,6 @@
 #include "instructionmodel.h"
 
-static const QStringList LOOT_LIST = {
+static const QStringList LOOT_LIST {
   "Switch puzzle",
   "Floor puzzle",
   "Escort gauntlet",
@@ -11,7 +11,12 @@ static const QStringList LOOT_LIST = {
   "silver-key",
   "silver-door",
 };
-static const QStringList DIRECTION_LIST = {"N", "NE", "E", "SE", "S", "SW", "W", "NW"};
+static const QStringList MAJOR_LOOT_LIST {
+  "golden-key",
+  "silver-key",
+  "silver-door",
+};
+static const QStringList DIRECTION_LIST {"N", "NE", "E", "SE", "S", "SW", "W", "NW"};
 
 InstructionModel::InstructionModel(QObject* parent) : QObject(parent)
 {
@@ -31,11 +36,7 @@ void InstructionModel::loadFromData(const NavigationData& data)
   if (!data.currentRoomDetermined)
     return;
 
-  auto contents = data.lab->getRoomFromId(data.currentRoom).contents;
-  QStringList loot;
-  std::copy_if(contents.constBegin(), contents.constEnd(), std::back_inserter(loot),
-               [](const QString& content) { return LOOT_LIST.contains(content); });
-  update_roomLoot(loot);
+  updateContentsAndLocations(data);
 
   auto exits = data.lab->connections[data.currentRoom];
   QStringList doorExitDirections;
@@ -85,4 +86,45 @@ void InstructionModel::loadFromData(const NavigationData& data)
 
     update_izaroMechanics(get_currentSection() < 2 ? data.lab->sectionMechanics[get_currentSection()] : "");
   }
+}
+
+void InstructionModel::updateContentsAndLocations(const NavigationData& data)
+{
+  auto room = data.lab->getRoomFromId(data.currentRoom);
+  auto contents = room.contents;
+  auto allContentLocations = room.contentLocations;
+  QStringList loot;
+  QStringList majorLoot;
+  QStringList minorLoot;
+
+  foreach (auto content, contents)
+    if (LOOT_LIST.contains(content)) {
+      loot.append(content);
+      if (MAJOR_LOOT_LIST.contains(content))
+        majorLoot.append(content);
+      else
+        minorLoot.append(content);
+    }
+  update_roomLoot(loot);
+
+  if (data.lab->roomHasSecretPassage(data.currentRoom)) {
+    loot.append("secret_passage");
+    minorLoot.append("secret_passage");
+  }
+
+  QVariantList visibleContentLocations;
+  if (!loot.isEmpty()) {
+    if (allContentLocations.contains("generic")) {
+      foreach (auto direction, allContentLocations["generic"].toStringList())
+        visibleContentLocations.append(QVariantMap {{"direction", direction}, {"major", false}});
+    } else {
+      if (!majorLoot.isEmpty() && allContentLocations.contains("major"))
+        foreach (auto direction, allContentLocations["major"].toStringList())
+          visibleContentLocations.append(QVariantMap {{"direction", direction}, {"major", true}});
+      if (!minorLoot.isEmpty() && allContentLocations.contains("minor"))
+        foreach (auto direction, allContentLocations["minor"].toStringList())
+          visibleContentLocations.append(QVariantMap {{"direction", direction}, {"major", false}});
+    }
+  }
+  update_contentLocations(visibleContentLocations);
 }

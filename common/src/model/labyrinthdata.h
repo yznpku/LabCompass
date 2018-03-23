@@ -50,6 +50,7 @@ public:
   bool roomIsFirstRoomInSection(const QString& id) const;
   bool roomIsTrial(const QString& id) const;
   bool roomIsDeadEnd(const QString& id) const;
+  bool roomHasSecretPassage(const QString& id) const;
 
   qreal roomCost(const QString& id) const;
 

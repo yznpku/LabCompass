@@ -114,6 +114,15 @@ bool LabyrinthData::roomIsDeadEnd(const QString& id) const
   return exits == 1;
 }
 
+bool LabyrinthData::roomHasSecretPassage(const QString& id) const
+{
+  auto roomConnections = connections[id];
+  for (auto i = roomConnections.constBegin(); i != roomConnections.constEnd(); i++)
+    if (i.value().contains("C"))
+      return true;
+  return false;
+}
+
 qreal LabyrinthData::roomCost(const QString& id) const
 {
   if (roomIsTrial(id))

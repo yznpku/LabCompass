@@ -10,6 +10,7 @@ class InstructionModel : public QObject
 
   QML_READONLY_VAR_PROPERTY(QStringList, roomLoot)
   QML_READONLY_VAR_PROPERTY(QStringList, roomDoorExitDirections)
+  QML_READONLY_VAR_PROPERTY(QVariantList, contentLocations) // ["direction": string, "major": bool]
   QML_READONLY_VAR_PROPERTY(bool, roomHasPortal)
 
   QML_READONLY_VAR_PROPERTY(bool, hasNextRoom)
@@ -18,7 +19,7 @@ class InstructionModel : public QObject
   QML_READONLY_VAR_PROPERTY(bool, nextRoomIsPreviousRoom)
   QML_READONLY_VAR_PROPERTY(bool, nextRoomIsUnmarkedOppositeDirection)
   QML_READONLY_VAR_PROPERTY(QString, nextRoomName)
-  QML_READONLY_VAR_PROPERTY(QString, nextRoomConnectionType) // values: "none", "door", "secret", "portal"
+  QML_READONLY_VAR_PROPERTY(QString, nextRoomConnectionType) // "none" | "door" | "secret"
   QML_READONLY_VAR_PROPERTY(QString, nextRoomDirection)
 
   QML_READONLY_VAR_PROPERTY(int, finishedSections)
@@ -29,6 +30,9 @@ class InstructionModel : public QObject
 public:
   InstructionModel(QObject* parent = nullptr);
   void loadFromData(const NavigationData& data);
+
+private:
+  void updateContentsAndLocations(const NavigationData& data);
 };
 
 #endif // INSTRUCTIONMODEL_H

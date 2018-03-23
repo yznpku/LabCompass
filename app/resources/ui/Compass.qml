@@ -29,6 +29,24 @@ Image {
         }
       }
     }
+
+    Repeater {
+      id: contentLocationsView
+      model: instructionModel.contentLocations
+
+      Rectangle {
+        x: 80 + Global.directionMapping[modelData.direction].dx * 30
+        y: 80 + Global.directionMapping[modelData.direction].dy * 30
+        width: 10
+        height: 10
+        radius: 5
+        color: instructionModel.nextRoomConnectionType === 'secret' && !modelData.major ? Global.activePathColor : 'white'
+        border {
+          width: 1
+          color: 'black'
+        }
+      }
+    }
   }
 
   Row {
