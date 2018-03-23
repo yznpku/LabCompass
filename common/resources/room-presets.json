@@ -43,6 +43,13 @@
     }
   },
   {
+    "roomName": "Domain Walkways",
+    "keyword": "dg_branch_bottleneck_1",
+    "contentLocations": {
+      "generic": ["N", "E"]
+    }
+  },
+  {
     "roomName": "Estate Crossing",
     "keyword": "oh_quad",
     "contentLocations": {
@@ -98,6 +105,20 @@
     "contentLocations": {
       "major": ["NW"],
       "minor": ["SW"]
+    }
+  },
+  {
+    "roomName": "Mansion Atrium",
+    "keyword": "eh_quad",
+    "contentLocations": {
+      "generic": ["E", "NW"]
+    }
+  },
+  {
+    "roomName": "Mansion Halls",
+    "keyword": "eh_branch_bottleneck_2",
+    "contentLocations": {
+      "generic": ["NE", "S"]
     }
   },
   {
