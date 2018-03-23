@@ -52,3 +52,6 @@ SOURCES += \
     src/model/instructionmodel.cpp \
     src/model/plansummarymodel.cpp \
     src/worker/versionchecker.cpp
+
+RESOURCES += \
+    resources/common.qrc

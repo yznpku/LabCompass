@@ -48,4 +48,4 @@ SOURCES += \
     src/tray/trayiconmenu.cpp
 
 RESOURCES += \
-    resources/labcompass.qrc
+    resources/app.qrc
