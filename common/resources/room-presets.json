@@ -1,6 +1,13 @@
 [
   {
     "roomName": "Basilica Halls",
+    "keyword": "rt_branch_bottleneck_1",
+    "contentLocations": {
+      "generic": ["NE", "SW"]
+    }
+  },
+  {
+    "roomName": "Basilica Halls",
     "keyword": "rt_branch_bottleneck_2",
     "contentLocations": {
       "generic": ["E", "SW"]
@@ -30,6 +37,13 @@
   },
   {
     "roomName": "Domain Path",
+    "keyword": "dg_straight_bottleneck",
+    "contentLocations": {
+      "generic": ["SW", "NW"]
+    }
+  },
+  {
+    "roomName": "Domain Path",
     "keyword": "dg_straight",
     "contentLocations": {
       "generic": ["E", "W"]
@@ -47,6 +61,20 @@
     "keyword": "dg_branch_bottleneck_1",
     "contentLocations": {
       "generic": ["N", "E"]
+    }
+  },
+  {
+    "roomName": "Domain Walkways",
+    "keyword": "dg_branch_bottleneck_2",
+    "contentLocations": {
+      "generic": ["E", "NW"]
+    }
+  },
+  {
+    "roomName": "Domain Walkways",
+    "keyword": "dg_branch",
+    "contentLocations": {
+      "generic": ["E", "NW"]
     }
   },
   {
@@ -140,6 +168,28 @@
     "keyword": "eh_straight_bottleneck",
     "contentLocations": {
       "generic": ["NE", "W"]
+    }
+  },
+  {
+    "roomName": "Mansion Passage",
+    "keyword": "eh_straight",
+    "contentLocations": {
+      "generic": ["NE", "SW"]
+    }
+  },
+  {
+    "roomName": "Sanitorium Annex",
+    "keyword": "p_end_bottleneck",
+    "contentLocations": {
+      "major": ["NW"],
+      "minor": ["SW"]
+    }
+  },
+  {
+    "roomName": "Sanitorium Halls",
+    "keyword": "p_branch_door",
+    "contentLocations": {
+      "generic": ["SW"]
     }
   },
   {
