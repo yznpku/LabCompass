@@ -1,5 +1,20 @@
 [
   {
+    "roomName": "Basilica Annex",
+    "keyword": "rt_end_bottleneck",
+    "contentLocations": {
+      "major": ["NE"],
+      "minor": ["S"]
+    }
+  },
+  {
+    "roomName": "Basilica Halls",
+    "keyword": "rt_branch_door",
+    "contentLocations": {
+      "generic": ["SW"]
+    }
+  },
+  {
     "roomName": "Basilica Halls",
     "keyword": "rt_branch_bottleneck_1",
     "contentLocations": {
@@ -25,6 +40,13 @@
     "keyword": "rt_straight",
     "contentLocations": {
       "generic": ["E", "NW"]
+    }
+  },
+  {
+    "roomName": "Domain Crossing",
+    "keyword": "dg_quad",
+    "contentLocations": {
+      "generic": ["E", "SE"]
     }
   },
   {
@@ -140,6 +162,13 @@
     "keyword": "eh_quad",
     "contentLocations": {
       "generic": ["E", "NW"]
+    }
+  },
+  {
+    "roomName": "Mansion Halls",
+    "keyword": "eh_branch_door",
+    "contentLocations": {
+      "generic": ["SW"]
     }
   },
   {
