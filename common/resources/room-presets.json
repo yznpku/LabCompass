@@ -144,6 +144,13 @@
   },
   {
     "roomName": "Estate Walkways",
+    "keyword": "oh_branch_bottleneck_2",
+    "contentLocations": {
+      "generic": ["NE", "E"]
+    }
+  },
+  {
+    "roomName": "Estate Walkways",
     "keyword": "oh_branch",
     "contentLocations": {
       "generic": ["E", "W"]
