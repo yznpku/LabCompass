@@ -101,6 +101,13 @@
   },
   {
     "roomName": "Estate Crossing",
+    "keyword": "oh_quad_door",
+    "contentLocations": {
+      "generic": ["SW"]
+    }
+  },
+  {
+    "roomName": "Estate Crossing",
     "keyword": "oh_quad",
     "contentLocations": {
       "generic": ["N", "S"]
