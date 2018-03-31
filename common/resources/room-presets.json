@@ -8,6 +8,13 @@
     }
   },
   {
+    "roomName": "Basilica Atrium",
+    "keyword": "rt_quad_door",
+    "contentLocations": {
+      "generic": ["SW"]
+    }
+  },
+  {
     "roomName": "Basilica Halls",
     "keyword": "rt_branch_door",
     "contentLocations": {
