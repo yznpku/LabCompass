@@ -300,6 +300,13 @@
     }
   },
   {
+    "roomName": "Sepulchre Halls",
+    "keyword": "c_branch",
+    "contentLocations": {
+      "generic": ["E", "SW"]
+    }
+  },
+  {
     "roomName": "Sepulchre Passage",
     "keyword": "c_straight_bottleneck",
     "contentLocations": {
