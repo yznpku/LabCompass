@@ -58,6 +58,13 @@
   },
   {
     "roomName": "Domain Crossing",
+    "keyword": "dg_quad_door",
+    "contentLocations": {
+      "generic": ["NE"]
+    }
+  },
+  {
+    "roomName": "Domain Crossing",
     "keyword": "dg_quad",
     "contentLocations": {
       "generic": ["E", "SE"]
@@ -243,6 +250,13 @@
     }
   },
   {
+    "roomName": "Sanitorium Atrium",
+    "keyword": "p_quad",
+    "contentLocations": {
+      "generic": ["E", "S"]
+    }
+  },
+  {
     "roomName": "Sanitorium Halls",
     "keyword": "p_branch_door",
     "contentLocations": {
@@ -259,6 +273,13 @@
   {
     "roomName": "Sanitorium Halls",
     "keyword": "p_branch_bottleneck_2",
+    "contentLocations": {
+      "generic": ["E", "SW"]
+    }
+  },
+  {
+    "roomName": "Sanitorium Halls",
+    "keyword": "p_branch",
     "contentLocations": {
       "generic": ["E", "SW"]
     }
