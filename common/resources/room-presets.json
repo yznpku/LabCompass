@@ -308,6 +308,13 @@
   },
   {
     "roomName": "Sepulchre Atrium",
+    "keyword": "c_quad_door",
+    "contentLocations": {
+      "generic": ["SW"]
+    }
+  },
+  {
+    "roomName": "Sepulchre Atrium",
     "keyword": "c_quad",
     "contentLocations": {
       "generic": ["E", "SW"]
