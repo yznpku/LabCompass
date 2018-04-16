@@ -8,9 +8,11 @@ struct LabyrinthData
   struct Room
   {
     QString name;
+    QString areaCode;
     QString id;
     QPoint coordinate;
     QStringList contents;
+    QVariantMap contentLocations;
     int section;
     bool isFirstRoomInSection {false};
   };
@@ -48,6 +50,7 @@ public:
   bool roomIsFirstRoomInSection(const QString& id) const;
   bool roomIsTrial(const QString& id) const;
   bool roomIsDeadEnd(const QString& id) const;
+  bool roomHasSecretPassage(const QString& id) const;
 
   qreal roomCost(const QString& id) const;
 
@@ -56,6 +59,7 @@ private:
   bool loadConnectionMatrix(const QJsonArray& array);
   bool loadSections();
   bool loadGoldenDoors();
+  bool loadContentLocations();
 };
 
 #endif // LABYRINTHDATA_H

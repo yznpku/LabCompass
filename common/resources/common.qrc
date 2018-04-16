@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>room-presets.json</file>
+    </qresource>
+</RCC>

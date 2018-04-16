@@ -67,6 +67,9 @@ bool LabyrinthData::loadFromJson(const QJsonObject& json)
   if (!loadGoldenDoors())
     return false;
 
+  if (!loadContentLocations())
+    return false;
+
   return true;
 }
 
@@ -111,6 +114,15 @@ bool LabyrinthData::roomIsDeadEnd(const QString& id) const
   return exits == 1;
 }
 
+bool LabyrinthData::roomHasSecretPassage(const QString& id) const
+{
+  auto roomConnections = connections[id];
+  for (auto i = roomConnections.constBegin(); i != roomConnections.constEnd(); i++)
+    if (i.value().contains("C"))
+      return true;
+  return false;
+}
+
 qreal LabyrinthData::roomCost(const QString& id) const
 {
   if (roomIsTrial(id))
@@ -123,19 +135,20 @@ bool LabyrinthData::loadRooms(const QJsonArray& array)
 {
   if (array.isEmpty())
     return false;
-  rooms.append(Room({"Aspirant\'s Plaza", "plaza", {-100, 128}, {}, -1, false}));
+  rooms.append(Room({"Aspirant\'s Plaza", "labyrinth_airlock", "plaza", {-100, 128}, {}, {}, -1, false}));
 
   for (int i = 0; i < array.size(); i++) {
     if (!array[i].isObject())
       return false;
     auto roomJson = array[i].toObject();
 
-    foreach (QString property, QStringList({"name", "id", "contents", "x", "y"}))
+    foreach (QString property, QStringList({"name", "areacode", "id", "contents", "x", "y"}))
       if (!roomJson.contains(property))
         return false;
 
     Room room;
     room.id = roomJson["id"].toString();
+    room.areaCode = roomJson["areacode"].toString();
 
     // capitalize room name
     QStringList roomNameWords = roomJson["name"].toString().split(' ');
@@ -272,5 +285,25 @@ bool LabyrinthData::loadGoldenDoors()
             !rooms[j].contents.contains("golden-key") &&
             rooms[j].coordinate.x() > rooms[i].coordinate.x())
           goldenDoors.append(std::pair<QString, QString>(rooms[i].id, rooms[j].id));
+  return true;
+}
+
+bool LabyrinthData::loadContentLocations()
+{
+  QFile roomPresetsFile(":/room-presets.json");
+  roomPresetsFile.open(QIODevice::ReadOnly);
+  auto roomPresets = QJsonDocument::fromJson(roomPresetsFile.readAll()).toVariant().toList();
+
+  for (int i = 0; i < rooms.size(); i++) {
+    auto& room = rooms[i];
+    QVariantMap preset;
+    foreach (auto& x, roomPresets)
+      if (room.name == x.toMap()["roomName"] && room.areaCode.contains(x.toMap()["keyword"].toString())) {
+        preset = x.toMap();
+        break;
+      }
+    room.contentLocations = preset["contentLocations"].toMap();
+  }
+
   return true;
 }

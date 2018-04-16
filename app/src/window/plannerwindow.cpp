@@ -38,7 +38,7 @@ void PlannerWindow::onImportLabNotesFileClicked()
 
   auto fileName = QFileDialog::getOpenFileName(nullptr, "Import Lab Notes",
                                                importDirectory,
-                                               "Lab Notes (*.json)");
+                                               "Lab Maps (*.json *.map)");
   if (!fileName.isEmpty()) {
     auto directory = QFileInfo(fileName).absoluteDir().absolutePath();
     settings->setValue("importDirectory", directory);
