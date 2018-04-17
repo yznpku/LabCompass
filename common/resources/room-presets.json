@@ -217,7 +217,7 @@
     "roomName": "Mansion Halls",
     "keyword": "eh_block_branch",
     "contentLocations": {
-      "generic": ["E", "SW"]
+      "generic": ["NE", "SW"]
     }
   },
   {
