@@ -142,7 +142,7 @@ bool LabyrinthData::loadRooms(const QJsonArray& array)
       return false;
     auto roomJson = array[i].toObject();
 
-    foreach (QString property, QStringList({"name", "areacode", "id", "contents", "x", "y"}))
+    foreach (QString property, QStringList({"name", "id", "contents", "x", "y"}))
       if (!roomJson.contains(property))
         return false;
 
