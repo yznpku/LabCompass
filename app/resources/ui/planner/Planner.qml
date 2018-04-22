@@ -11,6 +11,7 @@ WindowWithShadow {
 
   signal drag(int dx, int dy)
   signal importLabNotesButtonClicked
+  signal importLabNotesFromUrl(url url)
   signal openUrl(string url)
 
   Column {
@@ -177,5 +178,10 @@ WindowWithShadow {
         }
       }
     }
+  }
+
+  MapDropArea {
+    anchors.fill: parent
+    onDropUrl: importLabNotesFromUrl(url)
   }
 }

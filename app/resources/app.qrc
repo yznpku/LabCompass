@@ -76,5 +76,8 @@
         <file>images/paypal.svg</file>
         <file>LabCompass.ico</file>
         <file>ui/planner/PlanSummaryDisplay.qml</file>
+        <file>ui/planner/MapDropArea.qml</file>
+        <file>images/planner/drop-area-border.svg</file>
+        <file>images/planner/map.svg</file>
     </qresource>
 </RCC>
