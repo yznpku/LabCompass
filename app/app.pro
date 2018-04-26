@@ -9,11 +9,19 @@ win32:RC_ICONS += resources/LabCompass.ico
 INCLUDEPATH += \
     src \
     ../common/src \
-    ../vendor/QtSuperMacros
+    ../vendor/QtSuperMacros \
+    ../vendor/QHotkey
 
 DEPEND_LIBS += common
-DEPEND_VENDOR_LIBS += QtSuperMacros
+DEPEND_VENDOR_LIBS += QtSuperMacros QHotkey
 include(../config/dependencies.pri)
+
+mac: LIBS += -framework Carbon
+else:win32: LIBS += -luser32
+else:unix {
+    QT += x11extras
+    LIBS += -lX11
+}
 
 win32 {
     LIBS += -lPsapi
