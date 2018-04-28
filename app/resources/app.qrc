@@ -79,5 +79,7 @@
         <file>ui/planner/MapDropArea.qml</file>
         <file>images/planner/drop-area-border.svg</file>
         <file>images/planner/map.svg</file>
+        <file>ui/TabLabel.qml</file>
+        <file>ui/TextHighlightTab.qml</file>
     </qresource>
 </RCC>

@@ -81,6 +81,18 @@ WindowWithShadow {
       color: Qt.lighter(Global.primaryColor)
     }
 
+    Item {
+      width: contentWidth
+      height: 30
+      TextHighlightTab {
+        id: tab
+        anchors.fill: parent
+        anchors.leftMargin: 20
+        anchors.rightMargin: 20
+        model: ['Client', 'UI', 'Navigation']
+      }
+    }
+
     Text {
       x: 40
       color: Global.primaryTextColor
