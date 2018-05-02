@@ -60,7 +60,7 @@ WindowWithShadow {
         width: 150
         height: 30
         visible: Global.model.newVersionAvailable
-        onClicked: openUrl('https://github.com/yznpku/LabCompass/releases/tag/' + Global.model.settings.value('latestVersion'))
+        onClicked: openUrl('https://github.com/yznpku/LabCompass/releases/tag/' + Global.model.settings.latestVersion)
         Rectangle {
           anchors.fill: parent
           color: '#2196F3'
