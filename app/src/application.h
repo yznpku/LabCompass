@@ -41,7 +41,7 @@ class Application : public QApplication
   std::unique_ptr<NavigationController> navigationController;
 
 public:
-  Application(int argc, char** argv);
+  Application(int& argc, char** argv);
 
 private slots:
   void onAboutToQuit();
