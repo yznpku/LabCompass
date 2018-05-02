@@ -43,10 +43,12 @@ class Application : public QApplication
 public:
   Application(int argc, char** argv);
 
+private slots:
+  void onAboutToQuit();
+
 private:
   void initApplication();
   void initResources();
-  void initSettings();
   void initSystemTrayIcon();
   void initWindows();
   void initWorkers();

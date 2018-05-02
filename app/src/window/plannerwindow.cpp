@@ -31,7 +31,7 @@ void PlannerWindow::onWindowOpenChanged()
 void PlannerWindow::onImportLabNotesFileClicked()
 {
   Settings* settings = global()->property("model").value<QObject*>()->property("settings").value<Settings*>();
-  auto importDirectory = settings->value("importDirectory").toString();
+  auto importDirectory = settings->get_importDirectory();
   if (importDirectory.isEmpty()) {
     auto downloadLocations = QStandardPaths::standardLocations(QStandardPaths::DownloadLocation);
     if (!downloadLocations.isEmpty())
@@ -68,7 +68,6 @@ void PlannerWindow::importLabNotesFromFile(const QString& file)
 {
   Settings* settings = global()->property("model").value<QObject*>()->property("settings").value<Settings*>();
   auto directory = QFileInfo(file).absoluteDir().absolutePath();
-  settings->setValue("importDirectory", directory);
-
+  settings->set_importDirectory(directory);
   emit importFile(file);
 }

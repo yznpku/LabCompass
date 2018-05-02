@@ -4,13 +4,20 @@
 
 Application::Application(int argc, char** argv) : QApplication(argc, argv)
 {
+  connect(this, &Application::aboutToQuit,
+          this, &Application::onAboutToQuit);
+
   initApplication();
   initResources();
-  initSettings();
   initSystemTrayIcon();
   initWindows();
   initWorkers();
   initControllers();
+}
+
+void Application::onAboutToQuit()
+{
+  model.get_settings()->save();
 }
 
 void Application::initApplication()
@@ -40,30 +47,6 @@ void Application::initResources()
   setFont(font);
 }
 
-void Application::initSettings()
-{
-  QVariantMap defaultSettings {
-    {"mainWindowPosition", QPoint(-1, -1)},
-    {"poeClientPath", ""},
-    {"latestVersion", ""},
-    {"lastVersionCheckAttempt", 0LL},
-    {"lastVersionCheckSuccess", 0LL},
-    {"portalSkipsSection", true},
-    {"multiclientSupport", false},
-    {"scaleFactor", "1"},
-  };
-  for (auto i = defaultSettings.constBegin(); i != defaultSettings.constEnd(); i++)
-    if (!model.get_settings()->contains(i.key()))
-      model.get_settings()->setValue(i.key(), i.value());
-
-  if (model.get_settings()->value("version").toString() != VERSION) {
-    model.get_settings()->setValue("version", VERSION);
-    model.get_settings()->setValue("latestVersion", "");
-    model.get_settings()->setValue("lastVersionCheckAttempt", 0LL);
-    model.get_settings()->setValue("lastVersionCheckSuccess", 0LL);
-  }
-}
-
 void Application::initSystemTrayIcon()
 {
   trayIcon.reset(new QSystemTrayIcon(QIcon(":/LabCompass.ico")));
@@ -81,9 +64,9 @@ void Application::initWindows()
 
   headerWindow.reset(new HeaderWindow(&engine));
   connect(headerWindow.get(), &HeaderWindow::moved,
-          [this](int x, int y) { model.get_settings()->setValue("mainWindowPosition", QPoint(x, y)); });
+          [this](int x, int y) { model.get_settings()->set_mainWindowPosition(QPoint(x, y)); });
 
-  auto mainWindowPosition = model.get_settings()->value("mainWindowPosition").toPoint();
+  auto mainWindowPosition = model.get_settings()->get_mainWindowPosition();
   auto screenGeometry = headerWindow->quickWindow()->screen()->geometry();
   if (!screenGeometry.contains(mainWindowPosition))
     mainWindowPosition = screenGeometry.center();
