@@ -1,6 +1,7 @@
 #include "application.h"
 #include "version.h"
 #include "tray/trayiconmenu.h"
+#include "keysequence/keysequencehelper.h"
 
 Application::Application(int& argc, char** argv) : QApplication(argc, argv)
 {
@@ -31,6 +32,7 @@ void Application::initResources()
   QQuickStyle::setStyle("Material");
 
   qmlRegisterSingletonType(QUrl("qrc:/ui/Global.qml"), "com.labcompass", 1, 0, "Global");
+  qmlRegisterType<KeySequenceHelper>("com.labcompass", 1, 0, "KeySequenceHelper");
   engine.load(QUrl("qrc:/ui/GlobalAccessor.qml"));
 
   auto global = engine.rootObjects()[0]->property("o").value<QObject*>();

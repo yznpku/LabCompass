@@ -40,7 +40,8 @@ HEADERS += \
     src/window/plannerwindow.h \
     src/window/puzzlewindow.h \
     src/window/optionswindow.h \
-    src/tray/trayiconmenu.h
+    src/tray/trayiconmenu.h \
+    src/keysequence/keysequencehelper.h
 
 SOURCES += \
     src/main.cpp \
@@ -53,7 +54,8 @@ SOURCES += \
     src/window/plannerwindow.cpp \
     src/window/puzzlewindow.cpp \
     src/window/optionswindow.cpp \
-    src/tray/trayiconmenu.cpp
+    src/tray/trayiconmenu.cpp \
+    src/keysequence/keysequencehelper.cpp
 
 RESOURCES += \
     resources/app.qrc

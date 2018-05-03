@@ -82,5 +82,6 @@
         <file>ui/TextHighlightTab.qml</file>
         <file>ui/options/OptionsGridLayout.qml</file>
         <file>ui/options/Options.qml</file>
+        <file>ui/options/KeySequenceEdit.qml</file>
     </qresource>
 </RCC>
