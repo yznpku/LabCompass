@@ -40,12 +40,10 @@ Button {
   }
 
   Keys.onPressed: {
-    console.log(event.key, event.modifiers);
     helper.keyPressed(event.key, event.modifiers);
     event.accepted = true;
   }
   Keys.onReleased: {
-    console.log(event.key, event.modifiers);
     helper.keyReleased(event.key, event.modifiers);
     event.accepted = true;
   }

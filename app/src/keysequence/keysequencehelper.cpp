@@ -221,30 +221,9 @@ void KeySequenceHelperPrivate::updateShortcutDisplay()
     if (isRecording) {
         if (modifierKeys) {
             if (!s.isEmpty()) {
-                s.append(QLatin1Char(','));
+                s.append(", ");
             }
-            if (modifierKeys & Qt::META) {
-                s += "Meta" + QLatin1Char('+');
-            }
-#if defined(Q_OS_MAC)
-            if (modifierKeys & Qt::ALT) {
-                s += "Alt" + QLatin1Char('+');
-            }
-            if (modifierKeys & Qt::CTRL) {
-                s += "Ctrl" + QLatin1Char('+');
-            }
-#else
-            if (modifierKeys & Qt::CTRL) {
-                s += "Ctrl" + QLatin1Char('+');
-            }
-            if (modifierKeys & Qt::ALT) {
-                s += "Alt" + QLatin1Char('+');
-            }
-#endif
-            if (modifierKeys & Qt::SHIFT) {
-                s += "Shift" + QLatin1Char('+');
-            }
-
+            s += QKeySequence(modifierKeys).toString(QKeySequence::NativeText);
         } else if (nKey == 0) {
             s = "Press Keys";
         }
