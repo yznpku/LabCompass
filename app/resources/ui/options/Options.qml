@@ -97,14 +97,21 @@ WindowWithShadow {
         anchors.fill: parent
         anchors.leftMargin: 50
         anchors.rightMargin: 50
-        model: ['Client', 'UI', 'Navigation']
+        model: ['Client', 'UI', 'Navigation', 'Shortcut']
       }
     }
 
     StackLayout {
       currentIndex: tab.currentItem
+      anchors {
+        left: parent.left
+        right: parent.right
+        leftMargin: 60
+        rightMargin: 60
+      }
 
       OptionsGridLayout {
+        id: clientTab
         Text {
           Layout.columnSpan: 2
           color: Global.primaryTextColor
@@ -141,7 +148,9 @@ WindowWithShadow {
       }
 
       OptionsGridLayout {
+        id: uiTab
         Text {
+          Layout.fillWidth: true
           color: Global.primaryTextColor
           text: 'UI Scale Factor <sup>*</sup>'
           font.pixelSize: 20
@@ -153,7 +162,9 @@ WindowWithShadow {
       }
 
       OptionsGridLayout {
+        id: navigationTab
         Text {
+          Layout.fillWidth: true
           color: Global.primaryTextColor
           text: 'Taking Portals Skips Current Section'
           font.pixelSize: 20
@@ -162,6 +173,27 @@ WindowWithShadow {
           id: portalSkipsSectionInput
           width: 24
           height: 24
+        }
+      }
+
+      OptionsGridLayout {
+        id: shortcutTab
+        Text {
+          Layout.fillWidth: true
+          color: Global.primaryTextColor
+          text: 'Toggle Visible'
+          font.pixelSize: 20
+        }
+        KeySequenceEdit {
+
+        }
+        Text {
+          color: Global.primaryTextColor
+          text: 'Hmmm'
+          font.pixelSize: 20
+        }
+        KeySequenceEdit {
+
         }
       }
     }

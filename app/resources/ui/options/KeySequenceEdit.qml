@@ -1,10 +1,13 @@
 import QtQuick 2.8
 import QtQuick.Controls 2.2
 import QtQuick.Controls.Material 2.1
+import QtQuick.Layouts 1.3
 import com.labcompass 1.0
 
 Button {
   id: root
+
+  Layout.minimumWidth: 200
 
   property alias modifierlessAllowed: helper.modifierlessAllowed
   property alias multiKeyShortcutsAllowed: helper.multiKeyShortcutsAllowed
