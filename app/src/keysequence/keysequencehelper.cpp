@@ -303,6 +303,12 @@ void KeySequenceHelper::keyPressed(int key, int modifiers)
                     KeySequenceHelperPrivate::appendToSequence(d->keySequence, key);
             }
 
+            if (key == Qt::Key_Escape) {
+              d->keySequence = QKeySequence();
+              doneRecording();
+              return;
+            }
+
             d->nKey++;
             if ((!d->multiKeyShortcutsAllowed) || (d->nKey >= 4)) {
                 doneRecording();
