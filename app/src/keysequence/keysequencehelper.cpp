@@ -194,12 +194,6 @@ void KeySequenceHelper::doneRecording()
     d->isRecording = false;
     d->stealActions.clear();
 
-    if (d->keySequence == d->oldKeySequence) {
-//         The sequence hasn't changed
-        d->updateShortcutDisplay();
-        return;
-    }
-
     if (! isKeySequenceAvailable(d->keySequence)) {
 //         The sequence had conflicts and the user said no to stealing it
         d->keySequence = d->oldKeySequence;
