@@ -136,7 +136,7 @@ void Application::initControllers()
 
 void Application::initHotkeys()
 {
-  toggleHideUiHotkey.reset(new HotkeyBinding(model.get_settings(), "toggleHideUiHotkey", SIGNAL(toggleHideUiHotkeyChanged)));
+  toggleHideUiHotkey.reset(new HotkeyBinding(model.get_settings(), "toggleHideUiHotkey", SIGNAL(toggleHideUiHotkeyChanged(QString))));
   connect(toggleHideUiHotkey.get(), &HotkeyBinding::activated,
           [this]() {
     bool visible = global->property("compassVisible").toBool();

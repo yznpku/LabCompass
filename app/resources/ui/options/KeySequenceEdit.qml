@@ -15,6 +15,7 @@ Button {
 
   KeySequenceHelper {
     id: helper
+    multiKeyShortcutsAllowed: false
     modifierlessAllowed: true
     onCaptureFinished: focus = false;
   }

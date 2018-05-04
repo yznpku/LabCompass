@@ -12,6 +12,7 @@ HotkeyBinding::HotkeyBinding(QObject* settings, QByteArray propertyName, QByteAr
 
 void HotkeyBinding::rebindHotkey()
 {
+  setRegistered(false);
   setShortcut(QKeySequence(settings->property(propertyName.toLatin1().constData()).toString()));
   setRegistered(true);
 }
