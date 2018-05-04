@@ -5,6 +5,7 @@ QtObject {
   property string version
   property bool debug: false
 
+  property bool compassVisible: true
   property bool plannerWindowOpen: false
   property bool puzzleWindowOpen: false
   property bool optionsWindowOpen: false

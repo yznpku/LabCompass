@@ -14,6 +14,7 @@
 #include "worker/versionchecker.h"
 #include "controller/labyrinthcontroller.h"
 #include "controller/navigationcontroller.h"
+#include "hotkey/hotkeybinding.h"
 
 class Application : public QApplication
 {
@@ -21,6 +22,7 @@ class Application : public QApplication
 
   ApplicationModel model;
   QQmlApplicationEngine engine;
+  QObject* global;
 
   std::unique_ptr<QSystemTrayIcon> trayIcon;
   std::unique_ptr<QMenu> trayIconMenu;
@@ -40,6 +42,8 @@ class Application : public QApplication
   std::unique_ptr<LabyrinthController> labyrinthController;
   std::unique_ptr<NavigationController> navigationController;
 
+  std::unique_ptr<HotkeyBinding> toggleHideUiHotkey;
+
 public:
   Application(int& argc, char** argv);
 
@@ -53,6 +57,7 @@ private:
   void initWindows();
   void initWorkers();
   void initControllers();
+  void initHotkeys();
 };
 
 #endif // APPLICATION_H

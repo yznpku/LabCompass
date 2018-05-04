@@ -11,6 +11,7 @@ QVariantMap defaultSettings {
   {"multiclientSupport", false},
   {"importDirectory", ""},
   {"scaleFactor", "1"},
+  {"toggleHideUiHotkey", ""}
 };
 
 Settings::Settings(QObject* parent) : QObject(parent)

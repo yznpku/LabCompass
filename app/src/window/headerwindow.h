@@ -15,6 +15,7 @@ public:
   HeaderWindow(QQmlEngine* engine);
 
 private slots:
+  void onCompassVisibleChanged();
   void onDrag(int dx, int dy);
 };
 

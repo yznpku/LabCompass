@@ -6,8 +6,13 @@
 
 class InstructionListWindow : public Window
 {
+  Q_OBJECT
+
 public:
   InstructionListWindow(QQmlEngine* engine);
+
+private slots:
+  void onCompassVisibleChanged();
 };
 
 #endif // INSTRUCTIONLISTWINDOW_H

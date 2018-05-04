@@ -18,6 +18,8 @@ WindowWithShadow {
   property alias multiclientSupport: multiclientSupportInput.checked
   property alias uiScaleFactorIndex: uiScaleFactorInput.currentIndex
 
+  property alias toggleHideUiHotkey: toggleHideUiHotkeyEdit.keySequence
+
   Column {
     id: column
     width: contentWidth
@@ -181,19 +183,11 @@ WindowWithShadow {
         Text {
           Layout.fillWidth: true
           color: Global.primaryTextColor
-          text: 'Toggle Visible'
+          text: 'Hide/Show Compass'
           font.pixelSize: 20
         }
         KeySequenceEdit {
-
-        }
-        Text {
-          color: Global.primaryTextColor
-          text: 'Hmmm'
-          font.pixelSize: 20
-        }
-        KeySequenceEdit {
-
+          id: toggleHideUiHotkeyEdit
         }
       }
     }

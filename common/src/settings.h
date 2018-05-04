@@ -17,6 +17,8 @@ class Settings : public QObject
   QML_WRITABLE_VAR_PROPERTY(QString, importDirectory)
   QML_WRITABLE_VAR_PROPERTY(QString, scaleFactor)
 
+  QML_WRITABLE_VAR_PROPERTY(QString, toggleHideUiHotkey)
+
   std::unique_ptr<QSettings> settings;
 
 public:

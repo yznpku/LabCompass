@@ -41,7 +41,8 @@ HEADERS += \
     src/window/puzzlewindow.h \
     src/window/optionswindow.h \
     src/tray/trayiconmenu.h \
-    src/keysequence/keysequencehelper.h
+    src/keysequence/keysequencehelper.h \
+    src/hotkey/hotkeybinding.h
 
 SOURCES += \
     src/main.cpp \
@@ -55,7 +56,8 @@ SOURCES += \
     src/window/puzzlewindow.cpp \
     src/window/optionswindow.cpp \
     src/tray/trayiconmenu.cpp \
-    src/keysequence/keysequencehelper.cpp
+    src/keysequence/keysequencehelper.cpp \
+    src/hotkey/hotkeybinding.cpp
 
 RESOURCES += \
     resources/app.qrc

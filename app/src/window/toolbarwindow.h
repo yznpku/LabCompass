@@ -6,8 +6,13 @@
 
 class ToolbarWindow : public Window
 {
+  Q_OBJECT
+
 public:
   ToolbarWindow(QQmlEngine* engine);
+
+private slots:
+  void onCompassVisibleChanged();
 };
 
 #endif // TOOLBARWINDOW_H

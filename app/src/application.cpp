@@ -14,6 +14,7 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
   initWindows();
   initWorkers();
   initControllers();
+  initHotkeys();
 }
 
 void Application::onAboutToQuit()
@@ -35,7 +36,7 @@ void Application::initResources()
   qmlRegisterType<KeySequenceHelper>("com.labcompass", 1, 0, "KeySequenceHelper");
   engine.load(QUrl("qrc:/ui/GlobalAccessor.qml"));
 
-  auto global = engine.rootObjects()[0]->property("o").value<QObject*>();
+  global = engine.rootObjects()[0]->property("o").value<QObject*>();
   global->setProperty("model", QVariant::fromValue<QObject*>(&model));
   global->setProperty("version", VERSION);
 #ifdef QT_DEBUG
@@ -131,4 +132,14 @@ void Application::initControllers()
           navigationController.get(), &NavigationController::onRoomIsTargetSet);
   connect(plannerWindow.get(), &PlannerWindow::setCurrentRoom,
           navigationController.get(), &NavigationController::onRoomIdSet);
+}
+
+void Application::initHotkeys()
+{
+  toggleHideUiHotkey.reset(new HotkeyBinding(model.get_settings(), "toggleHideUiHotkey", SIGNAL(toggleHideUiHotkeyChanged)));
+  connect(toggleHideUiHotkey.get(), &HotkeyBinding::activated,
+          [this]() {
+    bool visible = global->property("compassVisible").toBool();
+    global->setProperty("compassVisible", !visible);
+  });
 }
