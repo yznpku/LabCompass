@@ -99,7 +99,7 @@ WindowWithShadow {
         anchors.fill: parent
         anchors.leftMargin: 50
         anchors.rightMargin: 50
-        model: ['Client', 'UI', 'Navigation', 'Shortcut']
+        model: ['Client', 'UI', 'Navigation', 'Hotkeys']
       }
     }
 
