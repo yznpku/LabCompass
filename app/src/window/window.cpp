@@ -11,8 +11,12 @@ Window::Window(QQmlEngine* engine, bool transparent, bool takeFocus, QWidget* pa
   setClearColor(Qt::transparent);
   setAttribute(Qt::WA_NoSystemBackground);
   setAttribute(Qt::WA_TranslucentBackground);
+#ifdef Q_OS_LINUX
+  setWindowFlags(Qt::WindowStaysOnTopHint | Qt::FramelessWindowHint | Qt::NoDropShadowWindowHint);
+#else
   setAttribute(Qt::WA_TransparentForMouseEvents, transparent);
   setWindowFlags(Qt::Tool | Qt::WindowStaysOnTopHint | Qt::FramelessWindowHint | Qt::NoDropShadowWindowHint);
+#endif
 }
 
 void Window::setParentWindow(Window* parent, const QPoint& offset)
