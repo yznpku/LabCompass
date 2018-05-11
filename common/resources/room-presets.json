@@ -17,6 +17,14 @@
     "doorLocations": ["SE", "W", "NW", "NE"]
   },
   {
+    "roomName": "Basilica Atrium",
+    "keyword": "rt_quad",
+    "contentLocations": {
+      "generic": ["N", "SW"]
+    },
+    "doorLocations": ["SE", "W", "NW", "NE"]
+  },
+  {
     "roomName": "Basilica Halls",
     "keyword": "rt_branch_door",
     "contentLocations": {
