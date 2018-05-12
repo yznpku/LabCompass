@@ -3,6 +3,7 @@ SUBDIRS = \
     app \
     common \
     test \
+    logsimulator \
     QtSuperMacros \
     QHotkey
 
