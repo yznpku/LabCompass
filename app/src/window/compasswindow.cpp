@@ -3,6 +3,9 @@
 CompassWindow::CompassWindow(QQmlEngine* engine) : Window(engine, true)
 {
   setSource(QUrl("qrc:/ui/Compass.qml"));
+
+  connect(global(), SIGNAL(compassVisibleChanged()),
+          this, SLOT(onCompassVisibleChanged()));
 }
 
 void CompassWindow::restartTimer()
@@ -18,4 +21,10 @@ void CompassWindow::stopTimer()
 void CompassWindow::closeTimer()
 {
   QMetaObject::invokeMethod(rootObject(), "closeTimer");
+}
+
+void CompassWindow::onCompassVisibleChanged()
+{
+  bool visible = global()->property("compassVisible").toBool();
+  setVisible(visible);
 }

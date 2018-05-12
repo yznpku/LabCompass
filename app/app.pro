@@ -9,11 +9,19 @@ win32:RC_ICONS += resources/LabCompass.ico
 INCLUDEPATH += \
     src \
     ../common/src \
-    ../vendor/QtSuperMacros
+    ../vendor/QtSuperMacros \
+    ../vendor/QHotkey
 
 DEPEND_LIBS += common
-DEPEND_VENDOR_LIBS += QtSuperMacros
+DEPEND_VENDOR_LIBS += QtSuperMacros QHotkey
 include(../config/dependencies.pri)
+
+mac: LIBS += -framework Carbon
+else:win32: LIBS += -luser32
+else:unix {
+    QT += x11extras
+    LIBS += -lX11
+}
 
 win32 {
     LIBS += -lPsapi
@@ -32,7 +40,9 @@ HEADERS += \
     src/window/plannerwindow.h \
     src/window/puzzlewindow.h \
     src/window/optionswindow.h \
-    src/tray/trayiconmenu.h
+    src/tray/trayiconmenu.h \
+    src/keysequence/keysequencehelper.h \
+    src/hotkey/hotkeybinding.h
 
 SOURCES += \
     src/main.cpp \
@@ -45,7 +55,9 @@ SOURCES += \
     src/window/plannerwindow.cpp \
     src/window/puzzlewindow.cpp \
     src/window/optionswindow.cpp \
-    src/tray/trayiconmenu.cpp
+    src/tray/trayiconmenu.cpp \
+    src/keysequence/keysequencehelper.cpp \
+    src/hotkey/hotkeybinding.cpp
 
 RESOURCES += \
     resources/app.qrc

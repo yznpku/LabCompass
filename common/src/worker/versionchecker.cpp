@@ -23,13 +23,13 @@ VersionChecker::~VersionChecker()
 
 void VersionChecker::work()
 {
-  auto latestVersion = model->get_settings()->value("latestVersion").toString();
+  auto latestVersion = model->get_settings()->get_latestVersion();
   model->update_newVersionAvailable(!latestVersion.isEmpty() && latestVersion != VERSION);
 
   auto now = QDateTime::currentSecsSinceEpoch();
-  if (now - model->get_settings()->value("lastVersionCheckAttempt").toLongLong() > 600 &&
-      now - model->get_settings()->value("lastVersionCheckSuccess").toLongLong() > 86400) {
-    model->get_settings()->setValue("lastVersionCheckAttempt", now);
+  if (now - model->get_settings()->get_lastVersionCheckAttempt() > 600 &&
+      now - model->get_settings()->get_lastVersionCheckSuccess() > 86400) {
+    model->get_settings()->set_lastVersionCheckAttempt(now);
 
     if (!nam.get())
       nam.reset(new QNetworkAccessManager());
@@ -48,8 +48,8 @@ void VersionChecker::onReplyFinished()
     auto json = QJsonDocument::fromJson(reply->readAll());
     if (json.isObject() && json.object().contains("tag_name")) {
       auto latestVersion = json.object()["tag_name"].toString();
-      model->get_settings()->setValue("latestVersion", latestVersion);
-      model->get_settings()->setValue("lastVersionCheckSuccess", QDateTime::currentSecsSinceEpoch());
+      model->get_settings()->set_latestVersion(latestVersion);
+      model->get_settings()->set_lastVersionCheckSuccess(QDateTime::currentSecsSinceEpoch());
     }
   }
   reply->deleteLater();

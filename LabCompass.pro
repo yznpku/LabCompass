@@ -3,10 +3,13 @@ SUBDIRS = \
     app \
     common \
     test \
-    QtSuperMacros
+    logsimulator \
+    QtSuperMacros \
+    QHotkey
 
 QtSuperMacros.subdir = vendor/QtSuperMacros
+QHotkey.subdir = vendor/QHotkey
 
-app.depends = common
+app.depends = common QHotkey
 test.depends = common
 common.depends = QtSuperMacros

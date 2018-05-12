@@ -35,7 +35,7 @@ static const QRegularExpression ROOM_CHANGE_REGEX {"^: You have entered (.*?)\\.
 LogWatcher::LogWatcher(ApplicationModel* model)
 {
   this->model = model;
-  clientPath = model->get_settings()->value("poeClientPath").toString();
+  clientPath = model->get_settings()->get_poeClientPath();
   file.reset(new QFile(QDir(clientPath).filePath("logs/Client.txt")));
 
   timer.setInterval(1000);
@@ -48,7 +48,7 @@ LogWatcher::LogWatcher(ApplicationModel* model)
 void LogWatcher::work()
 {
   // reset file if client path settings have changed
-  auto newClientPath = model->get_settings()->value("poeClientPath").toString();
+  auto newClientPath = model->get_settings()->get_poeClientPath();
   if (clientPath != newClientPath) {
     clientPath = newClientPath;
     file.reset(new QFile(QDir(clientPath).filePath("logs/Client.txt")));
@@ -69,7 +69,7 @@ void LogWatcher::work()
         model->update_logFileOpen(false);
         return;
       }
-      model->get_settings()->setValue("poeClientPath", clientPath);
+      model->get_settings()->set_poeClientPath(clientPath);
     }
     model->update_logFileOpen(true);
     file->seek(file->size());
@@ -96,7 +96,7 @@ void LogWatcher::parseLine(const QString line)
       activeClientId = clientId;
       emit labStarted();
 
-    } else if (!model->get_settings()->value("multiclientSupport").toBool() || clientId == activeClientId) {
+    } else if (!model->get_settings()->get_multiclientSupport() || clientId == activeClientId) {
       if (roomChangeMatch.hasMatch()) {
         auto roomName = roomChangeMatch.captured(1);
         auto affixes = roomName.split(' ');

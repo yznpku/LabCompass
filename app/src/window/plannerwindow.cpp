@@ -11,6 +11,8 @@ PlannerWindow::PlannerWindow(QQmlEngine* engine) : Window(engine, false)
           this, SLOT(onWindowOpenChanged()));
   connect(rootObject(), SIGNAL(importLabNotesButtonClicked()),
           this, SLOT(onImportLabNotesFileClicked()));
+  connect(rootObject(), SIGNAL(importLabNotesFromUrl(QUrl)),
+          this, SLOT(onImportLabNotesFromUrl(QUrl)));
   connect(rootObject(), SIGNAL(openUrl(QString)),
           this, SLOT(onOpenUrl(QString)));
 
@@ -29,7 +31,7 @@ void PlannerWindow::onWindowOpenChanged()
 void PlannerWindow::onImportLabNotesFileClicked()
 {
   Settings* settings = global()->property("model").value<QObject*>()->property("settings").value<Settings*>();
-  auto importDirectory = settings->value("importDirectory").toString();
+  auto importDirectory = settings->get_importDirectory();
   if (importDirectory.isEmpty()) {
     auto downloadLocations = QStandardPaths::standardLocations(QStandardPaths::DownloadLocation);
     if (!downloadLocations.isEmpty())
@@ -40,11 +42,14 @@ void PlannerWindow::onImportLabNotesFileClicked()
                                                importDirectory,
                                                "Lab Maps (*.json *.map)");
   if (!fileName.isEmpty()) {
-    auto directory = QFileInfo(fileName).absoluteDir().absolutePath();
-    settings->setValue("importDirectory", directory);
-
-    emit importFile(fileName);
+    importLabNotesFromFile(fileName);
   }
+}
+
+void PlannerWindow::onImportLabNotesFromUrl(const QUrl& url)
+{
+  if (url.isLocalFile())
+    importLabNotesFromFile(url.toLocalFile());
 }
 
 void PlannerWindow::onOpenUrl(const QString& url)
@@ -57,4 +62,12 @@ void PlannerWindow::onDrag(int dx, int dy)
 {
   move(x() + dx, y() + dy);
   emit moved(x(), y());
+}
+
+void PlannerWindow::importLabNotesFromFile(const QString& file)
+{
+  Settings* settings = global()->property("model").value<QObject*>()->property("settings").value<Settings*>();
+  auto directory = QFileInfo(file).absoluteDir().absolutePath();
+  settings->set_importDirectory(directory);
+  emit importFile(file);
 }

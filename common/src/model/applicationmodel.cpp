@@ -2,7 +2,8 @@
 
 ApplicationModel::ApplicationModel(QObject* parent) : QObject(parent)
 {
-  update_settings(new Settings("FutureCode", "LabCompass"));
+  update_settings(new Settings());
+  get_settings()->load();
 
   m_labyrinthModel.reset(new LabyrinthModel);
   m_roomModel.reset(new RoomModel);
@@ -17,7 +18,7 @@ ApplicationModel::ApplicationModel(QObject* parent) : QObject(parent)
   m_logFileOpen = true;
   m_inLab = false;
   m_currentRoomDetermined = true;
-  m_isValid =   false;
+  m_isValid = false;
 }
 
 bool ApplicationModel::loadFromFile(const QString& file)

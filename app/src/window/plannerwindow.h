@@ -20,8 +20,11 @@ public:
 private slots:
   void onWindowOpenChanged();
   void onImportLabNotesFileClicked();
+  void onImportLabNotesFromUrl(const QUrl& url);
   void onOpenUrl(const QString& url);
   void onDrag(int dx, int dy);
+private:
+  void importLabNotesFromFile(const QString& file);
 };
 
 #endif // PLANNERWINDOW_H

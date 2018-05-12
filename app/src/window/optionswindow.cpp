@@ -15,7 +15,7 @@ OptionsWindow::OptionsWindow(QQmlEngine* engine, Settings* settings) : Window(en
 {
   this->settings = settings;
 
-  setSource(QUrl("qrc:/ui/Options.qml"));
+  setSource(QUrl("qrc:/ui/options/Options.qml"));
 
   QStringList uiScaleFactorModel;
   std::transform(UI_SCALE_FACTORS.constBegin(), UI_SCALE_FACTORS.constEnd(), std::back_inserter(uiScaleFactorModel),
@@ -58,10 +58,11 @@ void OptionsWindow::onOpenUrl(const QString& url)
 void OptionsWindow::load()
 {
   foreach (const QString& name, settingNames) {
-    rootObject()->setProperty(name.toLocal8Bit().constData(), settings->value(name));
+    auto s = name.toLocal8Bit().constData();
+    rootObject()->setProperty(s, settings->property(s));
   }
 
-  int uiScaleFactorIndex = UI_SCALE_FACTORS.indexOf(settings->value("scaleFactor").toString());
+  int uiScaleFactorIndex = UI_SCALE_FACTORS.indexOf(settings->get_scaleFactor());
   if (uiScaleFactorIndex == -1)
     uiScaleFactorIndex = UI_SCALE_FACTORS.indexOf("1");
   rootObject()->setProperty("uiScaleFactorIndex", uiScaleFactorIndex);
@@ -70,9 +71,9 @@ void OptionsWindow::load()
 void OptionsWindow::save()
 {
   foreach (const QString& name, settingNames) {
-    settings->setValue(name, rootObject()->property(name.toLocal8Bit().constData()));
+    settings->setProperty(name.toLocal8Bit().constData(), rootObject()->property(name.toLocal8Bit().constData()));
   }
 
   int uiScaleFactorIndex = rootObject()->property("uiScaleFactorIndex").toInt();
-  settings->setValue("scaleFactor", UI_SCALE_FACTORS[uiScaleFactorIndex]);
+  settings->setProperty("scaleFactor", UI_SCALE_FACTORS[uiScaleFactorIndex]);
 }

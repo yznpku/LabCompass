@@ -8,10 +8,10 @@ import '..'
 WindowWithShadow {
   id: window
   property var labyrinthModel: Global.model.labyrinthModel
-  property var planSummaryModel: Global.model.planSummaryModel
 
   signal drag(int dx, int dy)
   signal importLabNotesButtonClicked
+  signal importLabNotesFromUrl(url url)
   signal openUrl(string url)
 
   Column {
@@ -128,57 +128,12 @@ WindowWithShadow {
         goldenDoorModel: Global.model.goldenDoorModel
       }
 
-      Rectangle {
-        id: planSummary
+      PlanSummaryDisplay {
+        id: planSummaryDisplay
         width: 280
         height: 260
         color: Global.primaryColor
-        Grid {
-          anchors.horizontalCenter: parent.horizontalCenter
-          horizontalItemAlignment: Grid.AlignHCenter
-          padding: 10
-          spacing: 16
-          columns: 1
-          Text {
-            text: 'Plan Summary'
-            font.pixelSize: 26
-            color: Global.primaryTextColor
-          }
-          Grid {
-            rowSpacing: 12
-            columnSpacing: 30
-            columns: 2
-            verticalItemAlignment: Grid.AlignVCenter
-            Text { color: Global.primaryTextColor; text: 'Rooms' }
-            Text { color: Global.primaryTextColor; width: 30; horizontalAlignment: Text.AlignHCenter; text: planSummaryModel.rooms }
-            Text { color: Global.primaryTextColor; text: 'Length' }
-            Text { color: Global.primaryTextColor; width: 30; horizontalAlignment: Text.AlignHCenter; text: planSummaryModel.length }
-            Row {
-              spacing: 4
-              SvgImage { source: 'qrc:/images/lab-content/argus.svg' }
-              Text { color: Global.primaryTextColor; text: 'Argus' }
-            }
-            Text { color: Global.primaryTextColor; width: 30; horizontalAlignment: Text.AlignHCenter; text: planSummaryModel.argus }
-            Row {
-              spacing: 4
-              SvgImage { source: 'qrc:/images/lab-content/gauntlet-puzzle.svg' }
-              Text { color: Global.primaryTextColor; text: 'Trove/Lockbox' }
-            }
-            Text { color: 'white'; width: 30; horizontalAlignment: Text.AlignHCenter; text: planSummaryModel.troves }
-            Row {
-              spacing: 4
-              SvgImage { source: 'qrc:/images/lab-content/darkshrine.svg' }
-              Text { color: Global.primaryTextColor; text: 'Darkshrine' }
-            }
-            Text { color: 'white'; width: 30; horizontalAlignment: Text.AlignHCenter; text: planSummaryModel.darkshrines }
-            Row {
-              spacing: 4
-              SvgImage { source: 'qrc:/images/lab-content/silver-door.svg' }
-              Text { color: Global.primaryTextColor; text: 'Silver Cache' }
-            }
-            Text { color: Global.primaryTextColor; width: 30; horizontalAlignment: Text.AlignHCenter; text: planSummaryModel.silverCaches }
-          }
-        }
+        model: Global.model.planSummaryModel
       }
 
       PlannedRouteDisplay {
@@ -223,5 +178,10 @@ WindowWithShadow {
         }
       }
     }
+  }
+
+  MapDropArea {
+    anchors.fill: parent
+    onDropUrl: importLabNotesFromUrl(url)
   }
 }

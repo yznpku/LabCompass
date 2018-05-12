@@ -18,7 +18,6 @@
         <file>ui/Header.qml</file>
         <file>ui/MaterialInk.qml</file>
         <file>ui/NotificationIndicator.qml</file>
-        <file>ui/Options.qml</file>
         <file>ui/point.js</file>
         <file>ui/Puzzle.qml</file>
         <file>ui/rect.js</file>
@@ -75,5 +74,14 @@
         <file>images/patreon.svg</file>
         <file>images/paypal.svg</file>
         <file>LabCompass.ico</file>
+        <file>ui/planner/PlanSummaryDisplay.qml</file>
+        <file>ui/planner/MapDropArea.qml</file>
+        <file>images/planner/drop-area-border.svg</file>
+        <file>images/planner/map.svg</file>
+        <file>ui/TabLabel.qml</file>
+        <file>ui/TextHighlightTab.qml</file>
+        <file>ui/options/OptionsGridLayout.qml</file>
+        <file>ui/options/Options.qml</file>
+        <file>ui/options/KeySequenceEdit.qml</file>
     </qresource>
 </RCC>
