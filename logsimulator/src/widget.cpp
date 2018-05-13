@@ -7,9 +7,10 @@ Widget::Widget(Settings* settings, QWidget* parent) :
 {
   this->settings = settings;
   ui->setupUi(this);
-  ui->roomTable->setColumnCount(2);
-  ui->roomTable->setHorizontalHeaderLabels({"ID", "Name"});
+  ui->roomTable->setColumnCount(3);
+  ui->roomTable->setHorizontalHeaderLabels({"ID", "Name", "Area Code"});
   ui->roomTable->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
+  ui->roomTable->horizontalHeader()->setSectionResizeMode(2, QHeaderView::Stretch);
   ui->roomTable->verticalHeader()->setVisible(false);
   ui->roomTable->setSelectionMode(QAbstractItemView::SingleSelection);
 
@@ -80,6 +81,7 @@ void Widget::loadMapFile(const QString& fileName)
     QJsonObject room = rooms[i].toObject();
     auto id = room["id"].toString();
     auto name = room["name"].toString();
+    auto areaCode = room["areacode"].toString();
 
     auto parts = name.split(' ');
     for (int i = 0; i < parts.size(); i++)
@@ -93,5 +95,9 @@ void Widget::loadMapFile(const QString& fileName)
     auto nameItem = new QTableWidgetItem(name);
     nameItem->setFlags(nameItem->flags() ^ Qt::ItemIsEditable);
     ui->roomTable->setItem(i, 1, nameItem);
+
+    auto areaCodeItem = new QTableWidgetItem(areaCode);
+    areaCodeItem->setFlags(areaCodeItem->flags() ^ Qt::ItemIsEditable);
+    ui->roomTable->setItem(i, 2, areaCodeItem);
   }
 }
