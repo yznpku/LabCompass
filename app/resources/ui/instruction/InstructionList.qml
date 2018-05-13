@@ -22,8 +22,13 @@ Column {
   }
 
   WarningInstructionItem {
-    visible: !modelValid && atPlaza
+    visible: !modelValid && atPlaza && !inLab
     text: 'No map loaded.\n\n- Import a map in Planner window before starting lab.'
+  }
+
+  LoadedMapInstructionItem {
+    visible: modelValid && atPlaza && !inLab
+    model: Global.model.labyrinthModel
   }
 
   IzaroInstructionItem {

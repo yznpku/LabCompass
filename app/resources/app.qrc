@@ -83,5 +83,10 @@
         <file>ui/options/OptionsGridLayout.qml</file>
         <file>ui/options/Options.qml</file>
         <file>ui/options/KeySequenceEdit.qml</file>
+        <file>ui/instruction/LoadedMapInstructionItem.qml</file>
+        <file>images/instruction/loaded-map-normal.svg</file>
+        <file>images/instruction/loaded-map-cruel.svg</file>
+        <file>images/instruction/loaded-map-merciless.svg</file>
+        <file>images/instruction/loaded-map-uber.svg</file>
     </qresource>
 </RCC>
