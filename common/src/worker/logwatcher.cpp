@@ -105,6 +105,9 @@ void LogWatcher::parseLine(const QString line)
           emit roomChanged(roomName);
         else
           emit labExit();
+        if (roomName == "Aspirant\'s Plaza")
+          emit plazaEntered();
+
       } else if (FINISH_LINES.contains(logContent)) {
         emit sectionFinished();
         emit labFinished();

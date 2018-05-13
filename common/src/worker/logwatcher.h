@@ -15,6 +15,7 @@ class LogWatcher : public QObject
   std::unique_ptr<QFile> file;
 
 signals:
+  void plazaEntered();
   void labStarted();
   void labFinished();
   void sectionFinished();

@@ -23,6 +23,7 @@ class ApplicationModel : public QObject
   QML_READONLY_VAR_PROPERTY(bool, newVersionAvailable)
   QML_READONLY_VAR_PROPERTY(bool, labMapOutdated)
   QML_READONLY_VAR_PROPERTY(bool, logFileOpen)
+  QML_READONLY_VAR_PROPERTY(bool, atPlaza)
   QML_READONLY_VAR_PROPERTY(bool, inLab)
   QML_READONLY_VAR_PROPERTY(bool, currentRoomDetermined)
   QML_READONLY_VAR_PROPERTY(bool, isValid)

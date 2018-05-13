@@ -117,6 +117,8 @@ void Application::initControllers()
           labyrinthController.get(), &LabyrinthController::importFile);
 
   navigationController.reset(new NavigationController(&model));
+  connect(logWatcher.get(), &LogWatcher::plazaEntered,
+          navigationController.get(), &NavigationController::onPlazaEntered);
   connect(logWatcher.get(), &LogWatcher::labStarted,
           navigationController.get(), &NavigationController::onLabStarted);
   connect(logWatcher.get(), &LogWatcher::sectionFinished,

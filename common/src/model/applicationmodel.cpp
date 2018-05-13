@@ -16,6 +16,7 @@ ApplicationModel::ApplicationModel(QObject* parent) : QObject(parent)
   m_newVersionAvailable = false;
   m_labMapOutdated = true;
   m_logFileOpen = true;
+  m_atPlaza = false;
   m_inLab = false;
   m_currentRoomDetermined = true;
   m_isValid = false;

@@ -4,9 +4,11 @@ import com.labcompass 1.0
 Column {
   id: root
 
+  property bool modelValid: Global.model.isValid
+  property bool atPlaza: Global.model.atPlaza
   property bool inLab: Global.model.inLab
   property bool currentRoomDetermined: Global.model.currentRoomDetermined
-  property bool valid: inLab && currentRoomDetermined
+  property bool showInstructions: modelValid && inLab && currentRoomDetermined
   property var instructionModel: Global.model.instructionModel
 
   WarningInstructionItem {
@@ -19,8 +21,13 @@ Column {
     text: 'Unable to determine your location.\n\n- Open Planner window and click on your current room.'
   }
 
+  WarningInstructionItem {
+    visible: !modelValid && atPlaza
+    text: 'No map loaded.\n\n- Import a map in Planner window before starting lab.'
+  }
+
   IzaroInstructionItem {
-    visible: valid &&
+    visible: showInstructions &&
              instructionModel.atTrialRoom &&
              instructionModel.shouldKillIzaro &&
              instructionModel.finishedSections <= instructionModel.currentSection
@@ -28,20 +35,20 @@ Column {
   }
 
   DirectionInstructionItem {
-    visible: valid &&
+    visible: showInstructions &&
              instructionModel.hasNextRoom &&
              (connectionType === 'door' || connectionType === 'secret') &&
              (!instructionModel.atTrialRoom || !instructionModel.shouldKillIzaro || instructionModel.finishedSections > instructionModel.currentSection)
     connectionType: instructionModel.nextRoomConnectionType
     direction: instructionModel.nextRoomDirection
     nextRoomName: instructionModel.nextRoomName
-    atPlaza: instructionModel.atPlaza
+    atPlaza: root.atPlaza
     nextRoomIsPreviousRoom: instructionModel.nextRoomIsPreviousRoom
     nextRoomIsUnmarkedOppositeDirection: instructionModel. nextRoomIsUnmarkedOppositeDirection
   }
 
   LootInstructionItem {
-    visible: valid && instructionModel.roomLoot.length
+    visible: showInstructions && instructionModel.roomLoot.length
     model: instructionModel.roomLoot
   }
 
