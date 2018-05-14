@@ -19,12 +19,10 @@ InstructionItem {
   }[difficulty]
 
   Text {
-    visible: atPlaza
     color: Global.primaryTextColor
     text: 'Loaded Map:'
   }
   Text {
-    visible: atPlaza
     color: Global.primaryTextColor
     text: name
   }
