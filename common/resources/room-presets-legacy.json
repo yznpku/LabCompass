@@ -1,0 +1,416 @@
+[
+  {
+    "roomName": "Basilica Annex",
+    "keyword": "rt_end_bottleneck",
+    "contentLocations": {
+      "major": ["NW"],
+      "minor": ["S"]
+    },
+    "doorLocations": ["NE"]
+  },
+  {
+    "roomName": "Basilica Atrium",
+    "keyword": "rt_quad_door",
+    "contentLocations": {
+      "generic": ["SW"]
+    },
+    "doorLocations": ["SE", "W", "NW", "NE"]
+  },
+  {
+    "roomName": "Basilica Atrium",
+    "keyword": "rt_quad",
+    "contentLocations": {
+      "generic": ["N", "SW"]
+    },
+    "doorLocations": ["SE", "W", "NW", "NE"]
+  },
+  {
+    "roomName": "Basilica Halls",
+    "keyword": "rt_branch_door",
+    "contentLocations": {
+      "generic": ["SW"]
+    },
+    "doorLocations": ["SE", "NW", "NE"]
+  },
+  {
+    "roomName": "Basilica Halls",
+    "keyword": "rt_branch_bottleneck_1",
+    "contentLocations": {
+      "generic": ["NE", "SW"]
+    },
+    "doorLocations": ["SE", "NW", "N"]
+  },
+  {
+    "roomName": "Basilica Halls",
+    "keyword": "rt_branch_bottleneck_2",
+    "contentLocations": {
+      "generic": ["E", "SW"]
+    },
+    "doorLocations": ["SE", "W", "N"]
+  },
+  {
+    "roomName": "Basilica Halls",
+    "keyword": "rt_branch",
+    "contentLocations": {
+      "generic": ["E", "SW"]
+    },
+    "doorLocations": ["SE", "W", "N"]
+  },
+  {
+    "roomName": "Basilica Passage",
+    "keyword": "rt_straight_bottleneck",
+    "contentLocations": {
+      "generic": ["SW", "NW"]
+    },
+    "doorLocations": ["SE", "N"]
+  },
+  {
+    "roomName": "Basilica Passage",
+    "keyword": "rt_straight",
+    "contentLocations": {
+      "generic": ["E", "NW"]
+    },
+    "doorLocations": ["SE", "N"]
+  },
+  {
+    "roomName": "Domain Crossing",
+    "keyword": "dg_quad_door",
+    "contentLocations": {
+      "generic": ["NE"]
+    },
+    "doorLocations": ["SE", "W", "NW", "N"]
+  },
+  {
+    "roomName": "Domain Crossing",
+    "keyword": "dg_quad",
+    "contentLocations": {
+      "generic": ["E", "SE"]
+    },
+    "doorLocations": ["S", "NW", "N", "NE"]
+  },
+  {
+    "roomName": "Domain Enclosure",
+    "keyword": "dg_end_bottleneck",
+    "contentLocations": {
+      "major": ["W"],
+      "minor": ["S"]
+    },
+    "doorLocations": ["N"]
+  },
+  {
+    "roomName": "Domain Path",
+    "keyword": "dg_straight_bottleneck",
+    "contentLocations": {
+      "generic": ["SW", "NW"]
+    },
+    "doorLocations": ["S", "N"]
+  },
+  {
+    "roomName": "Domain Path",
+    "keyword": "dg_straight",
+    "contentLocations": {
+      "generic": ["E", "W"]
+    },
+    "doorLocations": ["S", "N"]
+  },
+  {
+    "roomName": "Domain Walkways",
+    "keyword": "dg_branch_door",
+    "contentLocations": {
+      "generic": ["W"]
+    },
+    "doorLocations": ["SE", "N", "NE"]
+  },
+  {
+    "roomName": "Domain Walkways",
+    "keyword": "dg_branch_bottleneck_1",
+    "contentLocations": {
+      "generic": ["N", "E"]
+    },
+    "doorLocations": ["S", "W", "NE"]
+  },
+  {
+    "roomName": "Domain Walkways",
+    "keyword": "dg_branch_bottleneck_2",
+    "contentLocations": {
+      "generic": ["E", "NW"]
+    },
+    "doorLocations": ["SE", "W", "NE"]
+  },
+  {
+    "roomName": "Domain Walkways",
+    "keyword": "dg_branch",
+    "contentLocations": {
+      "generic": ["E", "NW"]
+    },
+    "doorLocations": ["SE", "W", "NE"]
+  },
+  {
+    "roomName": "Estate Crossing",
+    "keyword": "oh_quad_door",
+    "contentLocations": {
+      "generic": ["SW"]
+    },
+    "doorLocations": ["SE", "W", "NW", "N"]
+  },
+  {
+    "roomName": "Estate Crossing",
+    "keyword": "oh_quad",
+    "contentLocations": {
+      "generic": ["N", "S"]
+    },
+    "doorLocations": ["SE", "SW", "NW", "NE"]
+  },
+  {
+    "roomName": "Estate Enclosure",
+    "keyword": "oh_end_bottleneck",
+    "contentLocations": {
+      "major": ["NE"],
+      "minor": ["NW"]
+    },
+    "doorLocations": ["E"]
+  },
+  {
+    "roomName": "Estate Path",
+    "keyword": "oh_straight_bottleneck",
+    "contentLocations": {
+      "generic": ["N", "SW"]
+    },
+    "doorLocations": ["SE", "NW"]
+  },
+  {
+    "roomName": "Estate Path",
+    "keyword": "oh_straight",
+    "contentLocations": {
+      "generic": ["E", "W"]
+    },
+    "doorLocations": ["S", "N"]
+  },
+  {
+    "roomName": "Estate Walkways",
+    "keyword": "oh_branch_door",
+    "contentLocations": {
+      "generic": ["SW"]
+    },
+    "doorLocations": ["SE", "NW", "N"]
+  },
+  {
+    "roomName": "Estate Walkways",
+    "keyword": "oh_branch_bottleneck_1",
+    "contentLocations": {
+      "generic": ["N", "W"]
+    },
+    "doorLocations": ["S", "NW", "NE"]
+  },
+  {
+    "roomName": "Estate Walkways",
+    "keyword": "oh_branch_bottleneck_2",
+    "contentLocations": {
+      "generic": ["NE", "E"]
+    },
+    "doorLocations": ["S", "W", "N"]
+  },
+  {
+    "roomName": "Estate Walkways",
+    "keyword": "oh_branch",
+    "contentLocations": {
+      "generic": ["E", "W"]
+    },
+    "doorLocations": ["SE", "NW", "NE"]
+  },
+  {
+    "roomName": "Mansion Annex",
+    "keyword": "eh_end_bottleneck",
+    "contentLocations": {
+      "major": ["NW"],
+      "minor": ["SW"]
+    },
+    "doorLocations": ["N"]
+  },
+  {
+    "roomName": "Mansion Atrium",
+    "keyword": "eh_quad",
+    "contentLocations": {
+      "generic": ["E", "W"]
+    },
+    "doorLocations": ["SE", "SW", "NW", "N"]
+  },
+  {
+    "roomName": "Mansion Halls",
+    "keyword": "eh_branch_door",
+    "contentLocations": {
+      "generic": ["SW"]
+    },
+    "doorLocations": ["SE", "NW", "N"]
+  },
+  {
+    "roomName": "Mansion Halls",
+    "keyword": "eh_branch_bottleneck_2",
+    "contentLocations": {
+      "generic": ["NE", "S"]
+    },
+    "doorLocations": ["SE", "W", "N"]
+  },
+  {
+    "roomName": "Mansion Halls",
+    "keyword": "eh_block_branch",
+    "contentLocations": {
+      "generic": ["NE", "SW"]
+    },
+    "doorLocations": ["SE", "NW", "N"]
+  },
+  {
+    "roomName": "Mansion Halls",
+    "keyword": "eh_branch",
+    "contentLocations": {
+      "generic": ["E", "SW"]
+    },
+    "doorLocations": ["S", "NW", "N"]
+  },
+  {
+    "roomName": "Mansion Passage",
+    "keyword": "eh_straight_bottleneck",
+    "contentLocations": {
+      "generic": ["NE", "W"]
+    },
+    "doorLocations": ["SE", "N"]
+  },
+  {
+    "roomName": "Mansion Passage",
+    "keyword": "eh_straight",
+    "contentLocations": {
+      "generic": ["NE", "SW"]
+    },
+    "doorLocations": ["SE", "N"]
+  },
+  {
+    "roomName": "Sanitorium Annex",
+    "keyword": "p_end_bottleneck",
+    "contentLocations": {
+      "major": ["NW"],
+      "minor": ["SW"]
+    },
+    "doorLocations": ["NE"]
+  },
+  {
+    "roomName": "Sanitorium Atrium",
+    "keyword": "p_quad",
+    "contentLocations": {
+      "generic": ["E", "S"]
+    },
+    "doorLocations": ["SE", "W", "NW", "N"]
+  },
+  {
+    "roomName": "Sanitorium Halls",
+    "keyword": "p_branch_door",
+    "contentLocations": {
+      "generic": ["SW"]
+    },
+    "doorLocations": ["SE", "NW", "N"]
+  },
+  {
+    "roomName": "Sanitorium Halls",
+    "keyword": "p_branch_bottleneck_1",
+    "contentLocations": {
+      "generic": ["NE", "SW"]
+    },
+    "doorLocations": ["S", "NW", "N"]
+  },
+  {
+    "roomName": "Sanitorium Halls",
+    "keyword": "p_branch_bottleneck_2",
+    "contentLocations": {
+      "generic": ["E", "S"]
+    },
+    "doorLocations": ["SE", "W", "N"]
+  },
+  {
+    "roomName": "Sanitorium Halls",
+    "keyword": "p_branch",
+    "contentLocations": {
+      "generic": ["E", "S"]
+    },
+    "doorLocations": ["SE", "NW", "N"]
+  },
+  {
+    "roomName": "Sanitorium Passage",
+    "keyword": "p_straight_bottleneck",
+    "contentLocations": {
+      "generic": ["SW", "NW"]
+    },
+    "doorLocations": ["S", "N"]
+  },
+  {
+    "roomName": "Sanitorium Passage",
+    "keyword": "p_straight",
+    "contentLocations": {
+      "generic": ["E", "NW"]
+    },
+    "doorLocations": ["SE", "N"]
+  },
+  {
+    "roomName": "Sepulchre Annex",
+    "keyword": "c_end_bottleneck",
+    "contentLocations": {
+      "major": ["NW"],
+      "minor": ["SW"]
+    },
+    "doorLocations": ["NE"]
+  },
+  {
+    "roomName": "Sepulchre Atrium",
+    "keyword": "c_quad_door",
+    "contentLocations": {
+      "generic": ["SW"]
+    },
+    "doorLocations": ["SE", "W", "NW", "NE"]
+  },
+  {
+    "roomName": "Sepulchre Atrium",
+    "keyword": "c_quad",
+    "contentLocations": {
+      "generic": ["E", "SW"]
+    },
+    "doorLocations": ["SE", "W", "NW", "N"]
+  },
+  {
+    "roomName": "Sepulchre Halls",
+    "keyword": "c_branch_bottleneck_1",
+    "contentLocations": {
+      "generic": ["NE", "SW"]
+    },
+    "doorLocations": ["S", "NW", "N"]
+  },
+  {
+    "roomName": "Sepulchre Halls",
+    "keyword": "c_branch_bottleneck_2",
+    "contentLocations": {
+      "generic": ["NE", "S"]
+    },
+    "doorLocations": ["SE", "W", "N"]
+  },
+  {
+    "roomName": "Sepulchre Halls",
+    "keyword": "c_branch",
+    "contentLocations": {
+      "generic": ["E", "SW"]
+    },
+    "doorLocations": ["SE", "NW", "N"]
+  },
+  {
+    "roomName": "Sepulchre Passage",
+    "keyword": "c_straight_bottleneck",
+    "contentLocations": {
+      "generic": ["SW", "NW"]
+    },
+    "doorLocations": ["S", "N"]
+  },
+  {
+    "roomName": "Sepulchre Passage",
+    "keyword": "c_straight",
+    "contentLocations": {
+      "generic": ["E", "NW"]
+    },
+    "doorLocations": ["SE", "N"]
+  }
+]
