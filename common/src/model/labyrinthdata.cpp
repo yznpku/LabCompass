@@ -292,14 +292,19 @@ bool LabyrinthData::loadContentLocations()
 {
   QFile roomPresetsFile(":/room-presets.json");
   roomPresetsFile.open(QIODevice::ReadOnly);
-  auto roomPresets = QJsonDocument::fromJson(roomPresetsFile.readAll()).toVariant().toList();
+  auto roomNameTypes = QJsonDocument::fromJson(roomPresetsFile.readAll()).toVariant().toList();
 
   for (int i = 0; i < rooms.size(); i++) {
     auto& room = rooms[i];
     QVariantMap preset;
-    foreach (auto& x, roomPresets)
-      if (room.name == x.toMap()["roomName"] && room.areaCode.contains(x.toMap()["keyword"].toString())) {
-        preset = x.toMap();
+    foreach (auto& x, roomNameTypes)
+      if (room.name == x.toMap()["roomName"]) {
+        auto variants = x.toMap()["variants"].toList();
+        foreach (auto& y, variants)
+          if (room.areaCode.contains(y.toMap()["keyword"].toString())) {
+            preset = y.toMap();
+            break;
+          }
         break;
       }
     room.contentLocations = preset["contentLocations"].toMap();
