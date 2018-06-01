@@ -32,7 +32,8 @@ HEADERS += \
     src/model/instructionmodel.h \
     src/model/plansummarymodel.h \
     src/worker/versionchecker.h \
-    src/version.h
+    src/version.h \
+    src/helper/roompresethelper.h
 
 SOURCES += \
     src/model/labyrinthmodel.cpp \
@@ -51,7 +52,8 @@ SOURCES += \
     src/model/goldendoormodel.cpp \
     src/model/instructionmodel.cpp \
     src/model/plansummarymodel.cpp \
-    src/worker/versionchecker.cpp
+    src/worker/versionchecker.cpp \
+    src/helper/roompresethelper.cpp
 
 RESOURCES += \
     resources/common.qrc

@@ -1,4 +1,5 @@
 #include "labyrinthdata.h"
+#include "helper/roompresethelper.h"
 
 static const QHash<QString, qreal> ROOM_PREFIX_COST {
   {"Sepulchre", 3},
@@ -67,8 +68,7 @@ bool LabyrinthData::loadFromJson(const QJsonObject& json)
   if (!loadGoldenDoors())
     return false;
 
-  if (!loadContentLocations())
-    return false;
+  loadContentLocations();
 
   return true;
 }
@@ -288,27 +288,16 @@ bool LabyrinthData::loadGoldenDoors()
   return true;
 }
 
-bool LabyrinthData::loadContentLocations()
+void LabyrinthData::loadContentLocations()
 {
-  QFile roomPresetsFile(":/room-presets.json");
-  roomPresetsFile.open(QIODevice::ReadOnly);
-  auto roomNameTypes = QJsonDocument::fromJson(roomPresetsFile.readAll()).toVariant().toList();
+  auto helper = RoomPresetHelper::instance;
 
   for (int i = 0; i < rooms.size(); i++) {
     auto& room = rooms[i];
-    QVariantMap preset;
-    foreach (auto& x, roomNameTypes)
-      if (room.name == x.toMap()["roomName"]) {
-        auto variants = x.toMap()["variants"].toList();
-        foreach (auto& y, variants)
-          if (room.areaCode.contains(y.toMap()["keyword"].toString())) {
-            preset = y.toMap();
-            break;
-          }
-        break;
-      }
+    auto preset = helper->getPreset(room.name, room.areaCode);
+    if (preset.isEmpty())
+      continue;
+
     room.contentLocations = preset["contentLocations"].toMap();
   }
-
-  return true;
 }

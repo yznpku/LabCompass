@@ -2,6 +2,7 @@
 #include "version.h"
 #include "tray/trayiconmenu.h"
 #include "keysequence/keysequencehelper.h"
+#include "helper/roompresethelper.h"
 
 Application::Application(int& argc, char** argv) : QApplication(argc, argv)
 {
@@ -11,6 +12,7 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
   initApplication();
   initResources();
   initSystemTrayIcon();
+  initHelpers();
   initWindows();
   initWorkers();
   initControllers();
@@ -57,6 +59,11 @@ void Application::initSystemTrayIcon()
   trayIcon->setContextMenu(trayIconMenu.get());
   trayIcon->setToolTip("LabCompass");
   trayIcon->show();
+}
+
+void Application::initHelpers()
+{
+  RoomPresetHelper::instance = new RoomPresetHelper();
 }
 
 void Application::initWindows()

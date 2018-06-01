@@ -54,6 +54,7 @@ private:
   void initApplication();
   void initResources();
   void initSystemTrayIcon();
+  void initHelpers();
   void initWindows();
   void initWorkers();
   void initControllers();
