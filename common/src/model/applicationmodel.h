@@ -21,7 +21,7 @@ class ApplicationModel : public QObject
   QML_READONLY_UNIQUEPTR_PROPERTY(Settings, settings)
 
   QML_READONLY_VAR_PROPERTY(bool, newVersionAvailable)
-  QML_READONLY_VAR_PROPERTY(bool, labMapOutdated)
+  QML_READONLY_CSTREF_PROPERTY(QDate, currentUtcDate)
   QML_READONLY_VAR_PROPERTY(bool, logFileOpen)
   QML_READONLY_VAR_PROPERTY(bool, atPlaza)
   QML_READONLY_VAR_PROPERTY(bool, inLab)

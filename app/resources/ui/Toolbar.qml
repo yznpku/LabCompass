@@ -18,7 +18,7 @@ Column {
       }
     }
     NotificationIndicator {
-      visible: Global.model.labMapOutdated
+      visible: !Global.loadedMapUpToDate
     }
   }
 

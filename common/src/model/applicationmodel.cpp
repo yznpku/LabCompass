@@ -14,7 +14,6 @@ ApplicationModel::ApplicationModel(QObject* parent) : QObject(parent)
   m_planSummaryModel.reset(new PlanSummaryModel);
 
   m_newVersionAvailable = false;
-  m_labMapOutdated = true;
   m_logFileOpen = true;
   m_atPlaza = false;
   m_inLab = false;
@@ -27,7 +26,6 @@ bool ApplicationModel::loadFromFile(const QString& file)
   LabyrinthData newLabyrinthData;
   if (newLabyrinthData.loadFromFile(file)) {
     labyrinthData = newLabyrinthData;
-    update_labMapOutdated(labyrinthData.date != QDateTime::currentDateTimeUtc().date());
     updatePlanData(PlanData());
 
     update_inLab(false);

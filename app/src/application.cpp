@@ -115,6 +115,7 @@ void Application::initWorkers()
           compassWindow.get(), &CompassWindow::closeTimer);
 
   versionChecker.reset(new VersionChecker(&model));
+  dateChecker.reset(new DateChecker(&model));
 }
 
 void Application::initControllers()
