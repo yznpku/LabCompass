@@ -26,6 +26,11 @@ Column {
     text: 'No map loaded.\n\n- Import a map in Planner window before starting lab.'
   }
 
+  WarningInstructionItem {
+    visible: modelValid && !Global.loadedMapUpToDate && atPlaza && !inLab
+    text: 'Loaded map is outdated.\n\n- Checkout poelab.com for latest maps.'
+  }
+
   LoadedMapInstructionItem {
     visible: modelValid && atPlaza && !inLab
     model: Global.model.labyrinthModel
