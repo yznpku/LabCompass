@@ -35,6 +35,7 @@ void NavigationController::onSectionFinished()
 
 void NavigationController::onLabExit()
 {
+  model->update_atPlaza(false);
   if (!model->get_isValid())
     return;
 
@@ -42,12 +43,12 @@ void NavigationController::onLabExit()
   navigation.loadFromData(&model->labyrinthData, model->planData);
   navigation.updatePlannedRouteAndInstructions();
   model->updateNavigationData(navigation);
-  model->update_atPlaza(false);
   model->update_inLab(false);
 }
 
 void NavigationController::onRoomChanged(const QString& name)
 {
+  model->update_atPlaza(false);
   if (!model->get_isValid())
     return;
 
@@ -116,7 +117,6 @@ void NavigationController::onRoomChanged(const QString& name)
 
   data.updatePlannedRouteAndInstructions();
   model->updateNavigationData(data);
-  model->update_atPlaza(false);
 }
 
 void NavigationController::onPortalSpawned()
