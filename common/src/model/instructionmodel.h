@@ -14,7 +14,6 @@ class InstructionModel : public QObject
   QML_READONLY_VAR_PROPERTY(bool, roomHasPortal)
 
   QML_READONLY_VAR_PROPERTY(bool, hasNextRoom)
-  QML_READONLY_VAR_PROPERTY(bool, atPlaza)
   QML_READONLY_VAR_PROPERTY(bool, atTrialRoom)
   QML_READONLY_VAR_PROPERTY(bool, nextRoomIsPreviousRoom)
   QML_READONLY_VAR_PROPERTY(bool, nextRoomIsUnmarkedOppositeDirection)

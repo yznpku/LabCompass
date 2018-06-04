@@ -14,6 +14,7 @@ public:
   NavigationController(ApplicationModel* model);
 
 public slots:
+  void onPlazaEntered();
   void onLabStarted();
   void onSectionFinished();
   void onLabExit();

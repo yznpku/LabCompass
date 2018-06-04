@@ -21,7 +21,6 @@ static const QStringList DIRECTION_LIST {"N", "NE", "E", "SE", "S", "SW", "W", "
 InstructionModel::InstructionModel(QObject* parent) : QObject(parent)
 {
   m_roomHasPortal = false;
-  m_atPlaza = false;
   m_atTrialRoom = false;
   m_hasNextRoom = false;
   m_nextRoomIsPreviousRoom = false;
@@ -49,8 +48,6 @@ void InstructionModel::loadFromData(const NavigationData& data)
   update_currentSection(data.lab->getRoomFromId(data.currentRoom).section);
 
   update_roomHasPortal(false);
-
-  update_atPlaza(data.currentRoom == "plaza");
 
   update_atTrialRoom(data.lab->roomIsTrial(data.currentRoom));
 

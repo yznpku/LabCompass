@@ -25,10 +25,6 @@ public:
   Settings(QObject* parent = nullptr);
   void load();
   void save();
-
-//public:
-//  Q_INVOKABLE inline void setValue(const QString &key, const QVariant &value) { QSettings::setValue(key, value); }
-//  Q_INVOKABLE inline QVariant value(const QString &key, const QVariant &defaultValue = QVariant()) const { return QSettings::value(key, defaultValue); }
 };
 
 #endif // SETTINGS_H

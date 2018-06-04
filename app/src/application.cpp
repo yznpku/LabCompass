@@ -2,6 +2,7 @@
 #include "version.h"
 #include "tray/trayiconmenu.h"
 #include "keysequence/keysequencehelper.h"
+#include "helper/roompresethelper.h"
 
 Application::Application(int& argc, char** argv) : QApplication(argc, argv)
 {
@@ -11,6 +12,7 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
   initApplication();
   initResources();
   initSystemTrayIcon();
+  initHelpers();
   initWindows();
   initWorkers();
   initControllers();
@@ -57,6 +59,11 @@ void Application::initSystemTrayIcon()
   trayIcon->setContextMenu(trayIconMenu.get());
   trayIcon->setToolTip("LabCompass");
   trayIcon->show();
+}
+
+void Application::initHelpers()
+{
+  RoomPresetHelper::instance = new RoomPresetHelper();
 }
 
 void Application::initWindows()
@@ -108,6 +115,7 @@ void Application::initWorkers()
           compassWindow.get(), &CompassWindow::closeTimer);
 
   versionChecker.reset(new VersionChecker(&model));
+  dateChecker.reset(new DateChecker(&model));
 }
 
 void Application::initControllers()
@@ -117,6 +125,8 @@ void Application::initControllers()
           labyrinthController.get(), &LabyrinthController::importFile);
 
   navigationController.reset(new NavigationController(&model));
+  connect(logWatcher.get(), &LogWatcher::plazaEntered,
+          navigationController.get(), &NavigationController::onPlazaEntered);
   connect(logWatcher.get(), &LogWatcher::labStarted,
           navigationController.get(), &NavigationController::onLabStarted);
   connect(logWatcher.get(), &LogWatcher::sectionFinished,

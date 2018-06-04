@@ -67,7 +67,7 @@ WindowWithShadow {
             color: Global.primaryTextColor
           }
           NotificationIndicator {
-            visible: Global.model.labMapOutdated
+            visible: !Global.loadedMapUpToDate
           }
         }
 

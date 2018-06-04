@@ -5,6 +5,11 @@ NavigationController::NavigationController(ApplicationModel* model)
   this->model = model;
 }
 
+void NavigationController::onPlazaEntered()
+{
+  model->update_atPlaza(true);
+}
+
 void NavigationController::onLabStarted()
 {
   if (!model->get_isValid())
@@ -15,6 +20,7 @@ void NavigationController::onLabStarted()
   navigation.updatePlannedRouteAndInstructions();
   model->updateNavigationData(navigation);
   model->update_inLab(true);
+  model->update_atPlaza(true);
   model->get_instructionModel()->update_finishedSections(0);
 }
 
@@ -29,6 +35,7 @@ void NavigationController::onSectionFinished()
 
 void NavigationController::onLabExit()
 {
+  model->update_atPlaza(false);
   if (!model->get_isValid())
     return;
 
@@ -41,6 +48,7 @@ void NavigationController::onLabExit()
 
 void NavigationController::onRoomChanged(const QString& name)
 {
+  model->update_atPlaza(false);
   if (!model->get_isValid())
     return;
 
@@ -154,4 +162,5 @@ void NavigationController::onRoomIdSet(const QString& id)
   data.currentRoom = id;
   data.updatePlannedRouteAndInstructions();
   model->updateNavigationData(data);
+  model->update_atPlaza(false);
 }

@@ -12,6 +12,7 @@ QtObject {
   property var lastActiveTooltipHoverArea
 
   property var model
+  property var loadedMapUpToDate: model ? String(model.currentUtcDate) === String(model.labyrinthModel.date) : true
 
   property color backgroundColor: '#181818'
   property color primaryColor: '#212121'

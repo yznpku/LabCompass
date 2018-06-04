@@ -6,7 +6,7 @@ InstructionItem {
 
   property string text
 
-  color: '#F44336'
+  color: '#D32F2F'
   iconSource: 'qrc:/images/instruction/warning.svg'
 
   Text {

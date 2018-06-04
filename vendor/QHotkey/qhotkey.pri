@@ -1,5 +1,5 @@
 CONFIG += C++11
-unix: QT += x11extras
+linux: QT += x11extras
 
 PUBLIC_HEADERS += $$PWD/qhotkey.h \
         $$PWD/QHotkey

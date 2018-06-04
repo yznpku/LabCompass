@@ -12,6 +12,7 @@
 #include "window/optionswindow.h"
 #include "worker/logwatcher.h"
 #include "worker/versionchecker.h"
+#include "worker/datechecker.h"
 #include "controller/labyrinthcontroller.h"
 #include "controller/navigationcontroller.h"
 #include "hotkey/hotkeybinding.h"
@@ -38,6 +39,7 @@ class Application : public QApplication
 
   std::unique_ptr<LogWatcher> logWatcher;
   std::unique_ptr<VersionChecker> versionChecker;
+  std::unique_ptr<DateChecker> dateChecker;
 
   std::unique_ptr<LabyrinthController> labyrinthController;
   std::unique_ptr<NavigationController> navigationController;
@@ -54,6 +56,7 @@ private:
   void initApplication();
   void initResources();
   void initSystemTrayIcon();
+  void initHelpers();
   void initWindows();
   void initWorkers();
   void initControllers();
