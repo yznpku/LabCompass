@@ -32,7 +32,7 @@ HEADERS += \
     src/model/instructionmodel.h \
     src/model/plansummarymodel.h \
     src/worker/versionchecker.h \
-    src/version.h \
+    src/global.h \
     src/helper/roompresethelper.h \
     src/worker/datechecker.h
 

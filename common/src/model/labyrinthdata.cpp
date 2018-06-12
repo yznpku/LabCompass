@@ -73,35 +73,35 @@ bool LabyrinthData::loadFromJson(const QJsonObject& json)
   return true;
 }
 
-LabyrinthData::Room LabyrinthData::getRoomFromId(const QString& id) const
+LabyrinthData::Room LabyrinthData::getRoomFromId(const RoomId& id) const
 {
   return rooms[roomIdIndex.value(id)];
 }
 
-bool LabyrinthData::hasConnection(const QString& from, const QString& to) const
+bool LabyrinthData::hasConnection(const RoomId& from, const RoomId& to) const
 {
   return !connections[from][to].isEmpty();
 }
 
-bool LabyrinthData::hasDoorConnection(const QString& from, const QString& to) const
+bool LabyrinthData::hasDoorConnection(const RoomId& from, const RoomId& to) const
 {
   auto& l = connections[from][to];
   return !l.isEmpty() && l[0] != "C" && l[0] != "P";
 }
 
-bool LabyrinthData::roomIsFirstRoomInSection(const QString& id) const
+bool LabyrinthData::roomIsFirstRoomInSection(const RoomId& id) const
 {
   const Room& room = getRoomFromId(id);
   return room.isFirstRoomInSection;
 }
 
-bool LabyrinthData::roomIsTrial(const QString& id) const
+bool LabyrinthData::roomIsTrial(const RoomId& id) const
 {
   const Room& room = rooms[roomIdIndex.value(id)];
   return room.name == "Aspirant's Trial";
 }
 
-bool LabyrinthData::roomIsDeadEnd(const QString& id) const
+bool LabyrinthData::roomIsDeadEnd(const RoomId& id) const
 {
   if (roomIsFirstRoomInSection(id) || roomIsTrial(id))
     return false;
@@ -114,7 +114,7 @@ bool LabyrinthData::roomIsDeadEnd(const QString& id) const
   return exits == 1;
 }
 
-bool LabyrinthData::roomHasSecretPassage(const QString& id) const
+bool LabyrinthData::roomHasSecretPassage(const RoomId& id) const
 {
   auto roomConnections = connections[id];
   for (auto i = roomConnections.constBegin(); i != roomConnections.constEnd(); i++)
@@ -123,11 +123,11 @@ bool LabyrinthData::roomHasSecretPassage(const QString& id) const
   return false;
 }
 
-qreal LabyrinthData::roomCost(const QString& id) const
+qreal LabyrinthData::roomCost(const RoomId& id) const
 {
   if (roomIsTrial(id))
     return 5;
-  auto affixes = rooms[roomIdIndex[id]].name.split(' ');
+  auto affixes = getRoomFromId(id).name.split(' ');
   return ROOM_PREFIX_COST[affixes[0]] + ROOM_SUFFIX_COST[affixes[1]];
 }
 
@@ -177,10 +177,10 @@ bool LabyrinthData::loadRooms(const QJsonArray& array)
 bool LabyrinthData::loadConnectionMatrix(const QJsonArray& array)
 {
   connections.clear();
-  foreach (QString i, roomIdIndex.uniqueKeys()) {
-    connections[i] = QHash<QString, QList<QString>>();
-    foreach (QString j, roomIdIndex.uniqueKeys())
-      connections[i][j] = QList<QString>();
+  foreach (RoomId i, roomIdIndex.uniqueKeys()) {
+    connections[i] = RoomConnections();
+    foreach (RoomId j, roomIdIndex.uniqueKeys())
+      connections[i][j] = QList<RoomId>();
   }
 
   for (int i = 0; i < array.size(); i++) {
@@ -284,7 +284,7 @@ bool LabyrinthData::loadGoldenDoors()
             hasDoorConnection(rooms[i].id, rooms[j].id) &&
             !rooms[j].contents.contains("golden-key") &&
             rooms[j].coordinate.x() > rooms[i].coordinate.x())
-          goldenDoors.append(std::pair<QString, QString>(rooms[i].id, rooms[j].id));
+          goldenDoors.append(std::pair<RoomId, RoomId>(rooms[i].id, rooms[j].id));
   return true;
 }
 

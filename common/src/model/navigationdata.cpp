@@ -19,11 +19,11 @@ void NavigationData::loadFromData(const LabyrinthData* lab, const PlanData& plan
 void NavigationData::updatePlannedRouteAndInstructions()
 {
   if (!currentRoomDetermined) {
-    plannedRoute = QStringList();
+    plannedRoute = {};
     return;
   }
 
-  QStringList newPlannedRoute;
+  QList<RoomId> newPlannedRoute;
   ContentState tempGolden = contentState;
 
   int startSection = lab->getRoomFromId(currentRoom).section;
@@ -45,11 +45,11 @@ void NavigationData::updatePlannedRouteAndInstructions()
   plannedRoute = newPlannedRoute;
 }
 
-QStringList NavigationData::plannedRouteInsideSection(int section, const QString& begin, const QString& end, const QStringList& targetRooms, ContentState* tempGolden)
+QList<RoomId> NavigationData::plannedRouteInsideSection(int section, const RoomId& begin, const RoomId& end, const QList<RoomId>& targetRooms, ContentState* tempGolden)
 {
-  QStringList sectionTargetRooms;
+  QList<RoomId> sectionTargetRooms;
   std::copy_if(targetRooms.constBegin(), targetRooms.constEnd(), std::back_inserter(sectionTargetRooms),
-               [this, section](const QString& room) { return lab->sections[section].roomIds.contains(room); });
+               [this, section](const RoomId& room) { return lab->sections[section].roomIds.contains(room); });
 
   if (tempGolden->goldenKeyLocations.contains(begin)) {
     tempGolden->goldenKeyLocations.removeAll(begin);
@@ -57,13 +57,13 @@ QStringList NavigationData::plannedRouteInsideSection(int section, const QString
   }
 
   if (begin == end && std::count_if(sectionTargetRooms.constBegin(), sectionTargetRooms.constEnd(),
-                                    [begin](const QString& target) { return target == begin; }) == sectionTargetRooms.size())
+                                    [begin](const RoomId& target) { return target == begin; }) == sectionTargetRooms.size())
     return {begin};
 
   struct State {
     ContentState contentState;
-    QString currentRoom;
-    QStringList history;
+    RoomId currentRoom;
+    QList<RoomId> history;
     qreal length;
   };
   auto cmp = [](const State& o1, const State& o2) { return o1.length > o2.length; };
@@ -85,13 +85,13 @@ QStringList NavigationData::plannedRouteInsideSection(int section, const QString
         newState.history.append(roomId);
         newState.length += lab->roomCost(roomId);
 
-        if (state.contentState.lockedDoors.contains(std::pair<QString, QString>(state.currentRoom, roomId)) ||
-            state.contentState.lockedDoors.contains(std::pair<QString, QString>(roomId, state.currentRoom))) {
+        if (state.contentState.lockedDoors.contains(std::pair<RoomId, RoomId>(state.currentRoom, roomId)) ||
+            state.contentState.lockedDoors.contains(std::pair<RoomId, RoomId>(roomId, state.currentRoom))) {
           if (state.contentState.goldenKeysInInventory < 1)
             continue;
           newState.contentState.goldenKeysInInventory -= 1;
-          newState.contentState.lockedDoors.removeAll(std::pair<QString, QString>(state.currentRoom, roomId));
-          newState.contentState.lockedDoors.removeAll(std::pair<QString, QString>(roomId, state.currentRoom));
+          newState.contentState.lockedDoors.removeAll(std::pair<RoomId, RoomId>(state.currentRoom, roomId));
+          newState.contentState.lockedDoors.removeAll(std::pair<RoomId, RoomId>(roomId, state.currentRoom));
         }
 
         if (state.contentState.goldenKeyLocations.contains(roomId)) {
@@ -108,7 +108,7 @@ QStringList NavigationData::plannedRouteInsideSection(int section, const QString
       }
   }
 
-  return QStringList();
+  return {};
 }
 
 bool NavigationData::listContainsAll(const QStringList& l1, const QStringList& l2)

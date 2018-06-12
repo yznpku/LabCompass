@@ -1,5 +1,5 @@
 #include "application.h"
-#include "version.h"
+#include "global.h"
 #include "tray/trayiconmenu.h"
 #include "keysequence/keysequencehelper.h"
 #include "helper/roompresethelper.h"
