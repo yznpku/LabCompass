@@ -9,10 +9,8 @@ PRECOMPILED_HEADER += src/stdafx.h
 
 INCLUDEPATH += \
     src \
-    ../vendor/QtSuperMacros
-
-DEPEND_VENDOR_LIBS += QtSuperMacros
-include(../config/dependencies.pri)
+    ../vendor/QtSuperMacros \
+    ../vendor/HungarianAlgorithm
 
 HEADERS += \
     src/model/labyrinthmodel.h \

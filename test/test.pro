@@ -12,7 +12,7 @@ INCLUDEPATH += \
     ../vendor/QtSuperMacros
 
 DEPEND_LIBS += common
-DEPEND_VENDOR_LIBS += QtSuperMacros
+DEPEND_VENDOR_LIBS += QtSuperMacros HungarianAlgorithm
 include(../config/dependencies.pri)
 
 DEFINES += QT_DEPRECATED_WARNINGS
