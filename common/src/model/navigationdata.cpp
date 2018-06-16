@@ -76,7 +76,7 @@ QList<RoomId> NavigationData::plannedRouteInsideSection(int section, const RoomI
     State state = queue.top();
     queue.pop();
 
-    auto connections = lab->connections[state.currentRoom];
+    auto connections = lab->getRoomConnections(state.currentRoom);
     for (auto i = connections.constBegin(); i != connections.constEnd(); i++)
       if (!i.value().isEmpty() && lab->sections[section].roomIds.contains(i.key())) {
         auto roomId = i.key();

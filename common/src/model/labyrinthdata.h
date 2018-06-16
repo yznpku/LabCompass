@@ -33,6 +33,7 @@ struct LabyrinthData
 
   QList<Room> rooms;
   ConnectionMatrix connections;
+  ConnectionMatrix normalizedConnections;
   Section sections[3];
   QList<std::pair<RoomId, RoomId>> goldenDoors;
 
@@ -44,6 +45,9 @@ public:
   bool loadFromString(const QByteArray& str);
   bool loadFromJson(const QJsonObject& json);
 
+  void normalizeDoorDirections(const RoomId& id);
+  void normalizeDoorDirectionsForAllRooms();
+
   Room getRoomFromId(const RoomId& id) const;
   bool hasConnection(const RoomId& from, const RoomId& to) const;
   bool hasDoorConnection(const RoomId& from, const RoomId& to) const;
@@ -51,6 +55,7 @@ public:
   bool roomIsTrial(const RoomId& id) const;
   bool roomIsDeadEnd(const RoomId& id) const;
   bool roomHasSecretPassage(const RoomId& id) const;
+  RoomConnections getRoomConnections(const RoomId& id) const;
 
   qreal roomCost(const RoomId& id) const;
 

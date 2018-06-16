@@ -1,5 +1,6 @@
 #include "labyrinthdata.h"
 #include "helper/roompresethelper.h"
+#include "helper/directionnormalizer.h"
 
 static const QHash<QString, qreal> ROOM_PREFIX_COST {
   {"Sepulchre", 3},
@@ -20,6 +21,8 @@ static const QHash<QString, qreal> ROOM_SUFFIX_COST {
   {"Crossing", 12},
   {"Atrium", 12},
 };
+
+static DirectionNormalizer directionNormalizer;
 
 LabyrinthData::LabyrinthData()
 {
@@ -70,7 +73,37 @@ bool LabyrinthData::loadFromJson(const QJsonObject& json)
 
   loadContentLocations();
 
+  normalizeDoorDirectionsForAllRooms();
+
   return true;
+}
+
+void LabyrinthData::normalizeDoorDirections(const RoomId& id)
+{
+  auto helper = RoomPresetHelper::instance;
+
+  const auto& room = getRoomFromId(id);
+  const auto& originalConnections = connections[id];
+  const auto& preset = helper->getPreset(room.name, room.areaCode);
+
+  if (!preset.isEmpty()) {
+    const auto& pattern = preset["doorLocations"].toStringList();
+    auto normalized = directionNormalizer.normalize(originalConnections, pattern);
+    normalizedConnections[id] = normalized;
+
+  } else {
+    normalizedConnections[id] = originalConnections;
+  }
+
+  qDebug() << id;
+  qDebug() << "BEFORE" << originalConnections;
+  qDebug() << "AFTER " << normalizedConnections[id];
+}
+
+void LabyrinthData::normalizeDoorDirectionsForAllRooms()
+{
+  foreach (const auto& room, rooms)
+    normalizeDoorDirections(room.id);
 }
 
 LabyrinthData::Room LabyrinthData::getRoomFromId(const RoomId& id) const
@@ -121,6 +154,11 @@ bool LabyrinthData::roomHasSecretPassage(const RoomId& id) const
     if (i.value().contains("C"))
       return true;
   return false;
+}
+
+RoomConnections LabyrinthData::getRoomConnections(const RoomId& id) const
+{
+  return normalizedConnections[id];
 }
 
 qreal LabyrinthData::roomCost(const RoomId& id) const

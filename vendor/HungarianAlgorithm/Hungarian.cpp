@@ -9,6 +9,7 @@
 // by Cong Ma, 2016
 // 
 
+#include <cstdlib>
 #include <cfloat> // for DBL_MAX
 #include <cmath>  // for fabs()
 #include "Hungarian.h"
@@ -16,41 +17,6 @@
 
 HungarianAlgorithm::HungarianAlgorithm(){}
 HungarianAlgorithm::~HungarianAlgorithm(){}
-
-
-//********************************************************//
-// A single function wrapper for solving assignment problem.
-//********************************************************//
-template<template<class> class Container1, template<class> class Container2>
-double HungarianAlgorithm::Solve(Container1<Container1<double>>& DistMatrix, Container2<int>& Assignment)
-{
-	unsigned int nRows = DistMatrix.size();
-	unsigned int nCols = DistMatrix[0].size();
-
-	double *distMatrixIn = new double[nRows * nCols];
-	int *assignment = new int[nRows];
-	double cost = 0.0;
-
-	// Fill in the distMatrixIn. Mind the index is "i + nRows * j".
-	// Here the cost matrix of size MxN is defined as a double precision array of N*M elements. 
-	// In the solving functions matrices are seen to be saved MATLAB-internally in row-order.
-	// (i.e. the matrix [1 2; 3 4] will be stored as a vector [1 3 2 4], NOT [1 2 3 4]).
-	for (unsigned int i = 0; i < nRows; i++)
-		for (unsigned int j = 0; j < nCols; j++)
-			distMatrixIn[i + nRows * j] = DistMatrix[i][j];
-	
-	// call solving function
-	assignmentoptimal(assignment, &cost, distMatrixIn, nRows, nCols);
-
-	Assignment.clear();
-	for (unsigned int r = 0; r < nRows; r++)
-		Assignment.push_back(assignment[r]);
-
-	delete[] distMatrixIn;
-	delete[] assignment;
-	return cost;
-}
-
 
 //********************************************************//
 // Solve optimal solution for assignment problem using Munkres algorithm, also known as Hungarian Algorithm.

@@ -37,7 +37,7 @@ void InstructionModel::loadFromData(const NavigationData& data)
 
   updateContentsAndLocations(data);
 
-  auto exits = data.lab->connections[data.currentRoom];
+  auto exits = data.lab->getRoomConnections(data.currentRoom);
   QList<DirectionCode> doorExitDirections;
   for (auto i = exits.constBegin(); i != exits.constEnd(); i++)
     for (auto j = i.value().constBegin(); j != i.value().constEnd(); j++)
@@ -55,7 +55,7 @@ void InstructionModel::loadFromData(const NavigationData& data)
 
   if (get_hasNextRoom()) {
     auto nextRoomId = data.plannedRoute[1];
-    auto connections = data.lab->connections[data.currentRoom][nextRoomId];
+    auto connections = data.lab->getRoomConnections(data.currentRoom)[nextRoomId];
 
     update_nextRoomIsPreviousRoom(nextRoomId == data.previousRoom);
 
