@@ -94,10 +94,6 @@ void LabyrinthData::normalizeDoorDirections(const RoomId& id)
   } else {
     normalizedConnections[id] = originalConnections;
   }
-
-  qDebug() << id;
-  qDebug() << "BEFORE" << originalConnections;
-  qDebug() << "AFTER " << normalizedConnections[id];
 }
 
 void LabyrinthData::normalizeDoorDirectionsForAllRooms()

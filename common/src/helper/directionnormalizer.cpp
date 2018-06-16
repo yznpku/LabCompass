@@ -11,19 +11,34 @@ RoomConnections DirectionNormalizer::normalize(const RoomConnections& original, 
 {
   auto breakdown = breakdownConnections(original);
 
-  auto m = breakdown.regularDirectionRooms.size();
-  auto n = pattern.size();
+  auto regularCount = breakdown.regularDirectionRooms.size();
+  auto unknownCount = breakdown.unknownDirectionRooms.size();
+  auto patternSize = pattern.size();
 
-  if (m) {
-    QVector<QVector<double>> costMatrix(m, QVector<double>(n, 0));
-    for (auto i = 0; i < m; i++)
-      for (auto j = 0; j < n; j++)
+  // normalize regular directions
+  if (regularCount) {
+    QVector<QVector<double>> costMatrix(regularCount, QVector<double>(patternSize, 0));
+    for (auto i = 0; i < regularCount; i++)
+      for (auto j = 0; j < patternSize; j++)
         costMatrix[i][j] = costBetweenDirections(breakdown.regularDirectionRooms[i].first, pattern[j]);
 
     QVector<int> assignment;
     hungarian.Solve(costMatrix, assignment);
-    for (int i = 0; i < m; i++)
+    for (int i = 0; i < regularCount; i++)
       breakdown.regularDirectionRooms[i].first = pattern[assignment[i]];
+  }
+
+  // predict the last unknown direction
+  if (unknownCount == 1 && unknownCount + regularCount == patternSize) {
+    auto unusedList = pattern;
+    foreach (const auto& i, breakdown.regularDirectionRooms)
+      unusedList.removeOne(i.first);
+
+    const auto& unusedDirection = unusedList[0];
+    const auto& unusedRoom = breakdown.unknownDirectionRooms[0];
+
+    breakdown.unknownDirectionRooms.clear();
+    breakdown.regularDirectionRooms.append({unusedDirection, unusedRoom});
   }
 
   return reconstructConnections(breakdown);
