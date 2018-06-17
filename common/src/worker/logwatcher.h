@@ -32,6 +32,8 @@ private slots:
 private:
   void parseLine(const QString line);
   QString findGameClientPath();
+  void setActiveClient(const QString& clientId);
+  bool isLogFromValidClient(const QString& clientId) const;
 };
 
 #endif // LOGWATCHER_H

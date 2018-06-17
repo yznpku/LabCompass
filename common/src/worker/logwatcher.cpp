@@ -93,29 +93,40 @@ void LogWatcher::parseLine(const QString line)
     auto roomChangeMatch = ROOM_CHANGE_REGEX.match(logContent);
 
     if (START_LINES.contains(logContent)) {
-      activeClientId = clientId;
+      setActiveClient(clientId);
       emit labStarted();
 
-    } else if (!model->get_settings()->get_multiclientSupport() || clientId == activeClientId) {
-      if (roomChangeMatch.hasMatch()) {
-        auto roomName = roomChangeMatch.captured(1);
-        auto affixes = roomName.split(' ');
-        if (roomName == "Aspirant\'s Trial" ||
-            (affixes.size() == 2 && LAB_ROOM_PREFIX.contains(affixes[0]) && LAB_ROOM_SUFFIX.contains(affixes[1])))
-          emit roomChanged(roomName);
-        else
-          emit labExit();
-        if (roomName == "Aspirant\'s Plaza")
-          emit plazaEntered();
+    } else if (roomChangeMatch.hasMatch()) {
+      auto roomName = roomChangeMatch.captured(1);
+      auto affixes = roomName.split(' ');
 
-      } else if (FINISH_LINES.contains(logContent)) {
+      if (roomName == "Aspirant\'s Plaza") {
+        setActiveClient(clientId);
+        emit plazaEntered();
+
+      } else if (roomName == "Aspirant\'s Trial" ||
+          (affixes.size() == 2 && LAB_ROOM_PREFIX.contains(affixes[0]) && LAB_ROOM_SUFFIX.contains(affixes[1]))) {
+        if (isLogFromValidClient(clientId))
+          emit roomChanged(roomName);
+
+      } else {
+        if (isLogFromValidClient(clientId))
+          emit labExit();
+      }
+
+    } else if (FINISH_LINES.contains(logContent)) {
+      if (isLogFromValidClient(clientId)) {
         emit sectionFinished();
         emit labFinished();
-      } else if (SECTION_FINISH_LINES.contains(logContent)) {
-        emit sectionFinished();
-      } else if (PORTAL_SPAWN_LINES.contains(logContent)) {
-        emit portalSpawned();
       }
+
+    } else if (SECTION_FINISH_LINES.contains(logContent)) {
+      if (isLogFromValidClient(clientId))
+        emit sectionFinished();
+
+    } else if (PORTAL_SPAWN_LINES.contains(logContent)) {
+      if (isLogFromValidClient(clientId))
+        emit portalSpawned();
     }
   }
 }
@@ -143,4 +154,14 @@ QString LogWatcher::findGameClientPath()
 #else
   return QString();
 #endif
+}
+
+void LogWatcher::setActiveClient(const QString& clientId)
+{
+  activeClientId = clientId;
+}
+
+bool LogWatcher::isLogFromValidClient(const QString& clientId) const
+{
+  return !model->get_settings()->get_multiclientSupport() || clientId == activeClientId;
 }
