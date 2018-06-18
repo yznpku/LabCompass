@@ -40,7 +40,8 @@ void Application::onRoomChanged(const QString& roomName)
 
 void Application::addLogLine(const QString& s)
 {
-  auto line = QString("2018/01/01 00:00:00 0000000000 xxx [INFO Client 000] %1\n").arg(s);
+  const auto& clientId = widget->getClientId();
+  const auto& line = QString("2018/01/01 00:00:00 0000000000 xxx [INFO Client %1] %2\n").arg(clientId, s);
   QFile file(QDir(widget->getClientPath()).absoluteFilePath("logs/Client.txt"));
   if (!file.open(QIODevice::WriteOnly | QIODevice::Append | QIODevice::Text))
     return;
