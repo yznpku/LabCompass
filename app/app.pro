@@ -13,7 +13,7 @@ INCLUDEPATH += \
     ../vendor/QHotkey
 
 DEPEND_LIBS += common
-DEPEND_VENDOR_LIBS += QtSuperMacros QHotkey HungarianAlgorithm
+DEPEND_VENDOR_LIBS += QtSuperMacros QtJsonSchema QHotkey HungarianAlgorithm
 include(../config/dependencies.pri)
 
 mac: LIBS += -framework Carbon

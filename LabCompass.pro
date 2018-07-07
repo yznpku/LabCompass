@@ -2,6 +2,7 @@ TEMPLATE = subdirs
 
 SUBDIRS = \
     HungarianAlgorithm \
+    QtJsonSchema \
     QtSuperMacros \
     QHotkey \
     common \
@@ -14,3 +15,4 @@ CONFIG += ordered
 QtSuperMacros.subdir = vendor/QtSuperMacros
 QHotkey.subdir = vendor/QHotkey
 HungarianAlgorithm.subdir = vendor/HungarianAlgorithm
+QtJsonSchema.subdir = vendor/QtJsonSchema

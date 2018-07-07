@@ -10,7 +10,8 @@ PRECOMPILED_HEADER += src/stdafx.h
 INCLUDEPATH += \
     src \
     ../vendor/QtSuperMacros \
-    ../vendor/HungarianAlgorithm
+    ../vendor/HungarianAlgorithm \
+    ../vendor/QtJsonSchema/include
 
 HEADERS += \
     src/model/labyrinthmodel.h \
