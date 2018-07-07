@@ -1,4 +1,5 @@
 #include "labyrinthdata.h"
+#include <QtJsonSchema>
 #include "helper/roompresethelper.h"
 #include "helper/directionnormalizer.h"
 
@@ -23,6 +24,7 @@ static const QHash<QString, qreal> ROOM_SUFFIX_COST {
 };
 
 static DirectionNormalizer directionNormalizer;
+static JsonSchema mapSchema = JsonSchema::fromVariant(QVariant());
 
 LabyrinthData::LabyrinthData()
 {
@@ -46,9 +48,14 @@ bool LabyrinthData::loadFromString(const QByteArray& str)
 
 bool LabyrinthData::loadFromJson(const QJsonObject& json)
 {
-  foreach (QString property, QStringList({"difficulty", "date", "rooms", "weapon", "phase1", "phase2", "trap1", "trap2"}))
-    if (!json.contains(property))
-      return false;
+  if (!mapSchema.isValid()) {
+    QFile f(":/map.schema.json");
+    f.open(QIODevice::ReadOnly);
+    mapSchema = JsonSchema::fromJsonString(f.readAll());
+  }
+
+  if (!mapSchema.validate(QJsonValue(json)))
+    return false;
 
   difficulty = json["difficulty"].toString();
   date = QDate::fromString(json["date"].toString(), "yyyy-MM-dd");
@@ -62,7 +69,7 @@ bool LabyrinthData::loadFromJson(const QJsonObject& json)
   if (json["trap2"].toString() != "NoTrap")
     traps.append(json["trap2"].toString());
 
-  if (!(json["rooms"].isArray() && loadRooms(json["rooms"].toArray())))
+  if (!(loadRooms(json["rooms"].toArray())))
     return false;
 
   if (!loadConnectionMatrix(json["rooms"].toArray()))
@@ -175,10 +182,6 @@ bool LabyrinthData::loadRooms(const QJsonArray& array)
     if (!array[i].isObject())
       return false;
     auto roomJson = array[i].toObject();
-
-    foreach (QString property, QStringList({"name", "id", "contents", "x", "y"}))
-      if (!roomJson.contains(property))
-        return false;
 
     Room room;
     room.id = roomJson["id"].toString();
