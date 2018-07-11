@@ -42,7 +42,8 @@ HEADERS += \
     src/window/optionswindow.h \
     src/tray/trayiconmenu.h \
     src/keysequence/keysequencehelper.h \
-    src/hotkey/hotkeybinding.h
+    src/hotkey/hotkeybinding.h \
+    src/util/setupdebugoutput.h
 
 SOURCES += \
     src/main.cpp \
@@ -57,7 +58,8 @@ SOURCES += \
     src/window/optionswindow.cpp \
     src/tray/trayiconmenu.cpp \
     src/keysequence/keysequencehelper.cpp \
-    src/hotkey/hotkeybinding.cpp
+    src/hotkey/hotkeybinding.cpp \
+    src/util/setupdebugoutput.cpp
 
 RESOURCES += \
     resources/app.qrc

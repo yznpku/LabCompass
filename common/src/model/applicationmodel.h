@@ -46,8 +46,8 @@ public:
   bool loadFromFile(const QString& file);
   void updatePlanData(const PlanData& planData);
   void updateNavigationData(const NavigationData& navigationData);
-  void resetModels();
-  void updateModels();
+  void updateModelOnLoadFile();
+  void updateModelOnNavigation();
 };
 
 #endif // APPLICATIONMODEL_H

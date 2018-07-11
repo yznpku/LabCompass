@@ -53,7 +53,6 @@ private slots:
   void onAboutToQuit();
 
 private:
-  void initApplication();
   void initResources();
   void initSystemTrayIcon();
   void initHelpers();

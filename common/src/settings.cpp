@@ -33,6 +33,8 @@ void Settings::load()
     set_lastVersionCheckAttempt(0LL);
     set_lastVersionCheckSuccess(0LL);
   }
+
+  qInfo() << "Settings loaded";
 }
 
 void Settings::save()
@@ -42,4 +44,6 @@ void Settings::save()
     auto propertyValue = property(i.key().toLocal8Bit().constData());
     settings->setValue(propertyName, propertyValue);
   }
+
+  qInfo() << "Settings saved";
 }

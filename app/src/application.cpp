@@ -9,25 +9,35 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
   connect(this, &Application::aboutToQuit,
           this, &Application::onAboutToQuit);
 
-  initApplication();
+  qInfo() << "Initialization started";
+
+  qInfo() << "Init resources";
   initResources();
+
+  qInfo() << "Init system tray icon";
   initSystemTrayIcon();
+
+  qInfo() << "Init helpers";
   initHelpers();
+
+  qInfo() << "Init windows";
   initWindows();
+
+  qInfo() << "Init workers";
   initWorkers();
+
+  qInfo() << "Init controllers";
   initControllers();
+
+  qInfo() << "Init hotkeys";
   initHotkeys();
+
+  qInfo() << "Initialization finished";
 }
 
 void Application::onAboutToQuit()
 {
   model.get_settings()->save();
-}
-
-void Application::initApplication()
-{
-  setOrganizationName("FutureCode");
-  setApplicationName("LabCompass");
 }
 
 void Application::initResources()
