@@ -3,7 +3,7 @@
 
 #include "stdafx.h"
 
-static const QString VERSION = "1.3.3";
+static const QString VERSION = "1.3.4";
 
 using RoomId = QString;
 using DirectionCode = QString; // [""(Unknown), "C"(Secret Passage), "N", "NE", "E", "SE", "S", "SW", "W", "NW"]
