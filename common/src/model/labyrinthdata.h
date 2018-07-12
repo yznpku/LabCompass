@@ -2,6 +2,7 @@
 #define LABYRINTHDATA_H
 
 #include "stdafx.h"
+#include "global.h"
 
 struct LabyrinthData
 {
@@ -9,7 +10,7 @@ struct LabyrinthData
   {
     QString name;
     QString areaCode;
-    QString id;
+    RoomId id;
     QPoint coordinate;
     QStringList contents;
     QVariantMap contentLocations;
@@ -18,11 +19,10 @@ struct LabyrinthData
   };
   struct Section
   {
-    QStringList roomIds;
-    QString firstRoom;
-    QString trialRoom;
+    QList<RoomId> roomIds;
+    RoomId firstRoom;
+    RoomId trialRoom;
   };
-  using Matrix = QHash<QString, QHash<QString, QList<QString>>>;
 
   QString difficulty;
   QDate date;
@@ -32,11 +32,12 @@ struct LabyrinthData
   QStringList traps;
 
   QList<Room> rooms;
-  Matrix connections;
+  ConnectionMatrix connections;
+  ConnectionMatrix normalizedConnections;
   Section sections[3];
-  QList<std::pair<QString, QString>> goldenDoors;
+  QList<std::pair<RoomId, RoomId>> goldenDoors;
 
-  QHash<QString, int> roomIdIndex;
+  QHash<RoomId, int> roomIdIndex;
 
 public:
   LabyrinthData();
@@ -44,15 +45,19 @@ public:
   bool loadFromString(const QByteArray& str);
   bool loadFromJson(const QJsonObject& json);
 
-  Room getRoomFromId(const QString& id) const;
-  bool hasConnection(const QString& from, const QString& to) const;
-  bool hasDoorConnection(const QString& from, const QString& to) const;
-  bool roomIsFirstRoomInSection(const QString& id) const;
-  bool roomIsTrial(const QString& id) const;
-  bool roomIsDeadEnd(const QString& id) const;
-  bool roomHasSecretPassage(const QString& id) const;
+  void normalizeDoorDirections(const RoomId& id);
+  void normalizeDoorDirectionsForAllRooms();
 
-  qreal roomCost(const QString& id) const;
+  Room getRoomFromId(const RoomId& id) const;
+  bool hasConnection(const RoomId& from, const RoomId& to) const;
+  bool hasDoorConnection(const RoomId& from, const RoomId& to) const;
+  bool roomIsFirstRoomInSection(const RoomId& id) const;
+  bool roomIsTrial(const RoomId& id) const;
+  bool roomIsDeadEnd(const RoomId& id) const;
+  bool roomHasSecretPassage(const RoomId& id) const;
+  RoomConnections getRoomConnections(const RoomId& id) const;
+
+  qreal roomCost(const RoomId& id) const;
 
 private:
   bool loadRooms(const QJsonArray& array);

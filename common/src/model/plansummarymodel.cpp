@@ -21,21 +21,21 @@ void PlanSummaryModel::loadFromData(const NavigationData& data)
 {
   update_length(data.plannedRoute.size());
 
-  QList<QString> rooms;
+  QList<RoomId> rooms;
   int argus = 0;
   int troves = 0;
   int darkshrines = 0;
   int silverCaches = 0;
   int unusedSilverKeys = 0;
 
-  foreach (const QString& roomId, data.plannedRoute)
+  foreach (const auto& roomId, data.plannedRoute)
     if (roomId != "plaza" && !rooms.contains(roomId))
       rooms.append(roomId);
 
-  foreach (auto roomId, rooms) {
+  foreach (const auto& roomId, rooms) {
     auto room = data.lab->getRoomFromId(roomId);
 
-    foreach (const QString content, room.contents) {
+    foreach (const auto& content, room.contents) {
       if (content == "argus")
         argus += 1;
       if (content == "darkshrine")
@@ -46,7 +46,7 @@ void PlanSummaryModel::loadFromData(const NavigationData& data)
         troves += 1;
     }
 
-    foreach (const QString content, room.contents)
+    foreach (const auto& content, room.contents)
       if (content == "silver-door" && unusedSilverKeys > 0) {
         silverCaches += 1;
         unusedSilverKeys -= 1;

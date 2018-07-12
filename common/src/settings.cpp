@@ -1,5 +1,5 @@
 #include "settings.h"
-#include "version.h"
+#include "global.h"
 
 QVariantMap defaultSettings {
   {"mainWindowPosition", QPoint(-1, -1)},
@@ -7,6 +7,7 @@ QVariantMap defaultSettings {
   {"latestVersion", ""},
   {"lastVersionCheckAttempt", 0LL},
   {"lastVersionCheckSuccess", 0LL},
+  {"lastLoadedMapDate", QDate()},
   {"portalSkipsSection", true},
   {"multiclientSupport", false},
   {"importDirectory", ""},
@@ -33,13 +34,39 @@ void Settings::load()
     set_lastVersionCheckAttempt(0LL);
     set_lastVersionCheckSuccess(0LL);
   }
+
+  qInfo().noquote() << "Settings loaded" << QJsonDocument::fromVariant(toVariant()).toJson(QJsonDocument::Compact);
 }
 
 void Settings::save()
 {
   for (auto i = defaultSettings.constBegin(); i != defaultSettings.constEnd(); i++) {
-    auto propertyName = i.key();
-    auto propertyValue = property(i.key().toLocal8Bit().constData());
+    const auto& propertyName = i.key();
+    const auto& propertyValue = property(i.key().toLocal8Bit().constData());
     settings->setValue(propertyName, propertyValue);
   }
+
+  qInfo().noquote() << "Settings saved" << QJsonDocument::fromVariant(toVariant()).toJson(QJsonDocument::Compact);
+}
+
+QVariant Settings::toVariant() const
+{
+  QVariantMap result;
+  for (const auto& propertyName: settings->allKeys()) {
+    auto value = settings->value(propertyName);
+
+    switch (value.type()) {
+    case QVariant::Point:
+      value = QVariantMap {{"x", value.toPoint().x()}, {"y", value.toPoint().y()}};
+      break;
+    case QVariant::Date:
+      value = value.toDate().toString("yyyy-MM-dd");
+      break;
+    default:
+      ;
+    }
+
+    result[propertyName] = value;
+  }
+  return result;
 }

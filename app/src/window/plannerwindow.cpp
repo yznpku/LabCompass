@@ -38,9 +38,9 @@ void PlannerWindow::onImportLabNotesFileClicked()
       importDirectory = downloadLocations[0];
   }
 
-  auto fileName = QFileDialog::getOpenFileName(nullptr, "Import Lab Notes",
-                                               importDirectory,
-                                               "Lab Maps (*.json *.map)");
+  const auto& fileName = QFileDialog::getOpenFileName(nullptr, "Import Lab Notes",
+                                                      importDirectory,
+                                                      "Lab Maps (*.json *.map)");
   if (!fileName.isEmpty()) {
     importLabNotesFromFile(fileName);
   }
@@ -67,7 +67,7 @@ void PlannerWindow::onDrag(int dx, int dy)
 void PlannerWindow::importLabNotesFromFile(const QString& file)
 {
   Settings* settings = global()->property("model").value<QObject*>()->property("settings").value<Settings*>();
-  auto directory = QFileInfo(file).absoluteDir().absolutePath();
+  const auto& directory = QFileInfo(file).absoluteDir().absolutePath();
   settings->set_importDirectory(directory);
   emit importFile(file);
 }

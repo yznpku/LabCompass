@@ -16,7 +16,7 @@ static const QStringList MAJOR_LOOT_LIST {
   "silver-key",
   "silver-door",
 };
-static const QStringList DIRECTION_LIST {"N", "NE", "E", "SE", "S", "SW", "W", "NW"};
+static const QList<DirectionCode> REGULAR_DIRECTION_LIST {"N", "NE", "E", "SE", "S", "SW", "W", "NW"};
 
 InstructionModel::InstructionModel(QObject* parent) : QObject(parent)
 {
@@ -37,11 +37,11 @@ void InstructionModel::loadFromData(const NavigationData& data)
 
   updateContentsAndLocations(data);
 
-  auto exits = data.lab->connections[data.currentRoom];
-  QStringList doorExitDirections;
+  auto exits = data.lab->getRoomConnections(data.currentRoom);
+  QList<DirectionCode> doorExitDirections;
   for (auto i = exits.constBegin(); i != exits.constEnd(); i++)
     for (auto j = i.value().constBegin(); j != i.value().constEnd(); j++)
-      if (DIRECTION_LIST.contains(*j))
+      if (REGULAR_DIRECTION_LIST.contains(*j))
         doorExitDirections.append(*j);
   update_roomDoorExitDirections(doorExitDirections);
 
@@ -55,7 +55,7 @@ void InstructionModel::loadFromData(const NavigationData& data)
 
   if (get_hasNextRoom()) {
     auto nextRoomId = data.plannedRoute[1];
-    auto connections = data.lab->connections[data.currentRoom][nextRoomId];
+    auto connections = data.lab->getRoomConnections(data.currentRoom)[nextRoomId];
 
     update_nextRoomIsPreviousRoom(nextRoomId == data.previousRoom);
 

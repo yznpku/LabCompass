@@ -2,10 +2,11 @@
 #define PLANDATA_H
 
 #include "stdafx.h"
+#include "global.h"
 
 struct PlanData
 {
-  QStringList targetRooms;
+  QList<RoomId> targetRooms;
 };
 
 #endif // PLANDATA_H

@@ -19,6 +19,7 @@ public:
   Widget(Settings* settings, QWidget* parent = 0);
   ~Widget();
   QString getClientPath() const;
+  QString getClientId() const;
 
 signals:
   void labStarted();

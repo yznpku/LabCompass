@@ -1,15 +1,18 @@
 TEMPLATE = subdirs
+
 SUBDIRS = \
-    app \
+    HungarianAlgorithm \
+    QtJsonSchema \
+    QtSuperMacros \
+    QHotkey \
     common \
     test \
     logsimulator \
-    QtSuperMacros \
-    QHotkey
+    app \
+
+CONFIG += ordered
 
 QtSuperMacros.subdir = vendor/QtSuperMacros
 QHotkey.subdir = vendor/QHotkey
-
-app.depends = common QHotkey
-test.depends = common
-common.depends = QtSuperMacros
+HungarianAlgorithm.subdir = vendor/HungarianAlgorithm
+QtJsonSchema.subdir = vendor/QtJsonSchema

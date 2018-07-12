@@ -30,7 +30,7 @@ bool ApplicationModel::loadFromFile(const QString& file)
 
     update_inLab(false);
     update_isValid(true);
-    resetModels();
+    updateModelOnLoadFile();
     return true;
   }
   return false;
@@ -51,10 +51,10 @@ void ApplicationModel::updateNavigationData(const NavigationData& navigationData
 {
   this->navigationData = navigationData;
   update_currentRoomDetermined(navigationData.currentRoomDetermined);
-  updateModels();
+  updateModelOnNavigation();
 }
 
-void ApplicationModel::resetModels()
+void ApplicationModel::updateModelOnLoadFile()
 {
   get_labyrinthModel()->loadFromData(labyrinthData);
   get_roomModel()->loadFromData(labyrinthData, navigationData);
@@ -64,7 +64,7 @@ void ApplicationModel::resetModels()
   get_instructionModel()->loadFromData(navigationData);
 }
 
-void ApplicationModel::updateModels()
+void ApplicationModel::updateModelOnNavigation()
 {
   get_roomModel()->updateFromData(navigationData);
   get_connectionModel()->updateFromData(navigationData);

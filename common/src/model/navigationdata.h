@@ -9,31 +9,31 @@ struct NavigationData
 {
   struct ContentState
   {
-    QStringList goldenKeyLocations;
+    QList<RoomId> goldenKeyLocations;
     int goldenKeysInInventory {0};
-    QList<std::pair<QString, QString>> lockedDoors;
+    QList<std::pair<RoomId, RoomId>> lockedDoors;
 
-    QStringList portalLocations;
+    QList<RoomId> portalLocations;
   };
 
   const LabyrinthData* lab {nullptr};
 
   bool currentRoomDetermined;
-  QString currentRoom;
-  QSet<QString> possibleCurrentRooms;
-  QString previousRoom;
+  RoomId currentRoom;
+  QSet<RoomId> possibleCurrentRooms;
+  RoomId previousRoom;
 
   ContentState contentState;
 
-  QStringList targetRooms;
-  QStringList plannedRoute;
+  QList<RoomId> targetRooms;
+  QList<RoomId> plannedRoute;
 
 public:
   void loadFromData(const LabyrinthData* lab, const PlanData& plan);
   void updatePlannedRouteAndInstructions();
 
 private:
-  QStringList plannedRouteInsideSection(int section, const QString& begin, const QString& end, const QStringList& targetRooms, ContentState* tempGolden);
+  QList<RoomId> plannedRouteInsideSection(int section, const RoomId& begin, const RoomId& end, const QList<RoomId>& targetRooms, ContentState* tempGolden);
   static bool listContainsAll(const QStringList& l1, const QStringList& l2);
 };
 

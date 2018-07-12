@@ -63,6 +63,15 @@ QString Widget::getClientPath() const
   return ui->clientPathEdit->text();
 }
 
+QString Widget::getClientId() const
+{
+  if (ui->clientId1Button->isChecked())
+    return "001";
+  else if (ui->clientId2Button->isChecked())
+    return "002";
+  return "000";
+}
+
 void Widget::loadMapFile(const QString& fileName)
 {
   QFile file(fileName);

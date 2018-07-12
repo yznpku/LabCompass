@@ -9,10 +9,9 @@ PRECOMPILED_HEADER += src/stdafx.h
 
 INCLUDEPATH += \
     src \
-    ../vendor/QtSuperMacros
-
-DEPEND_VENDOR_LIBS += QtSuperMacros
-include(../config/dependencies.pri)
+    ../vendor/QtSuperMacros \
+    ../vendor/HungarianAlgorithm \
+    ../vendor/QtJsonSchema/include
 
 HEADERS += \
     src/model/labyrinthmodel.h \
@@ -32,9 +31,10 @@ HEADERS += \
     src/model/instructionmodel.h \
     src/model/plansummarymodel.h \
     src/worker/versionchecker.h \
-    src/version.h \
+    src/global.h \
     src/helper/roompresethelper.h \
-    src/worker/datechecker.h
+    src/worker/datechecker.h \
+    src/helper/directionnormalizer.h
 
 SOURCES += \
     src/model/labyrinthmodel.cpp \
@@ -55,7 +55,8 @@ SOURCES += \
     src/model/plansummarymodel.cpp \
     src/worker/versionchecker.cpp \
     src/helper/roompresethelper.cpp \
-    src/worker/datechecker.cpp
+    src/worker/datechecker.cpp \
+    src/helper/directionnormalizer.cpp
 
 RESOURCES += \
     resources/common.qrc

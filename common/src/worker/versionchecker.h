@@ -8,15 +8,13 @@ class VersionChecker : public QObject
 {
   Q_OBJECT
 
-  QThread networkThread;
-  std::unique_ptr<QNetworkAccessManager> nam;
+  QNetworkAccessManager nam;
 
   ApplicationModel* model;
   QTimer timer;
 
 public:
   VersionChecker(ApplicationModel* model, QObject* parent = nullptr);
-  ~VersionChecker();
 
 private slots:
   void work();

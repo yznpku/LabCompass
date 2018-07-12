@@ -44,7 +44,7 @@ void OptionsWindow::onWindowOpenChanged()
 
 void OptionsWindow::onBrowseClientPath()
 {
-  auto file = QFileDialog::getOpenFileName(this, "Find Game Client", "", "Path of Exile Client (*.exe)");
+  const auto& file = QFileDialog::getOpenFileName(this, "Find Game Client", "", "Path of Exile Client (*.exe)");
   if (!file.isEmpty())
     rootObject()->setProperty("poeClientPath", QFileInfo(file).dir().absolutePath());
 }
@@ -57,8 +57,8 @@ void OptionsWindow::onOpenUrl(const QString& url)
 
 void OptionsWindow::load()
 {
-  foreach (const QString& name, settingNames) {
-    auto s = name.toLocal8Bit().constData();
+  foreach (const auto& name, settingNames) {
+    const auto& s = name.toLocal8Bit().constData();
     rootObject()->setProperty(s, settings->property(s));
   }
 
@@ -70,7 +70,7 @@ void OptionsWindow::load()
 
 void OptionsWindow::save()
 {
-  foreach (const QString& name, settingNames) {
+  foreach (const auto& name, settingNames) {
     settings->setProperty(name.toLocal8Bit().constData(), rootObject()->property(name.toLocal8Bit().constData()));
   }
 

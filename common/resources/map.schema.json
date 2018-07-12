@@ -1,0 +1,138 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://labcompass.futurecode.com/map.schema.json",
+  "title": "LabCompass Map File",
+  "type": "object",
+  "required": [
+    "difficulty",
+    "date",
+    "weapon",
+    "phase1",
+    "phase2",
+    "trap1",
+    "trap2",
+    "rooms"
+  ],
+  "properties": {
+    "difficulty": { "$ref": "#/definitions/difficulty" },
+    "date": {
+      "type": "string",
+      "pattern": "\\d{4}-\\d{2}-\\d{2}"
+    },
+    "weapon": { "$ref": "#/definitions/weapon" },
+    "phase1": { "$ref": "#/definitions/phase" },
+    "phase2": { "$ref": "#/definitions/phase" },
+    "trap1": { "$ref": "#/definitions/trap" },
+    "trap2": { "$ref": "#/definitions/trap" },
+    "section1layout": { "$ref": "#/definitions/sectionLayout" },
+    "section2layout": { "$ref": "#/definitions/sectionLayout" },
+    "section3layout": { "$ref": "#/definitions/sectionLayout" },
+    "rooms": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "areacode",
+          "id",
+          "x",
+          "y",
+          "contents",
+          "exits"
+        ],
+        "properties": {
+          "name": { "type": "string" },
+          "areacode": { "type": "string" },
+          "id": { "type": "string" },
+          "x": { "type": "string" },
+          "y": { "type": "string" },
+          "contents": {
+            "type": "array",
+            "items": { "$ref": "#/definitions/content" }
+          },
+          "exits": {
+            "type": "object",
+            "propertyNames": { "$ref": "#/definitions/direction" },
+            "additionalProperties": { "$ref": "#/definitions/roomId" }
+          },
+          "secretPassage": { "type": "string" }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "difficulty": {
+      "enum": [
+        "Normal",
+        "Cruel",
+        "Merciless",
+        "Uber"
+      ]
+    },
+    "weapon": {
+      "enum": [
+        "NoWeapon",
+        "TwoSwords",
+        "SwordAndShield",
+        "TwoHandedMace"
+      ]
+    },
+    "phase": {
+      "enum": [
+        "NoPhase",
+        "ChargeDisruptors",
+        "Conduits",
+        "Essences",
+        "Fonts",
+        "Gargoyles",
+        "Idols",
+        "Lieutenants",
+        "Portals"
+      ]
+    },
+    "trap": {
+      "enum": [
+        "NoTrap",
+        "BladeSentries",
+        "Darts",
+        "FurnaceTraps",
+        "Saws",
+        "Spikes",
+        "SpinningBlades"
+      ]
+    },
+    "sectionLayout": {
+      "type": "string"
+    },
+    "roomId": {
+      "type": "string"
+    },
+    "direction": {
+      "enum": [
+        "N",
+        "NE",
+        "E",
+        "SE",
+        "S",
+        "SW",
+        "W",
+        "NW",
+        "C"
+      ]
+    },
+    "content": {
+      "enum": [
+        "Switch puzzle",
+        "Floor puzzle",
+        "Escort gauntlet",
+        "Trap gauntlet",
+        "darkshrine",
+        "argus",
+        "golden-key",
+        "golden-door",
+        "silver-key",
+        "silver-door"
+      ]
+    }
+  }
+}

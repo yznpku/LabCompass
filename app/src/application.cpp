@@ -1,5 +1,5 @@
 #include "application.h"
-#include "version.h"
+#include "global.h"
 #include "tray/trayiconmenu.h"
 #include "keysequence/keysequencehelper.h"
 #include "helper/roompresethelper.h"
@@ -9,14 +9,8 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
   connect(this, &Application::aboutToQuit,
           this, &Application::onAboutToQuit);
 
-  initApplication();
-  initResources();
-  initSystemTrayIcon();
-  initHelpers();
-  initWindows();
-  initWorkers();
-  initControllers();
-  initHotkeys();
+  init();
+  restorePreviouslyLoadedMap();
 }
 
 void Application::onAboutToQuit()
@@ -24,10 +18,32 @@ void Application::onAboutToQuit()
   model.get_settings()->save();
 }
 
-void Application::initApplication()
+void Application::init()
 {
-  setOrganizationName("FutureCode");
-  setApplicationName("LabCompass");
+  qInfo() << "Initialization started";
+
+  qInfo() << "Init resources";
+  initResources();
+
+  qInfo() << "Init system tray icon";
+  initSystemTrayIcon();
+
+  qInfo() << "Init helpers";
+  initHelpers();
+
+  qInfo() << "Init windows";
+  initWindows();
+
+  qInfo() << "Init workers";
+  initWorkers();
+
+  qInfo() << "Init controllers";
+  initControllers();
+
+  qInfo() << "Init hotkeys";
+  initHotkeys();
+
+  qInfo() << "Initialization finished";
 }
 
 void Application::initResources()
@@ -152,4 +168,18 @@ void Application::initHotkeys()
     bool visible = global->property("compassVisible").toBool();
     global->setProperty("compassVisible", !visible);
   });
+}
+
+void Application::restorePreviouslyLoadedMap()
+{
+  const auto& currentDate = model.get_currentUtcDate();
+  const auto& lastLoadedMapDate = model.get_settings()->get_lastLoadedMapDate();
+
+  if (currentDate == lastLoadedMapDate) {
+    qInfo() << "Loading previously loaded map from cache";
+
+    const auto& appData = QDir(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation));
+    const auto& lastLoadedMap = appData.absoluteFilePath("lastLoaded.map");
+    labyrinthController->importFile(lastLoadedMap);
+  }
 }
