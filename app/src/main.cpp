@@ -1,5 +1,6 @@
 #include "application.h"
 #include "util/setupdebugoutput.h"
+#include "global.h"
 
 int main(int argc, char** argv)
 {
@@ -9,6 +10,7 @@ int main(int argc, char** argv)
 
   setupDebugOutput();
   qInfo() << "Operating System:" << QSysInfo::prettyProductName();
+  qInfo() << "LabCompass:" << VERSION;
 
   QSettings settings("FutureCode", "LabCompass");
   const auto& scaleFactor = settings.value("scaleFactor", "1").toByteArray();

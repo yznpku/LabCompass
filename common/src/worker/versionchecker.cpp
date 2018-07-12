@@ -5,20 +5,13 @@ VersionChecker::VersionChecker(ApplicationModel* model, QObject* parent) : QObje
 {
   this->model = model;
 
-  moveToThread(&networkThread);
-  networkThread.start();
+  nam.get(QNetworkRequest(QUrl("https://api.github.com/")));
 
   timer.setInterval(1000);
   timer.setSingleShot(false);
   timer.start();
   connect(&timer, &QTimer::timeout,
           this, &VersionChecker::work);
-}
-
-VersionChecker::~VersionChecker()
-{
-  networkThread.terminate();
-  networkThread.wait();
 }
 
 void VersionChecker::work()
@@ -31,10 +24,8 @@ void VersionChecker::work()
       now - model->get_settings()->get_lastVersionCheckSuccess() > 86400) {
     model->get_settings()->set_lastVersionCheckAttempt(now);
 
-    if (!nam.get())
-      nam.reset(new QNetworkAccessManager());
-    auto reply = nam->get(QNetworkRequest(QUrl("https://api.github.com/repos/yznpku/LabCompass/releases/latest")));
-
+    qInfo() << "Checking github for latest version";
+    auto reply = nam.get(QNetworkRequest(QUrl("https://api.github.com/repos/yznpku/LabCompass/releases/latest")));
     connect(reply, &QNetworkReply::finished,
             this, &VersionChecker::onReplyFinished);
   }
@@ -50,6 +41,8 @@ void VersionChecker::onReplyFinished()
       auto latestVersion = json.object()["tag_name"].toString();
       model->get_settings()->set_latestVersion(latestVersion);
       model->get_settings()->set_lastVersionCheckSuccess(QDateTime::currentSecsSinceEpoch());
+
+      qInfo() << "Received version checking response. Latest version:" << latestVersion;
     }
   }
   reply->deleteLater();
