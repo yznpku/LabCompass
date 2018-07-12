@@ -12,6 +12,7 @@ class Settings : public QObject
   QML_WRITABLE_VAR_PROPERTY(QString, latestVersion)
   QML_WRITABLE_VAR_PROPERTY(qint64, lastVersionCheckAttempt)
   QML_WRITABLE_VAR_PROPERTY(qint64, lastVersionCheckSuccess)
+  QML_WRITABLE_VAR_PROPERTY(QDate, lastLoadedMapDate)
   QML_WRITABLE_VAR_PROPERTY(bool, portalSkipsSection)
   QML_WRITABLE_VAR_PROPERTY(bool, multiclientSupport)
   QML_WRITABLE_VAR_PROPERTY(QString, importDirectory)
@@ -25,6 +26,9 @@ public:
   Settings(QObject* parent = nullptr);
   void load();
   void save();
+
+private:
+  QVariant toVariant() const;
 };
 
 #endif // SETTINGS_H
