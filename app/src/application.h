@@ -53,6 +53,7 @@ private slots:
   void onAboutToQuit();
 
 private:
+  void init();
   void initResources();
   void initSystemTrayIcon();
   void initHelpers();
@@ -60,6 +61,8 @@ private:
   void initWorkers();
   void initControllers();
   void initHotkeys();
+
+  void restorePreviouslyLoadedMap();
 };
 
 #endif // APPLICATION_H

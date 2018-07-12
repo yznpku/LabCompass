@@ -9,6 +9,17 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
   connect(this, &Application::aboutToQuit,
           this, &Application::onAboutToQuit);
 
+  init();
+  restorePreviouslyLoadedMap();
+}
+
+void Application::onAboutToQuit()
+{
+  model.get_settings()->save();
+}
+
+void Application::init()
+{
   qInfo() << "Initialization started";
 
   qInfo() << "Init resources";
@@ -33,11 +44,6 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
   initHotkeys();
 
   qInfo() << "Initialization finished";
-}
-
-void Application::onAboutToQuit()
-{
-  model.get_settings()->save();
 }
 
 void Application::initResources()
@@ -162,4 +168,18 @@ void Application::initHotkeys()
     bool visible = global->property("compassVisible").toBool();
     global->setProperty("compassVisible", !visible);
   });
+}
+
+void Application::restorePreviouslyLoadedMap()
+{
+  const auto& currentDate = model.get_currentUtcDate();
+  const auto& lastLoadedMapDate = model.get_settings()->get_lastLoadedMapDate();
+
+  if (currentDate == lastLoadedMapDate) {
+    qInfo() << "Loading previously loaded map from cache";
+
+    const auto& appData = QDir(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation));
+    const auto& lastLoadedMap = appData.absoluteFilePath("lastLoaded.map");
+    labyrinthController->importFile(lastLoadedMap);
+  }
 }

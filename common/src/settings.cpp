@@ -60,7 +60,7 @@ QVariant Settings::toVariant() const
       value = QVariantMap {{"x", value.toPoint().x()}, {"y", value.toPoint().y()}};
       break;
     case QVariant::Date:
-      value = value.toDate().toString();
+      value = value.toDate().toString("yyyy-MM-dd");
       break;
     default:
       ;
