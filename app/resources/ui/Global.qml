@@ -25,6 +25,7 @@ QtObject {
 
   property var contentIconMapping: {
     'Switch puzzle': 'gauntlet-puzzle',
+    'Lever puzzle': 'gauntlet-puzzle',
     'Floor puzzle': 'gauntlet-puzzle',
     'Escort gauntlet': 'gauntlet-puzzle',
     'Trap gauntlet': 'gauntlet-puzzle',
@@ -37,6 +38,7 @@ QtObject {
 
   property var nameMapping: {
     'Switch puzzle': 'Switch Puzzle',
+    'Lever puzzle': 'Lever Puzzle',
     'Floor puzzle': 'Floor Puzzle',
     'Escort gauntlet': 'Escort Gauntlet',
     'Trap gauntlet': 'Trap Gauntlet',

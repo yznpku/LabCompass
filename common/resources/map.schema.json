@@ -123,6 +123,7 @@
     "content": {
       "enum": [
         "Switch puzzle",
+        "Lever puzzle",
         "Floor puzzle",
         "Escort gauntlet",
         "Trap gauntlet",
