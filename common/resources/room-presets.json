@@ -347,13 +347,13 @@
         "keyword": "oh_straight_bottleneck",
         "contentLocations": {
           "generic": [
-            "N",
+            "NE",
             "SW"
           ]
         },
         "doorLocations": [
           "SE",
-          "NW"
+          "N"
         ]
       },
       {
