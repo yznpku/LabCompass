@@ -88,5 +88,6 @@
         <file>images/instruction/loaded-map-cruel.svg</file>
         <file>images/instruction/loaded-map-merciless.svg</file>
         <file>images/instruction/loaded-map-uber.svg</file>
+        <file>images/hud.svg</file>
     </qresource>
 </RCC>

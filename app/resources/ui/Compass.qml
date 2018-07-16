@@ -1,13 +1,15 @@
 import QtQuick 2.8
 import com.labcompass 1.0
 
-Image {
+SvgImage {
   id: root
 
   property var instructionModel: Global.model.instructionModel
   property bool valid: Global.model.inLab && Global.model.currentRoomDetermined
 
-  source: 'qrc:/images/hud.png'
+  source: 'qrc:/images/hud.svg'
+  width: 170
+  height: 170
 
   Item {
     visible: valid
