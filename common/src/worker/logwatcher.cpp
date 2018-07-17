@@ -100,7 +100,7 @@ void LogWatcher::parseLine(const QString line)
       auto roomName = roomChangeMatch.captured(1);
       auto affixes = roomName.split(' ');
 
-      if (roomName == "Aspirant\'s Plaza") {
+      if (roomName == "Aspirants\' Plaza") {
         setActiveClient(clientId);
         emit plazaEntered();
 

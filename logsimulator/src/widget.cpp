@@ -44,7 +44,7 @@ Widget::Widget(Settings* settings, QWidget* parent) :
           [this]() { emit labFinished(); });
 
   connect(ui->plazaButton, &QPushButton::clicked,
-          [this]() { emit roomChanged("Aspirant\'s Plaza"); });
+          [this]() { emit roomChanged("Aspirants\' Plaza"); });
 
   connect(ui->hideoutButton, &QPushButton::clicked,
           [this]() { emit roomChanged("Coastal Hideout"); });
