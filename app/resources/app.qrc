@@ -1,7 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>Fontin-SmallCaps.ttf</file>
-        <file>images/hud.png</file>
         <file>images/rounded-corner.png</file>
         <file>images/rounded-corner.svg</file>
         <file>images/lab-content/argus.svg</file>
