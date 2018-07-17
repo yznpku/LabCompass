@@ -10,7 +10,6 @@
         <file>images/lab-content/izaro.svg</file>
         <file>images/lab-content/silver-door.svg</file>
         <file>images/lab-content/silver-key.svg</file>
-        <file>ui/Compass.qml</file>
         <file>ui/Dummy.qml</file>
         <file>ui/Global.qml</file>
         <file>ui/GlobalAccessor.qml</file>
@@ -87,7 +86,8 @@
         <file>images/instruction/loaded-map-cruel.svg</file>
         <file>images/instruction/loaded-map-merciless.svg</file>
         <file>images/instruction/loaded-map-uber.svg</file>
-        <file>images/hud.svg</file>
+        <file>ui/compass/Compass.qml</file>
+        <file>ui/compass/DirectionDisplay.qml</file>
         <file>images/room-preset/render/c_branch.png</file>
         <file>images/room-preset/render/c_branch_bottleneck_1.png</file>
         <file>images/room-preset/render/c_branch_bottleneck_2.png</file>
@@ -186,5 +186,6 @@
         <file>images/room-preset/tile/rt_quad_door.svg</file>
         <file>images/room-preset/tile/rt_straight.svg</file>
         <file>images/room-preset/tile/rt_straight_bottleneck.svg</file>
+        <file>images/compass/direction-hud.svg</file>
     </qresource>
 </RCC>
