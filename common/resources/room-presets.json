@@ -14,7 +14,25 @@
         },
         "doorLocations": [
           "NE"
-        ]
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 5,
+          "directions": {
+            "NE": [
+              0,
+              1
+            ],
+            "NW": [
+              3,
+              2
+            ],
+            "S": [
+              7,
+              4
+            ]
+          }
+        }
       }
     ]
   },
@@ -33,22 +51,33 @@
           "W",
           "NW",
           "NE"
-        ]
-      },
-      {
-        "keyword": "rt_quad",
-        "contentLocations": {
-          "generic": [
-            "N",
-            "SW"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "W",
-          "NW",
-          "NE"
-        ]
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 8,
+          "directions": {
+            "NE": [
+              0,
+              2
+            ],
+            "NW": [
+              3,
+              0
+            ],
+            "SE": [
+              3,
+              7
+            ],
+            "W": [
+              4,
+              2
+            ],
+            "SW": [
+              7,
+              6
+            ]
+          }
+        }
       }
     ]
   },
@@ -66,21 +95,29 @@
           "SE",
           "NW",
           "NE"
-        ]
-      },
-      {
-        "keyword": "rt_branch_bottleneck_1",
-        "contentLocations": {
-          "generic": [
-            "NE",
-            "SW"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "NW",
-          "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 7,
+          "columns": 7,
+          "directions": {
+            "NE": [
+              0,
+              2
+            ],
+            "NW": [
+              2,
+              0
+            ],
+            "SE": [
+              3,
+              6
+            ],
+            "SW": [
+              6,
+              4
+            ]
+          }
+        }
       },
       {
         "keyword": "rt_branch_bottleneck_2",
@@ -94,7 +131,73 @@
           "SE",
           "W",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 9,
+          "columns": 9,
+          "directions": {
+            "N": [
+              1,
+              1
+            ],
+            "E": [
+              1,
+              7
+            ],
+            "W": [
+              5,
+              2
+            ],
+            "SE": [
+              5,
+              8
+            ],
+            "SW": [
+              8,
+              6
+            ]
+          }
+        }
+      },
+      {
+        "keyword": "rt_branch_bottleneck_1",
+        "contentLocations": {
+          "generic": [
+            "NE",
+            "SW"
+          ]
+        },
+        "doorLocations": [
+          "SE",
+          "NW",
+          "N"
+        ],
+        "minimap": {
+          "rows": 9,
+          "columns": 8,
+          "directions": {
+            "NE": [
+              0,
+              3
+            ],
+            "N": [
+              1,
+              0
+            ],
+            "NW": [
+              4,
+              0
+            ],
+            "SE": [
+              5,
+              7
+            ],
+            "SW": [
+              8,
+              5
+            ]
+          }
+        }
       },
       {
         "keyword": "rt_branch",
@@ -108,7 +211,33 @@
           "SE",
           "W",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 9,
+          "columns": 9,
+          "directions": {
+            "N": [
+              1,
+              1
+            ],
+            "E": [
+              1,
+              7
+            ],
+            "SE": [
+              5,
+              8
+            ],
+            "W": [
+              6,
+              1
+            ],
+            "SW": [
+              8,
+              6
+            ]
+          }
+        }
       }
     ]
   },
@@ -126,7 +255,29 @@
         "doorLocations": [
           "SE",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 10,
+          "columns": 9,
+          "directions": {
+            "N": [
+              0,
+              0
+            ],
+            "NW": [
+              5,
+              2
+            ],
+            "SE": [
+              6,
+              8
+            ],
+            "SW": [
+              9,
+              6
+            ]
+          }
+        }
       },
       {
         "keyword": "rt_straight",
@@ -139,27 +290,35 @@
         "doorLocations": [
           "SE",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 9,
+          "directions": {
+            "N": [
+              0,
+              1
+            ],
+            "E": [
+              2,
+              6
+            ],
+            "NW": [
+              3,
+              0
+            ],
+            "SE": [
+              4,
+              8
+            ]
+          }
+        }
       }
     ]
   },
   {
     "roomName": "Domain Crossing",
     "variants": [
-      {
-        "keyword": "dg_quad_door",
-        "contentLocations": {
-          "generic": [
-            "NE"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "W",
-          "NW",
-          "N"
-        ]
-      },
       {
         "keyword": "dg_quad",
         "contentLocations": {
@@ -173,7 +332,37 @@
           "NW",
           "N",
           "NE"
-        ]
+        ],
+        "minimap": {
+          "rows": 9,
+          "columns": 8,
+          "directions": {
+            "NE": [
+              0,
+              2
+            ],
+            "E": [
+              0,
+              4
+            ],
+            "N": [
+              1,
+              0
+            ],
+            "SE": [
+              3,
+              7
+            ],
+            "NW": [
+              5,
+              1
+            ],
+            "S": [
+              8,
+              6
+            ]
+          }
+        }
       }
     ]
   },
@@ -192,7 +381,25 @@
         },
         "doorLocations": [
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 7,
+          "columns": 6,
+          "directions": {
+            "N": [
+              1,
+              0
+            ],
+            "W": [
+              4,
+              0
+            ],
+            "S": [
+              6,
+              4
+            ]
+          }
+        }
       }
     ]
   },
@@ -210,7 +417,29 @@
         "doorLocations": [
           "S",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 7,
+          "columns": 8,
+          "directions": {
+            "N": [
+              0,
+              1
+            ],
+            "NW": [
+              2,
+              0
+            ],
+            "S": [
+              4,
+              4
+            ],
+            "SW": [
+              6,
+              3
+            ]
+          }
+        }
       },
       {
         "keyword": "dg_straight",
@@ -223,7 +452,29 @@
         "doorLocations": [
           "S",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 6,
+          "columns": 6,
+          "directions": {
+            "N": [
+              0,
+              0
+            ],
+            "E": [
+              1,
+              4
+            ],
+            "W": [
+              4,
+              1
+            ],
+            "S": [
+              4,
+              5
+            ]
+          }
+        }
       }
     ]
   },
@@ -241,21 +492,29 @@
           "SE",
           "N",
           "NE"
-        ]
-      },
-      {
-        "keyword": "dg_branch_bottleneck_1",
-        "contentLocations": {
-          "generic": [
-            "N",
-            "E"
-          ]
-        },
-        "doorLocations": [
-          "S",
-          "W",
-          "NE"
-        ]
+        ],
+        "minimap": {
+          "rows": 9,
+          "columns": 7,
+          "directions": {
+            "NE": [
+              0,
+              2
+            ],
+            "N": [
+              2,
+              0
+            ],
+            "SE": [
+              4,
+              6
+            ],
+            "W": [
+              6,
+              1
+            ]
+          }
+        }
       },
       {
         "keyword": "dg_branch_bottleneck_2",
@@ -269,7 +528,73 @@
           "SE",
           "W",
           "NE"
-        ]
+        ],
+        "minimap": {
+          "rows": 10,
+          "columns": 10,
+          "directions": {
+            "NE": [
+              0,
+              3
+            ],
+            "E": [
+              2,
+              7
+            ],
+            "NW": [
+              6,
+              2
+            ],
+            "SE": [
+              6,
+              9
+            ],
+            "W": [
+              8,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "keyword": "dg_branch_bottleneck_1",
+        "contentLocations": {
+          "generic": [
+            "N",
+            "E"
+          ]
+        },
+        "doorLocations": [
+          "S",
+          "W",
+          "NE"
+        ],
+        "minimap": {
+          "rows": 9,
+          "columns": 9,
+          "directions": {
+            "E": [
+              0,
+              6
+            ],
+            "NE": [
+              1,
+              3
+            ],
+            "N": [
+              2,
+              1
+            ],
+            "W": [
+              7,
+              0
+            ],
+            "S": [
+              8,
+              7
+            ]
+          }
+        }
       },
       {
         "keyword": "dg_branch",
@@ -283,7 +608,33 @@
           "SE",
           "W",
           "NE"
-        ]
+        ],
+        "minimap": {
+          "rows": 7,
+          "columns": 7,
+          "directions": {
+            "NE": [
+              0,
+              1
+            ],
+            "E": [
+              0,
+              4
+            ],
+            "NW": [
+              2,
+              0
+            ],
+            "SE": [
+              3,
+              6
+            ],
+            "W": [
+              6,
+              1
+            ]
+          }
+        }
       }
     ]
   },
@@ -302,7 +653,33 @@
           "W",
           "NW",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 6,
+          "directions": {
+            "N": [
+              0,
+              0
+            ],
+            "NW": [
+              2,
+              0
+            ],
+            "SE": [
+              2,
+              4
+            ],
+            "W": [
+              4,
+              1
+            ],
+            "SW": [
+              6,
+              5
+            ]
+          }
+        }
       },
       {
         "keyword": "oh_quad",
@@ -317,7 +694,37 @@
           "SW",
           "NW",
           "NE"
-        ]
+        ],
+        "minimap": {
+          "rows": 9,
+          "columns": 7,
+          "directions": {
+            "NE": [
+              0,
+              2
+            ],
+            "N": [
+              2,
+              0
+            ],
+            "SE": [
+              3,
+              5
+            ],
+            "NW": [
+              4,
+              1
+            ],
+            "SW": [
+              7,
+              2
+            ],
+            "S": [
+              7,
+              6
+            ]
+          }
+        }
       }
     ]
   },
@@ -336,7 +743,25 @@
         },
         "doorLocations": [
           "E"
-        ]
+        ],
+        "minimap": {
+          "rows": 7,
+          "columns": 6,
+          "directions": {
+            "E": [
+              0,
+              4
+            ],
+            "NE": [
+              1,
+              2
+            ],
+            "NW": [
+              5,
+              0
+            ]
+          }
+        }
       }
     ]
   },
@@ -354,7 +779,29 @@
         "doorLocations": [
           "SE",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 7,
+          "directions": {
+            "NE": [
+              0,
+              1
+            ],
+            "SE": [
+              1,
+              6
+            ],
+            "N": [
+              2,
+              0
+            ],
+            "SW": [
+              7,
+              4
+            ]
+          }
+        }
       },
       {
         "keyword": "oh_straight",
@@ -367,7 +814,29 @@
         "doorLocations": [
           "S",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 8,
+          "directions": {
+            "N": [
+              0,
+              2
+            ],
+            "E": [
+              1,
+              6
+            ],
+            "W": [
+              6,
+              2
+            ],
+            "S": [
+              6,
+              7
+            ]
+          }
+        }
       }
     ]
   },
@@ -385,21 +854,29 @@
           "SE",
           "NW",
           "N"
-        ]
-      },
-      {
-        "keyword": "oh_branch_bottleneck_1",
-        "contentLocations": {
-          "generic": [
-            "N",
-            "W"
-          ]
-        },
-        "doorLocations": [
-          "S",
-          "NW",
-          "NE"
-        ]
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 5,
+          "directions": {
+            "N": [
+              1,
+              0
+            ],
+            "SE": [
+              2,
+              4
+            ],
+            "NW": [
+              3,
+              0
+            ],
+            "SW": [
+              7,
+              4
+            ]
+          }
+        }
       },
       {
         "keyword": "oh_branch_bottleneck_2",
@@ -413,7 +890,73 @@
           "S",
           "W",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 7,
+          "directions": {
+            "NE": [
+              0,
+              2
+            ],
+            "N": [
+              1,
+              0
+            ],
+            "E": [
+              1,
+              6
+            ],
+            "S": [
+              4,
+              6
+            ],
+            "W": [
+              7,
+              2
+            ]
+          }
+        }
+      },
+      {
+        "keyword": "oh_branch_bottleneck_1",
+        "contentLocations": {
+          "generic": [
+            "N",
+            "W"
+          ]
+        },
+        "doorLocations": [
+          "S",
+          "NW",
+          "NE"
+        ],
+        "minimap": {
+          "rows": 9,
+          "columns": 8,
+          "directions": {
+            "NE": [
+              1,
+              0
+            ],
+            "N": [
+              4,
+              0
+            ],
+            "NW": [
+              5,
+              0
+            ],
+            "W": [
+              7,
+              0
+            ],
+            "S": [
+              8,
+              7
+            ]
+          }
+        }
       },
       {
         "keyword": "oh_branch",
@@ -427,7 +970,33 @@
           "SE",
           "NW",
           "NE"
-        ]
+        ],
+        "minimap": {
+          "rows": 6,
+          "columns": 7,
+          "directions": {
+            "NE": [
+              0,
+              2
+            ],
+            "E": [
+              0,
+              5
+            ],
+            "NW": [
+              3,
+              0
+            ],
+            "SE": [
+              3,
+              6
+            ],
+            "W": [
+              5,
+              0
+            ]
+          }
+        }
       }
     ]
   },
@@ -446,7 +1015,25 @@
         },
         "doorLocations": [
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 5,
+          "columns": 5,
+          "directions": {
+            "N": [
+              0,
+              1
+            ],
+            "NW": [
+              2,
+              0
+            ],
+            "SW": [
+              4,
+              3
+            ]
+          }
+        }
       }
     ]
   },
@@ -466,7 +1053,37 @@
           "SW",
           "NW",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 7,
+          "columns": 7,
+          "directions": {
+            "N": [
+              0,
+              0
+            ],
+            "E": [
+              1,
+              5
+            ],
+            "NW": [
+              2,
+              0
+            ],
+            "W": [
+              4,
+              1
+            ],
+            "SE": [
+              4,
+              6
+            ],
+            "SW": [
+              6,
+              2
+            ]
+          }
+        }
       }
     ]
   },
@@ -484,7 +1101,29 @@
           "SE",
           "NW",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 5,
+          "columns": 7,
+          "directions": {
+            "N": [
+              0,
+              0
+            ],
+            "NW": [
+              2,
+              0
+            ],
+            "SE": [
+              2,
+              6
+            ],
+            "SW": [
+              4,
+              4
+            ]
+          }
+        }
       },
       {
         "keyword": "eh_branch_bottleneck_2",
@@ -498,21 +1137,33 @@
           "SE",
           "W",
           "N"
-        ]
-      },
-      {
-        "keyword": "eh_block_branch",
-        "contentLocations": {
-          "generic": [
-            "NE",
-            "SW"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "NW",
-          "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 7,
+          "directions": {
+            "N": [
+              1,
+              0
+            ],
+            "NE": [
+              2,
+              3
+            ],
+            "SE": [
+              5,
+              6
+            ],
+            "W": [
+              6,
+              0
+            ],
+            "S": [
+              7,
+              4
+            ]
+          }
+        }
       },
       {
         "keyword": "eh_branch",
@@ -526,7 +1177,73 @@
           "S",
           "NW",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 7,
+          "directions": {
+            "N": [
+              0,
+              0
+            ],
+            "E": [
+              2,
+              6
+            ],
+            "NW": [
+              4,
+              0
+            ],
+            "S": [
+              5,
+              6
+            ],
+            "SW": [
+              7,
+              4
+            ]
+          }
+        }
+      },
+      {
+        "keyword": "eh_block_branch",
+        "contentLocations": {
+          "generic": [
+            "NE",
+            "SW"
+          ]
+        },
+        "doorLocations": [
+          "SE",
+          "NW",
+          "N"
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 7,
+          "directions": {
+            "NE": [
+              0,
+              2
+            ],
+            "N": [
+              1,
+              0
+            ],
+            "NW": [
+              4,
+              0
+            ],
+            "SE": [
+              5,
+              6
+            ],
+            "SW": [
+              7,
+              4
+            ]
+          }
+        }
       }
     ]
   },
@@ -544,7 +1261,29 @@
         "doorLocations": [
           "SE",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 6,
+          "columns": 7,
+          "directions": {
+            "NE": [
+              0,
+              1
+            ],
+            "N": [
+              1,
+              0
+            ],
+            "SE": [
+              3,
+              6
+            ],
+            "W": [
+              5,
+              2
+            ]
+          }
+        }
       },
       {
         "keyword": "eh_straight",
@@ -557,7 +1296,29 @@
         "doorLocations": [
           "SE",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 7,
+          "columns": 7,
+          "directions": {
+            "N": [
+              0,
+              0
+            ],
+            "NE": [
+              0,
+              3
+            ],
+            "SE": [
+              4,
+              6
+            ],
+            "SW": [
+              6,
+              1
+            ]
+          }
+        }
       }
     ]
   },
@@ -576,7 +1337,25 @@
         },
         "doorLocations": [
           "NE"
-        ]
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 6,
+          "directions": {
+            "NE": [
+              0,
+              0
+            ],
+            "NW": [
+              4,
+              1
+            ],
+            "SW": [
+              7,
+              3
+            ]
+          }
+        }
       }
     ]
   },
@@ -596,7 +1375,37 @@
           "W",
           "NW",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 8,
+          "directions": {
+            "N": [
+              0,
+              0
+            ],
+            "E": [
+              2,
+              6
+            ],
+            "NW": [
+              3,
+              0
+            ],
+            "SE": [
+              4,
+              7
+            ],
+            "S": [
+              6,
+              5
+            ],
+            "W": [
+              7,
+              0
+            ]
+          }
+        }
       }
     ]
   },
@@ -614,21 +1423,29 @@
           "SE",
           "NW",
           "N"
-        ]
-      },
-      {
-        "keyword": "p_branch_bottleneck_1",
-        "contentLocations": {
-          "generic": [
-            "NE",
-            "SW"
-          ]
-        },
-        "doorLocations": [
-          "S",
-          "NW",
-          "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 8,
+          "directions": {
+            "N": [
+              0,
+              0
+            ],
+            "NW": [
+              3,
+              0
+            ],
+            "SE": [
+              4,
+              7
+            ],
+            "SW": [
+              6,
+              3
+            ]
+          }
+        }
       },
       {
         "keyword": "p_branch_bottleneck_2",
@@ -642,7 +1459,73 @@
           "SE",
           "W",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 8,
+          "directions": {
+            "N": [
+              1,
+              0
+            ],
+            "E": [
+              1,
+              5
+            ],
+            "SE": [
+              5,
+              7
+            ],
+            "W": [
+              6,
+              0
+            ],
+            "S": [
+              7,
+              5
+            ]
+          }
+        }
+      },
+      {
+        "keyword": "p_branch_bottleneck_1",
+        "contentLocations": {
+          "generic": [
+            "NE",
+            "SW"
+          ]
+        },
+        "doorLocations": [
+          "S",
+          "NW",
+          "N"
+        ],
+        "minimap": {
+          "rows": 7,
+          "columns": 8,
+          "directions": {
+            "N": [
+              0,
+              0
+            ],
+            "NE": [
+              0,
+              3
+            ],
+            "NW": [
+              3,
+              0
+            ],
+            "S": [
+              4,
+              7
+            ],
+            "SW": [
+              6,
+              5
+            ]
+          }
+        }
       },
       {
         "keyword": "p_branch",
@@ -656,7 +1539,33 @@
           "SE",
           "NW",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 7,
+          "columns": 8,
+          "directions": {
+            "N": [
+              0,
+              0
+            ],
+            "E": [
+              2,
+              6
+            ],
+            "NW": [
+              3,
+              1
+            ],
+            "SE": [
+              4,
+              7
+            ],
+            "S": [
+              6,
+              4
+            ]
+          }
+        }
       }
     ]
   },
@@ -674,7 +1583,29 @@
         "doorLocations": [
           "S",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 9,
+          "columns": 9,
+          "directions": {
+            "N": [
+              1,
+              0
+            ],
+            "NW": [
+              4,
+              1
+            ],
+            "S": [
+              5,
+              8
+            ],
+            "SW": [
+              8,
+              6
+            ]
+          }
+        }
       },
       {
         "keyword": "p_straight",
@@ -687,7 +1618,29 @@
         "doorLocations": [
           "SE",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 7,
+          "columns": 8,
+          "directions": {
+            "N": [
+              1,
+              1
+            ],
+            "E": [
+              3,
+              6
+            ],
+            "NW": [
+              4,
+              1
+            ],
+            "SE": [
+              5,
+              7
+            ]
+          }
+        }
       }
     ]
   },
@@ -706,7 +1659,25 @@
         },
         "doorLocations": [
           "NE"
-        ]
+        ],
+        "minimap": {
+          "rows": 9,
+          "columns": 7,
+          "directions": {
+            "NE": [
+              0,
+              1
+            ],
+            "NW": [
+              4,
+              2
+            ],
+            "SW": [
+              7,
+              4
+            ]
+          }
+        }
       }
     ]
   },
@@ -725,7 +1696,33 @@
           "W",
           "NW",
           "NE"
-        ]
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 8,
+          "directions": {
+            "NE": [
+              0,
+              2
+            ],
+            "NW": [
+              3,
+              0
+            ],
+            "SE": [
+              4,
+              7
+            ],
+            "W": [
+              6,
+              1
+            ],
+            "SW": [
+              7,
+              5
+            ]
+          }
+        }
       },
       {
         "keyword": "c_quad",
@@ -740,27 +1737,43 @@
           "W",
           "NW",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 9,
+          "columns": 8,
+          "directions": {
+            "N": [
+              0,
+              0
+            ],
+            "E": [
+              2,
+              5
+            ],
+            "NW": [
+              4,
+              0
+            ],
+            "SE": [
+              4,
+              7
+            ],
+            "W": [
+              5,
+              1
+            ],
+            "SW": [
+              7,
+              5
+            ]
+          }
+        }
       }
     ]
   },
   {
     "roomName": "Sepulchre Halls",
     "variants": [
-      {
-        "keyword": "c_branch_bottleneck_1",
-        "contentLocations": {
-          "generic": [
-            "NE",
-            "SW"
-          ]
-        },
-        "doorLocations": [
-          "S",
-          "NW",
-          "N"
-        ]
-      },
       {
         "keyword": "c_branch_bottleneck_2",
         "contentLocations": {
@@ -773,7 +1786,73 @@
           "SE",
           "W",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 9,
+          "directions": {
+            "N": [
+              0,
+              0
+            ],
+            "NE": [
+              1,
+              6
+            ],
+            "SE": [
+              4,
+              8
+            ],
+            "W": [
+              6,
+              0
+            ],
+            "S": [
+              7,
+              6
+            ]
+          }
+        }
+      },
+      {
+        "keyword": "c_branch_bottleneck_1",
+        "contentLocations": {
+          "generic": [
+            "NE",
+            "SW"
+          ]
+        },
+        "doorLocations": [
+          "S",
+          "NW",
+          "N"
+        ],
+        "minimap": {
+          "rows": 10,
+          "columns": 9,
+          "directions": {
+            "N": [
+              0,
+              0
+            ],
+            "NE": [
+              1,
+              5
+            ],
+            "NW": [
+              4,
+              0
+            ],
+            "S": [
+              6,
+              8
+            ],
+            "SW": [
+              9,
+              5
+            ]
+          }
+        }
       },
       {
         "keyword": "c_branch",
@@ -787,7 +1866,33 @@
           "SE",
           "NW",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 9,
+          "directions": {
+            "N": [
+              0,
+              0
+            ],
+            "E": [
+              2,
+              6
+            ],
+            "NW": [
+              4,
+              0
+            ],
+            "SE": [
+              4,
+              8
+            ],
+            "SW": [
+              7,
+              5
+            ]
+          }
+        }
       }
     ]
   },
@@ -805,7 +1910,29 @@
         "doorLocations": [
           "S",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 10,
+          "columns": 9,
+          "directions": {
+            "N": [
+              0,
+              0
+            ],
+            "NW": [
+              4,
+              1
+            ],
+            "S": [
+              5,
+              8
+            ],
+            "SW": [
+              8,
+              5
+            ]
+          }
+        }
       },
       {
         "keyword": "c_straight",
@@ -818,7 +1945,29 @@
         "doorLocations": [
           "SE",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 7,
+          "columns": 9,
+          "directions": {
+            "N": [
+              0,
+              0
+            ],
+            "E": [
+              2,
+              6
+            ],
+            "NW": [
+              4,
+              1
+            ],
+            "SE": [
+              4,
+              8
+            ]
+          }
+        }
       }
     ]
   }
