@@ -1,4 +1,5 @@
 #include "instructionmodel.h"
+#include "helper/roompresethelper.h"
 
 static const QStringList LOOT_LIST {
   "Switch puzzle",
@@ -87,14 +88,17 @@ void InstructionModel::loadFromData(const NavigationData& data)
 
 void InstructionModel::updateContentsAndLocations(const NavigationData& data)
 {
-  auto room = data.lab->getRoomFromId(data.currentRoom);
-  auto contents = room.contents;
-  auto allContentLocations = room.contentLocations;
+  const auto& room = data.lab->getRoomFromId(data.currentRoom);
+  const auto& contents = room.contents;
   QStringList loot;
   QStringList majorLoot;
   QStringList minorLoot;
 
-  foreach (auto content, contents)
+  const auto& helper = RoomPresetHelper::instance;
+  const auto& preset = helper->getPreset(room.name, room.areaCode);
+  const auto& allContentLocations = preset["contentLocations"].toMap();
+
+  for (const auto& content: contents)
     if (LOOT_LIST.contains(content)) {
       loot.append(content);
       if (MAJOR_LOOT_LIST.contains(content))
@@ -112,14 +116,14 @@ void InstructionModel::updateContentsAndLocations(const NavigationData& data)
   QVariantList visibleContentLocations;
   if (!loot.isEmpty()) {
     if (allContentLocations.contains("generic")) {
-      foreach (auto direction, allContentLocations["generic"].toStringList())
+      for (const auto& direction: allContentLocations["generic"].toStringList())
         visibleContentLocations.append(QVariantMap {{"direction", direction}, {"major", false}});
     } else {
       if (!majorLoot.isEmpty() && allContentLocations.contains("major"))
-        foreach (auto direction, allContentLocations["major"].toStringList())
+        for (const auto& direction: allContentLocations["major"].toStringList())
           visibleContentLocations.append(QVariantMap {{"direction", direction}, {"major", true}});
       if (!minorLoot.isEmpty() && allContentLocations.contains("minor"))
-        foreach (auto direction, allContentLocations["minor"].toStringList())
+        for (const auto& direction: allContentLocations["minor"].toStringList())
           visibleContentLocations.append(QVariantMap {{"direction", direction}, {"major", false}});
     }
   }

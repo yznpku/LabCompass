@@ -64,7 +64,6 @@ private:
   bool loadConnectionMatrix(const QJsonArray& array);
   bool loadSections();
   bool loadGoldenDoors();
-  void loadContentLocations();
 };
 
 #endif // LABYRINTHDATA_H

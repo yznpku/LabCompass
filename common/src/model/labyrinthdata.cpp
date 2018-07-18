@@ -78,8 +78,6 @@ bool LabyrinthData::loadFromJson(const QJsonObject& json)
   if (!loadGoldenDoors())
     return false;
 
-  loadContentLocations();
-
   normalizeDoorDirectionsForAllRooms();
 
   return true;
@@ -328,18 +326,4 @@ bool LabyrinthData::loadGoldenDoors()
             rooms[j].coordinate.x() > rooms[i].coordinate.x())
           goldenDoors.append(std::pair<RoomId, RoomId>(rooms[i].id, rooms[j].id));
   return true;
-}
-
-void LabyrinthData::loadContentLocations()
-{
-  auto helper = RoomPresetHelper::instance;
-
-  for (int i = 0; i < rooms.size(); i++) {
-    auto& room = rooms[i];
-    auto preset = helper->getPreset(room.name, room.areaCode);
-    if (preset.isEmpty())
-      continue;
-
-    room.contentLocations = preset["contentLocations"].toMap();
-  }
 }
