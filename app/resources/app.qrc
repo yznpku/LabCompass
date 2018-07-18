@@ -187,5 +187,11 @@
         <file>images/room-preset/tile/rt_straight.svg</file>
         <file>images/room-preset/tile/rt_straight_bottleneck.svg</file>
         <file>images/compass/direction-hud.svg</file>
+        <file>ui/compass/MinimapDisplay.qml</file>
+        <file>images/compass/door-normal.svg</file>
+        <file>images/compass/door-target.svg</file>
+        <file>images/compass/loot-normal.svg</file>
+        <file>images/compass/loot-target.svg</file>
+        <file>ui/compass/RoomContentView.qml</file>
     </qresource>
 </RCC>

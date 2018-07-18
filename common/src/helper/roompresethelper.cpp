@@ -16,7 +16,6 @@ RoomPresetHelper::RoomPresetHelper()
     for (auto j = variantList.constBegin(); j != variantList.constEnd(); j++) {
       auto keyword = j->toMap()["keyword"].toString();
       auto preset = j->toMap();
-      preset.remove("keyword");
 
       cache[roomName].append({keyword, preset});
     }

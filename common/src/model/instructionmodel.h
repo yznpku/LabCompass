@@ -8,6 +8,7 @@ class InstructionModel : public QObject
 {
   Q_OBJECT
 
+  QML_READONLY_VAR_PROPERTY(QVariantMap, preset)
   QML_READONLY_VAR_PROPERTY(QStringList, roomLoot)
   QML_READONLY_VAR_PROPERTY(QStringList, roomDoorExitDirections)
   QML_READONLY_VAR_PROPERTY(QVariantList, contentLocations) // ["direction": string, "major": bool]
@@ -31,6 +32,8 @@ public:
   void loadFromData(const NavigationData& data);
 
 private:
+  void updateRoomPreset(const NavigationData& data);
+  void updateExitLocations(const NavigationData& data);
   void updateContentsAndLocations(const NavigationData& data);
 };
 

@@ -5,13 +5,18 @@ import '..'
 Item {
   id: root
 
-  width: 170
+  width: 210
   height: 170
+
+  property bool displayActive: Global.model.inLab && Global.model.currentRoomDetermined
+  property bool useMinimapDisplay: displayActive && Object.keys(Global.model.instructionModel.preset).length
 
   Item {
     id: directionDisplay
     width: 170
     height: 170
+    anchors.right: parent.right
+    visible: !useMinimapDisplay
 
     SvgImage {
       anchors.fill: parent
@@ -20,8 +25,31 @@ Item {
 
     Loader {
       anchors.fill: parent
-      active: Global.model.inLab && Global.model.currentRoomDetermined
+      active: !useMinimapDisplay && displayActive
       sourceComponent: DirectionDisplay {
+        instructionModel: Global.model.instructionModel
+      }
+    }
+  }
+
+  Item {
+    id: minimapDisplay
+    anchors.fill: parent
+    visible: useMinimapDisplay
+
+    Rectangle {
+      width: 200
+      height: 160
+      anchors.centerIn: parent
+      color: Qt.rgba(0, 0, 0, 0.75)
+    }
+
+    Loader {
+      width: 182
+      height: 140
+      anchors.centerIn: parent
+      active: useMinimapDisplay
+      sourceComponent: MinimapDisplay {
         instructionModel: Global.model.instructionModel
       }
     }
@@ -30,7 +58,7 @@ Item {
   Rectangle {
     id: timerView
     color: '#88000000'
-    x: 110
+    x: 150
     y: 10
     width: 50
     height: 20

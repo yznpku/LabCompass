@@ -36,15 +36,11 @@ void InstructionModel::loadFromData(const NavigationData& data)
   if (!data.currentRoomDetermined)
     return;
 
+  updateRoomPreset(data);
+
   updateContentsAndLocations(data);
 
-  auto exits = data.lab->getRoomConnections(data.currentRoom);
-  QList<DirectionCode> doorExitDirections;
-  for (auto i = exits.constBegin(); i != exits.constEnd(); i++)
-    for (auto j = i.value().constBegin(); j != i.value().constEnd(); j++)
-      if (REGULAR_DIRECTION_LIST.contains(*j))
-        doorExitDirections.append(*j);
-  update_roomDoorExitDirections(doorExitDirections);
+  updateExitLocations(data);
 
   update_currentSection(data.lab->getRoomFromId(data.currentRoom).section);
 
@@ -83,6 +79,34 @@ void InstructionModel::loadFromData(const NavigationData& data)
                            data.lab->getRoomFromId(data.currentRoom).section < data.lab->getRoomFromId(data.plannedRoute[1]).section);
 
     update_izaroMechanics(get_currentSection() < 2 ? data.lab->sectionMechanics[get_currentSection()] : "");
+  }
+}
+
+void InstructionModel::updateRoomPreset(const NavigationData& data)
+{
+  const auto& room = data.lab->getRoomFromId(data.currentRoom);
+  const auto& helper = RoomPresetHelper::instance;
+  const auto& preset = helper->getPreset(room.name, room.areaCode);
+  update_preset(preset);
+}
+
+void InstructionModel::updateExitLocations(const NavigationData& data)
+{
+  const auto& room = data.lab->getRoomFromId(data.currentRoom);
+  const auto& helper = RoomPresetHelper::instance;
+  const auto& preset = helper->getPreset(room.name, room.areaCode);
+
+  if (preset.isEmpty()) {
+    const auto& exits = data.lab->getRoomConnections(data.currentRoom);
+    QList<DirectionCode> doorExitDirections;
+    for (auto i = exits.constBegin(); i != exits.constEnd(); i++)
+      for (auto j = i.value().constBegin(); j != i.value().constEnd(); j++)
+        if (REGULAR_DIRECTION_LIST.contains(*j))
+          doorExitDirections.append(*j);
+    update_roomDoorExitDirections(doorExitDirections);
+
+  } else {
+    update_roomDoorExitDirections(preset["doorLocations"].toStringList());
   }
 }
 

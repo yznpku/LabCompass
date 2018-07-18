@@ -46,18 +46,9 @@ Item {
       }
     }
 
-    Row {
+    RoomContentView {
       anchors.centerIn: parent
-      spacing: 2
-
-      Repeater {
-        id: contentView
-        model: instructionModel.roomLoot
-
-        SvgImage {
-          source: modelData in Global.contentIconMapping ? 'qrc:/images/lab-content/' + Global.contentIconMapping[modelData] + '.svg' : ''
-        }
-      }
+      model: instructionModel.roomLoot
     }
   }
 }

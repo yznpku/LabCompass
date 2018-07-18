@@ -99,13 +99,13 @@ void Application::initWindows()
   headerWindow->move(mainWindowPosition);
 
   compassWindow.reset(new CompassWindow(&engine));
-  compassWindow->setParentWindow(headerWindow.get(), QPoint(-48, 26));
+  compassWindow->setParentWindow(headerWindow.get(), QPoint(-88, 26));
 
   toolbarWindow.reset(new ToolbarWindow(&engine));
   toolbarWindow->setParentWindow(headerWindow.get(), QPoint(124, 28));
 
   instructionListWindow.reset(new InstructionListWindow(&engine));
-  instructionListWindow->setParentWindow(headerWindow.get(), QPoint(-112, 186));
+  instructionListWindow->setParentWindow(headerWindow.get(), QPoint(-112, 198));
 
   headerWindow->show();
   compassWindow->show();
