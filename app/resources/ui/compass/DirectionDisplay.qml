@@ -11,16 +11,16 @@ Item {
 
     Repeater {
       id: exitDirectionView
-      model: instructionModel.roomDoorExitDirections
+      model: instructionModel.doorExitLocations
       anchors.centerIn: parent
 
       Rectangle {
-        x: Global.directionMapping[modelData].dx * 48 - width / 2
-        y: Global.directionMapping[modelData].dy * 48 - height / 2
+        x: Global.directionMapping[modelData.direction].dx * 48 - width / 2
+        y: Global.directionMapping[modelData.direction].dy * 48 - height / 2
         width: 16
         height: 16
         radius: 8
-        color: modelData === instructionModel.nextRoomDirection ? Global.activePathColor : '#909090'
+        color: modelData.direction === instructionModel.nextRoomDirection ? Global.activePathColor : '#909090'
         border {
           width: 1
           color: 'black'

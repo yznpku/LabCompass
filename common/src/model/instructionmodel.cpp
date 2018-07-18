@@ -96,18 +96,21 @@ void InstructionModel::updateExitLocations(const NavigationData& data)
   const auto& helper = RoomPresetHelper::instance;
   const auto& preset = helper->getPreset(room.name, room.areaCode);
 
+  QVariantList doorExitLocations;
+
   if (preset.isEmpty()) {
     const auto& exits = data.lab->getRoomConnections(data.currentRoom);
-    QList<DirectionCode> doorExitDirections;
-    for (auto i = exits.constBegin(); i != exits.constEnd(); i++)
-      for (auto j = i.value().constBegin(); j != i.value().constEnd(); j++)
-        if (REGULAR_DIRECTION_LIST.contains(*j))
-          doorExitDirections.append(*j);
-    update_roomDoorExitDirections(doorExitDirections);
+    for (const auto& l: exits.values())
+      for (const auto& direction: l)
+        if (REGULAR_DIRECTION_LIST.contains(direction))
+          doorExitLocations.append(QVariantMap {{"direction", direction}, {"tileRect", QRectF()}});
 
   } else {
-    update_roomDoorExitDirections(preset["doorLocations"].toStringList());
+    for (const auto& direction: preset["doorLocations"].toStringList())
+      doorExitLocations.append(QVariantMap {{"direction", direction}, {"tileRect", getTileRect(direction, preset)}});
   }
+
+  update_doorExitLocations(doorExitLocations);
 }
 
 void InstructionModel::updateContentsAndLocations(const NavigationData& data)
@@ -141,15 +144,31 @@ void InstructionModel::updateContentsAndLocations(const NavigationData& data)
   if (!loot.isEmpty()) {
     if (allContentLocations.contains("generic")) {
       for (const auto& direction: allContentLocations["generic"].toStringList())
-        visibleContentLocations.append(QVariantMap {{"direction", direction}, {"major", false}});
+        visibleContentLocations.append(QVariantMap {{"direction", direction}, {"major", false}, {"tileRect", getTileRect(direction, preset)}});
     } else {
       if (!majorLoot.isEmpty() && allContentLocations.contains("major"))
         for (const auto& direction: allContentLocations["major"].toStringList())
-          visibleContentLocations.append(QVariantMap {{"direction", direction}, {"major", true}});
+          visibleContentLocations.append(QVariantMap {{"direction", direction}, {"major", true}, {"tileRect", getTileRect(direction, preset)}});
       if (!minorLoot.isEmpty() && allContentLocations.contains("minor"))
         for (const auto& direction: allContentLocations["minor"].toStringList())
-          visibleContentLocations.append(QVariantMap {{"direction", direction}, {"major", false}});
+          visibleContentLocations.append(QVariantMap {{"direction", direction}, {"major", false}, {"tileRect", getTileRect(direction, preset)}});
     }
   }
   update_contentLocations(visibleContentLocations);
+}
+
+QRectF InstructionModel::getTileRect(const QString& direction, const QVariantMap& preset) const
+{
+  const auto& coord = preset["minimap"].toMap()["directions"].toMap()[direction].toList();
+  int row = coord[0].toInt();
+  int column = coord[1].toInt();
+  int rows = preset["minimap"].toMap()["rows"].toInt();
+  int columns = preset["minimap"].toMap()["columns"].toInt();
+  qreal rowd = row - (rows - 1) / 2.0;
+  qreal columnd = column - (columns - 1) / 2.0;
+  qreal scale = 10.0 / std::max(std::max(rows, columns), 7);
+  const auto& d = QPointF(columnd - rowd, columnd + rowd) * 0.05 * scale;
+  const auto& tileCenter = QPointF(0.5, 0.5) + d;
+  return QRectF(tileCenter.x() - 0.05 * scale, tileCenter.y() - 0.05 * scale,
+                0.1 * scale, 0.1 * scale);
 }
