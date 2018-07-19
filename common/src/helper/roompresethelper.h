@@ -5,7 +5,8 @@
 
 class RoomPresetHelper
 {
-  QHash<QString, QList<QPair<QString, QVariantMap>>> cache; // name => [(keyword, preset)]
+  QHash<QString, QList<QPair<QString, QVariantMap>>> cacheByName; // name => [(keyword, preset)]
+  QHash<QPair<QString, bool>, QList<QPair<QString, QVariantMap>>> cacheByNameAndGoldenDoor; // (name, goldenDoor) => [(keyword, preset)]
 
 public:
   static RoomPresetHelper* instance;

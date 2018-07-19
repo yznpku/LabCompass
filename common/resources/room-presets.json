@@ -1,6 +1,7 @@
 [
   {
     "roomName": "Basilica Annex",
+    "goldenDoor": false,
     "variants": [
       {
         "keyword": "rt_end_bottleneck",
@@ -38,6 +39,7 @@
   },
   {
     "roomName": "Basilica Atrium",
+    "goldenDoor": true,
     "variants": [
       {
         "keyword": "rt_quad_door",
@@ -83,42 +85,8 @@
   },
   {
     "roomName": "Basilica Halls",
+    "goldenDoor": false,
     "variants": [
-      {
-        "keyword": "rt_branch_door",
-        "contentLocations": {
-          "generic": [
-            "SW"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "NW",
-          "NE"
-        ],
-        "minimap": {
-          "rows": 7,
-          "columns": 7,
-          "directions": {
-            "NE": [
-              0,
-              2
-            ],
-            "NW": [
-              2,
-              0
-            ],
-            "SE": [
-              3,
-              6
-            ],
-            "SW": [
-              6,
-              4
-            ]
-          }
-        }
-      },
       {
         "keyword": "rt_branch_bottleneck_2",
         "contentLocations": {
@@ -242,7 +210,49 @@
     ]
   },
   {
+    "roomName": "Basilica Halls",
+    "goldenDoor": true,
+    "variants": [
+      {
+        "keyword": "rt_branch_door",
+        "contentLocations": {
+          "generic": [
+            "SW"
+          ]
+        },
+        "doorLocations": [
+          "SE",
+          "NW",
+          "NE"
+        ],
+        "minimap": {
+          "rows": 7,
+          "columns": 7,
+          "directions": {
+            "NE": [
+              0,
+              2
+            ],
+            "NW": [
+              2,
+              0
+            ],
+            "SE": [
+              3,
+              6
+            ],
+            "SW": [
+              6,
+              4
+            ]
+          }
+        }
+      }
+    ]
+  },
+  {
     "roomName": "Basilica Passage",
+    "goldenDoor": false,
     "variants": [
       {
         "keyword": "rt_straight_bottleneck",
@@ -318,47 +328,8 @@
   },
   {
     "roomName": "Domain Crossing",
+    "goldenDoor": false,
     "variants": [
-      {
-        "keyword": "dg_quad_door",
-        "contentLocations": {
-          "generic": [
-            "NE"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "W",
-          "NW",
-          "N"
-        ],
-        "minimap": {
-          "rows": 9,
-          "columns": 8,
-          "directions": {
-            "N": [
-              0,
-              2
-            ],
-            "NE": [
-              1,
-              4
-            ],
-            "NW": [
-              2,
-              0
-            ],
-            "W": [
-              4,
-              2
-            ],
-            "SE": [
-              4,
-              7
-            ]
-          }
-        }
-      },
       {
         "keyword": "dg_quad",
         "contentLocations": {
@@ -407,7 +378,54 @@
     ]
   },
   {
+    "roomName": "Domain Crossing",
+    "goldenDoor": true,
+    "variants": [
+      {
+        "keyword": "dg_quad_door",
+        "contentLocations": {
+          "generic": [
+            "NE"
+          ]
+        },
+        "doorLocations": [
+          "SE",
+          "W",
+          "NW",
+          "N"
+        ],
+        "minimap": {
+          "rows": 9,
+          "columns": 8,
+          "directions": {
+            "N": [
+              0,
+              2
+            ],
+            "NE": [
+              1,
+              4
+            ],
+            "NW": [
+              2,
+              0
+            ],
+            "W": [
+              4,
+              2
+            ],
+            "SE": [
+              4,
+              7
+            ]
+          }
+        }
+      }
+    ]
+  },
+  {
     "roomName": "Domain Enclosure",
+    "goldenDoor": false,
     "variants": [
       {
         "keyword": "dg_end_bottleneck",
@@ -445,6 +463,7 @@
   },
   {
     "roomName": "Domain Path",
+    "goldenDoor": false,
     "variants": [
       {
         "keyword": "dg_straight_bottleneck",
@@ -520,42 +539,8 @@
   },
   {
     "roomName": "Domain Walkways",
+    "goldenDoor": false,
     "variants": [
-      {
-        "keyword": "dg_branch_door",
-        "contentLocations": {
-          "generic": [
-            "W"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "N",
-          "NE"
-        ],
-        "minimap": {
-          "rows": 9,
-          "columns": 7,
-          "directions": {
-            "NE": [
-              0,
-              2
-            ],
-            "N": [
-              2,
-              0
-            ],
-            "SE": [
-              4,
-              6
-            ],
-            "W": [
-              6,
-              1
-            ]
-          }
-        }
-      },
       {
         "keyword": "dg_branch_bottleneck_2",
         "contentLocations": {
@@ -679,48 +664,50 @@
     ]
   },
   {
-    "roomName": "Estate Crossing",
+    "roomName": "Domain Walkways",
+    "goldenDoor": true,
     "variants": [
       {
-        "keyword": "oh_quad_door",
+        "keyword": "dg_branch_door",
         "contentLocations": {
           "generic": [
-            "SW"
+            "W"
           ]
         },
         "doorLocations": [
           "SE",
-          "W",
-          "NW",
-          "N"
+          "N",
+          "NE"
         ],
         "minimap": {
-          "rows": 8,
-          "columns": 6,
+          "rows": 9,
+          "columns": 7,
           "directions": {
-            "N": [
+            "NE": [
               0,
-              0
+              2
             ],
-            "NW": [
+            "N": [
               2,
               0
             ],
             "SE": [
-              2,
-              4
+              4,
+              6
             ],
             "W": [
-              4,
-              1
-            ],
-            "SW": [
               6,
-              5
+              1
             ]
           }
         }
-      },
+      }
+    ]
+  },
+  {
+    "roomName": "Estate Crossing",
+    "goldenDoor": false,
+    "variants": [
       {
         "keyword": "oh_quad",
         "contentLocations": {
@@ -769,7 +756,54 @@
     ]
   },
   {
+    "roomName": "Estate Crossing",
+    "goldenDoor": true,
+    "variants": [
+      {
+        "keyword": "oh_quad_door",
+        "contentLocations": {
+          "generic": [
+            "SW"
+          ]
+        },
+        "doorLocations": [
+          "SE",
+          "W",
+          "NW",
+          "N"
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 6,
+          "directions": {
+            "N": [
+              0,
+              0
+            ],
+            "NW": [
+              2,
+              0
+            ],
+            "SE": [
+              2,
+              4
+            ],
+            "W": [
+              4,
+              1
+            ],
+            "SW": [
+              6,
+              5
+            ]
+          }
+        }
+      }
+    ]
+  },
+  {
     "roomName": "Estate Enclosure",
+    "goldenDoor": false,
     "variants": [
       {
         "keyword": "oh_end_bottleneck",
@@ -807,6 +841,7 @@
   },
   {
     "roomName": "Estate Path",
+    "goldenDoor": false,
     "variants": [
       {
         "keyword": "oh_straight_bottleneck",
@@ -882,42 +917,8 @@
   },
   {
     "roomName": "Estate Walkways",
+    "goldenDoor": false,
     "variants": [
-      {
-        "keyword": "oh_branch_door",
-        "contentLocations": {
-          "generic": [
-            "SW"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "NW",
-          "N"
-        ],
-        "minimap": {
-          "rows": 8,
-          "columns": 5,
-          "directions": {
-            "N": [
-              1,
-              0
-            ],
-            "SE": [
-              2,
-              4
-            ],
-            "NW": [
-              3,
-              0
-            ],
-            "SW": [
-              7,
-              4
-            ]
-          }
-        }
-      },
       {
         "keyword": "oh_branch_bottleneck_2",
         "contentLocations": {
@@ -1041,7 +1042,49 @@
     ]
   },
   {
+    "roomName": "Estate Walkways",
+    "goldenDoor": true,
+    "variants": [
+      {
+        "keyword": "oh_branch_door",
+        "contentLocations": {
+          "generic": [
+            "SW"
+          ]
+        },
+        "doorLocations": [
+          "SE",
+          "NW",
+          "N"
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 5,
+          "directions": {
+            "N": [
+              1,
+              0
+            ],
+            "SE": [
+              2,
+              4
+            ],
+            "NW": [
+              3,
+              0
+            ],
+            "SW": [
+              7,
+              4
+            ]
+          }
+        }
+      }
+    ]
+  },
+  {
     "roomName": "Mansion Annex",
+    "goldenDoor": false,
     "variants": [
       {
         "keyword": "eh_end_bottleneck",
@@ -1079,6 +1122,7 @@
   },
   {
     "roomName": "Mansion Atrium",
+    "goldenDoor": false,
     "variants": [
       {
         "keyword": "eh_quad",
@@ -1129,42 +1173,8 @@
   },
   {
     "roomName": "Mansion Halls",
+    "goldenDoor": false,
     "variants": [
-      {
-        "keyword": "eh_branch_door",
-        "contentLocations": {
-          "generic": [
-            "SW"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "NW",
-          "N"
-        ],
-        "minimap": {
-          "rows": 5,
-          "columns": 7,
-          "directions": {
-            "N": [
-              0,
-              0
-            ],
-            "NW": [
-              2,
-              0
-            ],
-            "SE": [
-              2,
-              6
-            ],
-            "SW": [
-              4,
-              4
-            ]
-          }
-        }
-      },
       {
         "keyword": "eh_branch_bottleneck_2",
         "contentLocations": {
@@ -1288,7 +1298,49 @@
     ]
   },
   {
+    "roomName": "Mansion Halls",
+    "goldenDoor": true,
+    "variants": [
+      {
+        "keyword": "eh_branch_door",
+        "contentLocations": {
+          "generic": [
+            "SW"
+          ]
+        },
+        "doorLocations": [
+          "SE",
+          "NW",
+          "N"
+        ],
+        "minimap": {
+          "rows": 5,
+          "columns": 7,
+          "directions": {
+            "N": [
+              0,
+              0
+            ],
+            "NW": [
+              2,
+              0
+            ],
+            "SE": [
+              2,
+              6
+            ],
+            "SW": [
+              4,
+              4
+            ]
+          }
+        }
+      }
+    ]
+  },
+  {
     "roomName": "Mansion Passage",
+    "goldenDoor": false,
     "variants": [
       {
         "keyword": "eh_straight_bottleneck",
@@ -1364,6 +1416,7 @@
   },
   {
     "roomName": "Sanitorium Annex",
+    "goldenDoor": false,
     "variants": [
       {
         "keyword": "p_end_bottleneck",
@@ -1401,6 +1454,7 @@
   },
   {
     "roomName": "Sanitorium Atrium",
+    "goldenDoor": false,
     "variants": [
       {
         "keyword": "p_quad",
@@ -1451,42 +1505,8 @@
   },
   {
     "roomName": "Sanitorium Halls",
+    "goldenDoor": false,
     "variants": [
-      {
-        "keyword": "p_branch_door",
-        "contentLocations": {
-          "generic": [
-            "SW"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "NW",
-          "N"
-        ],
-        "minimap": {
-          "rows": 8,
-          "columns": 8,
-          "directions": {
-            "N": [
-              0,
-              1
-            ],
-            "NW": [
-              2,
-              0
-            ],
-            "SE": [
-              4,
-              7
-            ],
-            "SW": [
-              6,
-              3
-            ]
-          }
-        }
-      },
       {
         "keyword": "p_branch_bottleneck_2",
         "contentLocations": {
@@ -1610,7 +1630,49 @@
     ]
   },
   {
+    "roomName": "Sanitorium Halls",
+    "goldenDoor": true,
+    "variants": [
+      {
+        "keyword": "p_branch_door",
+        "contentLocations": {
+          "generic": [
+            "SW"
+          ]
+        },
+        "doorLocations": [
+          "SE",
+          "NW",
+          "N"
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 8,
+          "directions": {
+            "N": [
+              0,
+              1
+            ],
+            "NW": [
+              2,
+              0
+            ],
+            "SE": [
+              4,
+              7
+            ],
+            "SW": [
+              6,
+              3
+            ]
+          }
+        }
+      }
+    ]
+  },
+  {
     "roomName": "Sanitorium Passage",
+    "goldenDoor": false,
     "variants": [
       {
         "keyword": "p_straight_bottleneck",
@@ -1686,6 +1748,7 @@
   },
   {
     "roomName": "Sepulchre Annex",
+    "goldenDoor": false,
     "variants": [
       {
         "keyword": "c_end_bottleneck",
@@ -1723,47 +1786,8 @@
   },
   {
     "roomName": "Sepulchre Atrium",
+    "goldenDoor": false,
     "variants": [
-      {
-        "keyword": "c_quad_door",
-        "contentLocations": {
-          "generic": [
-            "SW"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "W",
-          "NW",
-          "NE"
-        ],
-        "minimap": {
-          "rows": 8,
-          "columns": 8,
-          "directions": {
-            "NE": [
-              0,
-              2
-            ],
-            "NW": [
-              3,
-              0
-            ],
-            "SE": [
-              4,
-              7
-            ],
-            "W": [
-              6,
-              1
-            ],
-            "SW": [
-              7,
-              5
-            ]
-          }
-        }
-      },
       {
         "keyword": "c_quad",
         "contentLocations": {
@@ -1812,7 +1836,54 @@
     ]
   },
   {
+    "roomName": "Sepulchre Atrium",
+    "goldenDoor": true,
+    "variants": [
+      {
+        "keyword": "c_quad_door",
+        "contentLocations": {
+          "generic": [
+            "SW"
+          ]
+        },
+        "doorLocations": [
+          "SE",
+          "W",
+          "NW",
+          "NE"
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 8,
+          "directions": {
+            "NE": [
+              0,
+              2
+            ],
+            "NW": [
+              3,
+              0
+            ],
+            "SE": [
+              4,
+              7
+            ],
+            "W": [
+              6,
+              1
+            ],
+            "SW": [
+              7,
+              5
+            ]
+          }
+        }
+      }
+    ]
+  },
+  {
     "roomName": "Sepulchre Halls",
+    "goldenDoor": false,
     "variants": [
       {
         "keyword": "c_branch_bottleneck_2",
@@ -1938,6 +2009,7 @@
   },
   {
     "roomName": "Sepulchre Passage",
+    "goldenDoor": false,
     "variants": [
       {
         "keyword": "c_straight_bottleneck",

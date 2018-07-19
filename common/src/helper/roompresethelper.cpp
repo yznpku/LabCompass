@@ -6,28 +6,30 @@ RoomPresetHelper::RoomPresetHelper()
 {
   QFile roomPresetsFile(":/room-presets.json");
   roomPresetsFile.open(QIODevice::ReadOnly);
-  auto roomNameList = QJsonDocument::fromJson(roomPresetsFile.readAll()).toVariant().toList();
+  const auto& roomTypeList = QJsonDocument::fromJson(roomPresetsFile.readAll()).toVariant().toList();
 
-  for (auto i = roomNameList.constBegin(); i != roomNameList.constEnd(); i++) {
-    auto roomName = i->toMap()["roomName"].toString();
-    auto variantList = i->toMap()["variants"].toList();
-    cache.insert(roomName, {});
+  for (const auto& roomType: roomTypeList) {
+    const auto& roomName = roomType.toMap()["roomName"].toString();
+    const auto& variantList = roomType.toMap()["variants"].toList();
 
-    for (auto j = variantList.constBegin(); j != variantList.constEnd(); j++) {
-      auto keyword = j->toMap()["keyword"].toString();
-      auto preset = j->toMap();
+    if (!cacheByName.contains(roomName))
+      cacheByName.insert(roomName, {});
 
-      cache[roomName].append({keyword, preset});
+    for (const auto& variant: variantList) {
+      auto keyword = variant.toMap()["keyword"].toString();
+      auto preset = variant.toMap();
+
+      cacheByName[roomName].append({keyword, preset});
     }
   }
 }
 
 QVariantMap RoomPresetHelper::getPreset(const QString& roomName, const QString& areaCode) const
 {
-  if (!cache.contains(roomName))
+  if (!cacheByName.contains(roomName))
     return {};
 
-  auto variants = cache[roomName];
+  auto variants = cacheByName[roomName];
   foreach (auto variant, variants)
     if (areaCode.contains(variant.first))
       return variant.second;
