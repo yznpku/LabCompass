@@ -86,7 +86,7 @@ void InstructionModel::updateRoomPreset(const NavigationData& data)
 {
   const auto& room = data.lab->getRoomFromId(data.currentRoom);
   const auto& helper = RoomPresetHelper::instance;
-  const auto& preset = helper->getPreset(room.name, room.areaCode);
+  const auto& preset = helper->getPresetByAreaCode(room.areaCode);
   update_preset(preset);
 }
 
@@ -94,7 +94,7 @@ void InstructionModel::updateExitLocations(const NavigationData& data)
 {
   const auto& room = data.lab->getRoomFromId(data.currentRoom);
   const auto& helper = RoomPresetHelper::instance;
-  const auto& preset = helper->getPreset(room.name, room.areaCode);
+  const auto& preset = helper->getPresetByAreaCode(room.areaCode);
 
   QVariantList doorExitLocations;
 
@@ -122,7 +122,7 @@ void InstructionModel::updateContentsAndLocations(const NavigationData& data)
   QStringList minorLoot;
 
   const auto& helper = RoomPresetHelper::instance;
-  const auto& preset = helper->getPreset(room.name, room.areaCode);
+  const auto& preset = helper->getPresetByAreaCode(room.areaCode);
   const auto& allContentLocations = preset["contentLocations"].toMap();
 
   for (const auto& content: contents)

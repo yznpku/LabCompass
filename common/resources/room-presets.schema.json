@@ -18,13 +18,13 @@
         "items": {
           "type": "object",
           "required": [
-            "keyword",
+            "areaCode",
             "contentLocations",
             "doorLocations",
             "minimap"
           ],
           "properties": {
-            "keyword": { "type": "string" },
+            "areaCode": { "type": "string" },
             "contentLocations": {
               "type": "object",
               "oneOf": [

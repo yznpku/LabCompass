@@ -89,7 +89,7 @@ void LabyrinthData::normalizeDoorDirections(const RoomId& id)
 
   const auto& room = getRoomFromId(id);
   const auto& originalConnections = connections[id];
-  const auto& preset = helper->getPreset(room.name, room.areaCode);
+  const auto& preset = helper->getPresetByAreaCode(room.areaCode);
 
   if (!preset.isEmpty()) {
     const auto& pattern = preset["doorLocations"].toStringList();

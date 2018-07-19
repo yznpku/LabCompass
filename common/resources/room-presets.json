@@ -4,7 +4,7 @@
     "goldenDoor": false,
     "variants": [
       {
-        "keyword": "rt_end_bottleneck",
+        "areaCode": "rt_end_bottleneck",
         "contentLocations": {
           "major": [
             "NW"
@@ -42,7 +42,7 @@
     "goldenDoor": true,
     "variants": [
       {
-        "keyword": "rt_quad_door",
+        "areaCode": "rt_quad_door",
         "contentLocations": {
           "generic": [
             "SW"
@@ -88,7 +88,7 @@
     "goldenDoor": false,
     "variants": [
       {
-        "keyword": "rt_branch_bottleneck_2",
+        "areaCode": "rt_branch_bottleneck_2",
         "contentLocations": {
           "generic": [
             "E",
@@ -128,7 +128,7 @@
         }
       },
       {
-        "keyword": "rt_branch_bottleneck_1",
+        "areaCode": "rt_branch_bottleneck_1",
         "contentLocations": {
           "generic": [
             "NE",
@@ -168,7 +168,7 @@
         }
       },
       {
-        "keyword": "rt_branch",
+        "areaCode": "rt_branch",
         "contentLocations": {
           "generic": [
             "E",
@@ -214,7 +214,7 @@
     "goldenDoor": true,
     "variants": [
       {
-        "keyword": "rt_branch_door",
+        "areaCode": "rt_branch_door",
         "contentLocations": {
           "generic": [
             "SW"
@@ -255,7 +255,7 @@
     "goldenDoor": false,
     "variants": [
       {
-        "keyword": "rt_straight_bottleneck",
+        "areaCode": "rt_straight_bottleneck",
         "contentLocations": {
           "generic": [
             "SW",
@@ -290,7 +290,7 @@
         }
       },
       {
-        "keyword": "rt_straight",
+        "areaCode": "rt_straight",
         "contentLocations": {
           "generic": [
             "E",
@@ -331,7 +331,7 @@
     "goldenDoor": false,
     "variants": [
       {
-        "keyword": "dg_quad",
+        "areaCode": "dg_quad",
         "contentLocations": {
           "generic": [
             "E",
@@ -382,7 +382,7 @@
     "goldenDoor": true,
     "variants": [
       {
-        "keyword": "dg_quad_door",
+        "areaCode": "dg_quad_door",
         "contentLocations": {
           "generic": [
             "NE"
@@ -428,7 +428,7 @@
     "goldenDoor": false,
     "variants": [
       {
-        "keyword": "dg_end_bottleneck",
+        "areaCode": "dg_end_bottleneck",
         "contentLocations": {
           "major": [
             "W"
@@ -466,7 +466,7 @@
     "goldenDoor": false,
     "variants": [
       {
-        "keyword": "dg_straight_bottleneck",
+        "areaCode": "dg_straight_bottleneck",
         "contentLocations": {
           "generic": [
             "SW",
@@ -501,7 +501,7 @@
         }
       },
       {
-        "keyword": "dg_straight",
+        "areaCode": "dg_straight",
         "contentLocations": {
           "generic": [
             "E",
@@ -542,7 +542,7 @@
     "goldenDoor": false,
     "variants": [
       {
-        "keyword": "dg_branch_bottleneck_2",
+        "areaCode": "dg_branch_bottleneck_2",
         "contentLocations": {
           "generic": [
             "E",
@@ -582,7 +582,7 @@
         }
       },
       {
-        "keyword": "dg_branch_bottleneck_1",
+        "areaCode": "dg_branch_bottleneck_1",
         "contentLocations": {
           "generic": [
             "N",
@@ -622,7 +622,7 @@
         }
       },
       {
-        "keyword": "dg_branch",
+        "areaCode": "dg_branch",
         "contentLocations": {
           "generic": [
             "E",
@@ -668,7 +668,7 @@
     "goldenDoor": true,
     "variants": [
       {
-        "keyword": "dg_branch_door",
+        "areaCode": "dg_branch_door",
         "contentLocations": {
           "generic": [
             "W"
@@ -709,7 +709,7 @@
     "goldenDoor": false,
     "variants": [
       {
-        "keyword": "oh_quad",
+        "areaCode": "oh_quad",
         "contentLocations": {
           "generic": [
             "N",
@@ -760,7 +760,7 @@
     "goldenDoor": true,
     "variants": [
       {
-        "keyword": "oh_quad_door",
+        "areaCode": "oh_quad_door",
         "contentLocations": {
           "generic": [
             "SW"
@@ -806,7 +806,7 @@
     "goldenDoor": false,
     "variants": [
       {
-        "keyword": "oh_end_bottleneck",
+        "areaCode": "oh_end_bottleneck",
         "contentLocations": {
           "major": [
             "NE"
@@ -844,7 +844,7 @@
     "goldenDoor": false,
     "variants": [
       {
-        "keyword": "oh_straight_bottleneck",
+        "areaCode": "oh_straight_bottleneck",
         "contentLocations": {
           "generic": [
             "NE",
@@ -879,7 +879,7 @@
         }
       },
       {
-        "keyword": "oh_straight",
+        "areaCode": "oh_straight",
         "contentLocations": {
           "generic": [
             "E",
@@ -920,7 +920,7 @@
     "goldenDoor": false,
     "variants": [
       {
-        "keyword": "oh_branch_bottleneck_2",
+        "areaCode": "oh_branch_bottleneck_2",
         "contentLocations": {
           "generic": [
             "NE",
@@ -960,7 +960,7 @@
         }
       },
       {
-        "keyword": "oh_branch_bottleneck_1",
+        "areaCode": "oh_branch_bottleneck_1",
         "contentLocations": {
           "generic": [
             "N",
@@ -1000,7 +1000,7 @@
         }
       },
       {
-        "keyword": "oh_branch",
+        "areaCode": "oh_branch",
         "contentLocations": {
           "generic": [
             "E",
@@ -1046,7 +1046,7 @@
     "goldenDoor": true,
     "variants": [
       {
-        "keyword": "oh_branch_door",
+        "areaCode": "oh_branch_door",
         "contentLocations": {
           "generic": [
             "SW"
@@ -1087,7 +1087,7 @@
     "goldenDoor": false,
     "variants": [
       {
-        "keyword": "eh_end_bottleneck",
+        "areaCode": "eh_end_bottleneck",
         "contentLocations": {
           "major": [
             "NW"
@@ -1125,7 +1125,7 @@
     "goldenDoor": false,
     "variants": [
       {
-        "keyword": "eh_quad",
+        "areaCode": "eh_quad",
         "contentLocations": {
           "generic": [
             "E",
@@ -1176,7 +1176,7 @@
     "goldenDoor": false,
     "variants": [
       {
-        "keyword": "eh_branch_bottleneck_2",
+        "areaCode": "eh_branch_bottleneck_2",
         "contentLocations": {
           "generic": [
             "NE",
@@ -1216,7 +1216,7 @@
         }
       },
       {
-        "keyword": "eh_branch",
+        "areaCode": "eh_branch",
         "contentLocations": {
           "generic": [
             "E",
@@ -1256,7 +1256,7 @@
         }
       },
       {
-        "keyword": "eh_block_branch",
+        "areaCode": "eh_block_branch",
         "contentLocations": {
           "generic": [
             "NE",
@@ -1302,7 +1302,7 @@
     "goldenDoor": true,
     "variants": [
       {
-        "keyword": "eh_branch_door",
+        "areaCode": "eh_branch_door",
         "contentLocations": {
           "generic": [
             "SW"
@@ -1343,7 +1343,7 @@
     "goldenDoor": false,
     "variants": [
       {
-        "keyword": "eh_straight_bottleneck",
+        "areaCode": "eh_straight_bottleneck",
         "contentLocations": {
           "generic": [
             "NE",
@@ -1378,7 +1378,7 @@
         }
       },
       {
-        "keyword": "eh_straight",
+        "areaCode": "eh_straight",
         "contentLocations": {
           "generic": [
             "NE",
@@ -1419,7 +1419,7 @@
     "goldenDoor": false,
     "variants": [
       {
-        "keyword": "p_end_bottleneck",
+        "areaCode": "p_end_bottleneck",
         "contentLocations": {
           "major": [
             "NW"
@@ -1457,7 +1457,7 @@
     "goldenDoor": false,
     "variants": [
       {
-        "keyword": "p_quad",
+        "areaCode": "p_quad",
         "contentLocations": {
           "generic": [
             "E",
@@ -1508,7 +1508,7 @@
     "goldenDoor": false,
     "variants": [
       {
-        "keyword": "p_branch_bottleneck_2",
+        "areaCode": "p_branch_bottleneck_2",
         "contentLocations": {
           "generic": [
             "E",
@@ -1548,7 +1548,7 @@
         }
       },
       {
-        "keyword": "p_branch_bottleneck_1",
+        "areaCode": "p_branch_bottleneck_1",
         "contentLocations": {
           "generic": [
             "NE",
@@ -1588,7 +1588,7 @@
         }
       },
       {
-        "keyword": "p_branch",
+        "areaCode": "p_branch",
         "contentLocations": {
           "generic": [
             "E",
@@ -1634,7 +1634,7 @@
     "goldenDoor": true,
     "variants": [
       {
-        "keyword": "p_branch_door",
+        "areaCode": "p_branch_door",
         "contentLocations": {
           "generic": [
             "SW"
@@ -1675,7 +1675,7 @@
     "goldenDoor": false,
     "variants": [
       {
-        "keyword": "p_straight_bottleneck",
+        "areaCode": "p_straight_bottleneck",
         "contentLocations": {
           "generic": [
             "SW",
@@ -1710,7 +1710,7 @@
         }
       },
       {
-        "keyword": "p_straight",
+        "areaCode": "p_straight",
         "contentLocations": {
           "generic": [
             "E",
@@ -1751,7 +1751,7 @@
     "goldenDoor": false,
     "variants": [
       {
-        "keyword": "c_end_bottleneck",
+        "areaCode": "c_end_bottleneck",
         "contentLocations": {
           "major": [
             "NW"
@@ -1789,7 +1789,7 @@
     "goldenDoor": false,
     "variants": [
       {
-        "keyword": "c_quad",
+        "areaCode": "c_quad",
         "contentLocations": {
           "generic": [
             "E",
@@ -1840,7 +1840,7 @@
     "goldenDoor": true,
     "variants": [
       {
-        "keyword": "c_quad_door",
+        "areaCode": "c_quad_door",
         "contentLocations": {
           "generic": [
             "SW"
@@ -1886,7 +1886,7 @@
     "goldenDoor": false,
     "variants": [
       {
-        "keyword": "c_branch_bottleneck_2",
+        "areaCode": "c_branch_bottleneck_2",
         "contentLocations": {
           "generic": [
             "NE",
@@ -1926,7 +1926,7 @@
         }
       },
       {
-        "keyword": "c_branch_bottleneck_1",
+        "areaCode": "c_branch_bottleneck_1",
         "contentLocations": {
           "generic": [
             "NE",
@@ -1966,7 +1966,7 @@
         }
       },
       {
-        "keyword": "c_branch",
+        "areaCode": "c_branch",
         "contentLocations": {
           "generic": [
             "E",
@@ -2012,7 +2012,7 @@
     "goldenDoor": false,
     "variants": [
       {
-        "keyword": "c_straight_bottleneck",
+        "areaCode": "c_straight_bottleneck",
         "contentLocations": {
           "generic": [
             "SW",
@@ -2047,7 +2047,7 @@
         }
       },
       {
-        "keyword": "c_straight",
+        "areaCode": "c_straight",
         "contentLocations": {
           "generic": [
             "E",

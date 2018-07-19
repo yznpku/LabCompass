@@ -10,29 +10,23 @@ RoomPresetHelper::RoomPresetHelper()
 
   for (const auto& roomType: roomTypeList) {
     const auto& roomName = roomType.toMap()["roomName"].toString();
+    const auto& goldenDoor = roomType.toMap()["goldenDoor"].toBool();
     const auto& variantList = roomType.toMap()["variants"].toList();
 
-    if (!cacheByName.contains(roomName))
-      cacheByName.insert(roomName, {});
+    QPair<QString, bool> index {roomName, goldenDoor};
+    cacheByNameAndGoldenDoor.insert(index, {});
 
     for (const auto& variant: variantList) {
-      auto keyword = variant.toMap()["keyword"].toString();
-      auto preset = variant.toMap();
+      const auto& preset = variant.toMap();
+      const auto& areaCode = preset["areaCode"].toString();
 
-      cacheByName[roomName].append({keyword, preset});
+      cacheByAreaCode[areaCode] = preset;
+      cacheByNameAndGoldenDoor[index].append({areaCode, preset});
     }
   }
 }
 
-QVariantMap RoomPresetHelper::getPreset(const QString& roomName, const QString& areaCode) const
+QVariantMap RoomPresetHelper::getPresetByAreaCode(const QString& areaCode) const
 {
-  if (!cacheByName.contains(roomName))
-    return {};
-
-  auto variants = cacheByName[roomName];
-  foreach (auto variant, variants)
-    if (areaCode.contains(variant.first))
-      return variant.second;
-
-  return {};
+  return cacheByAreaCode.value(areaCode, {});
 }
