@@ -35,7 +35,7 @@ Item {
       y: modelData.tileRect.y * root.height
       width: modelData.tileRect.width * root.width
       height: modelData.tileRect.height * root.height
-      source: instructionModel.nextRoomConnectionType === 'secret' && !modelData.major ? 'qrc:/images/compass/loot-active.svg'
+      source: instructionModel.nextRoomConnectionType === 'secret' && !modelData.major ? 'qrc:/images/compass/loot-target.svg'
                                                                                        : 'qrc:/images/compass/loot-normal.svg'
     }
   }
