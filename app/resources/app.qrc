@@ -102,6 +102,7 @@
         <file>images/room-preset/render/dg_branch_door.png</file>
         <file>images/room-preset/render/dg_end_bottleneck.png</file>
         <file>images/room-preset/render/dg_quad.png</file>
+        <file>images/room-preset/render/dg_quad_door.png</file>
         <file>images/room-preset/render/dg_straight.png</file>
         <file>images/room-preset/render/dg_straight_bottleneck.png</file>
         <file>images/room-preset/render/eh_block_branch.png</file>
@@ -151,6 +152,7 @@
         <file>images/room-preset/tile/dg_branch_door.svg</file>
         <file>images/room-preset/tile/dg_end_bottleneck.svg</file>
         <file>images/room-preset/tile/dg_quad.svg</file>
+        <file>images/room-preset/tile/dg_quad_door.svg</file>
         <file>images/room-preset/tile/dg_straight.svg</file>
         <file>images/room-preset/tile/dg_straight_bottleneck.svg</file>
         <file>images/room-preset/tile/eh_block_branch.svg</file>
