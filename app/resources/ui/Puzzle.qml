@@ -57,10 +57,10 @@ WindowWithShadow {
                 x: [-1, 1, 1, -1][index] * (30 - 15 * guideFocus.visibility)
                 y: [-1, -1, 1, 1][index] * (30 - 15 * guideFocus.visibility)
                 opacity: guideFocus.visibility
-                Image {
+                SvgImage {
                   anchors.centerIn: parent
                   rotation: index * 90
-                  source: 'qrc:/images/rounded-corner.png'
+                  source: 'qrc:/images/rounded-corner.svg'
                 }
               }
             }
