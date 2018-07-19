@@ -30,3 +30,9 @@ QVariantMap RoomPresetHelper::getPresetByAreaCode(const QString& areaCode) const
 {
   return cacheByAreaCode.value(areaCode, {});
 }
+
+QList<QPair<QString, QVariantMap>> RoomPresetHelper::getPresetListByName(const QString& roomName, bool goldenDoor) const
+{
+  QPair<QString, bool> index {roomName, goldenDoor};
+  return cacheByNameAndGoldenDoor[index];
+}

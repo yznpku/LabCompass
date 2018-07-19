@@ -15,6 +15,7 @@ public:
   RoomPresetHelper();
 
   QVariantMap getPresetByAreaCode(const QString& areaCode) const;
+  QList<QPair<QString, QVariantMap>> getPresetListByName(const QString& roomName, bool goldenDoor) const;
 };
 
 #endif // ROOMPRESETHELPER_H
