@@ -58,7 +58,7 @@
           "directions": {
             "NE": [
               0,
-              2
+              3
             ],
             "NW": [
               3,
@@ -134,27 +134,27 @@
         ],
         "minimap": {
           "rows": 9,
-          "columns": 9,
+          "columns": 8,
           "directions": {
             "N": [
               1,
-              1
+              0
             ],
             "E": [
               1,
-              7
+              6
             ],
             "W": [
               5,
-              2
+              1
             ],
             "SE": [
               5,
-              8
+              7
             ],
             "SW": [
               8,
-              6
+              5
             ]
           }
         }
@@ -214,23 +214,23 @@
         ],
         "minimap": {
           "rows": 9,
-          "columns": 9,
+          "columns": 8,
           "directions": {
             "N": [
               1,
-              1
+              0
             ],
             "E": [
               1,
-              7
+              6
             ],
             "SE": [
               5,
-              8
+              7
             ],
             "W": [
               6,
-              1
+              0
             ],
             "SW": [
               8,
@@ -319,6 +319,46 @@
   {
     "roomName": "Domain Crossing",
     "variants": [
+      {
+        "keyword": "dg_quad_door",
+        "contentLocations": {
+          "generic": [
+            "NE"
+          ]
+        },
+        "doorLocations": [
+          "SE",
+          "W",
+          "NW",
+          "N"
+        ],
+        "minimap": {
+          "rows": 9,
+          "columns": 8,
+          "directions": {
+            "N": [
+              0,
+              2
+            ],
+            "NE": [
+              1,
+              4
+            ],
+            "NW": [
+              2,
+              0
+            ],
+            "W": [
+              4,
+              2
+            ],
+            "SE": [
+              4,
+              7
+            ]
+          }
+        }
+      },
       {
         "keyword": "dg_quad",
         "contentLocations": {
@@ -932,7 +972,7 @@
           "NE"
         ],
         "minimap": {
-          "rows": 9,
+          "rows": 10,
           "columns": 8,
           "directions": {
             "NE": [
@@ -941,18 +981,18 @@
             ],
             "N": [
               4,
-              0
+              1
             ],
             "NW": [
-              5,
-              0
+              6,
+              1
             ],
             "W": [
               7,
               0
             ],
             "S": [
-              8,
+              9,
               7
             ]
           }
@@ -1430,10 +1470,10 @@
           "directions": {
             "N": [
               0,
-              0
+              1
             ],
             "NW": [
-              3,
+              2,
               0
             ],
             "SE": [
@@ -1739,7 +1779,7 @@
           "N"
         ],
         "minimap": {
-          "rows": 9,
+          "rows": 8,
           "columns": 8,
           "directions": {
             "N": [
@@ -1912,7 +1952,7 @@
           "N"
         ],
         "minimap": {
-          "rows": 10,
+          "rows": 9,
           "columns": 9,
           "directions": {
             "N": [

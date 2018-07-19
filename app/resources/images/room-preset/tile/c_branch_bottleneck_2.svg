@@ -164,13 +164,6 @@ font-family="Sans Serif" font-size="9" font-weight="400" font-style="normal"
 >
 </g>
 
-<g fill="#787878" fill-opacity="1" stroke="#000000" stroke-opacity="0" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(28.8889,22.2222,-28.8889,22.2222,187.778,55.5556)"
-font-family="Sans Serif" font-size="9" font-weight="400" font-style="normal" 
->
-<rect x="0.18" y="0.18" width="0.64" height="0.64"/>
-<rect x="0.8" y="0.18" width="0.21" height="0.64"/>
-</g>
-
 <g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
 font-family="Sans Serif" font-size="9" font-weight="400" font-style="normal" 
 >
@@ -182,7 +175,6 @@ font-family="Sans Serif" font-size="9" font-weight="400" font-style="normal"
 <rect x="0.18" y="0.18" width="0.64" height="0.64"/>
 <rect x="0.18" y="-0.01" width="0.64" height="0.21"/>
 <rect x="0.8" y="0.18" width="0.21" height="0.64"/>
-<rect x="-0.01" y="0.18" width="0.21" height="0.64"/>
 </g>
 
 <g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
@@ -323,13 +315,6 @@ font-family="Sans Serif" font-size="9" font-weight="400" font-style="normal"
 >
 </g>
 
-<g fill="#787878" fill-opacity="1" stroke="#000000" stroke-opacity="0" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(28.8889,22.2222,-28.8889,22.2222,303.333,188.889)"
-font-family="Sans Serif" font-size="9" font-weight="400" font-style="normal" 
->
-<rect x="0.18" y="0.18" width="0.64" height="0.64"/>
-<rect x="0.8" y="0.18" width="0.21" height="0.64"/>
-</g>
-
 <g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
 font-family="Sans Serif" font-size="9" font-weight="400" font-style="normal" 
 >
@@ -341,7 +326,6 @@ font-family="Sans Serif" font-size="9" font-weight="400" font-style="normal"
 <rect x="0.18" y="0.18" width="0.64" height="0.64"/>
 <rect x="0.18" y="-0.01" width="0.64" height="0.21"/>
 <rect x="0.18" y="0.8" width="0.64" height="0.21"/>
-<rect x="-0.01" y="0.18" width="0.21" height="0.64"/>
 </g>
 
 <g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
@@ -414,13 +398,6 @@ font-family="Sans Serif" font-size="9" font-weight="400" font-style="normal"
 >
 </g>
 
-<g fill="#787878" fill-opacity="1" stroke="#000000" stroke-opacity="0" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(28.8889,22.2222,-28.8889,22.2222,274.444,211.111)"
-font-family="Sans Serif" font-size="9" font-weight="400" font-style="normal" 
->
-<rect x="0.18" y="0.18" width="0.64" height="0.64"/>
-<rect x="0.8" y="0.18" width="0.21" height="0.64"/>
-</g>
-
 <g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
 font-family="Sans Serif" font-size="9" font-weight="400" font-style="normal" 
 >
@@ -432,7 +409,6 @@ font-family="Sans Serif" font-size="9" font-weight="400" font-style="normal"
 <rect x="0.18" y="0.18" width="0.64" height="0.64"/>
 <rect x="0.18" y="-0.01" width="0.64" height="0.21"/>
 <rect x="0.18" y="0.8" width="0.64" height="0.21"/>
-<rect x="-0.01" y="0.18" width="0.21" height="0.64"/>
 </g>
 
 <g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
@@ -459,13 +435,6 @@ font-family="Sans Serif" font-size="9" font-weight="400" font-style="normal"
 <g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
 font-family="Sans Serif" font-size="9" font-weight="400" font-style="normal" 
 >
-</g>
-
-<g fill="#787878" fill-opacity="1" stroke="#000000" stroke-opacity="0" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(28.8889,22.2222,-28.8889,22.2222,130,144.444)"
-font-family="Sans Serif" font-size="9" font-weight="400" font-style="normal" 
->
-<rect x="0.18" y="0.18" width="0.64" height="0.64"/>
-<rect x="0.18" y="0.8" width="0.64" height="0.21"/>
 </g>
 
 <g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
@@ -518,13 +487,6 @@ font-family="Sans Serif" font-size="9" font-weight="400" font-style="normal"
 >
 </g>
 
-<g fill="#787878" fill-opacity="1" stroke="#000000" stroke-opacity="0" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(28.8889,22.2222,-28.8889,22.2222,245.556,233.333)"
-font-family="Sans Serif" font-size="9" font-weight="400" font-style="normal" 
->
-<rect x="0.18" y="0.18" width="0.64" height="0.64"/>
-<rect x="0.8" y="0.18" width="0.21" height="0.64"/>
-</g>
-
 <g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
 font-family="Sans Serif" font-size="9" font-weight="400" font-style="normal" 
 >
@@ -537,7 +499,6 @@ font-family="Sans Serif" font-size="9" font-weight="400" font-style="normal"
 <rect x="0.18" y="-0.01" width="0.64" height="0.21"/>
 <rect x="0.8" y="0.18" width="0.21" height="0.64"/>
 <rect x="0.18" y="0.8" width="0.64" height="0.21"/>
-<rect x="-0.01" y="0.18" width="0.21" height="0.64"/>
 </g>
 
 <g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
@@ -587,7 +548,6 @@ font-family="Sans Serif" font-size="9" font-weight="400" font-style="normal"
 font-family="Sans Serif" font-size="9" font-weight="400" font-style="normal" 
 >
 <rect x="0.18" y="0.18" width="0.64" height="0.64"/>
-<rect x="0.18" y="-0.01" width="0.64" height="0.21"/>
 <rect x="0.8" y="0.18" width="0.21" height="0.64"/>
 <rect x="-0.01" y="0.18" width="0.21" height="0.64"/>
 </g>
