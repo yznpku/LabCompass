@@ -5,6 +5,7 @@
 #include "model/applicationmodel.h"
 #include "window/headerwindow.h"
 #include "window/compasswindow.h"
+#include "window/compasstoolbarwindow.h"
 #include "window/toolbarwindow.h"
 #include "window/instructionlistwindow.h"
 #include "window/plannerwindow.h"
@@ -31,6 +32,7 @@ class Application : public QApplication
   std::unique_ptr<Window> dummyWindow;
   std::unique_ptr<HeaderWindow> headerWindow;
   std::unique_ptr<CompassWindow> compassWindow;
+  std::unique_ptr<CompassToolbarWindow> compassToolbarWindow;
   std::unique_ptr<ToolbarWindow> toolbarWindow;
   std::unique_ptr<InstructionListWindow> instructionListWindow;
   std::unique_ptr<PlannerWindow> plannerWindow;

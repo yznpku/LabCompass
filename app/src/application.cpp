@@ -101,6 +101,9 @@ void Application::initWindows()
   compassWindow.reset(new CompassWindow(&engine));
   compassWindow->setParentWindow(headerWindow.get(), QPoint(-88, 26));
 
+  compassToolbarWindow.reset(new CompassToolbarWindow(&engine));
+  compassToolbarWindow->setParentWindow(compassWindow.get(), QPoint(172, 132));
+
   toolbarWindow.reset(new ToolbarWindow(&engine));
   toolbarWindow->setParentWindow(headerWindow.get(), QPoint(124, 28));
 

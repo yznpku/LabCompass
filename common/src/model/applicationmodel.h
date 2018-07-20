@@ -13,6 +13,7 @@
 #include "model/plannedroutemodel.h"
 #include "model/instructionmodel.h"
 #include "model/plansummarymodel.h"
+#include "model/roompresetmodel.h"
 
 class ApplicationModel : public QObject
 {
@@ -35,6 +36,7 @@ class ApplicationModel : public QObject
   QML_READONLY_UNIQUEPTR_PROPERTY(PlannedRouteModel, plannedRouteModel)
   QML_READONLY_UNIQUEPTR_PROPERTY(InstructionModel, instructionModel)
   QML_READONLY_UNIQUEPTR_PROPERTY(PlanSummaryModel, planSummaryModel)
+  QML_READONLY_UNIQUEPTR_PROPERTY(RoomPresetModel, roomPresetModel)
 
 public:
   LabyrinthData labyrinthData;

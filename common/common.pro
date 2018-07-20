@@ -34,7 +34,8 @@ HEADERS += \
     src/global.h \
     src/helper/roompresethelper.h \
     src/worker/datechecker.h \
-    src/helper/directionnormalizer.h
+    src/helper/directionnormalizer.h \
+    src/model/roompresetmodel.h
 
 SOURCES += \
     src/model/labyrinthmodel.cpp \
@@ -56,7 +57,8 @@ SOURCES += \
     src/worker/versionchecker.cpp \
     src/helper/roompresethelper.cpp \
     src/worker/datechecker.cpp \
-    src/helper/directionnormalizer.cpp
+    src/helper/directionnormalizer.cpp \
+    src/model/roompresetmodel.cpp
 
 RESOURCES += \
     resources/common.qrc

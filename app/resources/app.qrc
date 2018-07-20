@@ -144,5 +144,7 @@
         <file>images/room-preset/rt_quad_door.svg</file>
         <file>images/room-preset/rt_straight.svg</file>
         <file>images/room-preset/rt_straight_bottleneck.svg</file>
+        <file>images/view-list-light.svg</file>
+        <file>ui/compass/CompassToolbar.qml</file>
     </qresource>
 </RCC>

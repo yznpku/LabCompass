@@ -12,6 +12,7 @@ ApplicationModel::ApplicationModel(QObject* parent) : QObject(parent)
   m_goldenDoorModel.reset(new GoldenDoorModel);
   m_instructionModel.reset(new InstructionModel);
   m_planSummaryModel.reset(new PlanSummaryModel);
+  m_roomPresetModel.reset(new RoomPresetModel);
 
   m_newVersionAvailable = false;
   m_logFileOpen = true;
@@ -62,6 +63,7 @@ void ApplicationModel::updateModelOnLoadFile()
   get_goldenDoorModel()->loadFromData(labyrinthData);
   get_plannedRouteModel()->loadFromData(navigationData);
   get_instructionModel()->loadFromData(navigationData);
+  get_roomPresetModel()->loadFromData(navigationData);
 }
 
 void ApplicationModel::updateModelOnNavigation()
@@ -70,4 +72,5 @@ void ApplicationModel::updateModelOnNavigation()
   get_connectionModel()->updateFromData(navigationData);
   get_plannedRouteModel()->loadFromData(navigationData);
   get_instructionModel()->loadFromData(navigationData);
+  get_roomPresetModel()->loadFromData(navigationData);
 }
