@@ -148,7 +148,7 @@ WindowWithShadow {
               Text {
                 x: 20
                 anchors.verticalCenter: parent.verticalCenter
-                text: model ? model.areaCode : ''
+                text: model ? roomPresetModel.roomName + ' > ' + model.areaCode : ''
                 font.pixelSize: 24
                 color: Global.primaryTextColor
               }
