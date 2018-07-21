@@ -9,7 +9,7 @@ Item {
 
   SvgImage {
     anchors.fill: parent
-    source: 'qrc:/images/room-preset/' + presetModel.areaCode + '.svg'
+    source: presetModel && presetModel.areaCode ? 'qrc:/images/room-preset/' + presetModel.areaCode + '.svg' : ''
   }
 
   Repeater {

@@ -50,6 +50,7 @@ public:
   void updateNavigationData(const NavigationData& navigationData);
   void updateModelOnLoadFile();
   void updateModelOnNavigation();
+  void updateModelOnPresetChange();
 };
 
 #endif // APPLICATIONMODEL_H

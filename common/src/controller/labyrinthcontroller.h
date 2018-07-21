@@ -15,6 +15,7 @@ public:
 
 public slots:
   void importFile(const QString& file);
+  void onRoomPresetSet(const QString& id, const QString& areaCode);
 };
 
 #endif // LABYRINTHCONTROLLER_H

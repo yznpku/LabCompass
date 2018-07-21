@@ -8,6 +8,9 @@ class RoomPresetModel : public QObject
 {
   Q_OBJECT
 
+  QML_READONLY_VAR_PROPERTY(QString, roomId)
+  QML_READONLY_VAR_PROPERTY(QString, roomName)
+
   QML_READONLY_VAR_PROPERTY(QVariantList, presets) // [{"areaCode": string, "doorExitLocations": DoorExitLocationModel, "contentLocations": ContentLocationModel}]
   QML_READONLY_VAR_PROPERTY(int, current)
 

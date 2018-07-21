@@ -23,3 +23,16 @@ void LabyrinthController::importFile(const QString& file)
     }
   }
 }
+
+void LabyrinthController::onRoomPresetSet(const QString& id, const QString& areaCode)
+{
+  auto& lab = model->labyrinthData;
+  if (lab.roomIdIndex.contains(id)) {
+    auto& room = lab.rooms[lab.roomIdIndex[id]];
+    room.areaCode = areaCode;
+
+    lab.normalizeDoorDirections(id);
+
+    model->updateModelOnPresetChange();
+  }
+}

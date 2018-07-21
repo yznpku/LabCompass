@@ -49,7 +49,7 @@ void NavigationController::onLabExit()
 void NavigationController::onRoomChanged(const QString& name)
 {
   model->update_atPlaza(false);
-  if (!model->get_isValid())
+  if (!model->get_isValid() || !model->get_inLab())
     return;
 
   NavigationData data = model->navigationData;

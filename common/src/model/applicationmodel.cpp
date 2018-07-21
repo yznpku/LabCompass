@@ -74,3 +74,9 @@ void ApplicationModel::updateModelOnNavigation()
   get_instructionModel()->loadFromData(navigationData);
   get_roomPresetModel()->loadFromData(navigationData);
 }
+
+void ApplicationModel::updateModelOnPresetChange()
+{
+  get_instructionModel()->loadFromData(navigationData);
+  get_roomPresetModel()->loadFromData(navigationData);
+}

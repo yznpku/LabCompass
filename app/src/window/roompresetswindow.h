@@ -10,12 +10,16 @@ class RoomPresetsWindow : public Window
 
   QObject* roomPresetModel;
 
+signals:
+  void setRoomPreset(QString id, QString areaCode);
+
 public:
   RoomPresetsWindow(QQmlEngine* engine);
 
 private slots:
   void onWindowOpenChanged();
   void onDrag(int dx, int dy);
+  void onApplyPresetButtonClicked(const QString& areaCode);
   void resetIndex();
 };
 

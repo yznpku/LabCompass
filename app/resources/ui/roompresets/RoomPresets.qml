@@ -8,7 +8,7 @@ WindowWithShadow {
   property alias presetListViewCurrentIndex: presetListView.currentIndex
 
   signal drag(int dx, int dy)
-  signal setCurrentPreset(string areaCode)
+  signal applyPresetButtonClicked(string areaCode)
 
   Column {
     id: grid
@@ -202,6 +202,25 @@ WindowWithShadow {
           rightMargin: 30
         }
         height: 80
+
+        MaterialInk {
+          width: 220
+          height: 40
+          anchors.centerIn: parent
+          visible: (window.state === '' || window.state === 'Disabled') && presetListView.currentIndex !== roomPresetModel.current
+          onClicked: applyPresetButtonClicked(roomPresetModel.presets[presetListView.currentIndex].areaCode)
+          Rectangle {
+            anchors.fill: parent
+            color: Global.accentColor
+            radius: 2
+            z: -1
+            Text {
+              anchors.centerIn: parent
+              text: 'Apply Preset'
+              color: Global.primaryTextColor
+            }
+          }
+        }
       }
     }
   }

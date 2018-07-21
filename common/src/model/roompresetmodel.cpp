@@ -9,13 +9,17 @@ RoomPresetModel::RoomPresetModel(QObject* parent) : QObject(parent)
 void RoomPresetModel::loadFromData(const NavigationData& data)
 {
   if (!data.currentRoomDetermined) {
+    update_roomId(QString());
+    update_roomName(QString());
     update_current(-1);
     update_presets({});
 
   } else {
-    auto helper = RoomPresetHelper::instance;
-
     const auto& room = data.lab->getRoomFromId(data.currentRoom);
+    update_roomId(room.id);
+    update_roomName(room.name);
+
+    auto helper = RoomPresetHelper::instance;
     const auto& presetList = helper->getPresetListByName(room.name, room.contents.contains("golden-door"));
 
     QVariantList presetsModel;

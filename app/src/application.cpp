@@ -144,6 +144,8 @@ void Application::initControllers()
   labyrinthController.reset(new LabyrinthController(&model));
   connect(plannerWindow.get(), &PlannerWindow::importFile,
           labyrinthController.get(), &LabyrinthController::importFile);
+  connect(roomPresetsWindow.get(), &RoomPresetsWindow::setRoomPreset,
+          labyrinthController.get(), &LabyrinthController::onRoomPresetSet);
 
   navigationController.reset(new NavigationController(&model));
   connect(logWatcher.get(), &LogWatcher::plazaEntered,
