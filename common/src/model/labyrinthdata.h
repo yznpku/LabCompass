@@ -13,7 +13,6 @@ struct LabyrinthData
     RoomId id;
     QPoint coordinate;
     QStringList contents;
-    QVariantMap contentLocations;
     int section;
     bool isFirstRoomInSection {false};
   };

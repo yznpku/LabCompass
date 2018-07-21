@@ -3,15 +3,16 @@
 
 #include "stdafx.h"
 #include "model/navigationdata.h"
+#include "global.h"
 
 class InstructionModel : public QObject
 {
   Q_OBJECT
 
-  QML_READONLY_VAR_PROPERTY(QVariantMap, preset)
+  QML_READONLY_VAR_PROPERTY(QVariantMap, preset) // Preset
   QML_READONLY_VAR_PROPERTY(QStringList, roomLoot)
-  QML_READONLY_VAR_PROPERTY(QVariantList, doorExitLocations) // ["direction": string, "tileRect": rect]
-  QML_READONLY_VAR_PROPERTY(QVariantList, contentLocations) // ["direction": string, "major": bool, "tileRect": rect]
+  QML_READONLY_VAR_PROPERTY(QVariantList, doorExitLocations) // DoorExitLocationModel
+  QML_READONLY_VAR_PROPERTY(QVariantList, contentLocations) // ContentLocationModel
   QML_READONLY_VAR_PROPERTY(bool, roomHasPortal)
 
   QML_READONLY_VAR_PROPERTY(bool, hasNextRoom)

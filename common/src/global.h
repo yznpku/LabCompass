@@ -10,4 +10,8 @@ using DirectionCode = QString; // [""(Unknown), "C"(Secret Passage), "N", "NE", 
 using RoomConnections = QHash<RoomId, QList<DirectionCode>>;
 using ConnectionMatrix = QHash<RoomId, RoomConnections>;
 
+using Preset = QVariantMap;
+using DoorExitLocationModel = QVariantList; // ["direction": string, "tileRect": rect]
+using ContentLocationModel = QVariantList; // ["direction": string, "major": bool, "tileRect": rect]
+
 #endif // GLOBAL_H

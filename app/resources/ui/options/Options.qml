@@ -65,7 +65,7 @@ WindowWithShadow {
         onClicked: openUrl('https://github.com/yznpku/LabCompass/releases/tag/' + Global.model.settings.latestVersion)
         Rectangle {
           anchors.fill: parent
-          color: '#2196F3'
+          color: Global.accentColor
           radius: 2
           z: -1
           Text {
@@ -229,7 +229,7 @@ WindowWithShadow {
     }
     Rectangle {
       anchors.fill: parent
-      color: '#2196F3'
+      color: Global.accentColor
       radius: 2
       z: -1
       Text {

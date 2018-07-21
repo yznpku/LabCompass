@@ -11,6 +11,7 @@
 #include "window/plannerwindow.h"
 #include "window/puzzlewindow.h"
 #include "window/optionswindow.h"
+#include "window/roompresetswindow.h"
 #include "worker/logwatcher.h"
 #include "worker/versionchecker.h"
 #include "worker/datechecker.h"
@@ -38,6 +39,7 @@ class Application : public QApplication
   std::unique_ptr<PlannerWindow> plannerWindow;
   std::unique_ptr<PuzzleWindow> puzzleWindow;
   std::unique_ptr<OptionsWindow> optionsWindow;
+  std::unique_ptr<RoomPresetsWindow> roomPresetsWindow;
 
   std::unique_ptr<LogWatcher> logWatcher;
   std::unique_ptr<VersionChecker> versionChecker;

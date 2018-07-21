@@ -8,8 +8,8 @@ class RoomPresetModel : public QObject
 {
   Q_OBJECT
 
-  QML_READONLY_VAR_PROPERTY(QVariantList, presets)
-  QML_READONLY_VAR_PROPERTY(QString, current)
+  QML_READONLY_VAR_PROPERTY(QVariantList, presets) // [{"areaCode": string, "doorExitLocations": DoorExitLocationModel, "contentLocations": ContentLocationModel}]
+  QML_READONLY_VAR_PROPERTY(int, current)
 
 public:
   RoomPresetModel(QObject* parent = nullptr);

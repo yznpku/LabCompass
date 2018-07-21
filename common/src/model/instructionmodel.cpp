@@ -106,8 +106,7 @@ void InstructionModel::updateExitLocations(const NavigationData& data)
           doorExitLocations.append(QVariantMap {{"direction", direction}, {"tileRect", QRectF()}});
 
   } else {
-    for (const auto& direction: preset["doorLocations"].toStringList())
-      doorExitLocations.append(QVariantMap {{"direction", direction}, {"tileRect", getTileRect(direction, preset)}});
+    doorExitLocations = helper->getDoorExitLocationModel(preset);
   }
 
   update_doorExitLocations(doorExitLocations);
@@ -123,7 +122,6 @@ void InstructionModel::updateContentsAndLocations(const NavigationData& data)
 
   const auto& helper = RoomPresetHelper::instance;
   const auto& preset = helper->getPresetByAreaCode(room.areaCode);
-  const auto& allContentLocations = preset["contentLocations"].toMap();
 
   for (const auto& content: contents)
     if (LOOT_LIST.contains(content)) {
@@ -141,34 +139,8 @@ void InstructionModel::updateContentsAndLocations(const NavigationData& data)
   }
 
   QVariantList visibleContentLocations;
-  if (!loot.isEmpty()) {
-    if (allContentLocations.contains("generic")) {
-      for (const auto& direction: allContentLocations["generic"].toStringList())
-        visibleContentLocations.append(QVariantMap {{"direction", direction}, {"major", false}, {"tileRect", getTileRect(direction, preset)}});
-    } else {
-      if (!majorLoot.isEmpty() && allContentLocations.contains("major"))
-        for (const auto& direction: allContentLocations["major"].toStringList())
-          visibleContentLocations.append(QVariantMap {{"direction", direction}, {"major", true}, {"tileRect", getTileRect(direction, preset)}});
-      if (!minorLoot.isEmpty() && allContentLocations.contains("minor"))
-        for (const auto& direction: allContentLocations["minor"].toStringList())
-          visibleContentLocations.append(QVariantMap {{"direction", direction}, {"major", false}, {"tileRect", getTileRect(direction, preset)}});
-    }
-  }
-  update_contentLocations(visibleContentLocations);
-}
+  if (!loot.isEmpty())
+    visibleContentLocations = helper->getContentLocationModel(preset, true, !majorLoot.isEmpty(), !minorLoot.isEmpty());
 
-QRectF InstructionModel::getTileRect(const QString& direction, const QVariantMap& preset) const
-{
-  const auto& coord = preset["minimap"].toMap()["directions"].toMap()[direction].toList();
-  int row = coord[0].toInt();
-  int column = coord[1].toInt();
-  int rows = preset["minimap"].toMap()["rows"].toInt();
-  int columns = preset["minimap"].toMap()["columns"].toInt();
-  qreal rowd = row - (rows - 1) / 2.0;
-  qreal columnd = column - (columns - 1) / 2.0;
-  qreal scale = 10.0 / std::max(std::max(rows, columns), 7);
-  const auto& d = QPointF(columnd - rowd, columnd + rowd) * 0.05 * scale;
-  const auto& tileCenter = QPointF(0.5, 0.5) + d;
-  return QRectF(tileCenter.x() - 0.05 * scale, tileCenter.y() - 0.05 * scale,
-                0.1 * scale, 0.1 * scale);
+  update_contentLocations(visibleContentLocations);
 }

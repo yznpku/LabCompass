@@ -181,7 +181,7 @@ bool LabyrinthData::loadRooms(const QJsonArray& array)
 {
   if (array.isEmpty())
     return false;
-  rooms.append(Room({"Aspirant\'s Plaza", "labyrinth_airlock", "plaza", {-100, 128}, {}, {}, -1, false}));
+  rooms.append(Room({"Aspirant\'s Plaza", "labyrinth_airlock", "plaza", {-100, 128}, {}, -1, false}));
 
   for (int i = 0; i < array.size(); i++) {
     if (!array[i].isObject())

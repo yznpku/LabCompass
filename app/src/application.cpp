@@ -121,6 +121,8 @@ void Application::initWindows()
   puzzleWindow->setParentWindow(headerWindow.get(), QPoint(-122, 220));
 
   optionsWindow.reset(new OptionsWindow(&engine, model.get_settings()));
+
+  roomPresetsWindow.reset(new RoomPresetsWindow(&engine));
 }
 
 void Application::initWorkers()

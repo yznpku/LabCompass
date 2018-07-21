@@ -21,6 +21,7 @@ QtObject {
   property color lightPrimaryColor: '#616161'
   property color primaryTextColor: '#FAFAFA'
   property color secondaryTextColor: '#A0A0A0'
+  property color accentColor: '#2196F3'
 
   property color activePathColor: '#8BC34A'
   property color inactivePathColor: '#404440'

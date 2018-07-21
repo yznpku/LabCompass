@@ -61,7 +61,6 @@ void PlannerWindow::onOpenUrl(const QString& url)
 void PlannerWindow::onDrag(int dx, int dy)
 {
   move(x() + dx, y() + dy);
-  emit moved(x(), y());
 }
 
 void PlannerWindow::importLabNotesFromFile(const QString& file)
