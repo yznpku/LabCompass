@@ -9,7 +9,7 @@ Item {
   height: 170
 
   property bool displayActive: Global.model.inLab && Global.model.currentRoomDetermined
-  property bool useMinimapDisplay: displayActive && Object.keys(Global.model.instructionModel.preset).length
+  property bool useMinimapDisplay: Global.model.settings.showMinimap && displayActive && Object.keys(Global.model.instructionModel.preset).length
 
   Item {
     id: directionDisplay

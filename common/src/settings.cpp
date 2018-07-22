@@ -8,16 +8,25 @@ QVariantMap defaultSettings {
   {"lastVersionCheckAttempt", 0LL},
   {"lastVersionCheckSuccess", 0LL},
   {"lastLoadedMapDate", QDate()},
-  {"portalSkipsSection", true},
-  {"multiclientSupport", false},
   {"importDirectory", ""},
+
+  {"multiclientSupport", false},
+
+  {"portalSkipsSection", true},
+
   {"scaleFactor", "1"},
-  {"toggleHideUiHotkey", ""}
+  {"showMinimap", true},
+
+  {"toggleHideUiHotkey", ""},
 };
 
 Settings::Settings(QObject* parent) : QObject(parent)
 {
   settings.reset(new QSettings("FutureCode", "LabCompass"));
+
+  m_multiclientSupport = false;
+  m_portalSkipsSection = true;
+  m_showMinimap = true;
 }
 
 void Settings::load()

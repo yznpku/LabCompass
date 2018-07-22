@@ -16,6 +16,7 @@ WindowWithShadow {
   property alias poeClientPath: clientPathInput.text
   property alias portalSkipsSection: portalSkipsSectionInput.checked
   property alias multiclientSupport: multiclientSupportInput.checked
+  property alias showMinimap: showMinimapInput.checked
   property alias uiScaleFactorIndex: uiScaleFactorInput.currentIndex
 
   property alias toggleHideUiHotkey: toggleHideUiHotkeyEdit.keySequence
@@ -151,6 +152,18 @@ WindowWithShadow {
 
       OptionsGridLayout {
         id: uiTab
+        Text {
+          Layout.fillWidth: true
+          color: Global.primaryTextColor
+          text: 'Show Minimap When Available'
+          font.pixelSize: 20
+        }
+        CheckBox {
+          id: showMinimapInput
+          width: 24
+          height: 24
+        }
+
         Text {
           Layout.fillWidth: true
           color: Global.primaryTextColor
