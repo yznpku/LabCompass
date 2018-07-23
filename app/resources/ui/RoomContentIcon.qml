@@ -9,6 +9,7 @@ Item {
 
   width: 16
   height: 16
+  visible: String(icon.source)
 
   SvgImage {
     id: icon
