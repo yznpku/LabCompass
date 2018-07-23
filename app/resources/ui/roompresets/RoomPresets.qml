@@ -153,14 +153,20 @@ WindowWithShadow {
                 color: Global.primaryTextColor
               }
             }
-            StaticMinimapDisplay {
+            Row {
               anchors {
                 top: presetName.bottom
                 bottom: parent.bottom
                 horizontalCenter: parent.horizontalCenter
               }
-              width: height * 1.3
-              presetModel: model
+              StaticMinimapDisplay {
+                width: 416
+                height: 320
+                presetModel: model
+              }
+              MinimapLegend {
+                anchors.verticalCenter: parent.verticalCenter
+              }
             }
           }
         }

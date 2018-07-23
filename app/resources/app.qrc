@@ -152,5 +152,9 @@
         <file>images/compass/minimap-hud.svg</file>
         <file>ui/RoomContentIcon.qml</file>
         <file>ui/RoomContentView.qml</file>
+        <file>ui/roompresets/MinimapLegend.qml</file>
+        <file>images/compass/tile-trap.svg</file>
+        <file>images/compass/tile-cross.svg</file>
+        <file>images/compass/tile-full.svg</file>
     </qresource>
 </RCC>
