@@ -19,8 +19,6 @@ PlanSummaryModel::PlanSummaryModel(QObject* parent) : QObject(parent)
 
 void PlanSummaryModel::loadFromData(const NavigationData& data)
 {
-  update_length(data.plannedRoute.size());
-
   QList<RoomId> rooms;
   int argus = 0;
   int troves = 0;
@@ -28,14 +26,14 @@ void PlanSummaryModel::loadFromData(const NavigationData& data)
   int silverCaches = 0;
   int unusedSilverKeys = 0;
 
-  foreach (const auto& roomId, data.plannedRoute)
+  for (const auto& roomId: data.plannedRoute)
     if (roomId != "plaza" && !rooms.contains(roomId))
       rooms.append(roomId);
 
-  foreach (const auto& roomId, rooms) {
+  for (const auto& roomId: rooms) {
     auto room = data.lab->getRoomFromId(roomId);
 
-    foreach (const auto& content, room.contents) {
+    for (const auto& content: room.contents) {
       if (content == "argus")
         argus += 1;
       if (content == "darkshrine")
@@ -46,7 +44,7 @@ void PlanSummaryModel::loadFromData(const NavigationData& data)
         troves += 1;
     }
 
-    foreach (const auto& content, room.contents)
+    for (const auto& content: room.contents)
       if (content == "silver-door" && unusedSilverKeys > 0) {
         silverCaches += 1;
         unusedSilverKeys -= 1;
@@ -54,6 +52,7 @@ void PlanSummaryModel::loadFromData(const NavigationData& data)
   }
 
   update_rooms(rooms.size() - 3); // exclude 3 trial rooms
+  update_length(data.plannedRoute.size() - 1); // exclude plaza
   update_argus(argus);
   update_troves(troves);
   update_darkshrines(darkshrines);
