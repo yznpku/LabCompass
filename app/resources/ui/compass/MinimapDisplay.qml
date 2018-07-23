@@ -40,8 +40,14 @@ Item {
     }
   }
 
-  RoomContentView {
+  Item {
+    width: 36
+    height: 16
     anchors.bottom: parent.bottom
-    model: instructionModel.roomLoot
+
+    RoomContentView {
+      anchors.centerIn: parent
+      model: instructionModel.roomLoot
+    }
   }
 }

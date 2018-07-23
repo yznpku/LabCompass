@@ -93,7 +93,6 @@
         <file>images/compass/door-target.svg</file>
         <file>images/compass/loot-normal.svg</file>
         <file>images/compass/loot-target.svg</file>
-        <file>ui/compass/RoomContentView.qml</file>
         <file>images/room-preset/c_branch.svg</file>
         <file>images/room-preset/c_branch_bottleneck_1.svg</file>
         <file>images/room-preset/c_branch_bottleneck_2.svg</file>
@@ -151,5 +150,7 @@
         <file>images/room-preset/disabled.svg</file>
         <file>images/check.svg</file>
         <file>images/compass/minimap-hud.svg</file>
+        <file>ui/RoomContentIcon.qml</file>
+        <file>ui/RoomContentView.qml</file>
     </qresource>
 </RCC>

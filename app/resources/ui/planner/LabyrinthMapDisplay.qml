@@ -79,27 +79,9 @@ Rectangle {
         color: '#80000000'
       }
 
-      Row {
-        id: contentsView
-        visible: false
+      RoomContentView {
         anchors.centerIn: parent
-        spacing: 2
-
-        Repeater {
-          model: contents
-          SvgImage {
-            source: modelData in Global.contentIconMapping ? 'qrc:/images/lab-content/' + Global.contentIconMapping[modelData] + '.svg' : ''
-          }
-        }
-      }
-
-      DropShadow {
-        anchors.fill: contentsView
-        source: contentsView
-        verticalOffset: 1
-        radius: 2.0
-        samples: 8
-        color: '#80000000'
+        model: contents
       }
 
       Item {
