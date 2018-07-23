@@ -37,11 +37,9 @@ Item {
     anchors.fill: parent
     visible: useMinimapDisplay
 
-    Rectangle {
-      width: 200
-      height: 160
-      anchors.centerIn: parent
-      color: Qt.rgba(0, 0, 0, 0.75)
+    SvgImage {
+      anchors.fill: parent
+      source: 'qrc:/images/compass/minimap-hud.svg'
     }
 
     Loader {

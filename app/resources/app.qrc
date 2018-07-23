@@ -150,5 +150,6 @@
         <file>ui/roompresets/StaticMinimapDisplay.qml</file>
         <file>images/room-preset/disabled.svg</file>
         <file>images/check.svg</file>
+        <file>images/compass/minimap-hud.svg</file>
     </qresource>
 </RCC>
