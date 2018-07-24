@@ -13,7 +13,7 @@
    viewBox="0 0 24 24"
    id="svg4779"
    sodipodi:docname="loot.svg"
-   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)">
+   inkscape:version="0.92.3 (2405546, 2018-03-11)">
   <metadata
      id="metadata4785">
     <rdf:RDF>
@@ -36,19 +36,25 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1920"
-     inkscape:window-height="1017"
+     inkscape:window-width="1858"
+     inkscape:window-height="1051"
      id="namedview4781"
      showgrid="false"
-     inkscape:zoom="9.8333333"
-     inkscape:cx="12"
-     inkscape:cy="12"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
+     inkscape:zoom="32"
+     inkscape:cx="10.882133"
+     inkscape:cy="8.5393029"
+     inkscape:window-x="62"
+     inkscape:window-y="0"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg4779" />
   <path
-     d="M5,4H19A3,3 0 0,1 22,7V11H15V10H9V11H2V7A3,3 0 0,1 5,4M11,11H13V13H11V11M2,12H9V13L11,15H13L15,13V12H22V20H2V12Z"
-     id="path4777"
-     style="fill:#fdd835;fill-opacity:1" />
+     inkscape:connector-curvature="0"
+     style="opacity:1;fill:#ffa726;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2.96426916;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="M 4.2527865,12 9.8689289,6.383858 15.485071,12 9.8689284,17.616142 Z"
+     id="rect1495" />
+  <path
+     style="opacity:1;fill:#ffa726;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2.96426916;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="m 15.693359,6.3847656 -2.03125,2.03125 2.703125,2.7031254 a 1.2458873,1.2458873 0 0 1 0,1.761718 l -2.703125,2.703125 2.03125,2.03125 L 21.310547,12 Z"
+     id="path1498"
+     inkscape:connector-curvature="0" />
 </svg>

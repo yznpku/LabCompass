@@ -35,10 +35,10 @@ Item {
       Rectangle {
         x: Global.directionMapping[modelData.direction].dx * 30 - width / 2
         y: Global.directionMapping[modelData.direction].dy * 30 - height / 2
-        width: 10
-        height: 10
-        radius: 5
-        color: instructionModel.nextRoomConnectionType === 'secret' && !modelData.major ? Global.activePathColor : 'white'
+        width: 8
+        height: 8
+        rotation: 45
+        color: instructionModel.nextRoomConnectionType === 'secret' && !modelData.major ? Global.activePathColor : '#FFA726'
         border {
           width: 1
           color: 'black'
