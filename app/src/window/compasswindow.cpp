@@ -2,7 +2,7 @@
 
 CompassWindow::CompassWindow(QQmlEngine* engine) : Window(engine, true)
 {
-  setSource(QUrl("qrc:/ui/Compass.qml"));
+  setSource(QUrl("qrc:/ui/compass/Compass.qml"));
 
   connect(global(), SIGNAL(compassVisibleChanged()),
           this, SLOT(onCompassVisibleChanged()));

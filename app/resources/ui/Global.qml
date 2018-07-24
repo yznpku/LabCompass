@@ -6,9 +6,11 @@ QtObject {
   property bool debug: false
 
   property bool compassVisible: true
+  property bool compassToolbarVisible: compassVisible && model && model.roomPresetModel ? model.roomPresetModel.presets.length : false
   property bool plannerWindowOpen: false
   property bool puzzleWindowOpen: false
   property bool optionsWindowOpen: false
+  property bool roomPresetsWindowOpen: false
   property var lastActiveTooltipHoverArea
 
   property var model
@@ -19,6 +21,7 @@ QtObject {
   property color lightPrimaryColor: '#616161'
   property color primaryTextColor: '#FAFAFA'
   property color secondaryTextColor: '#A0A0A0'
+  property color accentColor: '#2196F3'
 
   property color activePathColor: '#8BC34A'
   property color inactivePathColor: '#404440'

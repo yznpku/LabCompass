@@ -1,9 +1,10 @@
 [
   {
     "roomName": "Basilica Annex",
+    "goldenDoor": false,
     "variants": [
       {
-        "keyword": "rt_end_bottleneck",
+        "areaCode": "rt_end_bottleneck",
         "contentLocations": {
           "major": [
             "NW"
@@ -14,15 +15,34 @@
         },
         "doorLocations": [
           "NE"
-        ]
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 5,
+          "directions": {
+            "NE": [
+              0,
+              1
+            ],
+            "NW": [
+              3,
+              2
+            ],
+            "S": [
+              7,
+              4
+            ]
+          }
+        }
       }
     ]
   },
   {
     "roomName": "Basilica Atrium",
+    "goldenDoor": true,
     "variants": [
       {
-        "keyword": "rt_quad_door",
+        "areaCode": "rt_quad_door",
         "contentLocations": {
           "generic": [
             "SW"
@@ -33,43 +53,82 @@
           "W",
           "NW",
           "NE"
-        ]
-      },
-      {
-        "keyword": "rt_quad",
-        "contentLocations": {
-          "generic": [
-            "N",
-            "SW"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "W",
-          "NW",
-          "NE"
-        ]
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 8,
+          "directions": {
+            "NE": [
+              0,
+              3
+            ],
+            "NW": [
+              3,
+              0
+            ],
+            "SE": [
+              3,
+              7
+            ],
+            "W": [
+              4,
+              2
+            ],
+            "SW": [
+              7,
+              6
+            ]
+          }
+        }
       }
     ]
   },
   {
     "roomName": "Basilica Halls",
+    "goldenDoor": false,
     "variants": [
       {
-        "keyword": "rt_branch_door",
+        "areaCode": "rt_branch_bottleneck_2",
         "contentLocations": {
           "generic": [
+            "E",
             "SW"
           ]
         },
         "doorLocations": [
           "SE",
-          "NW",
-          "NE"
-        ]
+          "W",
+          "N"
+        ],
+        "minimap": {
+          "rows": 9,
+          "columns": 8,
+          "directions": {
+            "N": [
+              1,
+              0
+            ],
+            "E": [
+              1,
+              6
+            ],
+            "W": [
+              5,
+              1
+            ],
+            "SE": [
+              5,
+              7
+            ],
+            "SW": [
+              8,
+              5
+            ]
+          }
+        }
       },
       {
-        "keyword": "rt_branch_bottleneck_1",
+        "areaCode": "rt_branch_bottleneck_1",
         "contentLocations": {
           "generic": [
             "NE",
@@ -80,10 +139,36 @@
           "SE",
           "NW",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 9,
+          "columns": 8,
+          "directions": {
+            "NE": [
+              0,
+              3
+            ],
+            "N": [
+              1,
+              0
+            ],
+            "NW": [
+              4,
+              0
+            ],
+            "SE": [
+              5,
+              7
+            ],
+            "SW": [
+              8,
+              5
+            ]
+          }
+        }
       },
       {
-        "keyword": "rt_branch_bottleneck_2",
+        "areaCode": "rt_branch",
         "contentLocations": {
           "generic": [
             "E",
@@ -94,29 +179,83 @@
           "SE",
           "W",
           "N"
-        ]
-      },
+        ],
+        "minimap": {
+          "rows": 9,
+          "columns": 8,
+          "directions": {
+            "N": [
+              1,
+              0
+            ],
+            "E": [
+              1,
+              6
+            ],
+            "SE": [
+              5,
+              7
+            ],
+            "W": [
+              6,
+              0
+            ],
+            "SW": [
+              8,
+              6
+            ]
+          }
+        }
+      }
+    ]
+  },
+  {
+    "roomName": "Basilica Halls",
+    "goldenDoor": true,
+    "variants": [
       {
-        "keyword": "rt_branch",
+        "areaCode": "rt_branch_door",
         "contentLocations": {
           "generic": [
-            "E",
             "SW"
           ]
         },
         "doorLocations": [
           "SE",
-          "W",
-          "N"
-        ]
+          "NW",
+          "NE"
+        ],
+        "minimap": {
+          "rows": 7,
+          "columns": 7,
+          "directions": {
+            "NE": [
+              0,
+              2
+            ],
+            "NW": [
+              2,
+              0
+            ],
+            "SE": [
+              3,
+              6
+            ],
+            "SW": [
+              6,
+              4
+            ]
+          }
+        }
       }
     ]
   },
   {
     "roomName": "Basilica Passage",
+    "goldenDoor": false,
     "variants": [
       {
-        "keyword": "rt_straight_bottleneck",
+        "areaCode": "rt_straight_bottleneck",
         "contentLocations": {
           "generic": [
             "SW",
@@ -126,10 +265,32 @@
         "doorLocations": [
           "SE",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 10,
+          "columns": 9,
+          "directions": {
+            "N": [
+              0,
+              0
+            ],
+            "NW": [
+              5,
+              2
+            ],
+            "SE": [
+              6,
+              8
+            ],
+            "SW": [
+              9,
+              6
+            ]
+          }
+        }
       },
       {
-        "keyword": "rt_straight",
+        "areaCode": "rt_straight",
         "contentLocations": {
           "generic": [
             "E",
@@ -139,29 +300,38 @@
         "doorLocations": [
           "SE",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 9,
+          "directions": {
+            "N": [
+              0,
+              1
+            ],
+            "E": [
+              2,
+              6
+            ],
+            "NW": [
+              3,
+              0
+            ],
+            "SE": [
+              4,
+              8
+            ]
+          }
+        }
       }
     ]
   },
   {
     "roomName": "Domain Crossing",
+    "goldenDoor": false,
     "variants": [
       {
-        "keyword": "dg_quad_door",
-        "contentLocations": {
-          "generic": [
-            "NE"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "W",
-          "NW",
-          "N"
-        ]
-      },
-      {
-        "keyword": "dg_quad",
+        "areaCode": "dg_quad",
         "contentLocations": {
           "generic": [
             "E",
@@ -173,15 +343,92 @@
           "NW",
           "N",
           "NE"
-        ]
+        ],
+        "minimap": {
+          "rows": 9,
+          "columns": 8,
+          "directions": {
+            "NE": [
+              0,
+              2
+            ],
+            "E": [
+              0,
+              4
+            ],
+            "N": [
+              1,
+              0
+            ],
+            "SE": [
+              3,
+              7
+            ],
+            "NW": [
+              5,
+              1
+            ],
+            "S": [
+              8,
+              6
+            ]
+          }
+        }
+      }
+    ]
+  },
+  {
+    "roomName": "Domain Crossing",
+    "goldenDoor": true,
+    "variants": [
+      {
+        "areaCode": "dg_quad_door",
+        "contentLocations": {
+          "generic": [
+            "NE"
+          ]
+        },
+        "doorLocations": [
+          "SE",
+          "W",
+          "NW",
+          "N"
+        ],
+        "minimap": {
+          "rows": 9,
+          "columns": 8,
+          "directions": {
+            "N": [
+              0,
+              2
+            ],
+            "NE": [
+              1,
+              4
+            ],
+            "NW": [
+              2,
+              0
+            ],
+            "W": [
+              4,
+              2
+            ],
+            "SE": [
+              4,
+              7
+            ]
+          }
+        }
       }
     ]
   },
   {
     "roomName": "Domain Enclosure",
+    "goldenDoor": false,
     "variants": [
       {
-        "keyword": "dg_end_bottleneck",
+        "areaCode": "dg_end_bottleneck",
         "contentLocations": {
           "major": [
             "W"
@@ -192,15 +439,34 @@
         },
         "doorLocations": [
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 7,
+          "columns": 6,
+          "directions": {
+            "N": [
+              1,
+              0
+            ],
+            "W": [
+              4,
+              0
+            ],
+            "S": [
+              6,
+              4
+            ]
+          }
+        }
       }
     ]
   },
   {
     "roomName": "Domain Path",
+    "goldenDoor": false,
     "variants": [
       {
-        "keyword": "dg_straight_bottleneck",
+        "areaCode": "dg_straight_bottleneck",
         "contentLocations": {
           "generic": [
             "SW",
@@ -210,10 +476,32 @@
         "doorLocations": [
           "S",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 7,
+          "columns": 8,
+          "directions": {
+            "N": [
+              0,
+              1
+            ],
+            "NW": [
+              2,
+              0
+            ],
+            "S": [
+              4,
+              4
+            ],
+            "SW": [
+              6,
+              3
+            ]
+          }
+        }
       },
       {
-        "keyword": "dg_straight",
+        "areaCode": "dg_straight",
         "contentLocations": {
           "generic": [
             "E",
@@ -223,28 +511,78 @@
         "doorLocations": [
           "S",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 6,
+          "columns": 6,
+          "directions": {
+            "N": [
+              0,
+              0
+            ],
+            "E": [
+              1,
+              4
+            ],
+            "W": [
+              4,
+              1
+            ],
+            "S": [
+              4,
+              5
+            ]
+          }
+        }
       }
     ]
   },
   {
     "roomName": "Domain Walkways",
+    "goldenDoor": false,
     "variants": [
       {
-        "keyword": "dg_branch_door",
+        "areaCode": "dg_branch_bottleneck_2",
         "contentLocations": {
           "generic": [
-            "W"
+            "E",
+            "NW"
           ]
         },
         "doorLocations": [
           "SE",
-          "N",
+          "W",
           "NE"
-        ]
+        ],
+        "minimap": {
+          "rows": 10,
+          "columns": 10,
+          "directions": {
+            "NE": [
+              0,
+              3
+            ],
+            "E": [
+              2,
+              7
+            ],
+            "NW": [
+              6,
+              2
+            ],
+            "SE": [
+              6,
+              9
+            ],
+            "W": [
+              8,
+              0
+            ]
+          }
+        }
       },
       {
-        "keyword": "dg_branch_bottleneck_1",
+        "areaCode": "dg_branch_bottleneck_1",
         "contentLocations": {
           "generic": [
             "N",
@@ -255,10 +593,36 @@
           "S",
           "W",
           "NE"
-        ]
+        ],
+        "minimap": {
+          "rows": 9,
+          "columns": 9,
+          "directions": {
+            "E": [
+              0,
+              6
+            ],
+            "NE": [
+              1,
+              3
+            ],
+            "N": [
+              2,
+              1
+            ],
+            "W": [
+              7,
+              0
+            ],
+            "S": [
+              8,
+              7
+            ]
+          }
+        }
       },
       {
-        "keyword": "dg_branch_bottleneck_2",
+        "areaCode": "dg_branch",
         "contentLocations": {
           "generic": [
             "E",
@@ -269,43 +633,83 @@
           "SE",
           "W",
           "NE"
-        ]
-      },
+        ],
+        "minimap": {
+          "rows": 7,
+          "columns": 7,
+          "directions": {
+            "NE": [
+              0,
+              1
+            ],
+            "E": [
+              0,
+              4
+            ],
+            "NW": [
+              2,
+              0
+            ],
+            "SE": [
+              3,
+              6
+            ],
+            "W": [
+              6,
+              1
+            ]
+          }
+        }
+      }
+    ]
+  },
+  {
+    "roomName": "Domain Walkways",
+    "goldenDoor": true,
+    "variants": [
       {
-        "keyword": "dg_branch",
+        "areaCode": "dg_branch_door",
         "contentLocations": {
           "generic": [
-            "E",
-            "NW"
+            "W"
           ]
         },
         "doorLocations": [
           "SE",
-          "W",
+          "N",
           "NE"
-        ]
+        ],
+        "minimap": {
+          "rows": 9,
+          "columns": 7,
+          "directions": {
+            "NE": [
+              0,
+              2
+            ],
+            "N": [
+              2,
+              0
+            ],
+            "SE": [
+              4,
+              6
+            ],
+            "W": [
+              6,
+              1
+            ]
+          }
+        }
       }
     ]
   },
   {
     "roomName": "Estate Crossing",
+    "goldenDoor": false,
     "variants": [
       {
-        "keyword": "oh_quad_door",
-        "contentLocations": {
-          "generic": [
-            "SW"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "W",
-          "NW",
-          "N"
-        ]
-      },
-      {
-        "keyword": "oh_quad",
+        "areaCode": "oh_quad",
         "contentLocations": {
           "generic": [
             "N",
@@ -317,15 +721,92 @@
           "SW",
           "NW",
           "NE"
-        ]
+        ],
+        "minimap": {
+          "rows": 9,
+          "columns": 7,
+          "directions": {
+            "NE": [
+              0,
+              2
+            ],
+            "N": [
+              2,
+              0
+            ],
+            "SE": [
+              3,
+              5
+            ],
+            "NW": [
+              4,
+              1
+            ],
+            "SW": [
+              7,
+              2
+            ],
+            "S": [
+              7,
+              6
+            ]
+          }
+        }
+      }
+    ]
+  },
+  {
+    "roomName": "Estate Crossing",
+    "goldenDoor": true,
+    "variants": [
+      {
+        "areaCode": "oh_quad_door",
+        "contentLocations": {
+          "generic": [
+            "SW"
+          ]
+        },
+        "doorLocations": [
+          "SE",
+          "W",
+          "NW",
+          "N"
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 6,
+          "directions": {
+            "N": [
+              0,
+              0
+            ],
+            "NW": [
+              2,
+              0
+            ],
+            "SE": [
+              2,
+              4
+            ],
+            "W": [
+              4,
+              1
+            ],
+            "SW": [
+              6,
+              5
+            ]
+          }
+        }
       }
     ]
   },
   {
     "roomName": "Estate Enclosure",
+    "goldenDoor": false,
     "variants": [
       {
-        "keyword": "oh_end_bottleneck",
+        "areaCode": "oh_end_bottleneck",
         "contentLocations": {
           "major": [
             "NE"
@@ -336,15 +817,34 @@
         },
         "doorLocations": [
           "E"
-        ]
+        ],
+        "minimap": {
+          "rows": 7,
+          "columns": 6,
+          "directions": {
+            "E": [
+              0,
+              4
+            ],
+            "NE": [
+              1,
+              2
+            ],
+            "NW": [
+              5,
+              0
+            ]
+          }
+        }
       }
     ]
   },
   {
     "roomName": "Estate Path",
+    "goldenDoor": false,
     "variants": [
       {
-        "keyword": "oh_straight_bottleneck",
+        "areaCode": "oh_straight_bottleneck",
         "contentLocations": {
           "generic": [
             "NE",
@@ -354,10 +854,32 @@
         "doorLocations": [
           "SE",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 7,
+          "directions": {
+            "NE": [
+              0,
+              1
+            ],
+            "SE": [
+              1,
+              6
+            ],
+            "N": [
+              2,
+              0
+            ],
+            "SW": [
+              7,
+              4
+            ]
+          }
+        }
       },
       {
-        "keyword": "oh_straight",
+        "areaCode": "oh_straight",
         "contentLocations": {
           "generic": [
             "E",
@@ -367,42 +889,38 @@
         "doorLocations": [
           "S",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 8,
+          "directions": {
+            "N": [
+              0,
+              2
+            ],
+            "E": [
+              1,
+              6
+            ],
+            "W": [
+              6,
+              2
+            ],
+            "S": [
+              6,
+              7
+            ]
+          }
+        }
       }
     ]
   },
   {
     "roomName": "Estate Walkways",
+    "goldenDoor": false,
     "variants": [
       {
-        "keyword": "oh_branch_door",
-        "contentLocations": {
-          "generic": [
-            "SW"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "NW",
-          "N"
-        ]
-      },
-      {
-        "keyword": "oh_branch_bottleneck_1",
-        "contentLocations": {
-          "generic": [
-            "N",
-            "W"
-          ]
-        },
-        "doorLocations": [
-          "S",
-          "NW",
-          "NE"
-        ]
-      },
-      {
-        "keyword": "oh_branch_bottleneck_2",
+        "areaCode": "oh_branch_bottleneck_2",
         "contentLocations": {
           "generic": [
             "NE",
@@ -413,10 +931,76 @@
           "S",
           "W",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 7,
+          "directions": {
+            "NE": [
+              0,
+              2
+            ],
+            "N": [
+              1,
+              0
+            ],
+            "E": [
+              1,
+              6
+            ],
+            "S": [
+              4,
+              6
+            ],
+            "W": [
+              7,
+              2
+            ]
+          }
+        }
       },
       {
-        "keyword": "oh_branch",
+        "areaCode": "oh_branch_bottleneck_1",
+        "contentLocations": {
+          "generic": [
+            "N",
+            "W"
+          ]
+        },
+        "doorLocations": [
+          "S",
+          "NW",
+          "NE"
+        ],
+        "minimap": {
+          "rows": 10,
+          "columns": 8,
+          "directions": {
+            "NE": [
+              1,
+              0
+            ],
+            "N": [
+              4,
+              1
+            ],
+            "NW": [
+              6,
+              1
+            ],
+            "W": [
+              7,
+              0
+            ],
+            "S": [
+              9,
+              7
+            ]
+          }
+        }
+      },
+      {
+        "areaCode": "oh_branch",
         "contentLocations": {
           "generic": [
             "E",
@@ -427,15 +1011,83 @@
           "SE",
           "NW",
           "NE"
-        ]
+        ],
+        "minimap": {
+          "rows": 6,
+          "columns": 7,
+          "directions": {
+            "NE": [
+              0,
+              2
+            ],
+            "E": [
+              0,
+              5
+            ],
+            "NW": [
+              3,
+              0
+            ],
+            "SE": [
+              3,
+              6
+            ],
+            "W": [
+              5,
+              0
+            ]
+          }
+        }
+      }
+    ]
+  },
+  {
+    "roomName": "Estate Walkways",
+    "goldenDoor": true,
+    "variants": [
+      {
+        "areaCode": "oh_branch_door",
+        "contentLocations": {
+          "generic": [
+            "SW"
+          ]
+        },
+        "doorLocations": [
+          "SE",
+          "NW",
+          "N"
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 5,
+          "directions": {
+            "N": [
+              1,
+              0
+            ],
+            "SE": [
+              2,
+              4
+            ],
+            "NW": [
+              3,
+              0
+            ],
+            "SW": [
+              7,
+              4
+            ]
+          }
+        }
       }
     ]
   },
   {
     "roomName": "Mansion Annex",
+    "goldenDoor": false,
     "variants": [
       {
-        "keyword": "eh_end_bottleneck",
+        "areaCode": "eh_end_bottleneck",
         "contentLocations": {
           "major": [
             "NW"
@@ -446,15 +1098,34 @@
         },
         "doorLocations": [
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 5,
+          "columns": 5,
+          "directions": {
+            "N": [
+              0,
+              1
+            ],
+            "NW": [
+              2,
+              0
+            ],
+            "SW": [
+              4,
+              3
+            ]
+          }
+        }
       }
     ]
   },
   {
     "roomName": "Mansion Atrium",
+    "goldenDoor": false,
     "variants": [
       {
-        "keyword": "eh_quad",
+        "areaCode": "eh_quad",
         "contentLocations": {
           "generic": [
             "E",
@@ -466,28 +1137,46 @@
           "SW",
           "NW",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 7,
+          "columns": 7,
+          "directions": {
+            "N": [
+              0,
+              0
+            ],
+            "E": [
+              1,
+              5
+            ],
+            "NW": [
+              2,
+              0
+            ],
+            "W": [
+              4,
+              1
+            ],
+            "SE": [
+              4,
+              6
+            ],
+            "SW": [
+              6,
+              2
+            ]
+          }
+        }
       }
     ]
   },
   {
     "roomName": "Mansion Halls",
+    "goldenDoor": false,
     "variants": [
       {
-        "keyword": "eh_branch_door",
-        "contentLocations": {
-          "generic": [
-            "SW"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "NW",
-          "N"
-        ]
-      },
-      {
-        "keyword": "eh_branch_bottleneck_2",
+        "areaCode": "eh_branch_bottleneck_2",
         "contentLocations": {
           "generic": [
             "NE",
@@ -498,24 +1187,36 @@
           "SE",
           "W",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 7,
+          "directions": {
+            "N": [
+              1,
+              0
+            ],
+            "NE": [
+              2,
+              3
+            ],
+            "SE": [
+              5,
+              6
+            ],
+            "W": [
+              6,
+              0
+            ],
+            "S": [
+              7,
+              4
+            ]
+          }
+        }
       },
       {
-        "keyword": "eh_block_branch",
-        "contentLocations": {
-          "generic": [
-            "NE",
-            "SW"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "NW",
-          "N"
-        ]
-      },
-      {
-        "keyword": "eh_branch",
+        "areaCode": "eh_branch",
         "contentLocations": {
           "generic": [
             "E",
@@ -526,15 +1227,123 @@
           "S",
           "NW",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 7,
+          "directions": {
+            "N": [
+              0,
+              0
+            ],
+            "E": [
+              2,
+              6
+            ],
+            "NW": [
+              4,
+              0
+            ],
+            "S": [
+              5,
+              6
+            ],
+            "SW": [
+              7,
+              4
+            ]
+          }
+        }
+      },
+      {
+        "areaCode": "eh_block_branch",
+        "contentLocations": {
+          "generic": [
+            "NE",
+            "SW"
+          ]
+        },
+        "doorLocations": [
+          "SE",
+          "NW",
+          "N"
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 7,
+          "directions": {
+            "NE": [
+              0,
+              2
+            ],
+            "N": [
+              1,
+              0
+            ],
+            "NW": [
+              4,
+              0
+            ],
+            "SE": [
+              5,
+              6
+            ],
+            "SW": [
+              7,
+              4
+            ]
+          }
+        }
+      }
+    ]
+  },
+  {
+    "roomName": "Mansion Halls",
+    "goldenDoor": true,
+    "variants": [
+      {
+        "areaCode": "eh_branch_door",
+        "contentLocations": {
+          "generic": [
+            "SW"
+          ]
+        },
+        "doorLocations": [
+          "SE",
+          "NW",
+          "N"
+        ],
+        "minimap": {
+          "rows": 5,
+          "columns": 7,
+          "directions": {
+            "N": [
+              0,
+              0
+            ],
+            "NW": [
+              2,
+              0
+            ],
+            "SE": [
+              2,
+              6
+            ],
+            "SW": [
+              4,
+              4
+            ]
+          }
+        }
       }
     ]
   },
   {
     "roomName": "Mansion Passage",
+    "goldenDoor": false,
     "variants": [
       {
-        "keyword": "eh_straight_bottleneck",
+        "areaCode": "eh_straight_bottleneck",
         "contentLocations": {
           "generic": [
             "NE",
@@ -544,10 +1353,32 @@
         "doorLocations": [
           "SE",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 6,
+          "columns": 7,
+          "directions": {
+            "NE": [
+              0,
+              1
+            ],
+            "N": [
+              1,
+              0
+            ],
+            "SE": [
+              3,
+              6
+            ],
+            "W": [
+              5,
+              2
+            ]
+          }
+        }
       },
       {
-        "keyword": "eh_straight",
+        "areaCode": "eh_straight",
         "contentLocations": {
           "generic": [
             "NE",
@@ -557,15 +1388,38 @@
         "doorLocations": [
           "SE",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 7,
+          "columns": 7,
+          "directions": {
+            "N": [
+              0,
+              0
+            ],
+            "NE": [
+              0,
+              3
+            ],
+            "SE": [
+              4,
+              6
+            ],
+            "SW": [
+              6,
+              1
+            ]
+          }
+        }
       }
     ]
   },
   {
     "roomName": "Sanitorium Annex",
+    "goldenDoor": false,
     "variants": [
       {
-        "keyword": "p_end_bottleneck",
+        "areaCode": "p_end_bottleneck",
         "contentLocations": {
           "major": [
             "NW"
@@ -576,15 +1430,34 @@
         },
         "doorLocations": [
           "NE"
-        ]
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 6,
+          "directions": {
+            "NE": [
+              0,
+              0
+            ],
+            "NW": [
+              4,
+              1
+            ],
+            "SW": [
+              7,
+              3
+            ]
+          }
+        }
       }
     ]
   },
   {
     "roomName": "Sanitorium Atrium",
+    "goldenDoor": false,
     "variants": [
       {
-        "keyword": "p_quad",
+        "areaCode": "p_quad",
         "contentLocations": {
           "generic": [
             "E",
@@ -596,28 +1469,86 @@
           "W",
           "NW",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 8,
+          "directions": {
+            "N": [
+              0,
+              0
+            ],
+            "E": [
+              2,
+              6
+            ],
+            "NW": [
+              3,
+              0
+            ],
+            "SE": [
+              4,
+              7
+            ],
+            "S": [
+              6,
+              5
+            ],
+            "W": [
+              7,
+              1
+            ]
+          }
+        }
       }
     ]
   },
   {
     "roomName": "Sanitorium Halls",
+    "goldenDoor": false,
     "variants": [
       {
-        "keyword": "p_branch_door",
+        "areaCode": "p_branch_bottleneck_2",
         "contentLocations": {
           "generic": [
-            "SW"
+            "E",
+            "S"
           ]
         },
         "doorLocations": [
           "SE",
-          "NW",
+          "W",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 8,
+          "directions": {
+            "N": [
+              1,
+              0
+            ],
+            "E": [
+              1,
+              5
+            ],
+            "SE": [
+              5,
+              7
+            ],
+            "W": [
+              6,
+              0
+            ],
+            "S": [
+              7,
+              5
+            ]
+          }
+        }
       },
       {
-        "keyword": "p_branch_bottleneck_1",
+        "areaCode": "p_branch_bottleneck_1",
         "contentLocations": {
           "generic": [
             "NE",
@@ -628,24 +1559,36 @@
           "S",
           "NW",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 7,
+          "columns": 8,
+          "directions": {
+            "N": [
+              0,
+              0
+            ],
+            "NE": [
+              0,
+              3
+            ],
+            "NW": [
+              3,
+              0
+            ],
+            "S": [
+              4,
+              7
+            ],
+            "SW": [
+              6,
+              5
+            ]
+          }
+        }
       },
       {
-        "keyword": "p_branch_bottleneck_2",
-        "contentLocations": {
-          "generic": [
-            "E",
-            "S"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "W",
-          "N"
-        ]
-      },
-      {
-        "keyword": "p_branch",
+        "areaCode": "p_branch",
         "contentLocations": {
           "generic": [
             "E",
@@ -656,15 +1599,83 @@
           "SE",
           "NW",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 7,
+          "columns": 8,
+          "directions": {
+            "N": [
+              0,
+              0
+            ],
+            "E": [
+              2,
+              6
+            ],
+            "NW": [
+              3,
+              1
+            ],
+            "SE": [
+              4,
+              7
+            ],
+            "S": [
+              6,
+              4
+            ]
+          }
+        }
+      }
+    ]
+  },
+  {
+    "roomName": "Sanitorium Halls",
+    "goldenDoor": true,
+    "variants": [
+      {
+        "areaCode": "p_branch_door",
+        "contentLocations": {
+          "generic": [
+            "SW"
+          ]
+        },
+        "doorLocations": [
+          "SE",
+          "NW",
+          "N"
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 8,
+          "directions": {
+            "N": [
+              0,
+              1
+            ],
+            "NW": [
+              2,
+              0
+            ],
+            "SE": [
+              4,
+              7
+            ],
+            "SW": [
+              6,
+              3
+            ]
+          }
+        }
       }
     ]
   },
   {
     "roomName": "Sanitorium Passage",
+    "goldenDoor": false,
     "variants": [
       {
-        "keyword": "p_straight_bottleneck",
+        "areaCode": "p_straight_bottleneck",
         "contentLocations": {
           "generic": [
             "SW",
@@ -674,10 +1685,32 @@
         "doorLocations": [
           "S",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 9,
+          "columns": 9,
+          "directions": {
+            "N": [
+              1,
+              0
+            ],
+            "NW": [
+              4,
+              1
+            ],
+            "S": [
+              5,
+              8
+            ],
+            "SW": [
+              8,
+              6
+            ]
+          }
+        }
       },
       {
-        "keyword": "p_straight",
+        "areaCode": "p_straight",
         "contentLocations": {
           "generic": [
             "E",
@@ -687,15 +1720,38 @@
         "doorLocations": [
           "SE",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 7,
+          "columns": 7,
+          "directions": {
+            "N": [
+              1,
+              0
+            ],
+            "E": [
+              3,
+              5
+            ],
+            "NW": [
+              4,
+              0
+            ],
+            "SE": [
+              5,
+              6
+            ]
+          }
+        }
       }
     ]
   },
   {
     "roomName": "Sepulchre Annex",
+    "goldenDoor": false,
     "variants": [
       {
-        "keyword": "c_end_bottleneck",
+        "areaCode": "c_end_bottleneck",
         "contentLocations": {
           "major": [
             "NW"
@@ -706,15 +1762,85 @@
         },
         "doorLocations": [
           "NE"
-        ]
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 7,
+          "directions": {
+            "NE": [
+              0,
+              1
+            ],
+            "NW": [
+              4,
+              2
+            ],
+            "SW": [
+              7,
+              4
+            ]
+          }
+        }
       }
     ]
   },
   {
     "roomName": "Sepulchre Atrium",
+    "goldenDoor": false,
     "variants": [
       {
-        "keyword": "c_quad_door",
+        "areaCode": "c_quad",
+        "contentLocations": {
+          "generic": [
+            "E",
+            "SW"
+          ]
+        },
+        "doorLocations": [
+          "SE",
+          "W",
+          "NW",
+          "N"
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 8,
+          "directions": {
+            "N": [
+              0,
+              0
+            ],
+            "E": [
+              2,
+              5
+            ],
+            "NW": [
+              4,
+              0
+            ],
+            "SE": [
+              4,
+              7
+            ],
+            "W": [
+              5,
+              1
+            ],
+            "SW": [
+              7,
+              5
+            ]
+          }
+        }
+      }
+    ]
+  },
+  {
+    "roomName": "Sepulchre Atrium",
+    "goldenDoor": true,
+    "variants": [
+      {
+        "areaCode": "c_quad_door",
         "contentLocations": {
           "generic": [
             "SW"
@@ -725,44 +1851,42 @@
           "W",
           "NW",
           "NE"
-        ]
-      },
-      {
-        "keyword": "c_quad",
-        "contentLocations": {
-          "generic": [
-            "E",
-            "SW"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "W",
-          "NW",
-          "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 7,
+          "columns": 8,
+          "directions": {
+            "NE": [
+              0,
+              2
+            ],
+            "NW": [
+              2,
+              0
+            ],
+            "SE": [
+              3,
+              7
+            ],
+            "W": [
+              5,
+              1
+            ],
+            "SW": [
+              6,
+              5
+            ]
+          }
+        }
       }
     ]
   },
   {
     "roomName": "Sepulchre Halls",
+    "goldenDoor": false,
     "variants": [
       {
-        "keyword": "c_branch_bottleneck_1",
-        "contentLocations": {
-          "generic": [
-            "NE",
-            "SW"
-          ]
-        },
-        "doorLocations": [
-          "S",
-          "NW",
-          "N"
-        ]
-      },
-      {
-        "keyword": "c_branch_bottleneck_2",
+        "areaCode": "c_branch_bottleneck_2",
         "contentLocations": {
           "generic": [
             "NE",
@@ -773,10 +1897,76 @@
           "SE",
           "W",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 9,
+          "directions": {
+            "N": [
+              0,
+              0
+            ],
+            "NE": [
+              1,
+              6
+            ],
+            "SE": [
+              4,
+              8
+            ],
+            "W": [
+              6,
+              0
+            ],
+            "S": [
+              7,
+              6
+            ]
+          }
+        }
       },
       {
-        "keyword": "c_branch",
+        "areaCode": "c_branch_bottleneck_1",
+        "contentLocations": {
+          "generic": [
+            "NE",
+            "SW"
+          ]
+        },
+        "doorLocations": [
+          "S",
+          "NW",
+          "N"
+        ],
+        "minimap": {
+          "rows": 10,
+          "columns": 9,
+          "directions": {
+            "N": [
+              0,
+              0
+            ],
+            "NE": [
+              1,
+              5
+            ],
+            "NW": [
+              4,
+              0
+            ],
+            "S": [
+              6,
+              8
+            ],
+            "SW": [
+              9,
+              5
+            ]
+          }
+        }
+      },
+      {
+        "areaCode": "c_branch",
         "contentLocations": {
           "generic": [
             "E",
@@ -787,15 +1977,42 @@
           "SE",
           "NW",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 8,
+          "columns": 9,
+          "directions": {
+            "N": [
+              0,
+              0
+            ],
+            "E": [
+              2,
+              6
+            ],
+            "NW": [
+              4,
+              0
+            ],
+            "SE": [
+              4,
+              8
+            ],
+            "SW": [
+              7,
+              5
+            ]
+          }
+        }
       }
     ]
   },
   {
     "roomName": "Sepulchre Passage",
+    "goldenDoor": false,
     "variants": [
       {
-        "keyword": "c_straight_bottleneck",
+        "areaCode": "c_straight_bottleneck",
         "contentLocations": {
           "generic": [
             "SW",
@@ -805,10 +2022,32 @@
         "doorLocations": [
           "S",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 9,
+          "columns": 9,
+          "directions": {
+            "N": [
+              0,
+              0
+            ],
+            "NW": [
+              4,
+              1
+            ],
+            "S": [
+              5,
+              8
+            ],
+            "SW": [
+              8,
+              5
+            ]
+          }
+        }
       },
       {
-        "keyword": "c_straight",
+        "areaCode": "c_straight",
         "contentLocations": {
           "generic": [
             "E",
@@ -818,7 +2057,29 @@
         "doorLocations": [
           "SE",
           "N"
-        ]
+        ],
+        "minimap": {
+          "rows": 7,
+          "columns": 9,
+          "directions": {
+            "N": [
+              0,
+              0
+            ],
+            "E": [
+              2,
+              6
+            ],
+            "NW": [
+              4,
+              1
+            ],
+            "SE": [
+              4,
+              8
+            ]
+          }
+        }
       }
     ]
   }

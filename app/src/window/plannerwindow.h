@@ -9,7 +9,6 @@ class PlannerWindow : public Window
   Q_OBJECT
 
 signals:
-  void moved(int x, int y);
   void importFile(QString fileName);
   void setRoomIsTarget(QString id, bool target);
   void setCurrentRoom(QString id);

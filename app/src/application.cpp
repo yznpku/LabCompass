@@ -99,13 +99,16 @@ void Application::initWindows()
   headerWindow->move(mainWindowPosition);
 
   compassWindow.reset(new CompassWindow(&engine));
-  compassWindow->setParentWindow(headerWindow.get(), QPoint(-48, 26));
+  compassWindow->setParentWindow(headerWindow.get(), QPoint(-88, 26));
+
+  compassToolbarWindow.reset(new CompassToolbarWindow(&engine));
+  compassToolbarWindow->setParentWindow(compassWindow.get(), QPoint(172, 132));
 
   toolbarWindow.reset(new ToolbarWindow(&engine));
   toolbarWindow->setParentWindow(headerWindow.get(), QPoint(124, 28));
 
   instructionListWindow.reset(new InstructionListWindow(&engine));
-  instructionListWindow->setParentWindow(headerWindow.get(), QPoint(-112, 186));
+  instructionListWindow->setParentWindow(headerWindow.get(), QPoint(-112, 198));
 
   headerWindow->show();
   compassWindow->show();
@@ -118,6 +121,8 @@ void Application::initWindows()
   puzzleWindow->setParentWindow(headerWindow.get(), QPoint(-122, 220));
 
   optionsWindow.reset(new OptionsWindow(&engine, model.get_settings()));
+
+  roomPresetsWindow.reset(new RoomPresetsWindow(&engine));
 }
 
 void Application::initWorkers()
@@ -139,6 +144,8 @@ void Application::initControllers()
   labyrinthController.reset(new LabyrinthController(&model));
   connect(plannerWindow.get(), &PlannerWindow::importFile,
           labyrinthController.get(), &LabyrinthController::importFile);
+  connect(roomPresetsWindow.get(), &RoomPresetsWindow::setRoomPreset,
+          labyrinthController.get(), &LabyrinthController::onRoomPresetSet);
 
   navigationController.reset(new NavigationController(&model));
   connect(logWatcher.get(), &LogWatcher::plazaEntered,

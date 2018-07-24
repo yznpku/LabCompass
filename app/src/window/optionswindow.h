@@ -14,6 +14,7 @@ class OptionsWindow : public Window
     "poeClientPath",
     "portalSkipsSection",
     "multiclientSupport",
+    "showMinimap",
     "toggleHideUiHotkey",
   };
 

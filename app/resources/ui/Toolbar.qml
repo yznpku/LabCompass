@@ -57,5 +57,6 @@ Column {
     Global.plannerWindowOpen = false;
     Global.puzzleWindowOpen = false;
     Global.optionsWindowOpen = false;
+    Global.roomPresetsWindowOpen = false;
   }
 }

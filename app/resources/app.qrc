@@ -1,8 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>Fontin-SmallCaps.ttf</file>
-        <file>images/hud.png</file>
-        <file>images/rounded-corner.png</file>
         <file>images/rounded-corner.svg</file>
         <file>images/lab-content/argus.svg</file>
         <file>images/lab-content/darkshrine.svg</file>
@@ -11,7 +9,6 @@
         <file>images/lab-content/izaro.svg</file>
         <file>images/lab-content/silver-door.svg</file>
         <file>images/lab-content/silver-key.svg</file>
-        <file>ui/Compass.qml</file>
         <file>ui/Dummy.qml</file>
         <file>ui/Global.qml</file>
         <file>ui/GlobalAccessor.qml</file>
@@ -88,5 +85,76 @@
         <file>images/instruction/loaded-map-cruel.svg</file>
         <file>images/instruction/loaded-map-merciless.svg</file>
         <file>images/instruction/loaded-map-uber.svg</file>
+        <file>ui/compass/Compass.qml</file>
+        <file>ui/compass/DirectionDisplay.qml</file>
+        <file>images/compass/direction-hud.svg</file>
+        <file>ui/compass/MinimapDisplay.qml</file>
+        <file>images/compass/door-normal.svg</file>
+        <file>images/compass/door-target.svg</file>
+        <file>images/compass/loot-normal.svg</file>
+        <file>images/compass/loot-target.svg</file>
+        <file>images/room-preset/c_branch.svg</file>
+        <file>images/room-preset/c_branch_bottleneck_1.svg</file>
+        <file>images/room-preset/c_branch_bottleneck_2.svg</file>
+        <file>images/room-preset/c_end_bottleneck.svg</file>
+        <file>images/room-preset/c_quad.svg</file>
+        <file>images/room-preset/c_quad_door.svg</file>
+        <file>images/room-preset/c_straight.svg</file>
+        <file>images/room-preset/c_straight_bottleneck.svg</file>
+        <file>images/room-preset/dg_branch.svg</file>
+        <file>images/room-preset/dg_branch_bottleneck_1.svg</file>
+        <file>images/room-preset/dg_branch_bottleneck_2.svg</file>
+        <file>images/room-preset/dg_branch_door.svg</file>
+        <file>images/room-preset/dg_end_bottleneck.svg</file>
+        <file>images/room-preset/dg_quad.svg</file>
+        <file>images/room-preset/dg_quad_door.svg</file>
+        <file>images/room-preset/dg_straight.svg</file>
+        <file>images/room-preset/dg_straight_bottleneck.svg</file>
+        <file>images/room-preset/eh_block_branch.svg</file>
+        <file>images/room-preset/eh_branch.svg</file>
+        <file>images/room-preset/eh_branch_bottleneck_2.svg</file>
+        <file>images/room-preset/eh_branch_door.svg</file>
+        <file>images/room-preset/eh_end_bottleneck.svg</file>
+        <file>images/room-preset/eh_quad.svg</file>
+        <file>images/room-preset/eh_straight.svg</file>
+        <file>images/room-preset/eh_straight_bottleneck.svg</file>
+        <file>images/room-preset/oh_branch.svg</file>
+        <file>images/room-preset/oh_branch_bottleneck_1.svg</file>
+        <file>images/room-preset/oh_branch_bottleneck_2.svg</file>
+        <file>images/room-preset/oh_branch_door.svg</file>
+        <file>images/room-preset/oh_end_bottleneck.svg</file>
+        <file>images/room-preset/oh_quad.svg</file>
+        <file>images/room-preset/oh_quad_door.svg</file>
+        <file>images/room-preset/oh_straight.svg</file>
+        <file>images/room-preset/oh_straight_bottleneck.svg</file>
+        <file>images/room-preset/p_branch.svg</file>
+        <file>images/room-preset/p_branch_bottleneck_1.svg</file>
+        <file>images/room-preset/p_branch_bottleneck_2.svg</file>
+        <file>images/room-preset/p_branch_door.svg</file>
+        <file>images/room-preset/p_end_bottleneck.svg</file>
+        <file>images/room-preset/p_quad.svg</file>
+        <file>images/room-preset/p_straight.svg</file>
+        <file>images/room-preset/p_straight_bottleneck.svg</file>
+        <file>images/room-preset/rt_branch.svg</file>
+        <file>images/room-preset/rt_branch_bottleneck_1.svg</file>
+        <file>images/room-preset/rt_branch_bottleneck_2.svg</file>
+        <file>images/room-preset/rt_branch_door.svg</file>
+        <file>images/room-preset/rt_end_bottleneck.svg</file>
+        <file>images/room-preset/rt_quad_door.svg</file>
+        <file>images/room-preset/rt_straight.svg</file>
+        <file>images/room-preset/rt_straight_bottleneck.svg</file>
+        <file>images/view-list-light.svg</file>
+        <file>ui/compass/CompassToolbar.qml</file>
+        <file>ui/roompresets/RoomPresets.qml</file>
+        <file>ui/roompresets/StaticMinimapDisplay.qml</file>
+        <file>images/room-preset/disabled.svg</file>
+        <file>images/check.svg</file>
+        <file>images/compass/minimap-hud.svg</file>
+        <file>ui/RoomContentIcon.qml</file>
+        <file>ui/RoomContentView.qml</file>
+        <file>ui/roompresets/MinimapLegend.qml</file>
+        <file>images/compass/tile-trap.svg</file>
+        <file>images/compass/tile-cross.svg</file>
+        <file>images/compass/tile-full.svg</file>
     </qresource>
 </RCC>

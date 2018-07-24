@@ -1,0 +1,99 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://labcompass.futurecode.com/room-presets.schema.json",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "roomName",
+      "goldenDoor",
+      "variants"
+    ],
+    "properties": {
+      "roomName": { "type": "string" },
+      "goldenDoor": { "type": "boolean" },
+      "variants": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "object",
+          "required": [
+            "areaCode",
+            "contentLocations",
+            "doorLocations",
+            "minimap"
+          ],
+          "properties": {
+            "areaCode": { "type": "string" },
+            "contentLocations": {
+              "type": "object",
+              "oneOf": [
+                {
+                  "additionalProperties": false,
+                  "required": [
+                    "major",
+                    "minor"
+                  ],
+                  "properties": {
+                    "major": { "$ref": "#/definitions/directionList" },
+                    "minor": { "$ref": "#/definitions/directionList" }
+                  }
+                },
+                {
+                  "additionalProperties": false,
+                  "required": [
+                    "generic"
+                  ],
+                  "properties": {
+                    "generic": { "$ref": "#/definitions/directionList" }
+                  }
+                }
+              ]
+            },
+            "doorLocations": { "$ref": "#/definitions/directionList" },
+            "minimap": {
+              "type": "object",
+              "required": [
+                "rows",
+                "columns",
+                "directions"
+              ],
+              "properties": {
+                "rows": { "type": "integer" },
+                "columns": { "type": "integer" },
+                "directions": {
+                  "type": "object",
+                  "propertyNames": { "$ref": "#/definitions/direction" },
+                  "additionalProperties": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "items": { "type": "integer" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "direction": {
+      "enum": [
+        "N",
+        "NE",
+        "E",
+        "SE",
+        "S",
+        "SW",
+        "W",
+        "NW"
+      ]
+    },
+    "directionList": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/direction" }
+    }
+  }
+} 

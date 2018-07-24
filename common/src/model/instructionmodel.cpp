@@ -1,4 +1,5 @@
 #include "instructionmodel.h"
+#include "helper/roompresethelper.h"
 
 static const QStringList LOOT_LIST {
   "Switch puzzle",
@@ -35,15 +36,11 @@ void InstructionModel::loadFromData(const NavigationData& data)
   if (!data.currentRoomDetermined)
     return;
 
+  updateRoomPreset(data);
+
   updateContentsAndLocations(data);
 
-  auto exits = data.lab->getRoomConnections(data.currentRoom);
-  QList<DirectionCode> doorExitDirections;
-  for (auto i = exits.constBegin(); i != exits.constEnd(); i++)
-    for (auto j = i.value().constBegin(); j != i.value().constEnd(); j++)
-      if (REGULAR_DIRECTION_LIST.contains(*j))
-        doorExitDirections.append(*j);
-  update_roomDoorExitDirections(doorExitDirections);
+  updateExitLocations(data);
 
   update_currentSection(data.lab->getRoomFromId(data.currentRoom).section);
 
@@ -85,16 +82,48 @@ void InstructionModel::loadFromData(const NavigationData& data)
   }
 }
 
+void InstructionModel::updateRoomPreset(const NavigationData& data)
+{
+  const auto& room = data.lab->getRoomFromId(data.currentRoom);
+  const auto& helper = RoomPresetHelper::instance;
+  const auto& preset = helper->getPresetByAreaCode(room.areaCode);
+  update_preset(preset);
+}
+
+void InstructionModel::updateExitLocations(const NavigationData& data)
+{
+  const auto& room = data.lab->getRoomFromId(data.currentRoom);
+  const auto& helper = RoomPresetHelper::instance;
+  const auto& preset = helper->getPresetByAreaCode(room.areaCode);
+
+  QVariantList doorExitLocations;
+
+  if (preset.isEmpty()) {
+    const auto& exits = data.lab->getRoomConnections(data.currentRoom);
+    for (const auto& l: exits.values())
+      for (const auto& direction: l)
+        if (REGULAR_DIRECTION_LIST.contains(direction))
+          doorExitLocations.append(QVariantMap {{"direction", direction}, {"tileRect", QRectF()}});
+
+  } else {
+    doorExitLocations = helper->getDoorExitLocationModel(preset);
+  }
+
+  update_doorExitLocations(doorExitLocations);
+}
+
 void InstructionModel::updateContentsAndLocations(const NavigationData& data)
 {
-  auto room = data.lab->getRoomFromId(data.currentRoom);
-  auto contents = room.contents;
-  auto allContentLocations = room.contentLocations;
+  const auto& room = data.lab->getRoomFromId(data.currentRoom);
+  const auto& contents = room.contents;
   QStringList loot;
   QStringList majorLoot;
   QStringList minorLoot;
 
-  foreach (auto content, contents)
+  const auto& helper = RoomPresetHelper::instance;
+  const auto& preset = helper->getPresetByAreaCode(room.areaCode);
+
+  for (const auto& content: contents)
     if (LOOT_LIST.contains(content)) {
       loot.append(content);
       if (MAJOR_LOOT_LIST.contains(content))
@@ -110,18 +139,8 @@ void InstructionModel::updateContentsAndLocations(const NavigationData& data)
   }
 
   QVariantList visibleContentLocations;
-  if (!loot.isEmpty()) {
-    if (allContentLocations.contains("generic")) {
-      foreach (auto direction, allContentLocations["generic"].toStringList())
-        visibleContentLocations.append(QVariantMap {{"direction", direction}, {"major", false}});
-    } else {
-      if (!majorLoot.isEmpty() && allContentLocations.contains("major"))
-        foreach (auto direction, allContentLocations["major"].toStringList())
-          visibleContentLocations.append(QVariantMap {{"direction", direction}, {"major", true}});
-      if (!minorLoot.isEmpty() && allContentLocations.contains("minor"))
-        foreach (auto direction, allContentLocations["minor"].toStringList())
-          visibleContentLocations.append(QVariantMap {{"direction", direction}, {"major", false}});
-    }
-  }
+  if (!loot.isEmpty())
+    visibleContentLocations = helper->getContentLocationModel(preset, true, !majorLoot.isEmpty(), !minorLoot.isEmpty());
+
   update_contentLocations(visibleContentLocations);
 }

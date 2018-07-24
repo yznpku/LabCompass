@@ -2,10 +2,12 @@
 #define ROOMPRESETHELPER_H
 
 #include "stdafx.h"
+#include "global.h"
 
 class RoomPresetHelper
 {
-  QHash<QString, QList<QPair<QString, QVariantMap>>> cache; // name => [(keyword, preset)]
+  QHash<QString, Preset> cacheByAreaCode; // areaCode => preset
+  QHash<QPair<QString, bool>, QList<QPair<QString, Preset>>> cacheByNameAndGoldenDoor; // (name, goldenDoor) => [(areaCode, preset)]
 
 public:
   static RoomPresetHelper* instance;
@@ -13,7 +15,14 @@ public:
 public:
   RoomPresetHelper();
 
-  QVariantMap getPreset(const QString& roomName, const QString& areaCode) const;
+  Preset getPresetByAreaCode(const QString& areaCode) const;
+  QList<QPair<QString, Preset>> getPresetListByName(const QString& roomName, bool goldenDoor) const;
+
+  DoorExitLocationModel getDoorExitLocationModel(const Preset& preset) const;
+  ContentLocationModel getContentLocationModel(const Preset& preset, bool generalLocations = true, bool majorLocations = true, bool minorLocations = true);
+
+private:
+  QRectF getTileRect(const Preset& preset, const QString& direction) const;
 };
 
 #endif // ROOMPRESETHELPER_H

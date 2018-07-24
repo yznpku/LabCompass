@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="52pt"
+   height="40pt"
+   viewBox="0 0 18.344444 14.111112"
+   version="1.1"
+   id="svg1239"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="tile-trap.svg">
+  <defs
+     id="defs1233" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="5.6"
+     inkscape:cx="69.124754"
+     inkscape:cy="23.382781"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     units="pt"
+     inkscape:window-width="1858"
+     inkscape:window-height="1051"
+     inkscape:window-x="62"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata1236">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-282.88887)">
+    <g
+       id="g1928"
+       transform="translate(-8.072942,-3.7955132)">
+      <g
+         style="font-style:normal;font-weight:400;font-size:9px;font-family:'Sans Serif';fill:#636363;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:0"
+         id="g266"
+         font-style="normal"
+         font-weight="400"
+         font-size="9"
+         transform="matrix(9.1721994,7.055538,-9.1721994,7.055538,17.266831,286.77272)">
+        <rect
+           id="rect264"
+           height="1.02"
+           width="1.02"
+           y="-0.0099999998"
+           x="-0.0099999998" />
+      </g>
+      <g
+         style="font-style:normal;font-weight:400;font-size:9px;font-family:'Sans Serif';fill:#f44336;fill-opacity:0.66666697;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:0"
+         id="g276"
+         font-style="normal"
+         font-weight="400"
+         font-size="9"
+         transform="matrix(9.1721994,7.055538,-9.1721994,7.055538,17.266831,286.77272)">
+        <path
+           style="vector-effect:none;fill-rule:evenodd"
+           inkscape:connector-curvature="0"
+           id="path268"
+           d="m 0.125,0 h 0.25 L 0,0.375 V 0.125 L 0.125,0" />
+        <path
+           style="vector-effect:none;fill-rule:evenodd"
+           inkscape:connector-curvature="0"
+           id="path270"
+           d="m 0.625,0 h 0.25 L 0,0.875 V 0.625 L 0.625,0" />
+        <path
+           style="vector-effect:none;fill-rule:evenodd"
+           inkscape:connector-curvature="0"
+           id="path272"
+           d="m 0.125,1 h 0.25 L 1,0.375 V 0.125 L 0.125,1" />
+        <path
+           style="vector-effect:none;fill-rule:evenodd"
+           inkscape:connector-curvature="0"
+           id="path274"
+           d="m 0.625,1 h 0.25 L 1,0.875 V 0.625 L 0.625,1" />
+      </g>
+    </g>
+  </g>
+</svg>

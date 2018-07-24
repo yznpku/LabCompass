@@ -23,14 +23,14 @@ void customMessageOutput(QtMsgType type, const QMessageLogContext &context, cons
   QByteArray logLevelMsg = logLevelName.toLocal8Bit();
 
   if (logToFile) {
-    QString txt = QString("%1 %2: %3 (%4)").arg(formattedTime, logLevelName, msg,  context.file);
+    QString txt = QString("%1 %2: %3").arg(formattedTime, logLevelName, msg);
     QFile outFile(logFilePath);
     outFile.open(QIODevice::WriteOnly | QIODevice::Append);
     QTextStream ts(&outFile);
     ts << txt << endl;
     outFile.close();
   } else {
-    fprintf(stderr, "%s %s: %s (%s:%u, %s)\n", formattedTimeMsg.constData(), logLevelMsg.constData(), localMsg.constData(), context.file, context.line, context.function);
+    fprintf(stderr, "%s %s: %s (%s:%u)\n", formattedTimeMsg.constData(), logLevelMsg.constData(), localMsg.constData(), context.file, context.line);
     fflush(stderr);
   }
 

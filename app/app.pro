@@ -43,7 +43,9 @@ HEADERS += \
     src/tray/trayiconmenu.h \
     src/keysequence/keysequencehelper.h \
     src/hotkey/hotkeybinding.h \
-    src/util/setupdebugoutput.h
+    src/util/setupdebugoutput.h \
+    src/window/compasstoolbarwindow.h \
+    src/window/roompresetswindow.h
 
 SOURCES += \
     src/main.cpp \
@@ -59,7 +61,9 @@ SOURCES += \
     src/tray/trayiconmenu.cpp \
     src/keysequence/keysequencehelper.cpp \
     src/hotkey/hotkeybinding.cpp \
-    src/util/setupdebugoutput.cpp
+    src/util/setupdebugoutput.cpp \
+    src/window/compasstoolbarwindow.cpp \
+    src/window/roompresetswindow.cpp
 
 RESOURCES += \
     resources/app.qrc

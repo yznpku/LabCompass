@@ -25,8 +25,6 @@ WindowWithShadow {
       height: 50
       width: grid.width
 
-      Item { RotationAnimation on rotation { loops: Animation.Infinite; from: 0; to: 360 }}
-
       Grid {
         columns: 5
         leftPadding: 20
@@ -77,7 +75,7 @@ WindowWithShadow {
           onClicked: importLabNotesButtonClicked()
           Rectangle {
             anchors.fill: parent
-            color: '#2196F3'
+            color: Global.accentColor
             radius: 2
             z: -1
             Text {

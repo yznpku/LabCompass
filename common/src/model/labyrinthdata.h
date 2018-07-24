@@ -13,7 +13,6 @@ struct LabyrinthData
     RoomId id;
     QPoint coordinate;
     QStringList contents;
-    QVariantMap contentLocations;
     int section;
     bool isFirstRoomInSection {false};
   };
@@ -61,10 +60,10 @@ public:
 
 private:
   bool loadRooms(const QJsonArray& array);
+  void predictRoomAreaCodes();
   bool loadConnectionMatrix(const QJsonArray& array);
   bool loadSections();
   bool loadGoldenDoors();
-  void loadContentLocations();
 };
 
 #endif // LABYRINTHDATA_H

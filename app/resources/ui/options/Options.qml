@@ -16,6 +16,7 @@ WindowWithShadow {
   property alias poeClientPath: clientPathInput.text
   property alias portalSkipsSection: portalSkipsSectionInput.checked
   property alias multiclientSupport: multiclientSupportInput.checked
+  property alias showMinimap: showMinimapInput.checked
   property alias uiScaleFactorIndex: uiScaleFactorInput.currentIndex
 
   property alias toggleHideUiHotkey: toggleHideUiHotkeyEdit.keySequence
@@ -65,7 +66,7 @@ WindowWithShadow {
         onClicked: openUrl('https://github.com/yznpku/LabCompass/releases/tag/' + Global.model.settings.latestVersion)
         Rectangle {
           anchors.fill: parent
-          color: '#2196F3'
+          color: Global.accentColor
           radius: 2
           z: -1
           Text {
@@ -154,6 +155,18 @@ WindowWithShadow {
         Text {
           Layout.fillWidth: true
           color: Global.primaryTextColor
+          text: 'Show Minimap When Available'
+          font.pixelSize: 20
+        }
+        CheckBox {
+          id: showMinimapInput
+          width: 24
+          height: 24
+        }
+
+        Text {
+          Layout.fillWidth: true
+          color: Global.primaryTextColor
           text: 'UI Scale Factor <sup>*</sup>'
           font.pixelSize: 20
         }
@@ -229,7 +242,7 @@ WindowWithShadow {
     }
     Rectangle {
       anchors.fill: parent
-      color: '#2196F3'
+      color: Global.accentColor
       radius: 2
       z: -1
       Text {

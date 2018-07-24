@@ -13,10 +13,14 @@ class Settings : public QObject
   QML_WRITABLE_VAR_PROPERTY(qint64, lastVersionCheckAttempt)
   QML_WRITABLE_VAR_PROPERTY(qint64, lastVersionCheckSuccess)
   QML_WRITABLE_VAR_PROPERTY(QDate, lastLoadedMapDate)
-  QML_WRITABLE_VAR_PROPERTY(bool, portalSkipsSection)
-  QML_WRITABLE_VAR_PROPERTY(bool, multiclientSupport)
   QML_WRITABLE_VAR_PROPERTY(QString, importDirectory)
+
+  QML_WRITABLE_VAR_PROPERTY(bool, multiclientSupport)
+
+  QML_WRITABLE_VAR_PROPERTY(bool, portalSkipsSection)
+
   QML_WRITABLE_VAR_PROPERTY(QString, scaleFactor)
+  QML_WRITABLE_VAR_PROPERTY(bool, showMinimap)
 
   QML_WRITABLE_VAR_PROPERTY(QString, toggleHideUiHotkey)
 

@@ -72,13 +72,13 @@ bool LabyrinthData::loadFromJson(const QJsonObject& json)
   if (!(loadRooms(json["rooms"].toArray())))
     return false;
 
+  predictRoomAreaCodes();
+
   if (!loadConnectionMatrix(json["rooms"].toArray()))
     return false;
 
   if (!loadGoldenDoors())
     return false;
-
-  loadContentLocations();
 
   normalizeDoorDirectionsForAllRooms();
 
@@ -91,7 +91,7 @@ void LabyrinthData::normalizeDoorDirections(const RoomId& id)
 
   const auto& room = getRoomFromId(id);
   const auto& originalConnections = connections[id];
-  const auto& preset = helper->getPreset(room.name, room.areaCode);
+  const auto& preset = helper->getPresetByAreaCode(room.areaCode);
 
   if (!preset.isEmpty()) {
     const auto& pattern = preset["doorLocations"].toStringList();
@@ -181,12 +181,12 @@ bool LabyrinthData::loadRooms(const QJsonArray& array)
 {
   if (array.isEmpty())
     return false;
-  rooms.append(Room({"Aspirant\'s Plaza", "labyrinth_airlock", "plaza", {-100, 128}, {}, {}, -1, false}));
+  rooms.append(Room({"Aspirant\'s Plaza", "labyrinth_airlock", "plaza", {-100, 128}, {}, -1, false}));
 
   for (int i = 0; i < array.size(); i++) {
     if (!array[i].isObject())
       return false;
-    auto roomJson = array[i].toObject();
+    const auto& roomJson = array[i].toObject();
 
     Room room;
     room.id = roomJson["id"].toString();
@@ -200,10 +200,7 @@ bool LabyrinthData::loadRooms(const QJsonArray& array)
 
     room.coordinate = QPoint(roomJson["x"].toString().toInt(), roomJson["y"].toString().toInt());
 
-    // convert contents to string list
-    auto&& contents = roomJson["contents"].toArray();
-    std::transform(contents.begin(), contents.end(), std::back_inserter(room.contents),
-                   [](const QJsonValue& x) { return x.toString(); });
+    room.contents = roomJson["contents"].toVariant().toStringList();
 
     rooms.append(room);
   }
@@ -214,6 +211,18 @@ bool LabyrinthData::loadRooms(const QJsonArray& array)
     roomIdIndex[rooms[i].id] = i;
 
   return true;
+}
+
+void LabyrinthData::predictRoomAreaCodes()
+{
+  auto helper = RoomPresetHelper::instance;
+
+  for (auto& room: rooms)
+    if (room.areaCode.isEmpty()) {
+      const auto& presetList = helper->getPresetListByName(room.name, room.contents.contains("golden-door"));
+      if (presetList.size() == 1)
+        room.areaCode = presetList[0].first;
+    }
 }
 
 bool LabyrinthData::loadConnectionMatrix(const QJsonArray& array)
@@ -328,18 +337,4 @@ bool LabyrinthData::loadGoldenDoors()
             rooms[j].coordinate.x() > rooms[i].coordinate.x())
           goldenDoors.append(std::pair<RoomId, RoomId>(rooms[i].id, rooms[j].id));
   return true;
-}
-
-void LabyrinthData::loadContentLocations()
-{
-  auto helper = RoomPresetHelper::instance;
-
-  for (int i = 0; i < rooms.size(); i++) {
-    auto& room = rooms[i];
-    auto preset = helper->getPreset(room.name, room.areaCode);
-    if (preset.isEmpty())
-      continue;
-
-    room.contentLocations = preset["contentLocations"].toMap();
-  }
 }
