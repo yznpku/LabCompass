@@ -17,6 +17,7 @@ public:
 
 private slots:
   void onLabStarted();
+  void onIzaroBattleStarted();
   void onSectionFinished();
   void onLabFinished();
   void onRoomChanged(const QString& roomName);

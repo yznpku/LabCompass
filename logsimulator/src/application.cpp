@@ -10,6 +10,8 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
 
   connect(widget.get(), &Widget::labStarted,
           this, &Application::onLabStarted);
+  connect(widget.get(), &Widget::izaroBattleStarted,
+          this, &Application::onIzaroBattleStarted);
   connect(widget.get(), &Widget::sectionFinished,
           this, &Application::onSectionFinished);
   connect(widget.get(), &Widget::labFinished,
@@ -21,6 +23,11 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
 void Application::onLabStarted()
 {
   addLogLine("Izaro: Ascend with precision.");
+}
+
+void Application::onIzaroBattleStarted()
+{
+  addLogLine("Izaro: Complex machinations converge to a single act of power.");
 }
 
 void Application::onSectionFinished()

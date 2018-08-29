@@ -6,6 +6,7 @@ Item {
 
   property color color
   property url iconSource
+  property alias iconComponent: iconComponentLoader.sourceComponent
   default property alias content: column.children
 
   width: 260
@@ -32,5 +33,10 @@ Item {
     anchors.verticalCenter: background.verticalCenter
     width: root.width - 40
     spacing: 4
+  }
+
+  Loader {
+    id: iconComponentLoader
+    anchors.centerIn: icon
   }
 }

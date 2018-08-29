@@ -23,6 +23,7 @@ public:
 
 signals:
   void labStarted();
+  void izaroBattleStarted();
   void sectionFinished();
   void labFinished();
   void roomChanged(const QString& room);

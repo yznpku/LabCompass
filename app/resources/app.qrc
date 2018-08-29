@@ -156,5 +156,6 @@
         <file>images/compass/tile-trap.svg</file>
         <file>images/compass/tile-cross.svg</file>
         <file>images/compass/tile-full.svg</file>
+        <file>ui/CircleProgressBar.qml</file>
     </qresource>
 </RCC>

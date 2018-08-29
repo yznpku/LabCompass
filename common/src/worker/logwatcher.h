@@ -18,6 +18,7 @@ signals:
   void plazaEntered();
   void labStarted();
   void labFinished();
+  void izaroBattleStarted();
   void sectionFinished();
   void labExit();
   void roomChanged(QString name);

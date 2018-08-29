@@ -37,6 +37,9 @@ Widget::Widget(Settings* settings, QWidget* parent) :
   connect(ui->startButton, &QPushButton::clicked,
           [this]() { emit labStarted(); });
 
+  connect(ui->izaroStartButton, &QPushButton::clicked,
+          [this]() { emit izaroBattleStarted(); });
+
   connect(ui->finishSectionButton, &QPushButton::clicked,
           [this]() { emit sectionFinished(); });
 
