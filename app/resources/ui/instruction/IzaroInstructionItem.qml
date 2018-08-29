@@ -90,7 +90,7 @@ InstructionItem {
             if (!(root.mechanics === 'ChargeDisruptors' || root.mechanics === 'Idols'))
               return;
 
-            var delay = root.mechanics === 'ChargeDisruptors' ? 29 : 23;
+            var delay = root.mechanics === 'ChargeDisruptors' ? 29 : 27;
             countdownStart = Date.now();
             countdownEnd = countdownStart + delay * 1000;
             currentTime = countdownStart;
