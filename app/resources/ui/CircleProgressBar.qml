@@ -15,7 +15,7 @@ ProgressBar {
     Rectangle {
       id: ring
       anchors.fill: parent
-      anchors.margins: border.width / 2
+      anchors.margins: border.width / 2 + 1
       radius: Math.max(width, height) / 2
       color: 'transparent'
       border.width: root.circleWidth

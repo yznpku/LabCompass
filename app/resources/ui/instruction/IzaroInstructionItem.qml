@@ -42,8 +42,8 @@ InstructionItem {
     CircleProgressBar {
       anchors.centerIn: parent
       visible: izaroInstructionItemIcon.state === 'countdownRunning'
-      width: 28
-      height: 28
+      width: 30
+      height: 30
       color: '#FDD835'
       circleWidth: 2
       value: (countdownEnd - currentTime) / (countdownEnd - countdownStart)
