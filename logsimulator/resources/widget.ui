@@ -115,6 +115,13 @@
        </widget>
       </item>
       <item>
+       <widget class="QPushButton" name="izaroStartButton">
+        <property name="text">
+         <string>Izaro Start</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QPushButton" name="finishSectionButton">
         <property name="text">
          <string>Finish Section</string>

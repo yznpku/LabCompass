@@ -18,6 +18,16 @@ static const QStringList FINISH_LINES {
   "Izaro: You are free!",
   "Izaro: The trap of tyranny is inescapable.",
 };
+static const QStringList IZARO_BATTLE_START_LINES {
+  "Izaro: Complex machinations converge to a single act of power.",
+  "Izaro: Slowness lends strength to one\'s enemies.",
+  "Izaro: When one defiles the effigy, one defiles the emperor.",
+  "Izaro: The essence of an empire must be shared equally amongst all of its citizens.",
+  "Izaro: It is the sovereign who empowers the sceptre. Not the other way round.",
+  "Izaro: Some things that slumber should never be awoken.",
+  "Izaro: An emperor is only as efficient as those he commands.",
+  "Izaro: The emperor beckons and the world attends.",
+};
 static const QStringList SECTION_FINISH_LINES {
   "Izaro: By the Goddess! What ambition!",
   "Izaro: Such resilience!",
@@ -119,6 +129,10 @@ void LogWatcher::parseLine(const QString line)
         emit sectionFinished();
         emit labFinished();
       }
+
+    } else if (IZARO_BATTLE_START_LINES.contains(logContent)) {
+      if (isLogFromValidClient(clientId))
+        emit izaroBattleStarted();
 
     } else if (SECTION_FINISH_LINES.contains(logContent)) {
       if (isLogFromValidClient(clientId))

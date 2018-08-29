@@ -1129,20 +1129,20 @@
         "contentLocations": {
           "generic": [
             "E",
-            "W"
+            "NW"
           ]
         },
         "doorLocations": [
           "SE",
-          "SW",
-          "NW",
-          "N"
+          "W",
+          "N",
+          "NE"
         ],
         "minimap": {
           "rows": 7,
           "columns": 7,
           "directions": {
-            "N": [
+            "NE": [
               0,
               0
             ],
@@ -1150,11 +1150,11 @@
               1,
               5
             ],
-            "NW": [
+            "N": [
               2,
               0
             ],
-            "W": [
+            "NW": [
               4,
               1
             ],
@@ -1162,7 +1162,7 @@
               4,
               6
             ],
-            "SW": [
+            "W": [
               6,
               2
             ]

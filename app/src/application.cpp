@@ -135,6 +135,11 @@ void Application::initWorkers()
   connect(logWatcher.get(), &LogWatcher::labExit,
           compassWindow.get(), &CompassWindow::closeTimer);
 
+  connect(logWatcher.get(), &LogWatcher::roomChanged,
+          instructionListWindow.get(), &InstructionListWindow::onRoomChanged);
+  connect(logWatcher.get(), &LogWatcher::izaroBattleStarted,
+          instructionListWindow.get(), &InstructionListWindow::onIzaroBattleStarted);
+
   versionChecker.reset(new VersionChecker(&model));
   dateChecker.reset(new DateChecker(&model));
 }

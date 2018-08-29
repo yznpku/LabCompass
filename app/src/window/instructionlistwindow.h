@@ -11,6 +11,10 @@ class InstructionListWindow : public Window
 public:
   InstructionListWindow(QQmlEngine* engine);
 
+public slots:
+  void onRoomChanged();
+  void onIzaroBattleStarted();
+
 private slots:
   void onCompassVisibleChanged();
 };
