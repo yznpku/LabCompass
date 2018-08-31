@@ -2008,6 +2008,47 @@
     ]
   },
   {
+    "roomName": "Sepulchre Halls",
+    "goldenDoor": true,
+    "variants": [
+      {
+        "areaCode": "c_branch_door",
+        "contentLocations": {
+          "generic": [
+            "SW"
+          ]
+        },
+        "doorLocations": [
+          "SE",
+          "NW",
+          "NE"
+        ],
+        "minimap": {
+          "rows": 7,
+          "columns": 8,
+          "directions": {
+            "NE": [
+              0,
+              2
+            ],
+            "NW": [
+              2,
+              0
+            ],
+            "SE": [
+              3,
+              7
+            ],
+            "SW": [
+              6,
+              3
+            ]
+          }
+        }
+      }
+    ]
+  },
+  {
     "roomName": "Sepulchre Passage",
     "goldenDoor": false,
     "variants": [
