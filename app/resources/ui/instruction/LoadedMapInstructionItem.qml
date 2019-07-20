@@ -11,12 +11,14 @@ InstructionItem {
   property string difficulty: model ? model.difficulty : ''
 
   iconSource: {
-    'Normal': 'qrc:/images/instruction/loaded-map-normal.svg',
-    'Cruel': 'qrc:/images/instruction/loaded-map-cruel.svg',
-    'Merciless': 'qrc:/images/instruction/loaded-map-merciless.svg',
-    'Uber': 'qrc:/images/instruction/loaded-map-uber.svg',
-    '': ''
-  }[difficulty]
+    return {
+      'Normal': 'qrc:/images/instruction/loaded-map-normal.svg',
+      'Cruel': 'qrc:/images/instruction/loaded-map-cruel.svg',
+      'Merciless': 'qrc:/images/instruction/loaded-map-merciless.svg',
+      'Uber': 'qrc:/images/instruction/loaded-map-uber.svg',
+      '': ''
+    }[difficulty];
+  }
 
   Text {
     color: Global.primaryTextColor

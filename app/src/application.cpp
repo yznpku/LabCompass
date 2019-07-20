@@ -6,6 +6,7 @@
 
 Application::Application(int& argc, char** argv) : QApplication(argc, argv)
 {
+  setQuitOnLastWindowClosed(false);
   connect(this, &Application::aboutToQuit,
           this, &Application::onAboutToQuit);
 
