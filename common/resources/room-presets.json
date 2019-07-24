@@ -5,33 +5,34 @@
     "variants": [
       {
         "areaCode": "rt_end_bottleneck",
-        "contentLocations": {
-          "major": [
-            "NW"
-          ],
-          "minor": [
-            "S"
-          ]
-        },
-        "doorLocations": [
-          "NE"
-        ],
+        "contentLocations": { "major": ["NW"], "minor": ["S"] },
+        "doorLocations": ["NE"],
         "minimap": {
           "rows": 8,
           "columns": 5,
+          "directions": { "NE": [0, 1], "NW": [3, 2], "S": [7, 4] }
+        }
+      }
+    ]
+  },
+  {
+    "roomName": "Basilica Atrium",
+    "goldenDoor": false,
+    "variants": [
+      {
+        "areaCode": "rt_quad",
+        "contentLocations": { "generic": ["E", "S"] },
+        "doorLocations": ["SE", "W", "NW", "N"],
+        "minimap": {
+          "rows": 9,
+          "columns": 9,
           "directions": {
-            "NE": [
-              0,
-              1
-            ],
-            "NW": [
-              3,
-              2
-            ],
-            "S": [
-              7,
-              4
-            ]
+            "N": [1, 0],
+            "NW": [4, 0],
+            "E": [4, 6],
+            "SE": [4, 8],
+            "W": [7, 0],
+            "S": [8, 6]
           }
         }
       }
@@ -43,41 +44,17 @@
     "variants": [
       {
         "areaCode": "rt_quad_door",
-        "contentLocations": {
-          "generic": [
-            "SW"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "W",
-          "NW",
-          "NE"
-        ],
+        "contentLocations": { "generic": ["SW"] },
+        "doorLocations": ["SE", "W", "NW", "NE"],
         "minimap": {
           "rows": 8,
           "columns": 8,
           "directions": {
-            "NE": [
-              0,
-              3
-            ],
-            "NW": [
-              3,
-              0
-            ],
-            "SE": [
-              3,
-              7
-            ],
-            "W": [
-              4,
-              2
-            ],
-            "SW": [
-              7,
-              6
-            ]
+            "NE": [0, 3],
+            "NW": [3, 0],
+            "SE": [3, 7],
+            "W": [4, 2],
+            "SW": [7, 6]
           }
         }
       }
@@ -89,121 +66,49 @@
     "variants": [
       {
         "areaCode": "rt_branch_bottleneck_2",
-        "contentLocations": {
-          "generic": [
-            "E",
-            "SW"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "W",
-          "N"
-        ],
+        "contentLocations": { "generic": ["E", "SW"] },
+        "doorLocations": ["SE", "W", "N"],
         "minimap": {
           "rows": 9,
           "columns": 8,
           "directions": {
-            "N": [
-              1,
-              0
-            ],
-            "E": [
-              1,
-              6
-            ],
-            "W": [
-              5,
-              1
-            ],
-            "SE": [
-              5,
-              7
-            ],
-            "SW": [
-              8,
-              5
-            ]
+            "N": [1, 0],
+            "E": [1, 6],
+            "W": [5, 1],
+            "SE": [5, 7],
+            "SW": [8, 5]
           }
         }
       },
       {
         "areaCode": "rt_branch_bottleneck_1",
-        "contentLocations": {
-          "generic": [
-            "NE",
-            "SW"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "NW",
-          "N"
-        ],
+        "contentLocations": { "generic": ["NE", "SW"] },
+        "doorLocations": ["SE", "NW", "N"],
         "minimap": {
           "rows": 9,
           "columns": 8,
           "directions": {
-            "NE": [
-              0,
-              3
-            ],
-            "N": [
-              1,
-              0
-            ],
-            "NW": [
-              4,
-              0
-            ],
-            "SE": [
-              5,
-              7
-            ],
-            "SW": [
-              8,
-              5
-            ]
+            "NE": [0, 3],
+            "N": [1, 0],
+            "NW": [4, 0],
+            "SE": [5, 7],
+            "SW": [8, 5]
           }
         }
       },
       {
         "areaCode": "rt_branch",
-        "contentLocations": {
-          "generic": [
-            "E",
-            "SW"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "W",
-          "N"
-        ],
+        "contentLocations": { "generic": ["E", "SW"] },
+        "doorLocations": ["SE", "W", "N"],
         "minimap": {
           "rows": 9,
           "columns": 8,
           "directions": {
-            "N": [
-              1,
-              0
-            ],
-            "E": [
-              1,
-              6
-            ],
-            "SE": [
-              5,
-              7
-            ],
-            "W": [
-              6,
-              0
-            ],
-            "SW": [
-              8,
-              6
-            ]
+            "N": [1, 0],
+            "E": [1, 6],
+            "SE": [5, 7],
+            "W": [6, 0],
+            "SW": [8, 6]
           }
         }
       }
@@ -215,36 +120,16 @@
     "variants": [
       {
         "areaCode": "rt_branch_door",
-        "contentLocations": {
-          "generic": [
-            "SW"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "NW",
-          "NE"
-        ],
+        "contentLocations": { "generic": ["SW"] },
+        "doorLocations": ["SE", "NW", "NE"],
         "minimap": {
           "rows": 7,
           "columns": 7,
           "directions": {
-            "NE": [
-              0,
-              2
-            ],
-            "NW": [
-              2,
-              0
-            ],
-            "SE": [
-              3,
-              6
-            ],
-            "SW": [
-              6,
-              4
-            ]
+            "NE": [0, 2],
+            "NW": [2, 0],
+            "SE": [3, 6],
+            "SW": [6, 4]
           }
         }
       }
@@ -256,72 +141,27 @@
     "variants": [
       {
         "areaCode": "rt_straight_bottleneck",
-        "contentLocations": {
-          "generic": [
-            "SW",
-            "NW"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "N"
-        ],
+        "contentLocations": { "generic": ["SW", "NW"] },
+        "doorLocations": ["SE", "N"],
         "minimap": {
           "rows": 10,
           "columns": 9,
           "directions": {
-            "N": [
-              0,
-              0
-            ],
-            "NW": [
-              5,
-              2
-            ],
-            "SE": [
-              6,
-              8
-            ],
-            "SW": [
-              9,
-              6
-            ]
+            "N": [0, 0],
+            "NW": [5, 2],
+            "SE": [6, 8],
+            "SW": [9, 6]
           }
         }
       },
       {
         "areaCode": "rt_straight",
-        "contentLocations": {
-          "generic": [
-            "E",
-            "NW"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "N"
-        ],
+        "contentLocations": { "generic": ["E", "NW"] },
+        "doorLocations": ["SE", "N"],
         "minimap": {
           "rows": 8,
           "columns": 9,
-          "directions": {
-            "N": [
-              0,
-              1
-            ],
-            "E": [
-              2,
-              6
-            ],
-            "NW": [
-              3,
-              0
-            ],
-            "SE": [
-              4,
-              8
-            ]
-          }
+          "directions": { "N": [0, 1], "E": [2, 6], "NW": [3, 0], "SE": [4, 8] }
         }
       }
     ]
@@ -332,46 +172,18 @@
     "variants": [
       {
         "areaCode": "dg_quad",
-        "contentLocations": {
-          "generic": [
-            "E",
-            "SE"
-          ]
-        },
-        "doorLocations": [
-          "S",
-          "NW",
-          "N",
-          "NE"
-        ],
+        "contentLocations": { "generic": ["E", "SE"] },
+        "doorLocations": ["S", "NW", "N", "NE"],
         "minimap": {
           "rows": 9,
           "columns": 8,
           "directions": {
-            "NE": [
-              0,
-              2
-            ],
-            "E": [
-              0,
-              4
-            ],
-            "N": [
-              1,
-              0
-            ],
-            "SE": [
-              3,
-              7
-            ],
-            "NW": [
-              5,
-              1
-            ],
-            "S": [
-              8,
-              6
-            ]
+            "NE": [0, 2],
+            "E": [0, 4],
+            "N": [1, 0],
+            "SE": [3, 7],
+            "NW": [5, 1],
+            "S": [8, 6]
           }
         }
       }
@@ -383,41 +195,17 @@
     "variants": [
       {
         "areaCode": "dg_quad_door",
-        "contentLocations": {
-          "generic": [
-            "NE"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "W",
-          "NW",
-          "N"
-        ],
+        "contentLocations": { "generic": ["NE"] },
+        "doorLocations": ["SE", "W", "NW", "N"],
         "minimap": {
           "rows": 9,
           "columns": 8,
           "directions": {
-            "N": [
-              0,
-              2
-            ],
-            "NE": [
-              1,
-              4
-            ],
-            "NW": [
-              2,
-              0
-            ],
-            "W": [
-              4,
-              2
-            ],
-            "SE": [
-              4,
-              7
-            ]
+            "N": [0, 2],
+            "NE": [1, 4],
+            "NW": [2, 0],
+            "W": [4, 2],
+            "SE": [4, 7]
           }
         }
       }
@@ -429,34 +217,12 @@
     "variants": [
       {
         "areaCode": "dg_end_bottleneck",
-        "contentLocations": {
-          "major": [
-            "W"
-          ],
-          "minor": [
-            "S"
-          ]
-        },
-        "doorLocations": [
-          "N"
-        ],
+        "contentLocations": { "major": ["W"], "minor": ["S"] },
+        "doorLocations": ["N"],
         "minimap": {
           "rows": 7,
           "columns": 6,
-          "directions": {
-            "N": [
-              1,
-              0
-            ],
-            "W": [
-              4,
-              0
-            ],
-            "S": [
-              6,
-              4
-            ]
-          }
+          "directions": { "N": [1, 0], "W": [4, 0], "S": [6, 4] }
         }
       }
     ]
@@ -467,72 +233,22 @@
     "variants": [
       {
         "areaCode": "dg_straight_bottleneck",
-        "contentLocations": {
-          "generic": [
-            "SW",
-            "NW"
-          ]
-        },
-        "doorLocations": [
-          "S",
-          "N"
-        ],
+        "contentLocations": { "generic": ["SW", "NW"] },
+        "doorLocations": ["S", "N"],
         "minimap": {
           "rows": 7,
           "columns": 8,
-          "directions": {
-            "N": [
-              0,
-              1
-            ],
-            "NW": [
-              2,
-              0
-            ],
-            "S": [
-              4,
-              4
-            ],
-            "SW": [
-              6,
-              3
-            ]
-          }
+          "directions": { "N": [0, 1], "NW": [2, 0], "S": [4, 4], "SW": [6, 3] }
         }
       },
       {
         "areaCode": "dg_straight",
-        "contentLocations": {
-          "generic": [
-            "E",
-            "W"
-          ]
-        },
-        "doorLocations": [
-          "S",
-          "N"
-        ],
+        "contentLocations": { "generic": ["E", "W"] },
+        "doorLocations": ["S", "N"],
         "minimap": {
           "rows": 6,
           "columns": 6,
-          "directions": {
-            "N": [
-              0,
-              0
-            ],
-            "E": [
-              1,
-              4
-            ],
-            "W": [
-              4,
-              1
-            ],
-            "S": [
-              4,
-              5
-            ]
-          }
+          "directions": { "N": [0, 0], "E": [1, 4], "W": [4, 1], "S": [4, 5] }
         }
       }
     ]
@@ -543,121 +259,49 @@
     "variants": [
       {
         "areaCode": "dg_branch_bottleneck_2",
-        "contentLocations": {
-          "generic": [
-            "E",
-            "NW"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "W",
-          "NE"
-        ],
+        "contentLocations": { "generic": ["E", "NW"] },
+        "doorLocations": ["SE", "W", "NE"],
         "minimap": {
           "rows": 10,
           "columns": 10,
           "directions": {
-            "NE": [
-              0,
-              3
-            ],
-            "E": [
-              2,
-              7
-            ],
-            "NW": [
-              6,
-              2
-            ],
-            "SE": [
-              6,
-              9
-            ],
-            "W": [
-              8,
-              0
-            ]
+            "NE": [0, 3],
+            "E": [2, 7],
+            "NW": [6, 2],
+            "SE": [6, 9],
+            "W": [8, 0]
           }
         }
       },
       {
         "areaCode": "dg_branch_bottleneck_1",
-        "contentLocations": {
-          "generic": [
-            "N",
-            "E"
-          ]
-        },
-        "doorLocations": [
-          "S",
-          "W",
-          "NE"
-        ],
+        "contentLocations": { "generic": ["N", "E"] },
+        "doorLocations": ["S", "W", "NE"],
         "minimap": {
           "rows": 9,
           "columns": 9,
           "directions": {
-            "E": [
-              0,
-              6
-            ],
-            "NE": [
-              1,
-              3
-            ],
-            "N": [
-              2,
-              1
-            ],
-            "W": [
-              7,
-              0
-            ],
-            "S": [
-              8,
-              7
-            ]
+            "E": [0, 6],
+            "NE": [1, 3],
+            "N": [2, 1],
+            "W": [7, 0],
+            "S": [8, 7]
           }
         }
       },
       {
         "areaCode": "dg_branch",
-        "contentLocations": {
-          "generic": [
-            "E",
-            "NW"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "W",
-          "NE"
-        ],
+        "contentLocations": { "generic": ["E", "NW"] },
+        "doorLocations": ["SE", "W", "NE"],
         "minimap": {
           "rows": 7,
           "columns": 7,
           "directions": {
-            "NE": [
-              0,
-              1
-            ],
-            "E": [
-              0,
-              4
-            ],
-            "NW": [
-              2,
-              0
-            ],
-            "SE": [
-              3,
-              6
-            ],
-            "W": [
-              6,
-              1
-            ]
+            "NE": [0, 1],
+            "E": [0, 4],
+            "NW": [2, 0],
+            "SE": [3, 6],
+            "W": [6, 1]
           }
         }
       }
@@ -669,37 +313,12 @@
     "variants": [
       {
         "areaCode": "dg_branch_door",
-        "contentLocations": {
-          "generic": [
-            "W"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "N",
-          "NE"
-        ],
+        "contentLocations": { "generic": ["W"] },
+        "doorLocations": ["SE", "N", "NE"],
         "minimap": {
           "rows": 9,
           "columns": 7,
-          "directions": {
-            "NE": [
-              0,
-              2
-            ],
-            "N": [
-              2,
-              0
-            ],
-            "SE": [
-              4,
-              6
-            ],
-            "W": [
-              6,
-              1
-            ]
-          }
+          "directions": { "NE": [0, 2], "N": [2, 0], "SE": [4, 6], "W": [6, 1] }
         }
       }
     ]
@@ -710,46 +329,18 @@
     "variants": [
       {
         "areaCode": "oh_quad",
-        "contentLocations": {
-          "generic": [
-            "N",
-            "S"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "SW",
-          "NW",
-          "NE"
-        ],
+        "contentLocations": { "generic": ["N", "S"] },
+        "doorLocations": ["SE", "SW", "NW", "NE"],
         "minimap": {
           "rows": 9,
           "columns": 7,
           "directions": {
-            "NE": [
-              0,
-              2
-            ],
-            "N": [
-              2,
-              0
-            ],
-            "SE": [
-              3,
-              5
-            ],
-            "NW": [
-              4,
-              1
-            ],
-            "SW": [
-              7,
-              2
-            ],
-            "S": [
-              7,
-              6
-            ]
+            "NE": [0, 2],
+            "N": [2, 0],
+            "SE": [3, 5],
+            "NW": [4, 1],
+            "SW": [7, 2],
+            "S": [7, 6]
           }
         }
       }
@@ -761,41 +352,17 @@
     "variants": [
       {
         "areaCode": "oh_quad_door",
-        "contentLocations": {
-          "generic": [
-            "SW"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "W",
-          "NW",
-          "N"
-        ],
+        "contentLocations": { "generic": ["SW"] },
+        "doorLocations": ["SE", "W", "NW", "N"],
         "minimap": {
           "rows": 8,
           "columns": 6,
           "directions": {
-            "N": [
-              0,
-              0
-            ],
-            "NW": [
-              2,
-              0
-            ],
-            "SE": [
-              2,
-              4
-            ],
-            "W": [
-              4,
-              1
-            ],
-            "SW": [
-              6,
-              5
-            ]
+            "N": [0, 0],
+            "NW": [2, 0],
+            "SE": [2, 4],
+            "W": [4, 1],
+            "SW": [6, 5]
           }
         }
       }
@@ -807,34 +374,12 @@
     "variants": [
       {
         "areaCode": "oh_end_bottleneck",
-        "contentLocations": {
-          "major": [
-            "NE"
-          ],
-          "minor": [
-            "NW"
-          ]
-        },
-        "doorLocations": [
-          "E"
-        ],
+        "contentLocations": { "major": ["NE"], "minor": ["NW"] },
+        "doorLocations": ["E"],
         "minimap": {
           "rows": 7,
           "columns": 6,
-          "directions": {
-            "E": [
-              0,
-              4
-            ],
-            "NE": [
-              1,
-              2
-            ],
-            "NW": [
-              5,
-              0
-            ]
-          }
+          "directions": { "E": [0, 4], "NE": [1, 2], "NW": [5, 0] }
         }
       }
     ]
@@ -845,72 +390,27 @@
     "variants": [
       {
         "areaCode": "oh_straight_bottleneck",
-        "contentLocations": {
-          "generic": [
-            "NE",
-            "SW"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "N"
-        ],
+        "contentLocations": { "generic": ["NE", "SW"] },
+        "doorLocations": ["SE", "N"],
         "minimap": {
           "rows": 8,
           "columns": 7,
           "directions": {
-            "NE": [
-              0,
-              1
-            ],
-            "SE": [
-              1,
-              6
-            ],
-            "N": [
-              2,
-              0
-            ],
-            "SW": [
-              7,
-              4
-            ]
+            "NE": [0, 1],
+            "SE": [1, 6],
+            "N": [2, 0],
+            "SW": [7, 4]
           }
         }
       },
       {
         "areaCode": "oh_straight",
-        "contentLocations": {
-          "generic": [
-            "E",
-            "W"
-          ]
-        },
-        "doorLocations": [
-          "S",
-          "N"
-        ],
+        "contentLocations": { "generic": ["E", "W"] },
+        "doorLocations": ["S", "N"],
         "minimap": {
           "rows": 8,
           "columns": 8,
-          "directions": {
-            "N": [
-              0,
-              2
-            ],
-            "E": [
-              1,
-              6
-            ],
-            "W": [
-              6,
-              2
-            ],
-            "S": [
-              6,
-              7
-            ]
-          }
+          "directions": { "N": [0, 2], "E": [1, 6], "W": [6, 2], "S": [6, 7] }
         }
       }
     ]
@@ -921,121 +421,49 @@
     "variants": [
       {
         "areaCode": "oh_branch_bottleneck_2",
-        "contentLocations": {
-          "generic": [
-            "NE",
-            "E"
-          ]
-        },
-        "doorLocations": [
-          "S",
-          "W",
-          "N"
-        ],
+        "contentLocations": { "generic": ["NE", "E"] },
+        "doorLocations": ["S", "W", "N"],
         "minimap": {
           "rows": 8,
           "columns": 7,
           "directions": {
-            "NE": [
-              0,
-              2
-            ],
-            "N": [
-              1,
-              0
-            ],
-            "E": [
-              1,
-              6
-            ],
-            "S": [
-              4,
-              6
-            ],
-            "W": [
-              7,
-              2
-            ]
+            "NE": [0, 2],
+            "N": [1, 0],
+            "E": [1, 6],
+            "S": [4, 6],
+            "W": [7, 2]
           }
         }
       },
       {
         "areaCode": "oh_branch_bottleneck_1",
-        "contentLocations": {
-          "generic": [
-            "N",
-            "W"
-          ]
-        },
-        "doorLocations": [
-          "S",
-          "NW",
-          "NE"
-        ],
+        "contentLocations": { "generic": ["N", "W"] },
+        "doorLocations": ["S", "NW", "NE"],
         "minimap": {
           "rows": 10,
           "columns": 8,
           "directions": {
-            "NE": [
-              1,
-              0
-            ],
-            "N": [
-              4,
-              1
-            ],
-            "NW": [
-              6,
-              1
-            ],
-            "W": [
-              7,
-              0
-            ],
-            "S": [
-              9,
-              7
-            ]
+            "NE": [1, 0],
+            "N": [4, 1],
+            "NW": [6, 1],
+            "W": [7, 0],
+            "S": [9, 7]
           }
         }
       },
       {
         "areaCode": "oh_branch",
-        "contentLocations": {
-          "generic": [
-            "E",
-            "W"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "NW",
-          "NE"
-        ],
+        "contentLocations": { "generic": ["E", "W"] },
+        "doorLocations": ["SE", "NW", "NE"],
         "minimap": {
           "rows": 6,
           "columns": 7,
           "directions": {
-            "NE": [
-              0,
-              2
-            ],
-            "E": [
-              0,
-              5
-            ],
-            "NW": [
-              3,
-              0
-            ],
-            "SE": [
-              3,
-              6
-            ],
-            "W": [
-              5,
-              0
-            ]
+            "NE": [0, 2],
+            "E": [0, 5],
+            "NW": [3, 0],
+            "SE": [3, 6],
+            "W": [5, 0]
           }
         }
       }
@@ -1047,36 +475,16 @@
     "variants": [
       {
         "areaCode": "oh_branch_door",
-        "contentLocations": {
-          "generic": [
-            "SW"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "NW",
-          "N"
-        ],
+        "contentLocations": { "generic": ["SW"] },
+        "doorLocations": ["SE", "NW", "N"],
         "minimap": {
           "rows": 8,
           "columns": 5,
           "directions": {
-            "N": [
-              1,
-              0
-            ],
-            "SE": [
-              2,
-              4
-            ],
-            "NW": [
-              3,
-              0
-            ],
-            "SW": [
-              7,
-              4
-            ]
+            "N": [1, 0],
+            "SE": [2, 4],
+            "NW": [3, 0],
+            "SW": [7, 4]
           }
         }
       }
@@ -1088,34 +496,12 @@
     "variants": [
       {
         "areaCode": "eh_end_bottleneck",
-        "contentLocations": {
-          "major": [
-            "NW"
-          ],
-          "minor": [
-            "SW"
-          ]
-        },
-        "doorLocations": [
-          "N"
-        ],
+        "contentLocations": { "major": ["NW"], "minor": ["SW"] },
+        "doorLocations": ["N"],
         "minimap": {
           "rows": 5,
           "columns": 5,
-          "directions": {
-            "N": [
-              0,
-              1
-            ],
-            "NW": [
-              2,
-              0
-            ],
-            "SW": [
-              4,
-              3
-            ]
-          }
+          "directions": { "N": [0, 1], "NW": [2, 0], "SW": [4, 3] }
         }
       }
     ]
@@ -1126,46 +512,40 @@
     "variants": [
       {
         "areaCode": "eh_quad",
-        "contentLocations": {
-          "generic": [
-            "E",
-            "NW"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "W",
-          "N",
-          "NE"
-        ],
+        "contentLocations": { "generic": ["E", "NW"] },
+        "doorLocations": ["SE", "W", "N", "NE"],
         "minimap": {
           "rows": 7,
           "columns": 7,
           "directions": {
-            "NE": [
-              0,
-              0
-            ],
-            "E": [
-              1,
-              5
-            ],
-            "N": [
-              2,
-              0
-            ],
-            "NW": [
-              4,
-              1
-            ],
-            "SE": [
-              4,
-              6
-            ],
-            "W": [
-              6,
-              2
-            ]
+            "NE": [0, 0],
+            "E": [1, 5],
+            "N": [2, 0],
+            "NW": [4, 1],
+            "SE": [4, 6],
+            "W": [6, 2]
+          }
+        }
+      }
+    ]
+  },
+  {
+    "roomName": "Mansion Atrium",
+    "goldenDoor": true,
+    "variants": [
+      {
+        "areaCode": "eh_quad_door",
+        "contentLocations": { "generic": ["SW"] },
+        "doorLocations": ["SE", "W", "NW", "N"],
+        "minimap": {
+          "rows": 5,
+          "columns": 7,
+          "directions": {
+            "N": [0, 0],
+            "NW": [2, 0],
+            "W": [2, 2],
+            "SE": [2, 6],
+            "SW": [4, 3]
           }
         }
       }
@@ -1177,121 +557,49 @@
     "variants": [
       {
         "areaCode": "eh_branch_bottleneck_2",
-        "contentLocations": {
-          "generic": [
-            "NE",
-            "S"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "W",
-          "N"
-        ],
+        "contentLocations": { "generic": ["NE", "S"] },
+        "doorLocations": ["SE", "W", "N"],
         "minimap": {
           "rows": 8,
           "columns": 7,
           "directions": {
-            "N": [
-              1,
-              0
-            ],
-            "NE": [
-              2,
-              3
-            ],
-            "SE": [
-              5,
-              6
-            ],
-            "W": [
-              6,
-              0
-            ],
-            "S": [
-              7,
-              4
-            ]
+            "N": [1, 0],
+            "NE": [2, 3],
+            "SE": [5, 6],
+            "W": [6, 0],
+            "S": [7, 4]
           }
         }
       },
       {
         "areaCode": "eh_branch",
-        "contentLocations": {
-          "generic": [
-            "E",
-            "SW"
-          ]
-        },
-        "doorLocations": [
-          "S",
-          "NW",
-          "N"
-        ],
+        "contentLocations": { "generic": ["E", "SW"] },
+        "doorLocations": ["S", "NW", "N"],
         "minimap": {
           "rows": 8,
           "columns": 7,
           "directions": {
-            "N": [
-              0,
-              0
-            ],
-            "E": [
-              2,
-              6
-            ],
-            "NW": [
-              4,
-              0
-            ],
-            "S": [
-              5,
-              6
-            ],
-            "SW": [
-              7,
-              4
-            ]
+            "N": [0, 0],
+            "E": [2, 6],
+            "NW": [4, 0],
+            "S": [5, 6],
+            "SW": [7, 4]
           }
         }
       },
       {
         "areaCode": "eh_block_branch",
-        "contentLocations": {
-          "generic": [
-            "NE",
-            "SW"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "NW",
-          "N"
-        ],
+        "contentLocations": { "generic": ["NE", "SW"] },
+        "doorLocations": ["SE", "NW", "N"],
         "minimap": {
           "rows": 8,
           "columns": 7,
           "directions": {
-            "NE": [
-              0,
-              2
-            ],
-            "N": [
-              1,
-              0
-            ],
-            "NW": [
-              4,
-              0
-            ],
-            "SE": [
-              5,
-              6
-            ],
-            "SW": [
-              7,
-              4
-            ]
+            "NE": [0, 2],
+            "N": [1, 0],
+            "NW": [4, 0],
+            "SE": [5, 6],
+            "SW": [7, 4]
           }
         }
       }
@@ -1303,36 +611,16 @@
     "variants": [
       {
         "areaCode": "eh_branch_door",
-        "contentLocations": {
-          "generic": [
-            "SW"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "NW",
-          "N"
-        ],
+        "contentLocations": { "generic": ["SW"] },
+        "doorLocations": ["SE", "NW", "N"],
         "minimap": {
           "rows": 5,
           "columns": 7,
           "directions": {
-            "N": [
-              0,
-              0
-            ],
-            "NW": [
-              2,
-              0
-            ],
-            "SE": [
-              2,
-              6
-            ],
-            "SW": [
-              4,
-              4
-            ]
+            "N": [0, 0],
+            "NW": [2, 0],
+            "SE": [2, 6],
+            "SW": [4, 4]
           }
         }
       }
@@ -1344,71 +632,26 @@
     "variants": [
       {
         "areaCode": "eh_straight_bottleneck",
-        "contentLocations": {
-          "generic": [
-            "NE",
-            "W"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "N"
-        ],
+        "contentLocations": { "generic": ["NE", "W"] },
+        "doorLocations": ["SE", "N"],
         "minimap": {
           "rows": 6,
           "columns": 7,
-          "directions": {
-            "NE": [
-              0,
-              1
-            ],
-            "N": [
-              1,
-              0
-            ],
-            "SE": [
-              3,
-              6
-            ],
-            "W": [
-              5,
-              2
-            ]
-          }
+          "directions": { "NE": [0, 1], "N": [1, 0], "SE": [3, 6], "W": [5, 2] }
         }
       },
       {
         "areaCode": "eh_straight",
-        "contentLocations": {
-          "generic": [
-            "NE",
-            "SW"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "N"
-        ],
+        "contentLocations": { "generic": ["NE", "SW"] },
+        "doorLocations": ["SE", "N"],
         "minimap": {
           "rows": 7,
           "columns": 7,
           "directions": {
-            "N": [
-              0,
-              0
-            ],
-            "NE": [
-              0,
-              3
-            ],
-            "SE": [
-              4,
-              6
-            ],
-            "SW": [
-              6,
-              1
-            ]
+            "N": [0, 0],
+            "NE": [0, 3],
+            "SE": [4, 6],
+            "SW": [6, 1]
           }
         }
       }
@@ -1420,34 +663,12 @@
     "variants": [
       {
         "areaCode": "p_end_bottleneck",
-        "contentLocations": {
-          "major": [
-            "NW"
-          ],
-          "minor": [
-            "SW"
-          ]
-        },
-        "doorLocations": [
-          "NE"
-        ],
+        "contentLocations": { "major": ["NW"], "minor": ["SW"] },
+        "doorLocations": ["NE"],
         "minimap": {
           "rows": 8,
           "columns": 6,
-          "directions": {
-            "NE": [
-              0,
-              0
-            ],
-            "NW": [
-              4,
-              1
-            ],
-            "SW": [
-              7,
-              3
-            ]
-          }
+          "directions": { "NE": [0, 0], "NW": [4, 1], "SW": [7, 3] }
         }
       }
     ]
@@ -1458,46 +679,18 @@
     "variants": [
       {
         "areaCode": "p_quad",
-        "contentLocations": {
-          "generic": [
-            "E",
-            "S"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "W",
-          "NW",
-          "N"
-        ],
+        "contentLocations": { "generic": ["E", "S"] },
+        "doorLocations": ["SE", "W", "NW", "N"],
         "minimap": {
           "rows": 8,
           "columns": 8,
           "directions": {
-            "N": [
-              0,
-              0
-            ],
-            "E": [
-              2,
-              6
-            ],
-            "NW": [
-              3,
-              0
-            ],
-            "SE": [
-              4,
-              7
-            ],
-            "S": [
-              6,
-              5
-            ],
-            "W": [
-              7,
-              1
-            ]
+            "N": [0, 0],
+            "E": [2, 6],
+            "NW": [3, 0],
+            "SE": [4, 7],
+            "S": [6, 5],
+            "W": [7, 1]
           }
         }
       }
@@ -1509,121 +702,49 @@
     "variants": [
       {
         "areaCode": "p_branch_bottleneck_2",
-        "contentLocations": {
-          "generic": [
-            "E",
-            "S"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "W",
-          "N"
-        ],
+        "contentLocations": { "generic": ["E", "S"] },
+        "doorLocations": ["SE", "W", "N"],
         "minimap": {
           "rows": 8,
           "columns": 8,
           "directions": {
-            "N": [
-              1,
-              0
-            ],
-            "E": [
-              1,
-              5
-            ],
-            "SE": [
-              5,
-              7
-            ],
-            "W": [
-              6,
-              0
-            ],
-            "S": [
-              7,
-              5
-            ]
+            "N": [1, 0],
+            "E": [1, 5],
+            "SE": [5, 7],
+            "W": [6, 0],
+            "S": [7, 5]
           }
         }
       },
       {
         "areaCode": "p_branch_bottleneck_1",
-        "contentLocations": {
-          "generic": [
-            "NE",
-            "SW"
-          ]
-        },
-        "doorLocations": [
-          "S",
-          "NW",
-          "N"
-        ],
+        "contentLocations": { "generic": ["NE", "SW"] },
+        "doorLocations": ["S", "NW", "N"],
         "minimap": {
           "rows": 7,
           "columns": 8,
           "directions": {
-            "N": [
-              0,
-              0
-            ],
-            "NE": [
-              0,
-              3
-            ],
-            "NW": [
-              3,
-              0
-            ],
-            "S": [
-              4,
-              7
-            ],
-            "SW": [
-              6,
-              5
-            ]
+            "N": [0, 0],
+            "NE": [0, 3],
+            "NW": [3, 0],
+            "S": [4, 7],
+            "SW": [6, 5]
           }
         }
       },
       {
         "areaCode": "p_branch",
-        "contentLocations": {
-          "generic": [
-            "E",
-            "S"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "NW",
-          "N"
-        ],
+        "contentLocations": { "generic": ["E", "S"] },
+        "doorLocations": ["SE", "NW", "N"],
         "minimap": {
           "rows": 7,
           "columns": 8,
           "directions": {
-            "N": [
-              0,
-              0
-            ],
-            "E": [
-              2,
-              6
-            ],
-            "NW": [
-              3,
-              1
-            ],
-            "SE": [
-              4,
-              7
-            ],
-            "S": [
-              6,
-              4
-            ]
+            "N": [0, 0],
+            "E": [2, 6],
+            "NW": [3, 1],
+            "SE": [4, 7],
+            "S": [6, 4]
           }
         }
       }
@@ -1635,36 +756,16 @@
     "variants": [
       {
         "areaCode": "p_branch_door",
-        "contentLocations": {
-          "generic": [
-            "SW"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "NW",
-          "N"
-        ],
+        "contentLocations": { "generic": ["SW"] },
+        "doorLocations": ["SE", "NW", "N"],
         "minimap": {
           "rows": 8,
           "columns": 8,
           "directions": {
-            "N": [
-              0,
-              1
-            ],
-            "NW": [
-              2,
-              0
-            ],
-            "SE": [
-              4,
-              7
-            ],
-            "SW": [
-              6,
-              3
-            ]
+            "N": [0, 1],
+            "NW": [2, 0],
+            "SE": [4, 7],
+            "SW": [6, 3]
           }
         }
       }
@@ -1676,72 +777,22 @@
     "variants": [
       {
         "areaCode": "p_straight_bottleneck",
-        "contentLocations": {
-          "generic": [
-            "SW",
-            "NW"
-          ]
-        },
-        "doorLocations": [
-          "S",
-          "N"
-        ],
+        "contentLocations": { "generic": ["SW", "NW"] },
+        "doorLocations": ["S", "N"],
         "minimap": {
           "rows": 9,
           "columns": 9,
-          "directions": {
-            "N": [
-              1,
-              0
-            ],
-            "NW": [
-              4,
-              1
-            ],
-            "S": [
-              5,
-              8
-            ],
-            "SW": [
-              8,
-              6
-            ]
-          }
+          "directions": { "N": [1, 0], "NW": [4, 1], "S": [5, 8], "SW": [8, 6] }
         }
       },
       {
         "areaCode": "p_straight",
-        "contentLocations": {
-          "generic": [
-            "E",
-            "NW"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "N"
-        ],
+        "contentLocations": { "generic": ["E", "NW"] },
+        "doorLocations": ["SE", "N"],
         "minimap": {
           "rows": 7,
           "columns": 7,
-          "directions": {
-            "N": [
-              1,
-              0
-            ],
-            "E": [
-              3,
-              5
-            ],
-            "NW": [
-              4,
-              0
-            ],
-            "SE": [
-              5,
-              6
-            ]
-          }
+          "directions": { "N": [1, 0], "E": [3, 5], "NW": [4, 0], "SE": [5, 6] }
         }
       }
     ]
@@ -1752,34 +803,12 @@
     "variants": [
       {
         "areaCode": "c_end_bottleneck",
-        "contentLocations": {
-          "major": [
-            "NW"
-          ],
-          "minor": [
-            "SW"
-          ]
-        },
-        "doorLocations": [
-          "NE"
-        ],
+        "contentLocations": { "major": ["NW"], "minor": ["SW"] },
+        "doorLocations": ["NE"],
         "minimap": {
           "rows": 8,
           "columns": 7,
-          "directions": {
-            "NE": [
-              0,
-              1
-            ],
-            "NW": [
-              4,
-              2
-            ],
-            "SW": [
-              7,
-              4
-            ]
-          }
+          "directions": { "NE": [0, 1], "NW": [4, 2], "SW": [7, 4] }
         }
       }
     ]
@@ -1790,46 +819,18 @@
     "variants": [
       {
         "areaCode": "c_quad",
-        "contentLocations": {
-          "generic": [
-            "E",
-            "SW"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "W",
-          "NW",
-          "N"
-        ],
+        "contentLocations": { "generic": ["E", "SW"] },
+        "doorLocations": ["SE", "W", "NW", "N"],
         "minimap": {
           "rows": 8,
           "columns": 8,
           "directions": {
-            "N": [
-              0,
-              0
-            ],
-            "E": [
-              2,
-              5
-            ],
-            "NW": [
-              4,
-              0
-            ],
-            "SE": [
-              4,
-              7
-            ],
-            "W": [
-              5,
-              1
-            ],
-            "SW": [
-              7,
-              5
-            ]
+            "N": [0, 0],
+            "E": [2, 5],
+            "NW": [4, 0],
+            "SE": [4, 7],
+            "W": [5, 1],
+            "SW": [7, 5]
           }
         }
       }
@@ -1841,41 +842,17 @@
     "variants": [
       {
         "areaCode": "c_quad_door",
-        "contentLocations": {
-          "generic": [
-            "SW"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "W",
-          "NW",
-          "NE"
-        ],
+        "contentLocations": { "generic": ["SW"] },
+        "doorLocations": ["SE", "W", "NW", "NE"],
         "minimap": {
           "rows": 7,
           "columns": 8,
           "directions": {
-            "NE": [
-              0,
-              2
-            ],
-            "NW": [
-              2,
-              0
-            ],
-            "SE": [
-              3,
-              7
-            ],
-            "W": [
-              5,
-              1
-            ],
-            "SW": [
-              6,
-              5
-            ]
+            "NE": [0, 2],
+            "NW": [2, 0],
+            "SE": [3, 7],
+            "W": [5, 1],
+            "SW": [6, 5]
           }
         }
       }
@@ -1887,121 +864,49 @@
     "variants": [
       {
         "areaCode": "c_branch_bottleneck_2",
-        "contentLocations": {
-          "generic": [
-            "NE",
-            "S"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "W",
-          "N"
-        ],
+        "contentLocations": { "generic": ["NE", "S"] },
+        "doorLocations": ["SE", "W", "N"],
         "minimap": {
           "rows": 8,
           "columns": 9,
           "directions": {
-            "N": [
-              0,
-              0
-            ],
-            "NE": [
-              1,
-              6
-            ],
-            "SE": [
-              4,
-              8
-            ],
-            "W": [
-              6,
-              0
-            ],
-            "S": [
-              7,
-              6
-            ]
+            "N": [0, 0],
+            "NE": [1, 6],
+            "SE": [4, 8],
+            "W": [6, 0],
+            "S": [7, 6]
           }
         }
       },
       {
         "areaCode": "c_branch_bottleneck_1",
-        "contentLocations": {
-          "generic": [
-            "NE",
-            "SW"
-          ]
-        },
-        "doorLocations": [
-          "S",
-          "NW",
-          "N"
-        ],
+        "contentLocations": { "generic": ["NE", "SW"] },
+        "doorLocations": ["S", "NW", "N"],
         "minimap": {
           "rows": 10,
           "columns": 9,
           "directions": {
-            "N": [
-              0,
-              0
-            ],
-            "NE": [
-              1,
-              5
-            ],
-            "NW": [
-              4,
-              0
-            ],
-            "S": [
-              6,
-              8
-            ],
-            "SW": [
-              9,
-              5
-            ]
+            "N": [0, 0],
+            "NE": [1, 5],
+            "NW": [4, 0],
+            "S": [6, 8],
+            "SW": [9, 5]
           }
         }
       },
       {
         "areaCode": "c_branch",
-        "contentLocations": {
-          "generic": [
-            "E",
-            "SW"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "NW",
-          "N"
-        ],
+        "contentLocations": { "generic": ["E", "SW"] },
+        "doorLocations": ["SE", "NW", "N"],
         "minimap": {
           "rows": 8,
           "columns": 9,
           "directions": {
-            "N": [
-              0,
-              0
-            ],
-            "E": [
-              2,
-              6
-            ],
-            "NW": [
-              4,
-              0
-            ],
-            "SE": [
-              4,
-              8
-            ],
-            "SW": [
-              7,
-              5
-            ]
+            "N": [0, 0],
+            "E": [2, 6],
+            "NW": [4, 0],
+            "SE": [4, 8],
+            "SW": [7, 5]
           }
         }
       }
@@ -2013,36 +918,16 @@
     "variants": [
       {
         "areaCode": "c_branch_door",
-        "contentLocations": {
-          "generic": [
-            "SW"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "NW",
-          "NE"
-        ],
+        "contentLocations": { "generic": ["SW"] },
+        "doorLocations": ["SE", "NW", "NE"],
         "minimap": {
           "rows": 7,
           "columns": 8,
           "directions": {
-            "NE": [
-              0,
-              2
-            ],
-            "NW": [
-              2,
-              0
-            ],
-            "SE": [
-              3,
-              7
-            ],
-            "SW": [
-              6,
-              3
-            ]
+            "NE": [0, 2],
+            "NW": [2, 0],
+            "SE": [3, 7],
+            "SW": [6, 3]
           }
         }
       }
@@ -2054,72 +939,22 @@
     "variants": [
       {
         "areaCode": "c_straight_bottleneck",
-        "contentLocations": {
-          "generic": [
-            "SW",
-            "NW"
-          ]
-        },
-        "doorLocations": [
-          "S",
-          "N"
-        ],
+        "contentLocations": { "generic": ["SW", "NW"] },
+        "doorLocations": ["S", "N"],
         "minimap": {
           "rows": 9,
           "columns": 9,
-          "directions": {
-            "N": [
-              0,
-              0
-            ],
-            "NW": [
-              4,
-              1
-            ],
-            "S": [
-              5,
-              8
-            ],
-            "SW": [
-              8,
-              5
-            ]
-          }
+          "directions": { "N": [0, 0], "NW": [4, 1], "S": [5, 8], "SW": [8, 5] }
         }
       },
       {
         "areaCode": "c_straight",
-        "contentLocations": {
-          "generic": [
-            "E",
-            "NW"
-          ]
-        },
-        "doorLocations": [
-          "SE",
-          "N"
-        ],
+        "contentLocations": { "generic": ["E", "NW"] },
+        "doorLocations": ["SE", "N"],
         "minimap": {
           "rows": 7,
           "columns": 9,
-          "directions": {
-            "N": [
-              0,
-              0
-            ],
-            "E": [
-              2,
-              6
-            ],
-            "NW": [
-              4,
-              1
-            ],
-            "SE": [
-              4,
-              8
-            ]
-          }
+          "directions": { "N": [0, 0], "E": [2, 6], "NW": [4, 1], "SE": [4, 8] }
         }
       }
     ]
