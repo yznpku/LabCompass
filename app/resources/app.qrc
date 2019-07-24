@@ -158,5 +158,7 @@
         <file>images/compass/tile-cross.svg</file>
         <file>images/compass/tile-full.svg</file>
         <file>ui/CircleProgressBar.qml</file>
+        <file>images/room-preset/eh_quad_door.svg</file>
+        <file>images/room-preset/rt_quad.svg</file>
     </qresource>
 </RCC>
