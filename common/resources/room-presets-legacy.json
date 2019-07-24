@@ -229,6 +229,14 @@
   },
   {
     "roomName": "Mansion Atrium",
+    "keyword": "eh_quad_door",
+    "contentLocations": {
+      "generic": ["SW"]
+    },
+    "doorLocations": ["SE", "W", "NW", "N"]
+  },
+  {
+    "roomName": "Mansion Atrium",
     "keyword": "eh_quad",
     "contentLocations": {
       "generic": ["E", "W"]
@@ -372,6 +380,14 @@
       "generic": ["E", "SW"]
     },
     "doorLocations": ["SE", "W", "NW", "N"]
+  },
+  {
+    "roomName": "Sepulchre Halls",
+    "keyword": "c_branch_door",
+    "contentLocations": {
+      "generic": ["SW"]
+    },
+    "doorLocations": ["SE", "NW", "NE"]
   },
   {
     "roomName": "Sepulchre Halls",
