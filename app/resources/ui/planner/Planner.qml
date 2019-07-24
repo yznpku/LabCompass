@@ -121,6 +121,7 @@ WindowWithShadow {
         objectName: 'labyrinthMapDisplay'
         width: 830
         height: 260
+        z: 1
         roomModel: Global.model.roomModel
         connectionModel: Global.model.connectionModel
         goldenDoorModel: Global.model.goldenDoorModel
