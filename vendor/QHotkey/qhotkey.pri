@@ -1,16 +1,17 @@
 CONFIG += C++11
-linux: QT += x11extras
 
-PUBLIC_HEADERS += $$PWD/qhotkey.h \
-        $$PWD/QHotkey
+PUBLIC_HEADERS += $$PWD/QHotkey/qhotkey.h \
+	$$PWD/QHotkey/QHotkey
 
 HEADERS += $$PUBLIC_HEADERS \
-        $$PWD/qhotkey_p.h
+	$$PWD/QHotkey/qhotkey_p.h
 
-SOURCES += $$PWD/qhotkey.cpp
+SOURCES += $$PWD/QHotkey/qhotkey.cpp
 
-mac: SOURCES += $$PWD/qhotkey_mac.cpp
-else:win32: SOURCES += $$PWD/qhotkey_win.cpp
-else:unix: SOURCES += $$PWD/qhotkey_x11.cpp
+mac: SOURCES += $$PWD/QHotkey/qhotkey_mac.cpp
+else:win32: SOURCES += $$PWD/QHotkey/qhotkey_win.cpp
+else:unix: SOURCES += $$PWD/QHotkey/qhotkey_x11.cpp
 
 INCLUDEPATH += $$PWD/QHotkey
+
+include($$PWD/qhotkey.prc)

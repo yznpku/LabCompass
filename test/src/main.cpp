@@ -1,18 +1,22 @@
-#include <QtTest>
-#include <memory>
-#include "tests/testdataavailabletest.h"
+#include "helper/roompresethelper.h"
 #include "tests/labyrinthdata/labyrinthdataloadtest.h"
 #include "tests/labyrinthdata/labyrinthdataroomistrialtest.h"
 #include "tests/labyrinthmodel/labyrinthmodelpropertiestest.h"
-
+#include "tests/testdataavailabletest.h"
+#include <QtTest>
+#include <memory>
 
 int main()
 {
-  if (int r = QTest::qExec(std::make_unique<TestDataAvailableTest>().get()))
-    return r;
+    Q_INIT_RESOURCE(common);
+    RoomPresetHelper::instance = new RoomPresetHelper();
 
-  QTest::qExec(std::make_unique<LabyrinthDataLoadTest>().get());
-  QTest::qExec(std::make_unique<LabyrinthDataRoomIsTrialTest>().get());
-  QTest::qExec(std::make_unique<LabyrinthModelPropertiesTest>().get());
-  return 0;
+    if (int r = QTest::qExec(std::make_unique<TestDataAvailableTest>().get())) {
+        return r;
+    }
+
+    QTest::qExec(std::make_unique<LabyrinthDataLoadTest>().get());
+    QTest::qExec(std::make_unique<LabyrinthDataRoomIsTrialTest>().get());
+    QTest::qExec(std::make_unique<LabyrinthModelPropertiesTest>().get());
+    return 0;
 }

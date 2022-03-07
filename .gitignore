@@ -1,10 +1,10 @@
 
 *.autosave
 
-LabCompass\.pro\.user*
-
 *.qm
 
 \.DS_Store
 
 *.tmp
+
+*.user
