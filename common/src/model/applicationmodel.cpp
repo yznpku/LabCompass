@@ -1,3 +1,5 @@
+#include "stdafx.h"
+
 #include "applicationmodel.h"
 
 ApplicationModel::ApplicationModel(QObject* parent)

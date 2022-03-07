@@ -13,7 +13,6 @@
 #include "model/roommodel.h"
 #include "model/roompresetmodel.h"
 #include "settings.h"
-#include "stdafx.h"
 
 class ApplicationModel : public QObject {
     Q_OBJECT

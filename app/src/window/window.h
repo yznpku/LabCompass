@@ -1,8 +1,6 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
-#include "stdafx.h"
-
 class Window : public QQuickWidget {
     Q_OBJECT
     Window* parentWindow { nullptr };

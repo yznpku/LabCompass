@@ -1,3 +1,5 @@
+#include "stdafx.h"
+
 #include "window.h"
 
 #ifdef Q_OS_WIN

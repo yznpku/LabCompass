@@ -1,3 +1,5 @@
+#include "stdafx.h"
+
 #include "connectionmodel.h"
 
 ConnectionModel::ConnectionModel()

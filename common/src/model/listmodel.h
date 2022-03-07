@@ -1,8 +1,6 @@
 #ifndef LISTMODEL_H
 #define LISTMODEL_H
 
-#include "stdafx.h"
-
 class ListModel : public QAbstractListModel {
     Q_OBJECT
 

@@ -2,7 +2,6 @@
 #define WIDGET_H
 
 #include "settings.h"
-#include "stdafx.h"
 
 namespace Ui {
 class Widget;

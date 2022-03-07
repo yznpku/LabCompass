@@ -2,7 +2,6 @@
 #define ROOMPRESETHELPER_H
 
 #include "global.h"
-#include "stdafx.h"
 
 class RoomPresetHelper {
     QHash<QString, Preset> cacheByAreaCode; // areaCode => preset

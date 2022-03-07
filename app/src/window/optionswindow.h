@@ -2,7 +2,6 @@
 #define OPTIONSWINDOW_H
 
 #include "settings.h"
-#include "stdafx.h"
 #include "window/window.h"
 
 class OptionsWindow : public Window {

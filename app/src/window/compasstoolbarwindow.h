@@ -1,7 +1,6 @@
 #ifndef COMPASSTOOLBARWINDOW_H
 #define COMPASSTOOLBARWINDOW_H
 
-#include "stdafx.h"
 #include "window/window.h"
 
 class CompassToolbarWindow : public Window {

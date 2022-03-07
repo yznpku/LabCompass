@@ -2,7 +2,6 @@
 #define LOGWATCHER_H
 
 #include "model/applicationmodel.h"
-#include "stdafx.h"
 
 class LogWatcher : public QObject {
     Q_OBJECT

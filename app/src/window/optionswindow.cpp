@@ -1,3 +1,5 @@
+#include "stdafx.h"
+
 #include "optionswindow.h"
 
 static const QStringList UI_SCALE_FACTORS {

@@ -3,7 +3,6 @@
 
 #include "model/labyrinthdata.h"
 #include "model/plandata.h"
-#include "stdafx.h"
 
 struct NavigationData {
     struct ContentState {

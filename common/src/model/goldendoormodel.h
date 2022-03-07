@@ -2,7 +2,6 @@
 #define GOLDENDOORMODEL_H
 
 #include "model/labyrinthdata.h"
-#include "stdafx.h"
 
 class GoldenDoorModel : public QAbstractListModel {
     Q_OBJECT

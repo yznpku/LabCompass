@@ -2,7 +2,6 @@
 #define PLANDATA_H
 
 #include "global.h"
-#include "stdafx.h"
 
 struct PlanData {
     QList<RoomId> targetRooms;

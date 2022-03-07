@@ -1,7 +1,7 @@
 #ifndef SETTINGS_H
 #define SETTINGS_H
 
-#include "stdafx.h"
+#include "qtsupermacros.h"
 
 class Settings : public QObject {
     Q_OBJECT

@@ -1,3 +1,5 @@
+#include "stdafx.h"
+
 #include "instructionlistwindow.h"
 
 InstructionListWindow::InstructionListWindow(QQmlEngine* engine)

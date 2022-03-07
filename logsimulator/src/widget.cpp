@@ -1,5 +1,7 @@
-#include "widget.h"
+#include "stdafx.h"
+
 #include "ui_widget.h"
+#include "widget.h"
 
 Widget::Widget(Settings* settings, QWidget* parent)
     : QWidget(parent)

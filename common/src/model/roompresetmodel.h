@@ -2,7 +2,6 @@
 #define ROOMPRESETMODEL_H
 
 #include "model/navigationdata.h"
-#include "stdafx.h"
 
 class RoomPresetModel : public QObject {
     Q_OBJECT

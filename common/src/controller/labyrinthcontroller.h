@@ -2,7 +2,6 @@
 #define LABYRINTHCONTROLLER_H
 
 #include "model/applicationmodel.h"
-#include "stdafx.h"
 
 class LabyrinthController : public QObject {
     Q_OBJECT

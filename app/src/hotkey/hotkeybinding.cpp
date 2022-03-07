@@ -1,3 +1,5 @@
+#include "stdafx.h"
+
 #include "hotkeybinding.h"
 
 HotkeyBinding::HotkeyBinding(QObject* global, QObject* settings, QByteArray propertyName, QByteArray propertyChangeSignal)

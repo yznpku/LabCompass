@@ -2,7 +2,6 @@
 #define DATECHECKER_H
 
 #include "model/applicationmodel.h"
-#include "stdafx.h"
 
 class DateChecker : public QObject {
     Q_OBJECT

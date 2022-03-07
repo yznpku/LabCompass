@@ -1,3 +1,5 @@
+#include "stdafx.h"
+
 #include "headerwindow.h"
 
 HeaderWindow::HeaderWindow(QQmlEngine* engine)

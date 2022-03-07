@@ -1,7 +1,6 @@
 #ifndef PLANNERWINDOW_H
 #define PLANNERWINDOW_H
 
-#include "stdafx.h"
 #include "window/window.h"
 
 class PlannerWindow : public Window {

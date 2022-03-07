@@ -1,3 +1,5 @@
+#include "stdafx.h"
+
 #include "roommodel.h"
 
 RoomModel::RoomModel()

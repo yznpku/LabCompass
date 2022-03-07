@@ -1,5 +1,7 @@
-#include "roompresetmodel.h"
+#include "stdafx.h"
+
 #include "helper/roompresethelper.h"
+#include "roompresetmodel.h"
 
 RoomPresetModel::RoomPresetModel(QObject* parent)
     : QObject(parent)

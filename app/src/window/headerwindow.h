@@ -1,7 +1,6 @@
 #ifndef HEADERWINDOW_H
 #define HEADERWINDOW_H
 
-#include "stdafx.h"
 #include "window/window.h"
 
 class HeaderWindow : public Window {

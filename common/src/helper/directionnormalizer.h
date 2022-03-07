@@ -3,7 +3,6 @@
 
 #include "Hungarian.h"
 #include "global.h"
-#include "stdafx.h"
 
 class DirectionNormalizer {
     struct ConnectionDetails {

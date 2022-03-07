@@ -1,8 +1,6 @@
 #ifndef TRAYICONMENU_H
 #define TRAYICONMENU_H
 
-#include "stdafx.h"
-
 class TrayIconMenu : public QMenu {
     std::unique_ptr<QAction> resetAction;
     std::unique_ptr<QAction> quitAction;

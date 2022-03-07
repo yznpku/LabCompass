@@ -1,6 +1,8 @@
-#include "labyrinthdata.h"
+#include "stdafx.h"
+
 #include "helper/directionnormalizer.h"
 #include "helper/roompresethelper.h"
+#include "labyrinthdata.h"
 #include <QtJsonSchema>
 
 static const QHash<QString, qreal> ROOM_PREFIX_COST {

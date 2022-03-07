@@ -1,3 +1,5 @@
+#include "stdafx.h"
+
 #include "trayiconmenu.h"
 
 TrayIconMenu::TrayIconMenu()

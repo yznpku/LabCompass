@@ -1,8 +1,6 @@
 #ifndef KEYSEQUENCEHELPER_H
 #define KEYSEQUENCEHELPER_H
 
-#include "stdafx.h"
-
 class KeySequenceHelperPrivate;
 
 class KeySequenceHelper : public QObject {

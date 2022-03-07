@@ -2,7 +2,6 @@
 #define APPLICATION_H
 
 #include "settings.h"
-#include "stdafx.h"
 #include "widget.h"
 
 class Application : public QApplication {

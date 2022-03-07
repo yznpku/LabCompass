@@ -1,5 +1,7 @@
-#include "instructionmodel.h"
+#include "stdafx.h"
+
 #include "helper/roompresethelper.h"
+#include "instructionmodel.h"
 
 static const QStringList LOOT_LIST {
     "Switch puzzle",

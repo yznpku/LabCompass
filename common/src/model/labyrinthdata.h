@@ -2,7 +2,6 @@
 #define LABYRINTHDATA_H
 
 #include "global.h"
-#include "stdafx.h"
 
 struct LabyrinthData {
     struct Room {

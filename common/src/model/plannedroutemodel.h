@@ -2,7 +2,6 @@
 #define PLANNEDROUTEMODEL_H
 
 #include "model/navigationdata.h"
-#include "stdafx.h"
 
 class PlannedRouteModel : public QAbstractListModel {
     Q_OBJECT

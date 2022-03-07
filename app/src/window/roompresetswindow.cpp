@@ -1,3 +1,5 @@
+#include "stdafx.h"
+
 #include "roompresetswindow.h"
 
 RoomPresetsWindow::RoomPresetsWindow(QQmlEngine* engine)

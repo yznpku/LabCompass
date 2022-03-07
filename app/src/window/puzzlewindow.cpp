@@ -1,3 +1,5 @@
+#include "stdafx.h"
+
 #include "puzzlewindow.h"
 
 PuzzleWindow::PuzzleWindow(QQmlEngine* engine)

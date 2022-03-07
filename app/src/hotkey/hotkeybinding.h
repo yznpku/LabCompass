@@ -1,7 +1,6 @@
 #ifndef HOTKEYBINDING_H
 #define HOTKEYBINDING_H
 
-#include "stdafx.h"
 #include <QHotkey>
 
 class HotkeyBinding : public QHotkey {

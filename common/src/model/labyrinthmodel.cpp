@@ -1,5 +1,7 @@
-#include "labyrinthmodel.h"
+#include "stdafx.h"
+
 #include "labyrinthdata.h"
+#include "labyrinthmodel.h"
 
 LabyrinthModel::LabyrinthModel(QObject* parent)
     : QObject(parent)

@@ -2,7 +2,6 @@
 #define PLANSUMMARYMODEL_H
 
 #include "model/navigationdata.h"
-#include "stdafx.h"
 
 class PlanSummaryModel : public QObject {
     Q_OBJECT

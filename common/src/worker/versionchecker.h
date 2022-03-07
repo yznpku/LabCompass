@@ -2,7 +2,6 @@
 #define VERSIONCHECKER_H
 
 #include "model/applicationmodel.h"
-#include "stdafx.h"
 
 class VersionChecker : public QObject {
     Q_OBJECT

@@ -3,7 +3,6 @@
 
 #include "global.h"
 #include "model/navigationdata.h"
-#include "stdafx.h"
 
 class InstructionModel : public QObject {
     Q_OBJECT

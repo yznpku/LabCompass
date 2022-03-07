@@ -1,3 +1,5 @@
+#include "stdafx.h"
+
 #include "keysequencehelper.h"
 
 uint qHash(const QKeySequence& seq)

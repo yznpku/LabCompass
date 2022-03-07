@@ -1,3 +1,5 @@
+#include "stdafx.h"
+
 #include "toolbarwindow.h"
 
 ToolbarWindow::ToolbarWindow(QQmlEngine* engine)

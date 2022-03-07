@@ -1,3 +1,5 @@
+#include "stdafx.h"
+
 #include "plannerwindow.h"
 #include "settings.h"
 

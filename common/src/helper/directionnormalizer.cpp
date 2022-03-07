@@ -1,3 +1,5 @@
+#include "stdafx.h"
+
 #include "directionnormalizer.h"
 
 static const QList<DirectionCode> REGULAR_DIRECTION_LIST { "N", "NE", "E", "SE", "S", "SW", "W", "NW" };

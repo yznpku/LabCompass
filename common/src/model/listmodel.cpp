@@ -1,3 +1,5 @@
+#include "stdafx.h"
+
 #include "listmodel.h"
 
 int ListModel::size() const

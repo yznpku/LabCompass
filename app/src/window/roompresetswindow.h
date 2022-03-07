@@ -1,7 +1,6 @@
 #ifndef ROOMPRESETSWINDOW_H
 #define ROOMPRESETSWINDOW_H
 
-#include "stdafx.h"
 #include "window/window.h"
 
 class RoomPresetsWindow : public Window {

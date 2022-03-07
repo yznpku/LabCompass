@@ -5,7 +5,6 @@
 #include "controller/navigationcontroller.h"
 #include "hotkey/hotkeybinding.h"
 #include "model/applicationmodel.h"
-#include "stdafx.h"
 #include "window/compasstoolbarwindow.h"
 #include "window/compasswindow.h"
 #include "window/headerwindow.h"

@@ -1,5 +1,7 @@
-#include "versionchecker.h"
+#include "stdafx.h"
+
 #include "global.h"
+#include "versionchecker.h"
 
 VersionChecker::VersionChecker(ApplicationModel* model, QObject* parent)
     : QObject(parent)

@@ -2,7 +2,6 @@
 #define NAVIGATIONCONTROLLER_H
 
 #include "model/applicationmodel.h"
-#include "stdafx.h"
 
 class NavigationController : public QObject {
     Q_OBJECT

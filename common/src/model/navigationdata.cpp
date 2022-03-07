@@ -1,3 +1,5 @@
+#include "stdafx.h"
+
 #include "navigationdata.h"
 
 void NavigationData::loadFromData(const LabyrinthData* lab, const PlanData& plan)

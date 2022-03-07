@@ -3,7 +3,6 @@
 
 #include "model/labyrinthdata.h"
 #include "model/navigationdata.h"
-#include "stdafx.h"
 
 struct RoomModelData {
     QString id;

@@ -1,3 +1,5 @@
+#include "stdafx.h"
+
 #include "compasstoolbarwindow.h"
 
 CompassToolbarWindow::CompassToolbarWindow(QQmlEngine* engine)

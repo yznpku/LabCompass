@@ -1,3 +1,5 @@
+#include "stdafx.h"
+
 #include "logwatcher.h"
 
 #ifdef Q_OS_WIN

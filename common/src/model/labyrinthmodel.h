@@ -2,7 +2,6 @@
 #define LABYRINTHMODEL_H
 
 #include "model/labyrinthdata.h"
-#include "stdafx.h"
 
 class LabyrinthModel : public QObject {
     Q_OBJECT

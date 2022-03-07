@@ -4,7 +4,6 @@
 #include "model/labyrinthdata.h"
 #include "model/listmodel.h"
 #include "model/navigationdata.h"
-#include "stdafx.h"
 
 struct ConnectionModelData {
     QString fromRoom;
