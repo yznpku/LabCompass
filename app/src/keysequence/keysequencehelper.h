@@ -1,53 +1,33 @@
 #ifndef KEYSEQUENCEHELPER_H
 #define KEYSEQUENCEHELPER_H
 
-#include "stdafx.h"
-
 class KeySequenceHelperPrivate;
 
-class KeySequenceHelper : public QObject
-{
+class KeySequenceHelper : public QObject {
     Q_OBJECT
 
-    Q_PROPERTY(
-        QKeySequence keySequence
-        READ keySequence
-        WRITE setKeySequence
-        NOTIFY keySequenceChanged)
-
-    Q_PROPERTY(
-        bool multiKeyShortcutsAllowed
-        READ multiKeyShortcutsAllowed
-        WRITE setMultiKeyShortcutsAllowed)
-
-    Q_PROPERTY(
-        QString shortcutDisplay
-        READ shortcutDisplay
-        NOTIFY shortcutDisplayChanged)
-
-    Q_PROPERTY(
-        bool modifierlessAllowed
-        READ isModifierlessAllowed
-        WRITE setModifierlessAllowed)
+    Q_PROPERTY(QKeySequence keySequence READ keySequence WRITE setKeySequence NOTIFY keySequenceChanged)
+    Q_PROPERTY(bool multiKeyShortcutsAllowed READ multiKeyShortcutsAllowed WRITE setMultiKeyShortcutsAllowed)
+    Q_PROPERTY(QString shortcutDisplay READ shortcutDisplay NOTIFY shortcutDisplayChanged)
+    Q_PROPERTY(bool modifierlessAllowed READ isModifierlessAllowed WRITE setModifierlessAllowed)
 
 public:
-
     enum ShortcutType {
-        None           = 0x00,      //!< No checking for conflicts
-        StandardShortcuts = 0x01,   //!< Check against standard shortcuts. @see KStandardShortcut
-        GlobalShortcuts = 0x02      //!< Check against global shortcuts. @see KGlobalAccel
+        None = 0x00, //!< No checking for conflicts
+        StandardShortcuts = 0x01, //!< Check against standard shortcuts. @see KStandardShortcut
+        GlobalShortcuts = 0x02 //!< Check against global shortcuts. @see KGlobalAccel
     };
     Q_DECLARE_FLAGS(ShortcutTypes, ShortcutType)
     Q_FLAG(ShortcutTypes)
 
     /**
-    * Constructor.
-    */
+     * Constructor.
+     */
     explicit KeySequenceHelper(QObject* parent = nullptr);
 
     /**
-    * Destructs the widget.
-    */
+     * Destructs the widget.
+     */
     virtual ~KeySequenceHelper();
 
     /**
@@ -70,14 +50,13 @@ public:
      */
     bool isModifierlessAllowed();
 
-
     bool isRecording() const;
     void setShortcut(bool recording);
 
     /**
      * Set the default key sequence from a string
      */
-    void setKeySequence(const QKeySequence &sequence);
+    void setKeySequence(const QKeySequence& sequence);
 
     /**
      * Return the currently selected key sequence as a string
@@ -85,12 +64,11 @@ public:
     QKeySequence keySequence() const;
     QString shortcutDisplay() const;
 
-    bool isKeySequenceAvailable(const QKeySequence &keySequence) const;
-
+    bool isKeySequenceAvailable(const QKeySequence& keySequence) const;
 
 Q_SIGNALS:
-    void keySequenceChanged(const QKeySequence &seq);
-    void shortcutDisplayChanged(const QString &string);
+    void keySequenceChanged(const QKeySequence& seq);
+    void shortcutDisplayChanged(const QString& string);
     void captureFinished();
 
 public Q_SLOTS:
@@ -98,16 +76,16 @@ public Q_SLOTS:
     void keyPressed(int key, int modifiers);
     void keyReleased(int key, int modifiers);
 
-   /**
-    * Clear the key sequence.
-    */
+    /**
+     * Clear the key sequence.
+     */
     void clearKeySequence();
     void cancelRecording();
     void doneRecording();
 
 private:
     friend class KeySequenceHelperPrivate;
-    KeySequenceHelperPrivate *const d;
+    KeySequenceHelperPrivate* const d;
 
     Q_DISABLE_COPY(KeySequenceHelper)
 };

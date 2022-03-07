@@ -1,40 +1,38 @@
 #ifndef LOGWATCHER_H
 #define LOGWATCHER_H
 
-#include "stdafx.h"
 #include "model/applicationmodel.h"
 
-class LogWatcher : public QObject
-{
-  Q_OBJECT
+class LogWatcher : public QObject {
+    Q_OBJECT
 
-  ApplicationModel* model;
-  QTimer timer;
-  QString clientPath;
-  QString activeClientId;
-  std::unique_ptr<QFile> file;
+    ApplicationModel* model;
+    QTimer timer;
+    QString clientPath;
+    QString activeClientId;
+    std::unique_ptr<QFile> file;
 
 signals:
-  void plazaEntered();
-  void labStarted();
-  void labFinished();
-  void izaroBattleStarted();
-  void sectionFinished();
-  void labExit();
-  void roomChanged(QString name);
-  void portalSpawned();
+    void plazaEntered();
+    void labStarted();
+    void labFinished();
+    void izaroBattleStarted();
+    void sectionFinished();
+    void labExit();
+    void roomChanged(QString name);
+    void portalSpawned();
 
 public:
-  LogWatcher(ApplicationModel* model);
+    LogWatcher(ApplicationModel* model);
 
 private slots:
-  void work();
+    void work();
 
 private:
-  void parseLine(const QString line);
-  QString findGameClientPath();
-  void setActiveClient(const QString& clientId);
-  bool isLogFromValidClient(const QString& clientId) const;
+    void parseLine(const QString line);
+    QString findGameClientPath();
+    void setActiveClient(const QString& clientId);
+    bool isLogFromValidClient(const QString& clientId) const;
 };
 
 #endif // LOGWATCHER_H

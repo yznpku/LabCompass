@@ -1,21 +1,19 @@
 #ifndef LABYRINTHCONTROLLER_H
 #define LABYRINTHCONTROLLER_H
 
-#include "stdafx.h"
 #include "model/applicationmodel.h"
 
-class LabyrinthController : public QObject
-{
-  Q_OBJECT
+class LabyrinthController : public QObject {
+    Q_OBJECT
 
-  ApplicationModel* model;
+    ApplicationModel* model;
 
 public:
-  LabyrinthController(ApplicationModel* model);
+    LabyrinthController(ApplicationModel* model);
 
 public slots:
-  void importFile(const QString& file);
-  void onRoomPresetSet(const QString& id, const QString& areaCode);
+    void importFile(const QString& file);
+    void onRoomPresetSet(const QString& id, const QString& areaCode);
 };
 
 #endif // LABYRINTHCONTROLLER_H

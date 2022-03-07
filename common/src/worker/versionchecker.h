@@ -1,24 +1,22 @@
 #ifndef VERSIONCHECKER_H
 #define VERSIONCHECKER_H
 
-#include "stdafx.h"
 #include "model/applicationmodel.h"
 
-class VersionChecker : public QObject
-{
-  Q_OBJECT
+class VersionChecker : public QObject {
+    Q_OBJECT
 
-  QNetworkAccessManager nam;
+    QNetworkAccessManager nam;
 
-  ApplicationModel* model;
-  QTimer timer;
+    ApplicationModel* model;
+    QTimer timer;
 
 public:
-  VersionChecker(ApplicationModel* model, QObject* parent = nullptr);
+    VersionChecker(ApplicationModel* model, QObject* parent = nullptr);
 
 private slots:
-  void work();
-  void onReplyFinished();
+    void work();
+    void onReplyFinished();
 };
 
 #endif // VERSIONCHECKER_H
