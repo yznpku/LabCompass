@@ -4,20 +4,19 @@
 #include "stdafx.h"
 #include <QHotkey>
 
-class HotkeyBinding : public QHotkey
-{
-  Q_OBJECT
+class HotkeyBinding : public QHotkey {
+    Q_OBJECT
 
-  QObject* global;
-  QObject* settings;
-  QString propertyName;
+    QObject* global;
+    QObject* settings;
+    QString propertyName;
 
 public:
-  HotkeyBinding(QObject* global, QObject* settings, QByteArray propertyName, QByteArray propertyChangeSignal);
+    HotkeyBinding(QObject* global, QObject* settings, QByteArray propertyName, QByteArray propertyChangeSignal);
 
 private slots:
-  void rebindHotkey();
-  void onOptionsWindowOpenChanged();
+    void rebindHotkey();
+    void onOptionsWindowOpenChanged();
 };
 
 #endif // HOTKEYBINDING_H

@@ -3,17 +3,16 @@
 
 #include "stdafx.h"
 
-class ListModel : public QAbstractListModel
-{
-  Q_OBJECT
+class ListModel : public QAbstractListModel {
+    Q_OBJECT
 
 public:
-  ListModel() {}
-  ~ListModel() {}
+    ListModel() { }
+    ~ListModel() { }
 
 public:
-  Q_INVOKABLE int size() const;
-  Q_INVOKABLE QVariantMap get(int row) const;
+    Q_INVOKABLE int size() const;
+    Q_INVOKABLE QVariantMap get(int row) const;
 };
 
 #endif // LISTMODEL_H

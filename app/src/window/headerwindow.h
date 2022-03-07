@@ -4,19 +4,18 @@
 #include "stdafx.h"
 #include "window/window.h"
 
-class HeaderWindow : public Window
-{
-  Q_OBJECT
+class HeaderWindow : public Window {
+    Q_OBJECT
 
 signals:
-  void moved(int x, int y);
+    void moved(int x, int y);
 
 public:
-  HeaderWindow(QQmlEngine* engine);
+    HeaderWindow(QQmlEngine* engine);
 
 private slots:
-  void onCompassVisibleChanged();
-  void onDrag(int dx, int dy);
+    void onCompassVisibleChanged();
+    void onDrag(int dx, int dy);
 };
 
 #endif // HEADERWINDOW_H

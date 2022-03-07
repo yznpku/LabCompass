@@ -4,19 +4,18 @@
 #include "stdafx.h"
 #include "window/window.h"
 
-class InstructionListWindow : public Window
-{
-  Q_OBJECT
+class InstructionListWindow : public Window {
+    Q_OBJECT
 
 public:
-  InstructionListWindow(QQmlEngine* engine);
+    InstructionListWindow(QQmlEngine* engine);
 
 public slots:
-  void onRoomChanged();
-  void onIzaroBattleStarted();
+    void onRoomChanged();
+    void onIzaroBattleStarted();
 
 private slots:
-  void onCompassVisibleChanged();
+    void onCompassVisibleChanged();
 };
 
 #endif // INSTRUCTIONLISTWINDOW_H

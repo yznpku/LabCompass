@@ -1,8 +1,8 @@
 #include "application.h"
 
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
-  Application app(argc, argv);
+    Application app(argc, argv);
 
-  return app.exec();
+    return app.exec();
 }

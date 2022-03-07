@@ -4,23 +4,22 @@
 #include "stdafx.h"
 #include "window/window.h"
 
-class RoomPresetsWindow : public Window
-{
-  Q_OBJECT
+class RoomPresetsWindow : public Window {
+    Q_OBJECT
 
-  QObject* roomPresetModel;
+    QObject* roomPresetModel;
 
 signals:
-  void setRoomPreset(QString id, QString areaCode);
+    void setRoomPreset(QString id, QString areaCode);
 
 public:
-  RoomPresetsWindow(QQmlEngine* engine);
+    RoomPresetsWindow(QQmlEngine* engine);
 
 private slots:
-  void onWindowOpenChanged();
-  void onDrag(int dx, int dy);
-  void onApplyPresetButtonClicked(const QString& areaCode);
-  void resetIndex();
+    void onWindowOpenChanged();
+    void onDrag(int dx, int dy);
+    void onApplyPresetButtonClicked(const QString& areaCode);
+    void resetIndex();
 };
 
 #endif // ROOMPRESETSWINDOW_H

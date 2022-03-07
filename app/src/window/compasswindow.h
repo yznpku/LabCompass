@@ -4,20 +4,19 @@
 #include "stdafx.h"
 #include "window/window.h"
 
-class CompassWindow : public Window
-{
-  Q_OBJECT
+class CompassWindow : public Window {
+    Q_OBJECT
 
 public:
-  CompassWindow(QQmlEngine* engine);
+    CompassWindow(QQmlEngine* engine);
 
 public slots:
-  void restartTimer();
-  void stopTimer();
-  void closeTimer();
+    void restartTimer();
+    void stopTimer();
+    void closeTimer();
 
 private slots:
-  void onCompassVisibleChanged();
+    void onCompassVisibleChanged();
 };
 
 #endif // COMPASSWINDOW_H

@@ -1,181 +1,187 @@
 #include "logwatcher.h"
 
 #ifdef Q_OS_WIN
-#include "windows.h"
 #include "psapi.h"
+#include "windows.h"
 #endif
 
 static const QStringList START_LINES {
-  "Izaro: Ascend with precision.",
-  "Izaro: The Goddess is watching.",
-  "Izaro: Justice will prevail.",
+    "Izaro: Ascend with precision.",
+    "Izaro: The Goddess is watching.",
+    "Izaro: Justice will prevail.",
 };
 static const QStringList FINISH_LINES {
-  "Izaro: I die for the Empire!",
-  "Izaro: Delight in your gilded dungeon, ascendant.",
-  "Izaro: Your destination is more dangerous than the journey, ascendant.",
-  "Izaro: Triumphant at last!",
-  "Izaro: You are free!",
-  "Izaro: The trap of tyranny is inescapable.",
+    "Izaro: I die for the Empire!",
+    "Izaro: Delight in your gilded dungeon, ascendant.",
+    "Izaro: Your destination is more dangerous than the journey, ascendant.",
+    "Izaro: Triumphant at last!",
+    "Izaro: You are free!",
+    "Izaro: The trap of tyranny is inescapable.",
 };
 static const QStringList IZARO_BATTLE_START_LINES {
-  "Izaro: Complex machinations converge to a single act of power.",
-  "Izaro: Slowness lends strength to one\'s enemies.",
-  "Izaro: When one defiles the effigy, one defiles the emperor.",
-  "Izaro: The essence of an empire must be shared equally amongst all of its citizens.",
-  "Izaro: It is the sovereign who empowers the sceptre. Not the other way round.",
-  "Izaro: Some things that slumber should never be awoken.",
-  "Izaro: An emperor is only as efficient as those he commands.",
-  "Izaro: The emperor beckons and the world attends.",
+    "Izaro: Complex machinations converge to a single act of power.",
+    "Izaro: Slowness lends strength to one\'s enemies.",
+    "Izaro: When one defiles the effigy, one defiles the emperor.",
+    "Izaro: The essence of an empire must be shared equally amongst all of its citizens.",
+    "Izaro: It is the sovereign who empowers the sceptre. Not the other way round.",
+    "Izaro: Some things that slumber should never be awoken.",
+    "Izaro: An emperor is only as efficient as those he commands.",
+    "Izaro: The emperor beckons and the world attends.",
 };
 static const QStringList SECTION_FINISH_LINES {
-  "Izaro: By the Goddess! What ambition!",
-  "Izaro: Such resilience!",
-  "Izaro: You are inexhaustible!",
-  "Izaro: You were born for this!",
+    "Izaro: By the Goddess! What ambition!",
+    "Izaro: Such resilience!",
+    "Izaro: You are inexhaustible!",
+    "Izaro: You were born for this!",
 };
 static const QStringList PORTAL_SPAWN_LINES {
-  ": A portal to Izaro appears."
+    ": A portal to Izaro appears."
 };
-static const QStringList LAB_ROOM_PREFIX {"Estate", "Domain", "Basilica", "Mansion", "Sepulchre", "Sanitorium"};
-static const QStringList LAB_ROOM_SUFFIX {"Walkways", "Path", "Crossing", "Annex", "Halls", "Passage", "Enclosure", "Atrium"};
-static const QRegularExpression LOG_REGEX {"^\\d+/\\d+/\\d+ \\d+:\\d+:\\d+.*?\\[.*?(\\d+)\\] (.*)$"};
-static const QRegularExpression ROOM_CHANGE_REGEX {"^: You have entered (.*?)\\.$"};
+static const QStringList LAB_ROOM_PREFIX { "Estate", "Domain", "Basilica", "Mansion", "Sepulchre", "Sanitorium" };
+static const QStringList LAB_ROOM_SUFFIX { "Walkways", "Path", "Crossing", "Annex", "Halls", "Passage", "Enclosure", "Atrium" };
+static const QRegularExpression LOG_REGEX { "^\\d+/\\d+/\\d+ \\d+:\\d+:\\d+.*?\\[.*?(\\d+)\\] (.*)$" };
+static const QRegularExpression ROOM_CHANGE_REGEX { "^: You have entered (.*?)\\.$" };
 
 LogWatcher::LogWatcher(ApplicationModel* model)
 {
-  this->model = model;
-  clientPath = model->get_settings()->get_poeClientPath();
-  file.reset(new QFile(QDir(clientPath).filePath("logs/Client.txt")));
+    this->model = model;
+    clientPath = model->get_settings()->get_poeClientPath();
+    file.reset(new QFile(QDir(clientPath).filePath("logs/Client.txt")));
 
-  timer.setInterval(1000);
-  timer.setSingleShot(false);
-  timer.start();
-  connect(&timer, &QTimer::timeout,
-          this, &LogWatcher::work);
+    timer.setInterval(1000);
+    timer.setSingleShot(false);
+    timer.start();
+    connect(&timer, &QTimer::timeout,
+        this, &LogWatcher::work);
 }
 
 void LogWatcher::work()
 {
-  // reset file if client path settings have changed
-  auto newClientPath = model->get_settings()->get_poeClientPath();
-  if (clientPath != newClientPath) {
-    clientPath = newClientPath;
-    file.reset(new QFile(QDir(clientPath).filePath("logs/Client.txt")));
-  }
-
-  // attempt to open file
-  if (!file->isOpen()) {
-    if (!file->open(QIODevice::ReadOnly)) {
-
-      // try to detect client
-      clientPath = findGameClientPath();
-      if (clientPath.isEmpty()) {
-        model->update_logFileOpen(false);
-        return;
-      }
-      file.reset(new QFile(QDir(clientPath).filePath("logs/Client.txt")));
-      if (!file->open(QIODevice::ReadOnly)) {
-        model->update_logFileOpen(false);
-        return;
-      }
-      model->get_settings()->set_poeClientPath(clientPath);
+    // reset file if client path settings have changed
+    auto newClientPath = model->get_settings()->get_poeClientPath();
+    if (clientPath != newClientPath) {
+        clientPath = newClientPath;
+        file.reset(new QFile(QDir(clientPath).filePath("logs/Client.txt")));
     }
-    model->update_logFileOpen(true);
-    file->seek(file->size());
-  }
 
-  while (true) {
-    auto line = file->readLine();
-    if (line.isEmpty())
-      break;
-    parseLine(QString::fromUtf8(line).trimmed());
-  }
+    // attempt to open file
+    if (!file->isOpen()) {
+        if (!file->open(QIODevice::ReadOnly)) {
+
+            // try to detect client
+            clientPath = findGameClientPath();
+            if (clientPath.isEmpty()) {
+                model->update_logFileOpen(false);
+                return;
+            }
+            file.reset(new QFile(QDir(clientPath).filePath("logs/Client.txt")));
+            if (!file->open(QIODevice::ReadOnly)) {
+                model->update_logFileOpen(false);
+                return;
+            }
+            model->get_settings()->set_poeClientPath(clientPath);
+        }
+        model->update_logFileOpen(true);
+        file->seek(file->size());
+    }
+
+    while (true) {
+        auto line = file->readLine();
+        if (line.isEmpty()) {
+            break;
+        }
+        parseLine(QString::fromUtf8(line).trimmed());
+    }
 }
 
 void LogWatcher::parseLine(const QString line)
 {
-  auto logMatch = LOG_REGEX.match(line);
-  if (logMatch.hasMatch()) {
-    auto clientId = logMatch.captured(1);
+    auto logMatch = LOG_REGEX.match(line);
+    if (logMatch.hasMatch()) {
+        auto clientId = logMatch.captured(1);
 
-    auto logContent = logMatch.captured(2).trimmed();
-    auto roomChangeMatch = ROOM_CHANGE_REGEX.match(logContent);
+        auto logContent = logMatch.captured(2).trimmed();
+        auto roomChangeMatch = ROOM_CHANGE_REGEX.match(logContent);
 
-    if (START_LINES.contains(logContent)) {
-      setActiveClient(clientId);
-      emit labStarted();
+        if (START_LINES.contains(logContent)) {
+            setActiveClient(clientId);
+            emit labStarted();
 
-    } else if (roomChangeMatch.hasMatch()) {
-      auto roomName = roomChangeMatch.captured(1);
-      auto affixes = roomName.split(' ');
+        } else if (roomChangeMatch.hasMatch()) {
+            auto roomName = roomChangeMatch.captured(1);
+            auto affixes = roomName.split(' ');
 
-      if (roomName == "Aspirants\' Plaza") {
-        setActiveClient(clientId);
-        emit plazaEntered();
+            if (roomName == "Aspirants\' Plaza") {
+                setActiveClient(clientId);
+                emit plazaEntered();
 
-      } else if (roomName == "Aspirant\'s Trial" ||
-          (affixes.size() == 2 && LAB_ROOM_PREFIX.contains(affixes[0]) && LAB_ROOM_SUFFIX.contains(affixes[1]))) {
-        if (isLogFromValidClient(clientId))
-          emit roomChanged(roomName);
+            } else if (roomName == "Aspirant\'s Trial" || (affixes.size() == 2 && LAB_ROOM_PREFIX.contains(affixes[0]) && LAB_ROOM_SUFFIX.contains(affixes[1]))) {
+                if (isLogFromValidClient(clientId)) {
+                    emit roomChanged(roomName);
+                }
 
-      } else {
-        if (isLogFromValidClient(clientId))
-          emit labExit();
-      }
+            } else {
+                if (isLogFromValidClient(clientId)) {
+                    emit labExit();
+                }
+            }
 
-    } else if (FINISH_LINES.contains(logContent)) {
-      if (isLogFromValidClient(clientId)) {
-        emit sectionFinished();
-        emit labFinished();
-      }
+        } else if (FINISH_LINES.contains(logContent)) {
+            if (isLogFromValidClient(clientId)) {
+                emit sectionFinished();
+                emit labFinished();
+            }
 
-    } else if (IZARO_BATTLE_START_LINES.contains(logContent)) {
-      if (isLogFromValidClient(clientId))
-        emit izaroBattleStarted();
+        } else if (IZARO_BATTLE_START_LINES.contains(logContent)) {
+            if (isLogFromValidClient(clientId)) {
+                emit izaroBattleStarted();
+            }
 
-    } else if (SECTION_FINISH_LINES.contains(logContent)) {
-      if (isLogFromValidClient(clientId))
-        emit sectionFinished();
+        } else if (SECTION_FINISH_LINES.contains(logContent)) {
+            if (isLogFromValidClient(clientId)) {
+                emit sectionFinished();
+            }
 
-    } else if (PORTAL_SPAWN_LINES.contains(logContent)) {
-      if (isLogFromValidClient(clientId))
-        emit portalSpawned();
+        } else if (PORTAL_SPAWN_LINES.contains(logContent)) {
+            if (isLogFromValidClient(clientId)) {
+                emit portalSpawned();
+            }
+        }
     }
-  }
 }
 
 QString LogWatcher::findGameClientPath()
 {
 #ifdef Q_OS_WIN
-  auto hwnd = FindWindowA("POEWindowClass", nullptr);
-  if (!hwnd)
-    return QString();
+    auto hwnd = FindWindowA("POEWindowClass", nullptr);
+    if (!hwnd) {
+        return QString();
+    }
 
-  DWORD pid;
-  GetWindowThreadProcessId(hwnd, &pid);
+    DWORD pid;
+    GetWindowThreadProcessId(hwnd, &pid);
 
-  auto handle = OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, FALSE, pid);
-  if (!handle)
-    return QString();
+    auto handle = OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, FALSE, pid);
+    if (!handle)
+        return QString();
 
-  char buf[1024];
-  auto r = GetModuleFileNameExA(handle, NULL, buf, 1024);
-  QString path = r ? QFileInfo(QString(buf)).dir().absolutePath() : QString();
+    char buf[1024];
+    auto r = GetModuleFileNameExA(handle, NULL, buf, 1024);
+    QString path = r ? QFileInfo(QString(buf)).dir().absolutePath() : QString();
 
-  CloseHandle(handle);
-  return path;
+    CloseHandle(handle);
+    return path;
 #else
-  return QString();
+    return QString();
 #endif
 }
 
 void LogWatcher::setActiveClient(const QString& clientId)
 {
-  activeClientId = clientId;
+    activeClientId = clientId;
 }
 
 bool LogWatcher::isLogFromValidClient(const QString& clientId) const
 {
-  return !model->get_settings()->get_multiclientSupport() || clientId == activeClientId;
+    return !model->get_settings()->get_multiclientSupport() || clientId == activeClientId;
 }

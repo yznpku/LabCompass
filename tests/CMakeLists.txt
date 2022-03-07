@@ -1,4 +1,4 @@
-set(TARGET_NAME test)
+set(TARGET_NAME tests)
 
 file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS
         *.cpp *.h
@@ -12,6 +12,9 @@ target_include_directories(${TARGET_NAME} PRIVATE
 
 target_link_libraries(${TARGET_NAME} PUBLIC
         common
+        Qt5::Core
+        Qt5::Gui
+        Qt5::Widgets
         Qt5::Test
         )
 

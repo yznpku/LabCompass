@@ -1,12 +1,11 @@
 #ifndef PLANDATA_H
 #define PLANDATA_H
 
-#include "stdafx.h"
 #include "global.h"
+#include "stdafx.h"
 
-struct PlanData
-{
-  QList<RoomId> targetRooms;
+struct PlanData {
+    QList<RoomId> targetRooms;
 };
 
 #endif // PLANDATA_H

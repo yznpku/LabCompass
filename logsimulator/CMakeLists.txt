@@ -4,7 +4,7 @@ file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS
         *.cpp *.h *.ui
         )
 
-add_executable(${TARGET_NAME} WIN32 ${SOURCES})
+add_executable(${TARGET_NAME} ${SOURCES})
 
 target_include_directories(${TARGET_NAME} PRIVATE
         src

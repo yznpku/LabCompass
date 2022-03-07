@@ -26,4 +26,4 @@ add_subdirectory(common)
 
 add_subdirectory(app)
 add_subdirectory(logsimulator)
-add_subdirectory(test)
+add_subdirectory(tests)

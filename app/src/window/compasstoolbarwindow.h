@@ -4,15 +4,14 @@
 #include "stdafx.h"
 #include "window/window.h"
 
-class CompassToolbarWindow : public Window
-{
-  Q_OBJECT
+class CompassToolbarWindow : public Window {
+    Q_OBJECT
 
 public:
-  CompassToolbarWindow(QQmlEngine* engine);
+    CompassToolbarWindow(QQmlEngine* engine);
 
 private slots:
-  void onCompassToolbarVisibleChanged();
+    void onCompassToolbarVisibleChanged();
 };
 
 #endif // COMPASSTOOLBARWINDOW_H

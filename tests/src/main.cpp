@@ -6,7 +6,7 @@
 #include <QtTest>
 #include <memory>
 
-int main()
+int main(int argc, char** argv)
 {
     Q_INIT_RESOURCE(common);
     RoomPresetHelper::instance = new RoomPresetHelper();

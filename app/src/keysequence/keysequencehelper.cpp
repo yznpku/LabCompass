@@ -1,18 +1,17 @@
 #include "keysequencehelper.h"
 
-uint qHash(const QKeySequence &seq)
+uint qHash(const QKeySequence& seq)
 {
     return qHash(seq.toString());
 }
 
-class KeySequenceHelperPrivate
-{
+class KeySequenceHelperPrivate {
 public:
-    KeySequenceHelperPrivate(KeySequenceHelper *q);
+    KeySequenceHelperPrivate(KeySequenceHelper* q);
 
     void init();
 
-    static QKeySequence appendToSequence(const QKeySequence &seq, int keyQt);
+    static QKeySequence appendToSequence(const QKeySequence& seq, int keyQt);
     static bool isOkWhenModifierless(int keyQt);
 
     void updateShortcutDisplay();
@@ -37,7 +36,6 @@ public:
             // A modifier is pressed. Stop the timeout
             modifierlessTimeout.stop();
         }
-
     }
 
     void cancelRecording()
@@ -46,10 +44,9 @@ public:
         q->doneRecording();
     }
 
-
-//members
-    KeySequenceHelper *const q;
-    QToolButton *clearButton;
+    // members
+    KeySequenceHelper* const q;
+    QToolButton* clearButton;
 
     QKeySequence keySequence;
     QKeySequence oldKeySequence;
@@ -68,42 +65,40 @@ public:
     /**
      * The list of action to check against for conflict shortcut
      */
-    QList<QAction *> checkList; // deprecated
+    QList<QAction*> checkList; // deprecated
 
     /**
      * The list of action collections to check against for conflict shortcut
      */
-//     QList<KActionCollection *> checkActionCollections;
+    //     QList<KActionCollection *> checkActionCollections;
 
     /**
      * The action to steal the shortcut from.
      */
-    QList<QAction *> stealActions;
+    QList<QAction*> stealActions;
 };
 
-KeySequenceHelperPrivate::KeySequenceHelperPrivate(KeySequenceHelper *q)
-: q(q)
-, allowModifierless(false)
-, nKey(0)
-, modifierKeys(0)
-, isRecording(false)
-, multiKeyShortcutsAllowed(true)
-, componentName()
-, checkAgainstShortcutTypes(KeySequenceHelper::StandardShortcuts | KeySequenceHelper::GlobalShortcuts)
-, stealActions()
+KeySequenceHelperPrivate::KeySequenceHelperPrivate(KeySequenceHelper* q)
+    : q(q)
+    , allowModifierless(false)
+    , nKey(0)
+    , modifierKeys(0)
+    , isRecording(false)
+    , multiKeyShortcutsAllowed(true)
+    , componentName()
+    , checkAgainstShortcutTypes(KeySequenceHelper::StandardShortcuts | KeySequenceHelper::GlobalShortcuts)
+    , stealActions()
 {
-
 }
 
-KeySequenceHelper::KeySequenceHelper(QObject* parent):
-    QObject(),
-    d(new KeySequenceHelperPrivate(this))
+KeySequenceHelper::KeySequenceHelper(QObject* parent)
+    : QObject()
+    , d(new KeySequenceHelperPrivate(this))
 {
     Q_UNUSED(parent);
     connect(&d->modifierlessTimeout, SIGNAL(timeout()), this, SLOT(doneRecording()));
     d->updateShortcutDisplay();
 }
-
 
 KeySequenceHelper::~KeySequenceHelper()
 {
@@ -132,7 +127,7 @@ bool KeySequenceHelper::isModifierlessAllowed()
 
 bool KeySequenceHelper::isKeySequenceAvailable(const QKeySequence& keySequence) const
 {
-  return true;
+    return true;
 }
 
 //
@@ -142,7 +137,7 @@ bool KeySequenceHelper::isKeySequenceAvailable(const QKeySequence& keySequence) 
 // }
 //
 
-//slot
+// slot
 void KeySequenceHelper::captureKeySequence()
 {
     d->startRecording();
@@ -163,7 +158,6 @@ void KeySequenceHelper::setKeySequence(const QKeySequence& sequence)
     emit keySequenceChanged(d->keySequence);
 }
 
-
 void KeySequenceHelper::clearKeySequence()
 {
     setKeySequence(QKeySequence());
@@ -181,12 +175,13 @@ void KeySequenceHelperPrivate::startRecording()
 }
 //
 
-void KeySequenceHelper::cancelRecording() {
-  d->keySequence = d->oldKeySequence;
-  d->modifierlessTimeout.stop();
-  d->isRecording = false;
-  d->stealActions.clear();
-  d->updateShortcutDisplay();
+void KeySequenceHelper::cancelRecording()
+{
+    d->keySequence = d->oldKeySequence;
+    d->modifierlessTimeout.stop();
+    d->isRecording = false;
+    d->stealActions.clear();
+    d->updateShortcutDisplay();
 }
 void KeySequenceHelper::doneRecording()
 {
@@ -194,8 +189,8 @@ void KeySequenceHelper::doneRecording()
     d->isRecording = false;
     d->stealActions.clear();
 
-    if (! isKeySequenceAvailable(d->keySequence)) {
-//         The sequence had conflicts and the user said no to stealing it
+    if (!isKeySequenceAvailable(d->keySequence)) {
+        //         The sequence had conflicts and the user said no to stealing it
         d->keySequence = d->oldKeySequence;
     } else {
         emit keySequenceChanged(d->keySequence);
@@ -208,7 +203,7 @@ void KeySequenceHelper::doneRecording()
 
 void KeySequenceHelperPrivate::updateShortcutDisplay()
 {
-    //empty string if no non-modifier was pressed
+    // empty string if no non-modifier was pressed
     QString s = keySequence.toString(QKeySequence::NativeText);
     s.replace(QLatin1Char('&'), QStringLiteral("&&"));
 
@@ -221,7 +216,7 @@ void KeySequenceHelperPrivate::updateShortcutDisplay()
         } else if (nKey == 0) {
             s = "Press Keys";
         }
-        //make it clear that input is still going on
+        // make it clear that input is still going on
         s.append(QStringLiteral(" ..."));
     }
 
@@ -246,8 +241,8 @@ void KeySequenceHelper::keyPressed(int key, int modifiers)
         return d->cancelRecording();
     }
 
-    //don't have the return or space key appear as first key of the sequence when they
-    //were pressed to start editing - catch and them and imitate their effect
+    // don't have the return or space key appear as first key of the sequence when they
+    // were pressed to start editing - catch and them and imitate their effect
     if (!d->isRecording && ((key == Qt::Key_Return || key == Qt::Key_Space))) {
         d->startRecording();
         d->modifierKeys = modifiers;
@@ -258,7 +253,7 @@ void KeySequenceHelper::keyPressed(int key, int modifiers)
     d->modifierKeys = modifiers;
 
     switch (key) {
-    case Qt::Key_AltGr: //or else we get unicode salad
+    case Qt::Key_AltGr: // or else we get unicode salad
         return;
     case Qt::Key_Shift:
     case Qt::Key_Control:
@@ -266,7 +261,7 @@ void KeySequenceHelper::keyPressed(int key, int modifiers)
     case Qt::Key_Meta:
     case Qt::Key_Super_L:
     case Qt::Key_Super_R:
-    case Qt::Key_Menu: //unused (yes, but why?)
+    case Qt::Key_Menu: // unused (yes, but why?)
         d->controlModifierlessTimout();
         d->updateShortcutDisplay();
         break;
@@ -293,14 +288,13 @@ void KeySequenceHelper::keyPressed(int key, int modifiers)
             if (d->nKey == 0) {
                 d->keySequence = QKeySequence(key);
             } else {
-                d->keySequence =
-                    KeySequenceHelperPrivate::appendToSequence(d->keySequence, key);
+                d->keySequence = KeySequenceHelperPrivate::appendToSequence(d->keySequence, key);
             }
 
             if (key == Qt::Key_Escape) {
-              d->keySequence = QKeySequence();
-              doneRecording();
-              return;
+                d->keySequence = QKeySequence();
+                doneRecording();
+                return;
             }
 
             d->nKey++;
@@ -321,7 +315,7 @@ void KeySequenceHelper::keyReleased(int key, int modifiers)
         return;
     }
 
-    //if a modifier that belongs to the shortcut was released...
+    // if a modifier that belongs to the shortcut was released...
     if ((modifiers & d->modifierKeys) < d->modifierKeys) {
         d->modifierKeys = modifiers;
         d->controlModifierlessTimout();
@@ -329,8 +323,8 @@ void KeySequenceHelper::keyReleased(int key, int modifiers)
     }
 }
 //
-//static
-QKeySequence KeySequenceHelperPrivate::appendToSequence(const QKeySequence &seq, int keyQt)
+// static
+QKeySequence KeySequenceHelperPrivate::appendToSequence(const QKeySequence& seq, int keyQt)
 {
     if (seq.matches(keyQt) != QKeySequence::NoMatch) {
         return seq;
@@ -350,10 +344,10 @@ QKeySequence KeySequenceHelperPrivate::appendToSequence(const QKeySequence &seq,
     }
 }
 //
-//static
+// static
 bool KeySequenceHelperPrivate::isOkWhenModifierless(int keyQt)
 {
-    //this whole function is a hack, but especially the first line of code
+    // this whole function is a hack, but especially the first line of code
     if (QKeySequence(keyQt).toString().length() == 1) {
         return false;
     }
@@ -362,7 +356,7 @@ bool KeySequenceHelperPrivate::isOkWhenModifierless(int keyQt)
     case Qt::Key_Return:
     case Qt::Key_Space:
     case Qt::Key_Tab:
-    case Qt::Key_Backtab: //does this ever happen?
+    case Qt::Key_Backtab: // does this ever happen?
     case Qt::Key_Backspace:
     case Qt::Key_Delete:
         return false;
